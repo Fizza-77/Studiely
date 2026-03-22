@@ -10,7 +10,11 @@ export const StatsSection = () => (
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-[1px] bg-border-default">
         
         {[
+<<<<<<< HEAD
           { n: "100", pre: "", suf: "+", label: "Students Trust Studiely", col: "var(--color-navy)" },
+=======
+          { n: "10000", pre: "", suf: "+", label: "Students Trust Studiely", col: "var(--color-navy)" },
+>>>>>>> 404fdbc5892a68b3151995984ed97172970eec65
           { n: "75", pre: "", suf: "%", label: "Study Time Saved", col: "var(--color-teal)" },
           { n: "3", pre: "", suf: "×", label: "Faster Exam Prep", col: "var(--color-navy)" },
           { n: "4.8", pre: "★ ", suf: "", label: "Average Student Rating", col: "var(--color-amber)" },
