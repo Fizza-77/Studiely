@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "DM Sans", system-ui, sans-serif;
-  --font-serif: "Instrument Serif", Georgia, serif;
+  --font-sans: "Nunito Sans", system-ui, sans-serif;
+  --font-serif: "Nunito", system-ui, sans-serif;
 
   --color-navy: #181926;
   --color-teal: #00b09b;

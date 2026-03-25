@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/Button";
-
 export const HeroSection = () => (
   <section className="relative overflow-hidden pt-[66px] md:pt-[88px] pb-[70px] md:pb-[90px] bg-bg-base border-t border-border-default">
     
@@ -33,12 +32,12 @@ export const HeroSection = () => (
               transition={{ duration: 0.75, delay: 0.08 + i * 0.1 }}
             >
               {line ? (
-                <p className="font-serif text-[clamp(26px,5vw,40px)] leading-[1.1] text-navy tracking-[-1px] mb-1">
+                <p className="font-serif font-bold text-[clamp(26px,5vw,40px)] leading-[1.1] text-navy tracking-[-1px] mb-1">
                   {line}
                 </p>
               ) : (
                 <h1 className="font-serif text-[clamp(32px,7vw,62px)] leading-[1.08] text-navy tracking-[-1px] mb-5 md:mb-6">
-                  In <em className="italic text-teal">Minutes.</em>
+                  In <em className="text-teal">Minutes.</em>
                 </h1>
               )}
             </motion.div>
