@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export const Footer = () => (
   <footer id="contact" className="bg-bg-base border-t border-border-default py-[34px]">
@@ -14,8 +15,7 @@ export const Footer = () => (
         Studiely
       </div>
       <nav className="flex gap-5 flex-wrap" aria-label="Footer">
-        
-       
+     
         <a
           href="/privacy-policy"
           className="text-[13px] text-muted transition-colors duration-150 hover:text-navy"
@@ -46,12 +46,7 @@ export const Footer = () => (
         >
           Disclaimer
         </a>
-        <a
-          href="/contact"
-          className="text-[13px] text-muted transition-colors duration-150 hover:text-navy"
-        >
-          Contact Us
-        </a>
+       
       </nav>
       <p className="w-full text-[12px] text-[#6b6b76] border-t border-border-lt pt-4 mt-1">
         © {new Date().getFullYear()} Studiely. All rights reserved.

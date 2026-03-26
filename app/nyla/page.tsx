@@ -2,11 +2,29 @@ import type { Metadata } from "next";
 import { Footer } from "@/components/Footer";
 import { PageHeader } from "@/components/PageHeader";
 import { NylaSection } from "@/sections/NylaSection";
+import { DEFAULT_OG_IMAGE_PATH, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Nyla AI – Your Personal Study Assistant",
+  title: "Nyla AI — Your Curriculum-Aware Study Assistant",
   description:
-    "Learn how Nyla, Studiely’s built-in AI assistant, helps students understand concepts, generate content, and stay on track with their studies.",
+    "Ask Nyla in plain English: get explanations tied to your grade and board, then turn answers into notes, flashcards, quizzes, or exam-style questions.",
+  alternates: { canonical: `${SITE_URL}/nyla` },
+  openGraph: {
+    title: "Nyla — Studiely’s Built-In AI Tutor",
+    description:
+      "Help when you’re stuck on a topic, without waiting for chat that ignores your syllabus.",
+    url: `${SITE_URL}/nyla`,
+    siteName: "Studiely",
+    type: "website",
+    images: [{ url: DEFAULT_OG_IMAGE_PATH, alt: "Studiely — Nyla AI" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Nyla AI — Studiely",
+    description:
+      "Natural-language help that respects your curriculum, grade, and exam expectations.",
+    images: [DEFAULT_OG_IMAGE_PATH],
+  },
 };
 
 export default function NylaFeaturePage() {

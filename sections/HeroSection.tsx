@@ -23,25 +23,33 @@ export const HeroSection = () => (
             AI-Powered Study Tool for Students
           </motion.div>
 
-          {/* Headline */}
-          {["Study Smarter.", "Score Higher.", null].map((line, i) => (
-            <motion.div
-              key={i}
+          {/* Headline — single H1 for SEO; visual hierarchy preserved with spans */}
+          <h1 className="font-serif text-navy tracking-[-1px] mb-5 md:mb-6">
+            <motion.span
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.75, delay: 0.08 + i * 0.1 }}
+              transition={{ duration: 0.75, delay: 0.08 }}
+              className="block font-bold text-[clamp(26px,5vw,40px)] leading-[1.1] mb-1"
             >
-              {line ? (
-                <p className="font-serif font-bold text-[clamp(26px,5vw,40px)] leading-[1.1] text-navy tracking-[-1px] mb-1">
-                  {line}
-                </p>
-              ) : (
-                <h1 className="font-serif text-[clamp(32px,7vw,62px)] leading-[1.08] text-navy tracking-[-1px] mb-5 md:mb-6">
-                  In <em className="text-teal">Minutes.</em>
-                </h1>
-              )}
-            </motion.div>
-          ))}
+              Study Smarter.
+            </motion.span>
+            <motion.span
+              initial={{ opacity: 0, y: 28 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.75, delay: 0.18 }}
+              className="block font-bold text-[clamp(26px,5vw,40px)] leading-[1.1] mb-1"
+            >
+              Score Higher.
+            </motion.span>
+            <motion.span
+              initial={{ opacity: 0, y: 28 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.75, delay: 0.28 }}
+              className="block text-[clamp(32px,7vw,62px)] leading-[1.08]"
+            >
+              In <em className="text-teal">Minutes.</em>
+            </motion.span>
+          </h1>
 
           {/* Description */}
          <motion.p

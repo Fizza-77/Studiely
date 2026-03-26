@@ -7,14 +7,13 @@ export const StatsSection = () => (
   <div className="border-t border-b border-border-default bg-white">
     <div className="wrap">
       
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-[1px] bg-border-default">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[1px] bg-border-default">
         
         {[
           { n: "100", pre: "", suf: "+", label: "Students Trust Studiely", col: "var(--color-navy)" },
           { n: "75", pre: "", suf: "%", label: "Study Time Saved", col: "var(--color-teal)" },
           { n: "3", pre: "", suf: "×", label: "Faster Exam Prep", col: "var(--color-navy)" },
           { n: "4.8", pre: "★ ", suf: "", label: "Average Student Rating", col: "var(--color-amber)" },
-          { n: "67", pre: "", suf: "% OFF", label: "Launch Offer — Limited", col: "var(--color-indigo)" },
         ].map((s, i) => (
           
           <Reveal
@@ -37,6 +36,11 @@ export const StatsSection = () => (
           </Reveal>
         ))}
 
+      </div>
+      <div className="border-t border-border-default text-center py-6 px-4">
+        <p className="text-[13px] font-nunitosm:text-[14px] text-muted max-w-[800px] mx-auto leading-relaxed">
+          These numbers are live, real, and updated every week. We're a new platform — we'd rather show you where we actually are than pretend to be somewhere we're not. Join us early and help us build something genuine.
+        </p>
       </div>
     </div>
   </div>

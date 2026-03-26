@@ -3,10 +3,14 @@ import Link from "next/link";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/Button";
 import { BackButton } from "@/components/BackButton";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Sign Up – Studiely",
-  description: "Create your Studiely account to start using AI-powered notes, quizzes, flashcards and exam tools.",
+  title: "Create Account — Start Free",
+  description:
+    "Sign up for Studiely: 5 free generations to try notes, quizzes, flashcards, and exam-style questions aligned to your curriculum.",
+  alternates: { canonical: `${SITE_URL}/signup` },
+  robots: { index: false, follow: true },
 };
 
 export default function SignupPage() {

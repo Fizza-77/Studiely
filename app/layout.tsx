@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Nunito, Nunito_Sans } from "next/font/google";
 import "./globals.css";
+import { DEFAULT_OG_IMAGE_PATH, SITE_URL } from "@/lib/site";
 
 const nunitoSans = Nunito_Sans({
   subsets: ["latin"],
@@ -15,36 +16,66 @@ const nunito = Nunito({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://studiely.app"),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Studiely – AI-Powered Study Tool for Students",
+    default:
+      "Studiely — Curriculum-Aligned AI Notes, Quizzes & Flashcards for IGCSE, GCSE & IB",
     template: "%s | Studiely",
   },
   description:
-    "Select your curriculum, pick your grade and topic — Studiely instantly generates notes, quizzes, flashcards, and exam questions aligned to your exact board.",
+    "Pick your board, grade, and topic — get notes, quizzes, flashcards, and exam-style questions tuned to British, IB, US, and other international curricula. Start free.",
   icons: {
     icon: "/logo.jpeg",
     shortcut: "/logo.jpeg",
     apple: "/logo.jpeg",
   },
   openGraph: {
-    title: "Studiely – AI-Powered Study Tool for Students",
+    title:
+      "Studiely — Curriculum-Aligned AI Study Tools for International Students",
     description:
-      "Curriculum-aligned AI notes, quizzes, flashcards and exam questions for school and exam prep.",
-    url: "https://studiely.app",
+      "Notes, quizzes, flashcards, and exam questions matched to your syllabus — not generic AI summaries.",
+    url: SITE_URL,
     siteName: "Studiely",
     type: "website",
     locale: "en_US",
+    images: [
+      {
+        url: DEFAULT_OG_IMAGE_PATH,
+        width: 1200,
+        height: 630,
+        alt: "Studiely — AI study tools for your curriculum",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Studiely – AI-Powered Study Tool for Students",
+    title:
+      "Studiely — Curriculum-Aligned AI Notes, Quizzes & Flashcards",
     description:
-      "Curriculum-aligned AI notes, quizzes, flashcards and exam questions for school and exam prep.",
+      "Study tools built for IGCSE, GCSE, IB, A-Level, and more — aligned to what you actually learn in class.",
+    images: [DEFAULT_OG_IMAGE_PATH],
   },
   alternates: {
-    canonical: "https://studiely.app",
+    canonical: SITE_URL,
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
+};
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Studiely",
+  url: SITE_URL,
+  logo: `${SITE_URL}${DEFAULT_OG_IMAGE_PATH}`,
+  description:
+    "AI-powered study platform for international curricula: notes, quizzes, flashcards, and exam-style practice aligned to your board and grade.",
 };
 
 export default function RootLayout({
@@ -53,8 +84,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${nunitoSans.variable} ${nunito.variable}`}>
+    <html
+      lang="en"
+      className={`${nunitoSans.variable} ${nunito.variable}`}
+      suppressHydrationWarning
+    >
       <body className="antialiased font-sans bg-bg-base text-body">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationJsonLd),
+          }}
+        />
         {children}
       </body>
     </html>

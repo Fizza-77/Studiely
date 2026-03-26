@@ -1,34 +1,28 @@
 import type { Metadata } from "next";
 import { Footer } from "@/components/Footer";
+import { SITE_URL } from "@/lib/site";
 import { SectionHeader } from "@/components/SectionHeader";
 import { FaqItem } from "@/components/FaqItem";
 import { PageHeader } from "@/components/PageHeader";
 
 export const metadata: Metadata = {
-  title: "Studiely FAQs – AI Study Tools, Notes, Flashcards & Quiz Generator",
+  title: "FAQs — Studiely AI Study Tools, Pricing & Features",
   description:
-    "Find answers about Studiely AI study tools, pricing, notes generator, quizzes, flashcards, and exam-style practice questions.",
-  keywords: [
-    "Studiely",
-    "AI study tools",
-    "AI notes generator",
-    "AI flashcards generator",
-    "AI quiz generator",
-    "study AI assistant",
-    "student study tools",
-  ],
+    "Clear answers on curriculum support, fair usage, Premium vs Free, Nyla AI, exam practice, and how Studiely generates notes, quizzes, and flashcards.",
+  alternates: { canonical: `${SITE_URL}/faqs` },
   openGraph: {
-    title: "Studiely FAQs – AI Study Tools Explained",
+    title: "Studiely FAQs — How It Works",
     description:
-      "Learn how Studiely helps students generate notes, quizzes, flashcards, and exam questions using AI.",
-    url: "https://studiely.app/faqs",
+      "Everything students and parents ask: boards supported, credits, subscriptions, and what each study tool does.",
+    url: `${SITE_URL}/faqs`,
     type: "website",
+    siteName: "Studiely",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Studiely FAQs – AI Study Tools",
+    title: "Studiely FAQs",
     description:
-      "Answers about Studiely AI study tools, pricing, notes, flashcards and quizzes.",
+      "Support answers for Studiely — curricula, pricing, AI tools, and account questions.",
   },
 };
 
@@ -46,7 +40,7 @@ export default function FaqsPage() {
      {/*    <SectionHeader
             label="Support & Help"
             title="Studiely — Frequently Asked Questions (FAQ)"
-            sub="Version: v1.3 (Launch) — Updated 10th March 2026"
+            sub="Version: v1.3 (Launch) — Updated 25th March 2026"
           />
 
           {/* A. Getting Started & Account */}
@@ -407,24 +401,49 @@ export default function FaqsPage() {
               Details on Free vs Premium, subscription terms, and the Exam Practice add-on.
             </p>
             <dl className="space-y-3">
-              <FaqItem question="How much does Studiely cost?">
-                Studiely offers Free and Premium plans with monthly, quarterly (3 months), biannual (6 months), and
-                yearly options.
-                <br />
-                Free plan includes 5 free credits total. Premium pricing (67% Launch Offer) is shown below (USD):
-                <br />
-                Plan Original Price Launch Price Effective Monthly
-                <br />
-                Monthly $26.99 $8.91 $8.91
-                <br />
-                3 Months $76.99 $25.41 $8.47
-                <br />
-                6 Months $149.99 $49.50 $8.25
-                <br />
-                12 Months (Best Value) $269.99 $89.10 $7.43
-                <br />
-                Exam Practice Add-on: $50 USD for 50 credits (non-expiring).
-              </FaqItem>
+             <FaqItem question="How much does Studiely cost?">
+  <p>
+    Studiely offers Free and Premium plans with monthly, quarterly (3 months),
+    biannual (6 months), and yearly options.
+  </p>
+
+  <p className="mt-2">Free plan includes 5 free credits total.</p>
+
+  <div className="mt-4 overflow-x-auto">
+    <table className="w-full max-w-xl border border-border-default text-sm">
+      <thead>
+        <tr className="bg-gray-50 text-left">
+          <th className="px-4 py-2 font-semibold">Plan</th>
+          <th className="px-4 py-2 font-semibold">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr className="border-t border-border-default">
+          <td className="px-4 py-2">Monthly</td>
+          <td className="px-4 py-2">$26.99</td>
+        </tr>
+        <tr className="border-t border-border-default">
+          <td className="px-4 py-2">3 Months</td>
+          <td className="px-4 py-2">$76.99</td>
+        </tr>
+        <tr className="border-t border-border-default">
+          <td className="px-4 py-2">6 Months</td>
+          <td className="px-4 py-2">$149.99</td>
+        </tr>
+        <tr className="border-t border-border-default">
+          <td className="px-4 py-2 font-medium">
+            12 Months (Best Value)
+          </td>
+          <td className="px-4 py-2">$269.99</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p className="mt-4">
+    Exam Practice Add-on: $50 USD for 50 credits (non-expiring).
+  </p>
+</FaqItem>
               <FaqItem question="Can I cancel my subscription?">
                 Yes. You can cancel anytime through your app store subscription settings or your account settings (web).
               </FaqItem>

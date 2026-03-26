@@ -3,9 +3,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Footer } from "@/components/Footer";
 import { PageHeader } from "@/components/PageHeader";
-import { supabase } from "@/lib/supabaseClient";
-// app/blog/page.tsx
-export const revalidate = 10; // re-fetch every 10 seconds
+import { getBlogsForConfiguredSite } from "@/lib/blogs";
+import { DEFAULT_OG_IMAGE_PATH, SITE_URL } from "@/lib/site";
+
+export const revalidate = 10;
 type BlogListItem = {
   slug: string;
   title: string;
@@ -14,56 +15,35 @@ type BlogListItem = {
 };
 
 export const metadata: Metadata = {
-  title: "Blog – Study Tips & Product Updates",
+  title: "Blog — Study Tips, Exam Prep & Product Updates",
   description:
-    "Browse Studiely blog articles about smarter studying, exam prep strategies, and updates to our AI-powered study tools.",
+    "Practical revision ideas, curriculum tips, and Studiely product news — for students on IGCSE, GCSE, IB, and more.",
+  alternates: { canonical: `${SITE_URL}/blog` },
   openGraph: {
-    title: "Studiely Blog",
+    title: "Studiely Blog — Smarter Studying & Exam Prep",
     description:
-      "A collection of articles covering study strategies, curriculum tips, and product news from the Studiely team.",
-    url: "https://studiely.app/blog",
+      "Articles on revision strategies, syllabus-aligned study habits, and what’s new in Studiely.",
+    url: `${SITE_URL}/blog`,
+    siteName: "Studiely",
+    type: "website",
+    images: [{ url: DEFAULT_OG_IMAGE_PATH, alt: "Studiely" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Studiely Blog",
     description:
-      "A collection of articles covering study strategies, curriculum tips, and product news from the Studiely team.",
+      "Study strategies and updates from the Studiely team.",
+    images: [DEFAULT_OG_IMAGE_PATH],
   },
 };
 
 async function getStudielyBlogs(): Promise<BlogListItem[]> {
-  // 1) Find the Studiely site
-  const { data: site, error: siteError } = await supabase
-  .from("sites")
-  .select("id,domain")
-  .eq("domain", "studiely.app")
-  .single();
-
-console.log("Supabase site fetch result:", { site, siteError });
-
-  if (siteError || !site) {
-    console.error("Failed to load Studiely site for blog:", siteError);
-    return [];
-  }
-
-  // 2) Fetch blogs for that site
-  const { data: blogs, error: blogsError } = await supabase
-    .from("blogs")
-    .select("cover_image_url,slug,title,description,display_date")
-    .eq("site_id", site.id)
-    .order("display_date", { ascending: false });
-
-  if (blogsError || !blogs) {
-    console.error("Failed to load blogs for Studiely:", blogsError);
-    return [];
-  }
-
+  const blogs = await getBlogsForConfiguredSite();
   return blogs.map((b) => ({
     slug: b.slug,
     title: b.title,
     description: b.description,
-      coverImage: b.cover_image_url, // optional: rename to something nicer
-
+    coverImage: b.cover_image_url,
   }));
 }
 
@@ -110,7 +90,7 @@ export default async function BlogPage() {
     </p>
   </div>
   <Link
-    href={`/blog/full/${post.slug}`}
+    href={`/blog/${post.slug}`}
     className="inline-flex items-center text-[13px] font-medium text-teal hover:text-teal-dk transition-colors duration-150"
     aria-label={`Read more about ${post.title}`}
   >

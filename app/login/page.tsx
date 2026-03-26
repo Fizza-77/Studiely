@@ -3,10 +3,14 @@ import Link from "next/link";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/Button";
 import { BackButton } from "@/components/BackButton";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Login – Studiely",
-  description: "Login to your Studiely account to access AI-powered notes, quizzes, flashcards and exam practice.",
+  title: "Log In — Studiely",
+  description:
+    "Sign in to Studiely to access your saved study tools, streaks, and exam practice.",
+  alternates: { canonical: `${SITE_URL}/login` },
+  robots: { index: false, follow: true },
 };
 
 export default function LoginPage() {

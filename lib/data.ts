@@ -118,7 +118,7 @@ export const CUR_DATA: Record<string, Record<string, string[]>> = {
 export const REVIEWS_1 = [
   {
     quote:
-      "I picked Cambridge IGCSE Biology, typed 'Photosynthesis', and had full notes and a quiz in under a minute. Absolute game changer.",
+      "I was sceptical at first but I set it to Cambridge IGCSE Bio and typed photosynthesis, the notes matched what we did in class way more than random YouTube summaries. I still tweak a line here and there but it’s cut my revision time in half.",
     name: "Aisha K.",
     role: "IGCSE Student",
     initials: "AK",
@@ -126,7 +126,7 @@ export const REVIEWS_1 = [
   },
   {
     quote:
-      "The exam question generator is perfectly matched to A-Level format. My grades went up a full grade boundary after two weeks.",
+      "Mocks were two weeks away and I was behind on organic chem. The quiz pulled questions that felt like past-paper style, not generic trivia. Didn’t magically fix everything but I walked in way less panicked.",
     name: "James T.",
     role: "A-Level Student",
     initials: "JT",
@@ -134,15 +134,15 @@ export const REVIEWS_1 = [
   },
   {
     quote:
-      "I use the flashcard tool before every IB DP exam. It knows exactly what the syllabus covers. Best study app I've ever used.",
-    name: "Maha",
+      "I use flashcards for HL Bio before unit tests. Sometimes a card is wordy so I delete it, but 90% of the deck is usable. Way better than writing them out by hand at midnight.",
+    name: "Maha S.",
     role: "IB Diploma Student",
-    initials: "PS",
+    initials: "MS",
     col: "var(--color-amber)",
   },
   {
     quote:
-      "Nyla explained every concept I didn't understand from my notes. It's like having a tutor available at 2am.",
+      "Nyla’s actually useful when I’m stuck on something from the notes. I don’t have to wait for my tutor to reply. Not always perfect answers but good enough to unblock me before a test.",
     name: "Omar F.",
     role: "GCSE Student",
     initials: "OF",
@@ -150,7 +150,7 @@ export const REVIEWS_1 = [
   },
   {
     quote:
-      "The writing practice mode is incredible. I practiced AP History essays with a timer. My teacher noticed improvement immediately.",
+      "APUSH essays used to take me forever. I like that I can practise with a timer and get feedback that mentions structure, not just spelling. My teacher asked what I changed — honestly it was mostly practising here.",
     name: "Sophie L.",
     role: "AP Student",
     initials: "SL",
@@ -158,7 +158,7 @@ export const REVIEWS_1 = [
   },
   {
     quote:
-      "Generated a full quiz on WW2 in 30 seconds. My whole friend group uses Studiely now.",
+      "We had a topic test on WW2 causes. I generated a quiz and went through it on the bus. My mates asked for the link; half the class is on it now which is slightly annoying but fair enough.",
     name: "Yusuf A.",
     role: "Year 9 Student",
     initials: "YA",
@@ -169,7 +169,7 @@ export const REVIEWS_1 = [
 export const REVIEWS_2 = [
   {
     quote:
-      "The notes are so well structured. It's like having a perfect revision guide written just for me and my exact exam board.",
+      "The layout of the notes is clearer than my own messy Google Docs. I use them as a backbone and add examples from my textbook. Feels less overwhelming than starting from a blank page.",
     name: "Mei C.",
     role: "A-Level Student",
     initials: "MC",
@@ -177,7 +177,7 @@ export const REVIEWS_2 = [
   },
   {
     quote:
-      "Used it to prep for Cambridge entrance. The exam question generator for A-Level Maths is genuinely impressive.",
+      "I’m applying for a maths-heavy course so I wanted extra exam-style questions beyond what school gives. The generator’s not a substitute for past papers but it’s a solid extra set to drill on.",
     name: "Daniel O.",
     role: "University Prep",
     initials: "DO",
@@ -185,7 +185,7 @@ export const REVIEWS_2 = [
   },
   {
     quote:
-      "I was struggling with Chemistry. Studiely made flashcards from my topic and I finally understand reactions properly.",
+      "Chemistry was my worst subject. I made flashcards on bonding and actually remembered the definitions for once. Small win but I’ll take it.",
     name: "Fatima R.",
     role: "IGCSE Student",
     initials: "FR",
@@ -193,7 +193,7 @@ export const REVIEWS_2 = [
   },
   {
     quote:
-      "Nyla is the best part. I ask it questions and it knows I'm in MYP Grade 9. The answers are always relevant.",
+      "I like that Nyla seems to know I’m not doing A-Levels yet. Answers are shorter and on-topic instead of dumping uni-level stuff on me.",
     name: "Liam B.",
     role: "IB MYP Student",
     initials: "LB",
@@ -201,7 +201,7 @@ export const REVIEWS_2 = [
   },
   {
     quote:
-      "Study time went from 3 hours to 45 minutes. The quiz tool tests me on exactly what I need to know.",
+      "I don’t study three hours anymore on a school night, more like 45 minutes of quiz + notes review. I’m not saying I’m top of the class but I’m not drowning either.",
     name: "Zara H.",
     role: "Grade 10 Student",
     initials: "ZH",
@@ -209,7 +209,7 @@ export const REVIEWS_2 = [
   },
   {
     quote:
-      "The writing feedback references the mark scheme for my board. It actually tells me how to improve. Unreal.",
+      "The writing feedback tied to how marks work for our board is what sold me. I still read the mark scheme myself but it points out what I’d miss.",
     name: "Arjun P.",
     role: "AS Level Student",
     initials: "AP",
@@ -235,11 +235,9 @@ export const PRICING_PLANS = [
   },
   {
     name: "Monthly",
-    price: "$8.91",
+    price: "$26.99",
     sub: "/mo",
     cad: "Billed monthly",
-    badge: "67% OFF",
-    orig: "Was $26.99/mo",
     feats: [
       "Unlimited all tools",
       "Export PDF & Word",
@@ -254,10 +252,8 @@ export const PRICING_PLANS = [
   },
   {
     name: "3 Months",
-    price: "$25.41",
-    cad: "$8.47/mo · 3 months",
-    badge: "67% OFF",
-    orig: "Was $76.99",
+    price: "$76.99",
+    cad: "$25.66/mo · 3 months",
     feats: [
       "Everything in Monthly",
       "Unlimited all tools",
@@ -272,10 +268,8 @@ export const PRICING_PLANS = [
   },
   {
     name: "6 Months",
-    price: "$49.50",
-    cad: "$8.25/mo · 6 months",
-    badge: "67% OFF",
-    orig: "Was $149.99",
+    price: "$149.99",
+    cad: "$24.99/mo · 6 months",
     feats: [
       "Everything in Monthly",
       "Unlimited all tools",
@@ -290,11 +284,10 @@ export const PRICING_PLANS = [
   },
   {
     name: "Annual",
-    price: "$89.10",
+    price: "$269.99",
     sub: "/yr",
-    cad: "Only $7.43/mo",
+    cad: "Only $22.49/mo",
     badge: "🔥 Best Value",
-    orig: "Was $269.99/yr",
     feats: [
       "Everything in Monthly",
       "Unlimited all tools",
@@ -306,7 +299,6 @@ export const PRICING_PLANS = [
     ],
     miss: [],
     cta: "Choose Annual",
-    fine: "67% launch offer. Cancel anytime.",
     featured: true,
   },
 ];

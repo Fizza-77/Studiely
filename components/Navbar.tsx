@@ -47,7 +47,7 @@ export const Navbar = ({ visibleSections = [] }: NavbarProps) => {
       >
 <div className="wrap h-[66px] w-full grid grid-cols-[auto_1fr_auto] md:grid-cols-[1fr_auto_1fr] items-center gap-6 px-4 md:px-0">          {/* Logo + Pills */}
   <div className="flex items-center gap-2 md:gap-3 min-w-0">
-            <Link href="#" className="flex items-center gap-2 md:gap-3 font-serif text-[21px] text-navy shrink-0">
+            <Link href="/" className="flex items-center gap-2 md:gap-3 font-serif text-[21px] text-navy shrink-0">
               <Image src="/logo.jpeg" alt="Studiely logo" width={30} height={30} className="shrink-0 rounded-md" />
               Studiely
             </Link>

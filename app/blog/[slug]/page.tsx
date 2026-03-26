@@ -1,77 +1,69 @@
-// app/blog/[slug]/page.tsx
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Footer } from "@/components/Footer";
 import { PageHeader } from "@/components/PageHeader";
-import { supabase } from "@/lib/supabaseClient";
+import { getBlogBySlugForConfiguredSite } from "@/lib/blogs";
+import { DEFAULT_OG_IMAGE_PATH, SITE_URL } from "@/lib/site";
 
-interface Params {
-  slug: string;
-}
+type PageProps = {
+  params: Promise<{ slug: string }>;
+};
 
 async function getStudielyBlogBySlug(slug: string) {
-  const { data: site, error: siteError } = await supabase
-    .from("sites")
-    .select("id,domain")
-    .eq("domain", "studiely.app")
-    .single();
-
-  if (siteError || !site) {
-    console.error("Failed to load Studiely site:", siteError);
-    return null;
-  }
-
-  const { data: blog, error: blogError } = await supabase
-    .from("blogs")
-    .select(
-      "id,title,slug,description,meta_title,meta_description,content,display_date,cover_image_url"
-    )
-    .eq("site_id", site.id)
-    .eq("slug", slug)
-    .single();
-
-  if (blogError || !blog) {
-    console.error("Blog not found for slug:", slug, blogError);
-    return null;
-  }
-
-  return { site, blog };
+  const blog = await getBlogBySlugForConfiguredSite(slug);
+  if (!blog) return null;
+  return { blog };
 }
 
-export async function generateMetadata(
-  { params }: { params: { slug?: string } }
-): Promise<Metadata> {
-  const slug = params?.slug;
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const { slug } = await params;
   if (!slug) return { title: "Blog Post" };
 
   const result = await getStudielyBlogBySlug(slug);
   if (!result) return { title: "Blog Post" };
 
-  const { blog, site } = result;
+  const { blog } = result;
   const title = blog.meta_title || blog.title;
   const description =
     blog.meta_description ||
     blog.description ||
     "A Studiely blog article about smarter studying and AI-powered learning.";
 
+  const canonical = `${SITE_URL}/blog/${blog.slug}`;
+  const ogImage = blog.cover_image_url
+    ? [{ url: blog.cover_image_url, alt: blog.title }]
+    : [{ url: DEFAULT_OG_IMAGE_PATH, alt: "Studiely" }];
+
   return {
     title,
     description,
+    alternates: { canonical },
     openGraph: {
+      type: "article",
       title,
       description,
-      url: `https://${site.domain}/blog/${blog.slug}`,
+      url: canonical,
+      siteName: "Studiely",
+      locale: "en_US",
+      publishedTime: blog.display_date
+        ? new Date(blog.display_date).toISOString()
+        : undefined,
+      images: ogImage,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: ogImage.map((i) => i.url),
     },
   };
 }
 
-// ✅ Default export React Component
-export default async function BlogPostPage({
-  params,
-}: {
-  params: { slug?: string };
-}) {
-  const slug = params?.slug;
+export default async function BlogPostPage({ params }: PageProps) {
+  const { slug } = await params;
   if (!slug) return notFound();
 
   const result = await getStudielyBlogBySlug(slug);
@@ -108,6 +100,26 @@ export default async function BlogPostPage({
                 Content for this article has not been added yet.
               </p>
             )}
+            <nav
+              className="mt-10 pt-8 border-t border-border-default not-prose"
+              aria-label="Related pages"
+            >
+              <p className="text-[13px] text-muted">
+                <Link
+                  href="/blog"
+                  className="text-teal hover:text-teal-dk font-medium"
+                >
+                  All articles
+                </Link>
+                <span className="mx-2 text-border-default">·</span>
+                <Link
+                  href="/pricing"
+                  className="text-teal hover:text-teal-dk font-medium"
+                >
+                  Plans &amp; pricing
+                </Link>
+              </p>
+            </nav>
           </article>
         </div>
       </main>
