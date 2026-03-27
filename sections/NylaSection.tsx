@@ -25,7 +25,7 @@ export const NylaSection = ({ sectionRef }: NylaSectionProps) => {
   ];
 
   return (
-    <section ref={sectionRef} className="pt-6 md:pt-8 pb-20 md:pb-24 bg-white relative overflow-hidden">
+    <section ref={sectionRef} className="pt-6 md:pt-8 pb-14 sm:pb-16 md:pb-20 lg:pb-24 bg-white relative overflow-hidden">
       {/* subtle background */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -38,7 +38,7 @@ export const NylaSection = ({ sectionRef }: NylaSectionProps) => {
       {/* Section heading */}
 
 
-        <div className="two-col grid grid-cols-1 md:grid-cols-2 gap-[72px] items-center">
+        <div className="two-col grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-14 lg:gap-[72px] items-center">
           <div>
             <Reveal delay={0.05}>
               <div className="border border-[#dddaf8] rounded-[14px] overflow-hidden shadow-[0_8px_40px_rgba(84,72,200,0.1)]">
@@ -132,7 +132,7 @@ export const NylaSection = ({ sectionRef }: NylaSectionProps) => {
               ))}
             </ul>
             <Reveal delay={0.3}>
-              <div className="mt-7 flex gap-2.5">
+              <div className="mt-7 flex flex-col sm:flex-row gap-2.5">
                 <Link href="/app-nyla">
                   <Button variant="solid" lg className="bg-indigo border-indigo hover:opacity-90">
                     Chat with Nyla →

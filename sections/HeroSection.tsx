@@ -4,11 +4,11 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/Button";
 export const HeroSection = () => (
-  <section className="relative overflow-hidden pt-[66px] md:pt-[88px] pb-[70px] md:pb-[90px] bg-bg-base border-t border-border-default">
+  <section className="relative overflow-hidden pt-[66px] sm:pt-[72px] md:pt-[88px] pb-14 sm:pb-16 md:pb-20 lg:pb-24 bg-bg-base border-t border-border-default">
     
     {/* Background glow removed */}
     <div className="wrap relative">
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-[40px] lg:gap-[72px] items-center">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-8 sm:gap-10 lg:gap-[72px] items-center">
         
         {/* LEFT: TEXT */}
         <div>

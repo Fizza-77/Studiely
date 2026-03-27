@@ -113,7 +113,7 @@ export const StudyToolsSection = ({ sectionRef }: StudyToolsSectionProps) => {
   };
 
    return (
-    <section id="features" ref={sectionRef} className="py-[96px] bg-white">
+    <section id="features" ref={sectionRef} className="py-14 sm:py-16 md:py-20 lg:py-24 bg-white">
       <div className="wrap">
         <SectionHeader
           label="AI Study Tools"
@@ -391,7 +391,7 @@ export const StudyToolsSection = ({ sectionRef }: StudyToolsSectionProps) => {
 */}
  {/* ── BIG GENERATE BUTTON WITH DYNAMIC COLOR & CARD-LIKE GLOW ── */}
 <Reveal delay={0.4}>
-  <div className="mt-16 flex justify-center">
+  <div className="mt-12 sm:mt-14 md:mt-16 flex justify-center">
     <motion.button
       type="button"
       whileHover={{
@@ -407,7 +407,7 @@ export const StudyToolsSection = ({ sectionRef }: StudyToolsSectionProps) => {
    onClick={() => {
   router.push(`/start-learning-smarter${sel ? `?tool=${sel}` : ""}`);
 }}
-      className={`flex items-center justify-center gap-4 text-white border-none rounded-[14px] text-[18px] font-semibold shrink-0 transition-all duration-300 w-[480px] h-[84px] max-w-full overflow-hidden ${
+      className={`flex items-center justify-center gap-3 sm:gap-4 text-white border-none rounded-[14px] text-[16px] sm:text-[18px] font-semibold shrink-0 transition-all duration-300 w-full max-w-[480px] h-[72px] sm:h-[84px] overflow-hidden px-4 sm:px-5 ${
         canGo ? "cursor-pointer" : "cursor-default"
       }`}
       style={{
@@ -459,7 +459,7 @@ export const StudyToolsSection = ({ sectionRef }: StudyToolsSectionProps) => {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -6 }}
         transition={{ duration: 0.22 }}
-        className="w-[260px] flex flex-col justify-center items-start text-left"
+        className="min-w-0 w-[220px] sm:w-[260px] flex flex-col justify-center items-start text-left"
       >
         {busy ? (
           <span>Generating…</span>
@@ -468,7 +468,7 @@ export const StudyToolsSection = ({ sectionRef }: StudyToolsSectionProps) => {
             <span className="block text-[11px] font-normal opacity-70 tracking-[0.5px] uppercase mb-[3px]">
               {chosen ? "Ready" : "Select a tool above"}
             </span>
-            <span>{chosen ? tool?.cta : "Start Learning Smarter"}</span>
+            <span className="truncate w-full">{chosen ? tool?.cta : "Start Learning Smarter"}</span>
           </>
         )}
       </motion.div>
@@ -476,7 +476,7 @@ export const StudyToolsSection = ({ sectionRef }: StudyToolsSectionProps) => {
   </div>
 </Reveal>
 <Reveal delay={0.18}>
-  <div className="w-full mt-12 px-6">
+  <div className="w-full mt-10 sm:mt-12 px-0 sm:px-2 md:px-6">
     
     {/* Section title */}
     <div className="text-center mb-8">
@@ -489,7 +489,7 @@ export const StudyToolsSection = ({ sectionRef }: StudyToolsSectionProps) => {
     </div>
 
     {/* Grid */}
-    <div className="grid grid-cols-2 sm:grid-cols-4 gap-5 max-w-4xl mx-auto">
+    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 md:gap-5 max-w-4xl mx-auto">
       {COUNTRIES.map((item) => (
         <div
           key={item.key}

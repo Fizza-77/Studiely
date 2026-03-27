@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 
 export const Footer = () => (
   <footer id="contact" className="bg-bg-base border-t border-border-default py-[34px]">
@@ -48,9 +47,50 @@ export const Footer = () => (
         </a>
        
       </nav>
-      <p className="w-full text-[12px] text-[#6b6b76] border-t border-border-lt pt-4 mt-1">
-        © {new Date().getFullYear()} Studiely. All rights reserved.
-      </p>
+      <div className="w-full border-t border-border-lt pt-4 mt-1 space-y-2">
+        <p className="text-[12px] text-[#6b6b76]">
+          Studiely is a sister platform of{" "}
+          <a
+            href="https://makemylesson.ai"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted transition-colors duration-150 hover:text-navy"
+          >
+            Make My Lesson
+          </a>{" "}
+          and{" "}
+          <a
+            href="https://linguatude.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted transition-colors duration-150 hover:text-navy"
+          >
+            Linguatude
+          </a>
+          .
+        </p>
+        <p className="text-[12px] text-[#6b6b76]">
+          Studiely is part of the Skyen Solutions family of EdTech products. For custom
+          software development, websites, and mobile applications, visit{" "}
+          <a
+            href="https://skyensystems.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted transition-colors duration-150 hover:text-navy"
+          >
+            Skyen Systems
+          </a>
+          .
+        </p>
+        <p className="text-[12px] text-[#6b6b76]">
+          Studiely is a product of Skyen Solutions, a trade name of Qismat Ventures W.L.L.
+          (CR 190698-1) — Office 501, Building 1025, Road 3621, Block 436, Al Seef,
+          Bahrain.
+        </p>
+        <p className="text-[12px] text-[#6b6b76]">
+          © {new Date().getFullYear()} Studiely. All rights reserved.
+        </p>
+      </div>
     </div>
   </footer>
 );

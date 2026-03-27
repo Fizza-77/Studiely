@@ -9,7 +9,7 @@ export const HowItWorksSection = ({ sectionRef }: HowItWorksSectionProps) => (
   <section
     id="how-it-works"
     ref={sectionRef}
-    className="py-[64px] bg-[#f9f9fb] border-t "
+    className="py-14 sm:py-16 md:py-20 bg-[#f9f9fb] border-t "
     style={{ borderColor: "#e2e2e8" }}
   >
     <div className="wrap">
@@ -42,7 +42,7 @@ export const HowItWorksSection = ({ sectionRef }: HowItWorksSectionProps) => (
           ].map(([n, t, d, styles]) => (
             <div
               key={n}
-              className={`bg-white px-8 py-10 transition-colors duration-180 border-l-[3px] h-full ${styles}`}
+              className={`bg-white px-5 sm:px-6 lg:px-8 py-8 sm:py-9 lg:py-10 transition-colors duration-180 border-l-[3px] h-full ${styles}`}
             >
               <span className="font-serif text-[11px] italic mb-4 block leading-none">
                 Step {n}

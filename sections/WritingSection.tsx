@@ -33,7 +33,7 @@ export const WritingSection = ({ sectionRef }: WritingSectionProps) => {
       id="writing-practice"
       aria-label="AI exam writing practice with timer and feedback"
       ref={sectionRef}
-      className="py-[64px] bg-bg-base relative overflow-hidden"
+      className="py-14 sm:py-16 md:py-20 bg-bg-base relative overflow-hidden"
     >
       <div
         className="absolute inset-0 pointer-events-none"
@@ -51,7 +51,7 @@ export const WritingSection = ({ sectionRef }: WritingSectionProps) => {
           labelColor="var(--color-amber)"
         />
 
-        <div className="two-col grid grid-cols-1 md:grid-cols-2 gap-[72px] items-center">
+        <div className="two-col grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-14 lg:gap-[72px] items-center">
           <div>
             <ul className="flex flex-col gap-3.5 list-none p-0 m-0">
               {[
@@ -178,7 +178,7 @@ export const WritingSection = ({ sectionRef }: WritingSectionProps) => {
 
        {/* BIG SEO CTA BUTTON */}
 <Reveal delay={0.4}>
-  <div className="mt-16 flex justify-center">
+  <div className="mt-12 sm:mt-14 md:mt-16 flex justify-center">
     <motion.a
       href="/writing-practice"
       aria-label="Start AI exam writing practice"
@@ -187,7 +187,7 @@ export const WritingSection = ({ sectionRef }: WritingSectionProps) => {
         boxShadow: "0 16px 48px rgba(217,123,42,.35)",
       }}
       whileTap={{ scale: 0.97 }}
-      className="flex items-center justify-center gap-4 text-white border-none rounded-[14px] text-[22px] font-semibold shrink-0 transition-all duration-300 w-[480px] h-[84px] max-w-full overflow-hidden cursor-pointer"
+      className="flex items-center justify-center gap-3 sm:gap-4 text-white border-none rounded-[14px] text-[18px] sm:text-[20px] md:text-[22px] font-semibold shrink-0 transition-all duration-300 w-full max-w-[480px] h-[72px] sm:h-[84px] overflow-hidden cursor-pointer px-4 sm:px-5"
       style={{
         background: "linear-gradient(135deg,#d97b2a 0%,#b86420 100%)",
         boxShadow: "0 8px 28px rgba(217,123,42,.28)",

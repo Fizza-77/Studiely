@@ -37,8 +37,8 @@ export const StatsSection = () => (
         ))}
 
       </div>
-      <div className="border-t border-border-default text-center py-6 px-4">
-        <p className="text-[13px] font-nunitosm:text-[14px] text-muted max-w-[800px] mx-auto leading-relaxed">
+      <div className="border-t border-border-default text-center py-5 sm:py-6 px-4">
+        <p className="text-[13px] sm:text-[14px] text-muted max-w-[800px] mx-auto leading-relaxed">
           These numbers are live, real, and updated every week. We're a new platform — we'd rather show you where we actually are than pretend to be somewhere we're not. Join us early and help us build something genuine.
         </p>
       </div>

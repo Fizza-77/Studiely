@@ -6,7 +6,7 @@ import { Button } from "@/components/Button";
 import { Reveal } from "@/components/Reveal";
 
 export const CTASection = () => (
-  <section className="bg-navy py-[80px] text-center relative overflow-hidden">
+  <section className="bg-navy py-14 sm:py-16 md:py-20 text-center relative overflow-hidden">
     <div
       className="absolute inset-0 pointer-events-none"
       style={{

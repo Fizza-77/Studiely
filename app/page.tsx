@@ -14,7 +14,7 @@ import { NylaSection } from "@/sections/NylaSection";
 import { ReviewsSection } from "@/sections/ReviewsSection";
 import { PricingSection } from "@/sections/PricingSection";
 import { CTASection } from "@/sections/CTASection";
-
+import { SisterSection } from "@/sections/SisterSection";
 export default function Home() {
   const nylaHref = "/nyla"; // change this for deep-link target
   const [visibleSections, setVisibleSections] = useState<string[]>([]);
@@ -67,7 +67,7 @@ export default function Home() {
           aria-labelledby="homepage-pricing-heading"
           className="bg-white border-t border-border-default"
         >
-          <div className="wrap py-14 grid gap-8 md:grid-cols-[3fr_2fr] items-center">
+          <div className="wrap py-10 sm:py-12 md:py-14 grid gap-6 sm:gap-8 md:grid-cols-[3fr_2fr] items-center">
             <div>
               <h2
                 id="homepage-pricing-heading"
@@ -86,7 +86,7 @@ export default function Home() {
             <div className="flex md:justify-end">
               <Link
                 href="/pricing"
-                className="inline-flex items-center justify-center px-8 py-3 rounded-lg bg-navy text-white text-[14px] font-medium shadow-[0_10px_30px_rgba(0,0,0,0.16)] hover:bg-navy/90 hover:shadow-[0_16px_40px_rgba(0,0,0,0.18)] transition-all duration-200"
+                className="inline-flex w-full sm:w-auto items-center justify-center px-6 sm:px-8 py-3 rounded-lg bg-navy text-white text-[14px] font-medium shadow-[0_10px_30px_rgba(0,0,0,0.16)] hover:bg-navy/90 hover:shadow-[0_16px_40px_rgba(0,0,0,0.18)] transition-all duration-200"
               >
                 View Pricing
                 <span className="ml-2 text-[15px]">→</span>
@@ -95,16 +95,17 @@ export default function Home() {
           </div>
         </section>
         {/*   <PricingSection /> */}
+        <SisterSection />
         <CTASection />
       </main>
       <Footer />
 
       <Link
         href={nylaHref}
-        className="fixed bottom-5 right-5 z-50 inline-flex h-16 w-16 items-center justify-center rounded-full bg-[#6d4ede] shadow-[0_10px_25px_rgba(0,0,0,0.26)] transition-transform duration-200 hover:-translate-y-1 active:scale-95"
+        className="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 z-50 inline-flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-full bg-[#6d4ede] shadow-[0_10px_25px_rgba(0,0,0,0.26)] transition-transform duration-200 hover:-translate-y-1 active:scale-95"
         aria-label="Go to Nyla"
       >
-        <NylaAvatar size={46} noBackground />
+        <NylaAvatar size={42} noBackground />
       </Link>
     </>
   );

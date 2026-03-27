@@ -14,7 +14,7 @@ interface RCardProps {
 
 const RCard = ({ quote, name, role, initials, col }: RCardProps) => (
   <div
-    className="bg-white border border-border-default rounded-xl p-[26px] min-w-[290px] max-w-[312px] shrink-0 mr-[18px] shadow-[0_2px_12px_rgba(0,0,0,0.04)] transition-shadow duration-180 hover:shadow-[0_6px_24px_rgba(0,0,0,0.08)]"
+    className="bg-white border border-border-default rounded-xl p-5 sm:p-[26px] min-w-[260px] sm:min-w-[290px] max-w-[312px] shrink-0 mr-3 sm:mr-[18px] shadow-[0_2px_12px_rgba(0,0,0,0.04)] transition-shadow duration-180 hover:shadow-[0_6px_24px_rgba(0,0,0,0.08)]"
     style={{ borderTop: `2.5px solid ${col}` }}
   >
     <span className="text-[11px] tracking-[2px] text-[#c9a227] mb-3 block">★★★★★</span>
@@ -41,9 +41,9 @@ const RCard = ({ quote, name, role, initials, col }: RCardProps) => (
 );
 
 export const ReviewsSection = () => (
-  <section className="py-[96px] bg-bg-base overflow-hidden relative">
+  <section className="py-14 sm:py-16 md:py-20 lg:py-24 bg-bg-base overflow-hidden relative">
     <EduPattern opacity={0.045} stroke="#00b09b" />
-    <div className="wrap mb-[52px] relative">
+    <div className="wrap mb-10 sm:mb-12 md:mb-[52px] relative">
     <SectionHeader
   label="Student Reviews"
   title="Loved by Students Worldwide"
