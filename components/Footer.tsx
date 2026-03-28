@@ -1,5 +1,5 @@
 import Image from "next/image";
-
+import Link from "next/link";
 export const Footer = () => (
   <footer className="bg-bg-base border-t border-border-default py-5">
     <div className="wrap flex flex-col gap-3">
@@ -18,11 +18,13 @@ export const Footer = () => (
         </div>
 
         <nav className="flex gap-4 flex-wrap text-[12px]" aria-label="Footer">
-          <a href="/privacy-policy" className="text-muted hover:text-navy">Privacy Policy</a>
-          <a href="/terms-of-service" className="text-muted hover:text-navy">Terms of Service</a>
-          <a href="/acceptable-use" className="text-muted hover:text-navy">Acceptable Use</a>
-          <a href="/cookie-policy" className="text-muted hover:text-navy">Cookie Policy</a>
-          <a href="/disclaimer" className="text-muted hover:text-navy">Disclaimer</a>
+        <Link href="/privacy-policy" className="text-muted hover:text-navy">
+  Privacy Policy
+</Link>
+        <Link href="/terms-of-service">Terms of Service</Link>
+<Link href="/acceptable-use">Acceptable Use</Link>
+<Link href="/cookie-policy">Cookie Policy</Link>
+<Link href="/disclaimer">Disclaimer</Link>
         </nav>
       </div>
 
