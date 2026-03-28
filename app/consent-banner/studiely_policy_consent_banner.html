@@ -1,0 +1,243 @@
+<!--
+  Reference / design exploration only. The live site cookie notice is implemented
+  in components/CookieConsentBanner.tsx (layout) using the same cookie-policy
+  message copy and Studiely theme tokens.
+-->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Nunito+Sans:wght@400;600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --brand:#3A8FD4;--brand-soft:#EBF4FB;--brand-dark:#1A5F96;
+  --accent:#F5A623;--accent-soft:#FEF3DC;
+  --green:#3BBD7C;--green-soft:#E3F8EE;
+  --red:#E8554E;--red-soft:#FDECEB;
+  --text:#1C2B3A;--muted:#6B7E93;--border:#D6E4F0;
+  --card:#fff;--page:#F0F6FB;
+}
+body{font-family:'Nunito Sans',sans-serif;background:var(--page);color:var(--text);padding:24px 16px}
+.hero{text-align:center;margin-bottom:28px}
+.logo{font-family:'Nunito',sans-serif;font-weight:800;font-size:32px;color:var(--brand);letter-spacing:-0.5px;margin-bottom:4px}
+.logo span{color:var(--accent)}
+.tagline{font-size:14px;color:var(--muted);font-weight:600;letter-spacing:0.5px;text-transform:uppercase}
+.card{background:var(--card);border-radius:20px;border:1.5px solid var(--border);padding:24px;margin-bottom:16px;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;border-radius:20px 20px 0 0}
+.card.aup::before{background:var(--brand)}
+.card.cookie::before{background:var(--accent)}
+.card.disclaimer::before{background:var(--green)}
+.card-head{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.icon{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.icon.blue{background:var(--brand-soft)}
+.icon.amber{background:var(--accent-soft)}
+.icon.green{background:var(--green-soft)}
+.card-title{font-family:'Nunito',sans-serif;font-weight:800;font-size:17px;color:var(--text)}
+.card-sub{font-size:12px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:0.4px;margin-top:1px}
+.card-body{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:14px}
+.card-body strong{color:var(--text);font-weight:600}
+.tag-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.tag{font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:0.3px}
+.tag.blue{background:var(--brand-soft);color:var(--brand-dark)}
+.tag.amber{background:var(--accent-soft);color:#9A6400}
+.tag.green{background:var(--green-soft);color:#1A7548}
+.tag.red{background:var(--red-soft);color:#B83C38}
+.toggle-row{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:var(--page);border-radius:12px;cursor:pointer;border:1px solid transparent;transition:border-color .2s}
+.toggle-row:hover{border-color:var(--border)}
+.toggle-label{font-size:13px;font-weight:600;color:var(--text);user-select:none}
+.toggle{width:44px;height:24px;border-radius:12px;background:#CBD5E0;position:relative;transition:background .2s;flex-shrink:0;cursor:pointer;border:none;outline:none}
+.toggle.on{background:var(--brand)}
+.toggle::after{content:'';position:absolute;width:18px;height:18px;border-radius:50%;background:#fff;top:3px;left:3px;transition:left .2s;box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.toggle.on::after{left:23px}
+.section-sep{height:1px;background:var(--border);margin:14px 0}
+.more-btn{font-size:12px;font-weight:700;color:var(--brand);background:none;border:none;cursor:pointer;padding:2px 0;letter-spacing:0.2px;display:flex;align-items:center;gap:4px}
+.more-btn svg{transition:transform .2s}
+.more-btn.open svg{transform:rotate(180deg)}
+.extra{display:none;margin-top:12px;font-size:13px;color:var(--muted);line-height:1.7;padding:12px;background:var(--page);border-radius:10px}
+.extra.show{display:block}
+.extra li{margin-left:16px;margin-bottom:4px}
+.cta-area{background:var(--card);border-radius:20px;border:1.5px solid var(--border);padding:24px}
+.cta-title{font-family:'Nunito',sans-serif;font-weight:800;font-size:18px;color:var(--text);margin-bottom:6px}
+.cta-sub{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:20px}
+.error-msg{font-size:12px;color:var(--red);font-weight:700;display:none;margin-bottom:12px;padding:8px 12px;background:var(--red-soft);border-radius:8px}
+.error-msg.show{display:block}
+.btn-accept{width:100%;padding:14px;border-radius:14px;border:none;background:var(--brand);color:#fff;font-family:'Nunito',sans-serif;font-weight:800;font-size:16px;cursor:pointer;transition:background .15s,transform .1s;letter-spacing:0.2px}
+.btn-accept:hover{background:var(--brand-dark)}
+.btn-accept:active{transform:scale(0.98)}
+.btn-accept:disabled{background:#A0B8CC;cursor:not-allowed}
+.btn-accept.done{background:var(--green)}
+.legal-note{font-size:11px;color:var(--muted);text-align:center;margin-top:12px;line-height:1.6}
+.legal-note a{color:var(--brand);font-weight:600;text-decoration:none}
+.confetti{display:none;text-align:center;font-size:28px;margin-bottom:8px;animation:pop .4s ease}
+.confetti.show{display:block}
+@keyframes pop{0%{transform:scale(0.5);opacity:0}60%{transform:scale(1.2)}100%{transform:scale(1);opacity:1}}
+.progress-bar{height:4px;background:var(--border);border-radius:4px;margin-bottom:20px;overflow:hidden}
+.progress-fill{height:100%;background:var(--brand);border-radius:4px;transition:width .3s ease}
+</style>
+
+<div class="hero">
+  <div class="logo">Studie<span>ly</span></div>
+  <div class="tagline">Before you start learning, here's the small print 📋</div>
+</div>
+
+<div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+
+<div class="card aup">
+  <div class="card-head">
+    <div class="icon blue">📋</div>
+    <div>
+      <div class="card-title">Acceptable Use Policy</div>
+      <div class="card-sub">The "play nice" rules</div>
+    </div>
+  </div>
+  <div class="card-body">
+    Studiely is your <strong>learning space</strong> — and we want it to stay awesome for everyone. This policy is basically a friendly agreement to keep things kind, safe, and on-topic.
+  </div>
+  <div class="tag-row">
+    <span class="tag blue">No bullying</span>
+    <span class="tag blue">Educational use only</span>
+    <span class="tag blue">No hacking around</span>
+    <span class="tag red">No harmful content</span>
+  </div>
+  <button class="more-btn" id="aupMoreBtn" onclick="toggleExtra('aup')">
+    <span>The key stuff in plain English</span>
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <div class="extra" id="aupExtra">
+    <ul>
+      <li>Use Studiely for <strong>learning and education</strong> — not for anything illegal or harmful</li>
+      <li>Be respectful to other students, teachers, and everyone on the platform</li>
+      <li>Don't try to break into or mess with the platform — our engineers work hard on it!</li>
+      <li>AI-generated content is a <strong>study helper</strong>, not a cheat sheet to submit as your own</li>
+      <li>Parents: you're responsible for your child's account activity</li>
+      <li>Breaking the rules may get your account suspended</li>
+    </ul>
+  </div>
+  <div class="section-sep"></div>
+  <div class="toggle-row" onclick="toggle('aup')">
+    <span class="toggle-label">I agree to the Acceptable Use Policy</span>
+    <button class="toggle" id="aupToggle" onclick="event.stopPropagation();toggle('aup')"></button>
+  </div>
+</div>
+
+<div class="card cookie">
+  <div class="card-head">
+    <div class="icon amber">🍪</div>
+    <div>
+      <div class="card-title">Cookie Policy</div>
+      <div class="card-sub">Not the chocolate chip kind, sadly</div>
+    </div>
+  </div>
+  <div class="card-body">
+    Cookies are tiny files that help Studiely remember you and work properly. We keep it <strong>minimal and honest</strong> — no ads, no selling your data, no spooky tracking.
+  </div>
+  <div class="tag-row">
+    <span class="tag amber">Login cookies</span>
+    <span class="tag amber">Analytics only</span>
+    <span class="tag green">No ads, ever</span>
+    <span class="tag green">Kids protected</span>
+  </div>
+  <button class="more-btn" id="cookieMoreBtn" onclick="toggleExtra('cookie')">
+    <span>What cookies do we actually use?</span>
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <div class="extra" id="cookieExtra">
+    <ul>
+      <li><strong>Strictly necessary:</strong> keep you logged in and the platform running smoothly — can't switch these off</li>
+      <li><strong>Functional:</strong> remember your preferred subjects, study modes, and settings</li>
+      <li><strong>Analytics (Firebase):</strong> help us understand what features are loved (or broken) so we can improve — anonymised where possible</li>
+      <li>We never use advertising cookies or sell cookie data</li>
+      <li>Under-13 users: analytics cookies are <strong>off by default</strong></li>
+      <li>You can manage cookies anytime in your browser or device settings</li>
+    </ul>
+  </div>
+  <div class="section-sep"></div>
+  <div class="toggle-row" onclick="toggle('cookie')">
+    <span class="toggle-label">I accept the Cookie Policy</span>
+    <button class="toggle" id="cookieToggle" onclick="event.stopPropagation();toggle('cookie')"></button>
+  </div>
+</div>
+
+<div class="card disclaimer">
+  <div class="card-head">
+    <div class="icon green">⚠️</div>
+    <div>
+      <div class="card-title">Disclaimer</div>
+      <div class="card-sub">The "just so you know" bit</div>
+    </div>
+  </div>
+  <div class="card-body">
+    Studiely is here to <strong>support your learning</strong> — not to replace your teachers, school, or parents. Our AI is smart but not perfect, so always double-check important things!
+  </div>
+  <div class="tag-row">
+    <span class="tag green">Educational support</span>
+    <span class="tag amber">AI isn't infallible</span>
+    <span class="tag blue">Bahrain law applies</span>
+  </div>
+  <button class="more-btn" id="disclaimerMoreBtn" onclick="toggleExtra('disclaimer')">
+    <span>What does this mean for me?</span>
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <div class="extra" id="disclaimerExtra">
+    <ul>
+      <li>Studiely <strong>supports</strong> your education — it's not a replacement for school, teachers, or parental guidance</li>
+      <li>AI-generated notes and quizzes may have errors — always check with your teacher for anything important</li>
+      <li>We can't guarantee Studiely will always be available 24/7, but we do our best</li>
+      <li>We're not responsible for third-party tools or links we may connect to</li>
+      <li>These Terms are governed by the laws of the <strong>Kingdom of Bahrain</strong></li>
+      <li>Nothing here removes your legal rights as a consumer</li>
+    </ul>
+  </div>
+  <div class="section-sep"></div>
+  <div class="toggle-row" onclick="toggle('disclaimer')">
+    <span class="toggle-label">I've read and understood the Disclaimer</span>
+    <button class="toggle" id="disclaimerToggle" onclick="event.stopPropagation();toggle('disclaimer')"></button>
+  </div>
+</div>
+
+<div class="cta-area">
+  <div class="confetti" id="confetti">🎉📚✨</div>
+  <div class="cta-title" id="ctaTitle">Almost there!</div>
+  <div class="cta-sub" id="ctaSub">Toggle all three to confirm you've read our policies — then you're all set to start learning with Studiely!</div>
+  <div class="error-msg" id="errorMsg">Please review and accept all three policies above before continuing.</div>
+  <button class="btn-accept" id="acceptBtn" onclick="handleAccept()">Let me in! 🚀</button>
+  <div class="legal-note">
+    By continuing, you agree to our <a href="#">Terms of Service</a>, <a href="#">Privacy Policy</a>, and the three policies above.<br>
+    Operated by <strong>Qismat Ventures W.L.L</strong> · Bahrain · admin@qismatventures.com
+  </div>
+</div>
+
+<script>
+const state={aup:false,cookie:false,disclaimer:false};
+function toggle(key){
+  state[key]=!state[key];
+  const t=document.getElementById(key+'Toggle');
+  t.classList.toggle('on',state[key]);
+  updateProgress();
+  if(state[key]&&document.getElementById('errorMsg').classList.contains('show')){
+    if(state.aup&&state.cookie&&state.disclaimer)document.getElementById('errorMsg').classList.remove('show');
+  }
+}
+function toggleExtra(key){
+  const extra=document.getElementById(key+'Extra');
+  const btn=document.getElementById(key+'MoreBtn');
+  extra.classList.toggle('show');
+  btn.classList.toggle('open');
+}
+function updateProgress(){
+  const count=[state.aup,state.cookie,state.disclaimer].filter(Boolean).length;
+  document.getElementById('progressFill').style.width=(count/3*100)+'%';
+}
+function handleAccept(){
+  if(!state.aup||!state.cookie||!state.disclaimer){
+    document.getElementById('errorMsg').classList.add('show');
+    if(!state.aup)document.querySelectorAll('.card.aup')[0].scrollIntoView({behavior:'smooth',block:'center'});
+    return;
+  }
+  document.getElementById('errorMsg').classList.remove('show');
+  document.getElementById('confetti').classList.add('show');
+  document.getElementById('ctaTitle').textContent='You\'re all set! 🎓';
+  document.getElementById('ctaSub').textContent='Welcome to Studiely. Time to learn something amazing today!';
+  const btn=document.getElementById('acceptBtn');
+  btn.textContent='Start Learning ✓';
+  btn.classList.add('done');
+  btn.disabled=true;
+}
+</script>

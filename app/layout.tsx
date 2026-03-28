@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Nunito, Nunito_Sans } from "next/font/google";
 import "./globals.css";
+import { CookieConsentBanner } from "@/components/CookieConsentBanner";
 import { DEFAULT_OG_IMAGE_PATH, SITE_URL } from "@/lib/site";
 
 const nunitoSans = Nunito_Sans({
@@ -96,6 +97,7 @@ export default function RootLayout({
           }}
         />
         {children}
+        <CookieConsentBanner />
       </body>
     </html>
   );

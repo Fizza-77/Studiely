@@ -49,6 +49,18 @@
     transform: translateY(-6px);
   }
 }
+
+@keyframes cookie-wobble {
+  0%, 100% {
+    transform: rotate(-10deg) translateY(0) scale(1);
+  }
+  35% {
+    transform: rotate(12deg) translateY(-4px) scale(1.06);
+  }
+  70% {
+    transform: rotate(-6deg) translateY(-7px) scale(1.03);
+  }
+}
   @keyframes mql {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }

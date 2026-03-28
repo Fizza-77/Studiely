@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studiely — Acceptable Use Policy</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #181926;
+    --teal: #00B09B;
+    --indigo: #5448C8;
+    --amber: #D97B2A;
+    --rose: #C94A72;
+    --navy-soft: #1e2035;
+    --text-primary: #181926;
+    --text-secondary: #4a4d6a;
+    --text-muted: #8b8fa8;
+    --border: #e4e5ef;
+    --bg: #f8f8fc;
+    --white: #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    line-height: 1.7;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Header ── */
+  header {
+    background: var(--navy);
+    padding: 3rem 2rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 50% 120%, rgba(0,176,155,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .wordmark {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+  .wordmark-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    color: #fff;
+    background: rgba(255,255,255,0.08);
+    border: 0.5px solid rgba(255,255,255,0.18);
+    padding: 6px 16px;
+    border-radius: 40px;
+  }
+  header h1 {
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+    position: relative;
+  }
+  .header-meta {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    position: relative;
+  }
+  .meta-pill {
+    font-size: 11px;
+    font-family: 'DM Mono', monospace;
+    color: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.06);
+    border: 0.5px solid rgba(255,255,255,0.12);
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+  .meta-pill span {
+    color: var(--teal);
+  }
+
+  /* ── Layout ── */
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 5rem;
+  }
+
+  /* ── Intro block ── */
+  .intro-block {
+    background: var(--white);
+    border: 0.5px solid var(--border);
+    border-left: 3px solid var(--teal);
+    border-radius: 12px;
+    padding: 1.5rem 1.75rem;
+    margin-bottom: 2.5rem;
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+  }
+
+  /* ── Sections ── */
+  .section {
+    margin-bottom: 2rem;
+    background: var(--white);
+    border: 0.5px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 1.25rem 1.75rem;
+    border-bottom: 0.5px solid var(--border);
+    background: #fafafa;
+  }
+  .section-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--white);
+    background: var(--navy);
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    letter-spacing: 0;
+  }
+  .section-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.08em;
+    font-size: 11px;
+  }
+
+  .section-body {
+    padding: 1.5rem 1.75rem;
+  }
+
+  .section-body p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    font-size: 14.5px;
+  }
+  .section-body p:last-child { margin-bottom: 0; }
+
+  /* ── Subsections ── */
+  .subsection {
+    margin: 1.25rem 0;
+  }
+  .subsection-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  /* ── Lists ── */
+  ul.policy-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin: 0.75rem 0;
+  }
+  ul.policy-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+  ul.policy-list li::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--teal);
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+
+  /* ── Company info card ── */
+  .info-grid {
+    display: grid;
+    gap: 1px;
+    background: var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0.75rem 0;
+    border: 0.5px solid var(--border);
+  }
+  .info-row {
+    display: flex;
+    background: var(--white);
+  }
+  .info-row:first-child { border-radius: 10px 10px 0 0; }
+  .info-row:last-child { border-radius: 0 0 10px 10px; }
+  .info-label {
+    width: 180px;
+    flex-shrink: 0;
+    padding: 10px 14px;
+    font-size: 11px;
+    font-weight: 600;
+    font-family: 'DM Mono', monospace;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: #fafbff;
+    border-right: 0.5px solid var(--border);
+  }
+  .info-value {
+    padding: 10px 14px;
+    font-size: 13.5px;
+    color: var(--text-primary);
+  }
+  a.email-link {
+    color: var(--indigo);
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    font-size: 12.5px;
+  }
+  a.email-link:hover { text-decoration: underline; }
+
+  /* ── Compliance tags ── */
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin: 0.75rem 0;
+  }
+  .tag {
+    font-size: 11px;
+    font-family: 'DM Mono', monospace;
+    font-weight: 500;
+    padding: 4px 11px;
+    border-radius: 20px;
+    background: #eef0fa;
+    color: var(--indigo);
+    border: 0.5px solid rgba(84,72,200,0.2);
+  }
+
+  /* ── Data category chips ── */
+  .data-badge {
+    font-size: 10px;
+    font-family: 'DM Mono', monospace;
+    font-weight: 500;
+    padding: 3px 9px;
+    border-radius: 20px;
+    letter-spacing: 0.04em;
+  }
+  .badge-teal { background: rgba(0,176,155,0.1); color: #007a6b; border: 0.5px solid rgba(0,176,155,0.3); }
+  .badge-amber { background: rgba(217,123,42,0.1); color: #9a5010; border: 0.5px solid rgba(217,123,42,0.3); }
+  .badge-rose { background: rgba(201,74,114,0.1); color: #8f2550; border: 0.5px solid rgba(201,74,114,0.3); }
+  .badge-indigo { background: rgba(84,72,200,0.1); color: var(--indigo); border: 0.5px solid rgba(84,72,200,0.3); }
+  .badge-navy { background: rgba(24,25,38,0.08); color: var(--navy); border: 0.5px solid rgba(24,25,38,0.2); }
+
+  /* ── Highlight box ── */
+  .highlight-box {
+    background: #f0eefd;
+    border: 0.5px solid rgba(84,72,200,0.25);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin: 0.75rem 0;
+  }
+  .highlight-box p {
+    color: #3a3080 !important;
+    font-size: 13.5px !important;
+  }
+
+  .warning-box {
+    background: rgba(217,123,42,0.07);
+    border: 0.5px solid rgba(217,123,42,0.3);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin: 0.75rem 0;
+  }
+  .warning-box p {
+    color: #7a3f00 !important;
+    font-size: 13.5px !important;
+  }
+
+  /* ── Footer ── */
+  footer {
+    background: var(--navy);
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+  }
+  .footer-wordmark {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 0.75rem;
+  }
+  footer p {
+    font-size: 12.5px;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.6;
+  }
+  footer a {
+    color: var(--teal);
+    text-decoration: none;
+  }
+
+  @media (max-width: 560px) {
+    .info-label { width: 120px; font-size: 10px; }
+    .info-value { font-size: 12.5px; }
+    .section-body { padding: 1.25rem; }
+    .section-header { padding: 1rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wordmark">
+    <span class="wordmark-badge">S T U D I E L Y</span>
+  </div>
+  <h1>Acceptable Use Policy</h1>
+  <div class="header-meta">
+    <span class="meta-pill">Operated by <span>Qismat Ventures W.L.L</span></span>
+    <span class="meta-pill">Effective Date: <span>January 13, 2026</span></span>
+    <span class="meta-pill">Last Updated: <span>February 28, 2026</span></span>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="intro-block">
+    Studiely is an educational technology platform built to make learning smarter, more personalised, and more effective. To keep Studiely a safe and productive space for students, parents, teachers, and institutions, every user must agree to and follow this Acceptable Use Policy (&ldquo;AUP&rdquo;). This AUP forms part of and should be read alongside the Studiely <a href="/terms-of-service" class="email-link">Terms of Service</a>. It should also be read alongside our <a href="/privacy-policy" class="email-link">Privacy Policy</a>, <a href="/cookie-policy" class="email-link">Cookie Policy</a>, and <a href="/disclaimer" class="email-link">Disclaimer</a>.<br><br>
+    By accessing or using Studiely &mdash; through our mobile apps (Apple App Store or Google Play) or our website &mdash; you agree to be bound by this AUP. If you are a parent, guardian, teacher, or institution, you also agree on behalf of the students under your supervision.
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <div class="section-title">Who This Policy Applies To</div>
+    </div>
+    <div class="section-body">
+      <p>This AUP applies to all users of Studiely, including:</p>
+      <ul class="policy-list">
+        <li>Students (of any age, including children under 13 where parental consent is in place)</li>
+        <li>Parents and legal guardians</li>
+        <li>Teachers and educators</li>
+        <li>School and institutional administrators</li>
+        <li>Any other individual who creates an account or accesses the platform</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <div class="section-title">Permitted Uses</div>
+    </div>
+    <div class="section-body">
+      <p>Studiely is designed exclusively for educational and learning purposes. Permitted uses include:</p>
+      <ul class="policy-list">
+        <li>Creating and accessing study notes, summaries, and AI-generated learning materials</li>
+        <li>Taking quizzes and reviewing performance and progress data</li>
+        <li>Selecting and following personalised curriculum paths</li>
+        <li>Managing student accounts (for parents, teachers, and institutions)</li>
+        <li>Using Studiely features to supplement, support, or enhance formal education</li>
+        <li>Exploring learning content in accordance with your chosen subjects and topics</li>
+      </ul>
+      <p>Any use beyond the above is subject to the restrictions below.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <div class="section-title">Prohibited Conduct</div>
+    </div>
+    <div class="section-body">
+      <p>You must not use Studiely to do or attempt to do any of the following:</p>
+
+      <div class="subsection">
+        <div class="subsection-title"><span class="data-badge badge-rose">3.1</span>&nbsp; Harmful or Abusive Behaviour</div>
+        <ul class="policy-list">
+          <li>Upload, submit, share, or transmit any content that is abusive, threatening, defamatory, discriminatory, obscene, or harassing</li>
+          <li>Bully, intimidate, or exploit any user &mdash; including but not limited to other students, teachers, or children</li>
+          <li>Impersonate another person, user, or organisation</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <div class="subsection-title"><span class="data-badge badge-amber">3.2</span>&nbsp; Illegal Activity</div>
+        <ul class="policy-list">
+          <li>Use Studiely for any purpose that is unlawful or violates the rights of others</li>
+          <li>Upload or share content that infringes intellectual property rights, including copyright</li>
+          <li>Distribute malware, viruses, or any harmful software or code</li>
+          <li>Facilitate any form of fraud, scam, or deceptive conduct</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <div class="subsection-title"><span class="data-badge badge-indigo">3.3</span>&nbsp; Privacy &amp; Data Violations</div>
+        <ul class="policy-list">
+          <li>Share personal information about other users &mdash; particularly children &mdash; without authorisation</li>
+          <li>Harvest, scrape, or collect other users&apos; data without consent</li>
+          <li>Use another person&apos;s account credentials or access their account without permission</li>
+          <li>Attempt to identify or expose the identity of anonymous or pseudonymous users</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <div class="subsection-title"><span class="data-badge badge-navy">3.4</span>&nbsp; Platform Integrity &amp; Security</div>
+        <ul class="policy-list">
+          <li>Attempt to bypass, circumvent, or interfere with Studiely&apos;s authentication, security systems, or access controls</li>
+          <li>Reverse engineer, decompile, or disassemble any part of the platform</li>
+          <li>Use automated tools (bots, scrapers, crawlers) to access or extract platform content</li>
+          <li>Introduce any software, scripts, or mechanisms designed to disrupt or manipulate the platform</li>
+          <li>Attempt to gain unauthorised access to restricted systems, databases, or administrative areas</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <div class="subsection-title"><span class="data-badge badge-teal">3.5</span>&nbsp; Misuse of AI Features</div>
+        <ul class="policy-list">
+          <li>Use Studiely&apos;s AI-generated content for academic dishonesty, including submitting AI-generated materials as your own work without appropriate disclosure</li>
+          <li>Attempt to manipulate or abuse AI features to generate harmful, offensive, or misleading content</li>
+          <li>Use AI-generated educational content as a substitute for verified professional or academic advice</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <div class="subsection-title"><span class="data-badge badge-rose">3.6</span>&nbsp; Commercial Exploitation</div>
+        <ul class="policy-list">
+          <li>Resell, sublicense, or commercially exploit any part of Studiely&apos;s platform, content, or services without written authorisation from Qismat Ventures W.L.L</li>
+          <li>Use Studiely to advertise, promote, or conduct commercial activities unrelated to your educational use</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">4</div>
+      <div class="section-title">Content Standards</div>
+    </div>
+    <div class="section-body">
+      <p>Any content you submit, upload, or generate through Studiely &mdash; including study notes, quiz answers, responses, or profile information &mdash; must:</p>
+      <ul class="policy-list">
+        <li>Be relevant to your educational activities</li>
+        <li>Not contain abusive, discriminatory, or offensive language</li>
+        <li>Not contain personally identifiable information about third parties without consent</li>
+        <li>Comply with all applicable laws</li>
+      </ul>
+      <p>Studiely reserves the right &mdash; but is not obligated &mdash; to review, moderate, or remove any user-generated content that violates this AUP or applicable law, without prior notice.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">5</div>
+      <div class="section-title">Children&apos;s Use &amp; Parental Responsibility</div>
+    </div>
+    <div class="section-body">
+      <p>Where children use Studiely (including users under the age of 13), the following applies:</p>
+      <ul class="policy-list">
+        <li>Children must only access Studiely with appropriate parental or guardian consent</li>
+        <li>Parents and guardians are responsible for supervising their child&apos;s use of the platform and for any activity that occurs under the child&apos;s account</li>
+        <li>Studiely does not permit children to share personal information publicly or with other users</li>
+        <li>If you become aware that a child is using Studiely in a manner that violates this AUP, please report it to <a href="mailto:admin@qismatventures.com" class="email-link">admin@qismatventures.com</a> immediately</li>
+      </ul>
+      <p>Studiely applies heightened protections for child users in accordance with COPPA, GDPR, the UK Age-Appropriate Design Code, and Apple and Google Families Policy guidelines.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">6</div>
+      <div class="section-title">Institutional &amp; Teacher Responsibilities</div>
+    </div>
+    <div class="section-body">
+      <p>Teachers, schools, and institutions using Studiely are responsible for:</p>
+      <ul class="policy-list">
+        <li>Ensuring students in their care use the platform in accordance with this AUP</li>
+        <li>Obtaining or confirming that appropriate parental or guardian consents have been obtained for student users</li>
+        <li>Reporting any suspected violations of this AUP to Studiely promptly</li>
+        <li>Using administrative tools solely for legitimate educational management purposes</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">7</div>
+      <div class="section-title">Reporting Violations</div>
+    </div>
+    <div class="section-body">
+      <p>If you encounter or suspect a violation of this AUP &mdash; including any content or behaviour that appears harmful, especially involving children &mdash; please report it to us immediately:</p>
+      <div class="info-grid" style="margin-top: 0.75rem;">
+        <div class="info-row">
+          <div class="info-label">Email</div>
+          <div class="info-value"><a href="mailto:admin@qismatventures.com" class="email-link">admin@qismatventures.com</a></div>
+        </div>
+      </div>
+      <p>We take all reports seriously and will investigate promptly. Studiely is committed to maintaining a safe learning environment for all users.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">8</div>
+      <div class="section-title">Consequences of Violations</div>
+    </div>
+    <div class="section-body">
+      <p>Violations of this AUP may result in:</p>
+      <ul class="policy-list">
+        <li>Immediate suspension or permanent termination of your account</li>
+        <li>Removal of content that violates this policy</li>
+        <li>Restriction of access to specific features or the entire platform</li>
+        <li>Reporting to appropriate authorities where required by law</li>
+        <li>Legal action where applicable</li>
+      </ul>
+      <p>Studiely reserves the right to determine, in its sole discretion, whether conduct violates this AUP. Decisions are made with reference to the safety and integrity of all users, particularly children.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">9</div>
+      <div class="section-title">Intellectual Property Reminder</div>
+    </div>
+    <div class="section-body">
+      <p>All content, software, design, and materials on Studiely are owned by or licensed to Qismat Ventures W.L.L. Users may not copy, distribute, reproduce, or modify platform materials without written permission. User-generated content remains the property of the user; however, by submitting content, you grant Studiely a limited, non-exclusive licence to store and display that content for platform functionality, as described in the <a href="/terms-of-service" class="email-link">Terms of Service</a>.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">10</div>
+      <div class="section-title">Changes to This Policy</div>
+    </div>
+    <div class="section-body">
+      <p>Studiely may update this Acceptable Use Policy from time to time. Material updates will be communicated via in-app notifications or email. Continued use of Studiely after changes take effect constitutes your acceptance of the revised AUP.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">11</div>
+      <div class="section-title">Contact</div>
+    </div>
+    <div class="section-body">
+      <p>For questions, reports, or concerns regarding this Acceptable Use Policy:</p>
+      <div class="info-grid" style="margin-top: 0.75rem;">
+        <div class="info-row">
+          <div class="info-label">Email</div>
+          <div class="info-value"><a href="mailto:admin@qismatventures.com" class="email-link">admin@qismatventures.com</a></div>
+        </div>
+        <div class="info-row">
+          <div class="info-label">Company</div>
+          <div class="info-value">Qismat Ventures W.L.L</div>
+        </div>
+        <div class="info-row">
+          <div class="info-label">Address</div>
+          <div class="info-value">Office 501, Building 1025, Road 3621, Block 436, Al-Seef, Kingdom of Bahrain</div>
+        </div>
+        <div class="info-row">
+          <div class="info-label">Registration No.</div>
+          <div class="info-value">190698-1</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-wordmark">S T U D I E L Y</div>
+  <p>Studiely &middot; Qismat Ventures W.L.L &middot; <a href="mailto:admin@qismatventures.com">admin@qismatventures.com</a></p>
+  <p style="margin-top: 0.5rem;">Operated by Qismat Ventures W.L.L &middot; Bahrain &middot; Registration No. 190698-1</p>
+</footer>
+
+</body>
+</html>
