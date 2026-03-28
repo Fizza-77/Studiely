@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Footer } from "@/components/Footer";
 import { PageHeader } from "@/components/PageHeader";
+import { buildBlogPostingJsonLd } from "@/lib/blogSchema";
 import { getBlogBySlugForConfiguredSite } from "@/lib/blogs";
 import { DEFAULT_OG_IMAGE_PATH, SITE_URL } from "@/lib/site";
 
@@ -70,9 +71,16 @@ export default async function BlogPostPage({ params }: PageProps) {
   if (!result) return notFound();
 
   const { blog } = result;
+  const jsonLd = buildBlogPostingJsonLd(blog);
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd),
+        }}
+      />
       <PageHeader
         label="Blog"
         title={blog.title}
@@ -80,6 +88,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           blog.description ||
           "A Studiely blog article on smarter studying, exam strategies, and AI-powered learning."
         }
+        variant="compact"
       />
       <main className="bg-bg-base min-h-screen pt-[32px] pb-[40px]">
         <div className="wrap max-w-[760px] mx-auto px-4">
@@ -112,12 +121,6 @@ export default async function BlogPostPage({ params }: PageProps) {
                   All articles
                 </Link>
                 <span className="mx-2 text-border-default">·</span>
-                <Link
-                  href="/pricing"
-                  className="text-teal hover:text-teal-dk font-medium"
-                >
-                  Plans &amp; pricing
-                </Link>
               </p>
             </nav>
           </article>

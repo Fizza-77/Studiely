@@ -11,7 +11,7 @@ type BlogListItem = {
   slug: string;
   title: string;
   description: string | null;
-  coverImage: string;
+  coverImage: string | null;
 };
 
 export const metadata: Metadata = {

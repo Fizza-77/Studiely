@@ -3,6 +3,28 @@ import { cache } from "react";
 
 const SITE_KEY = process.env.SITE_KEY;
 
+/** Columns shared by list and detail (SEO + structured data fields). */
+const BLOG_SEO_FIELDS =
+  "slug, title, description, meta_title, meta_description, cover_image_url, display_date, author_name, keywords, article_section";
+
+export type BlogListRow = {
+  slug: string;
+  title: string;
+  description: string | null;
+  meta_title: string | null;
+  meta_description: string | null;
+  cover_image_url: string | null;
+  display_date: string | null;
+  author_name: string | null;
+  keywords: string | null;
+  article_section: string | null;
+};
+
+export type BlogPostRow = BlogListRow & {
+  id: string;
+  content: string | null;
+};
+
 let cachedSiteId: string | null = null;
 
 const getSiteId = cache(async (): Promise<string> => {
@@ -25,14 +47,14 @@ const getSiteId = cache(async (): Promise<string> => {
 
 
 /**
- * Get all blogs for configured site
+ * Get all blogs for configured site (includes SEO / Schema.org fields).
  */
-export async function getBlogsForConfiguredSite() {
+export async function getBlogsForConfiguredSite(): Promise<BlogListRow[]> {
   const siteId = await getSiteId();
 
   const { data, error } = await supabase
     .from("blogs")
-    .select("cover_image_url, slug, title, description, display_date")
+    .select(BLOG_SEO_FIELDS)
     .eq("site_id", siteId)
     .order("display_date", { ascending: false });
 
@@ -40,20 +62,20 @@ export async function getBlogsForConfiguredSite() {
     throw new Error(`Failed to load blogs: ${error.message}`);
   }
 
-  return data ?? [];
+  return (data ?? []) as BlogListRow[];
 }
 
 /**
- * Get single blog by slug
+ * Get single blog by slug (full row for page content + JSON-LD).
  */
-export async function getBlogBySlugForConfiguredSite(slug: string) {
+export async function getBlogBySlugForConfiguredSite(
+  slug: string
+): Promise<BlogPostRow | null> {
   const siteId = await getSiteId();
 
   const { data, error } = await supabase
     .from("blogs")
-    .select(
-      "id, title, slug, description, meta_title, meta_description, content, display_date, cover_image_url"
-    )
+    .select(`id, content, ${BLOG_SEO_FIELDS}`)
     .eq("site_id", siteId)
     .eq("slug", slug)
     .maybeSingle();
@@ -62,7 +84,7 @@ export async function getBlogBySlugForConfiguredSite(slug: string) {
     throw new Error(`Failed to fetch blog: ${error.message}`);
   }
 
-  return data ?? null;
+  return (data ?? null) as BlogPostRow | null;
 }
 
 /**

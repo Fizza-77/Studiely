@@ -17,11 +17,10 @@ const nunito = Nunito({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: {
-    default:
-      "Studiely — Curriculum-Aligned AI Notes, Quizzes & Flashcards for IGCSE, GCSE & IB",
-    template: "%s | Studiely",
-  },
+ title: {
+  default: "Studiely | AI Study Tools for IGCSE, GCSE & IB",
+  template: "%s | Studiely",
+},
   description:
     "Pick your board, grade, and topic — get notes, quizzes, flashcards, and exam-style questions tuned to British, IB, US, and other international curricula. Start free.",
   icons: {
