@@ -4,6 +4,7 @@ import { Footer } from "@/components/Footer";
 import { Button } from "@/components/Button";
 import { BackButton } from "@/components/BackButton";
 import { SITE_URL } from "@/lib/site";
+import { STUDIELY_APP } from "@/lib/appUrls";
 
 export const metadata: Metadata = {
   title: "Log In — Studiely",
@@ -69,16 +70,16 @@ export default function LoginPage() {
                 </Link>
               </div>
 
-            <Button type="submit" variant="solid" lg className="w-full mt-2">
+            <Button href={STUDIELY_APP.login} variant="solid" lg className="w-full mt-2">
               Login
             </Button>
             </form>
 
             <p className="mt-5 text-[12px] text-muted text-center">
               Don&apos;t have an account?{" "}
-              <Link href="/signup" className="text-teal hover:text-teal-dk font-medium">
+              <a href={STUDIELY_APP.signUp} className="text-teal hover:text-teal-dk font-medium">
                 Sign up
-              </Link>
+              </a>
             </p>
           </div>
         </div>

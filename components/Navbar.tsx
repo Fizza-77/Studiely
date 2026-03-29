@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { NylaAvatar, StudyToolsNavIcon, WritingNavIcon } from "./Icons";
 import { Button } from "./Button";
 import Image from "next/image";
+import { STUDIELY_APP } from "@/lib/appUrls";
 
 export const NAV_PILLS = [
   { id: "tools", label: "Powerful Tools", Icon: ({ sz }: { sz: number }) => <StudyToolsNavIcon size={sz} /> },
@@ -89,12 +90,12 @@ export const Navbar = ({ visibleSections = [] }: NavbarProps) => {
 <div className="flex items-center justify-end gap-2 w-full">
   {/* Desktop CTAs: visible only on md+ */}
   <div className="hidden md:flex gap-2">
-    <Link href="/login">
-      <Button variant="outline" className="py-2 px-4 text-[13px]">Login</Button>
-    </Link>
-    <Link href="/signup">
-      <Button variant="solid" className="py-2 px-4 text-[13px]">Get Started Free</Button>
-    </Link>
+    <Button href={STUDIELY_APP.login} variant="outline" className="py-2 px-4 text-[13px]">
+      Login
+    </Button>
+    <Button href={STUDIELY_APP.signUp} variant="solid" className="py-2 px-4 text-[13px]">
+      Get Started Free
+    </Button>
   </div>
 
   {/* Hamburger: visible only below md */}
@@ -139,16 +140,12 @@ className="flex md:hidden flex-col gap-[5px] bg-transparent border-none p-1"
               </Link>
             ))}
             <div className="flex flex-col sm:flex-row gap-2 mt-4">
-              <Link href="/login" className="flex-1">
-                <Button variant="outline" className="w-full">
-                  Login
-                </Button>
-              </Link>
-              <Link href="/signup" className="flex-1">
-                <Button variant="solid" className="w-full">
-                  Get Started Free
-                </Button>
-              </Link>
+              <Button href={STUDIELY_APP.login} variant="outline" className="w-full flex-1">
+                Login
+              </Button>
+              <Button href={STUDIELY_APP.signUp} variant="solid" className="w-full flex-1">
+                Get Started Free
+              </Button>
             </div>
           </motion.div>
         )}

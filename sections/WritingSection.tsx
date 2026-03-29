@@ -7,6 +7,7 @@ import { SectionHeader } from "@/components/SectionHeader";
 import { Reveal } from "@/components/Reveal";
 import { Button } from "@/components/Button";
 import { WritingNavIcon } from "@/components/Icons";
+import { STUDIELY_APP } from "@/lib/appUrls";
 
 interface WritingSectionProps {
   sectionRef?: React.Ref<HTMLElement>;
@@ -180,7 +181,7 @@ export const WritingSection = ({ sectionRef }: WritingSectionProps) => {
 <Reveal delay={0.4}>
   <div className="mt-12 sm:mt-14 md:mt-16 flex justify-center">
     <motion.a
-      href="/writing-practice"
+      href={STUDIELY_APP.examPractice}
       aria-label="Start AI exam writing practice"
       whileHover={{
         scale: 1.025,

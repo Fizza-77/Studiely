@@ -1,9 +1,9 @@
 "use client";
-import Link from "next/link";
 
 import { SectionHeader } from "@/components/SectionHeader";
 import { Button } from "@/components/Button";
 import { Reveal } from "@/components/Reveal";
+import { STUDIELY_APP } from "@/lib/appUrls";
 
 export const CTASection = () => (
   <section className="bg-navy py-14 sm:py-16 md:py-20 text-center relative overflow-hidden">
@@ -24,20 +24,17 @@ export const CTASection = () => (
       />
       <Reveal delay={0.2}>
         <div className="flex gap-3 justify-center mb-5 flex-wrap -mt-5">
-          <Link href="/signup">
-            <Button
-              variant="white"
-              lg
-              className="transition-all duration-200 hover:-translate-y-[2px] hover:shadow-[0_10px_22px_rgba(0,0,0,0.12)]"
-            >
-              Get Started Free
-            </Button>
-          </Link>
-          <Link href="/login">
-            <Button variant="gw" lg>
-              Login
-            </Button>
-          </Link>
+          <Button
+            href={STUDIELY_APP.signUp}
+            variant="white"
+            lg
+            className="transition-all duration-200 hover:-translate-y-[2px] hover:shadow-[0_10px_22px_rgba(0,0,0,0.12)]"
+          >
+            Get Started Free
+          </Button>
+          <Button href={STUDIELY_APP.login} variant="gw" lg>
+            Login
+          </Button>
         </div>
       </Reveal>
       <Reveal delay={0.28}>

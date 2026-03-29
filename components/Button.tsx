@@ -4,10 +4,12 @@ import React from "react";
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "solid" | "outline" | "teal" | "white" | "gw";
   lg?: boolean;
+  /** Renders an anchor with the same styles (for external app URLs). */
+  href?: string;
 }
 
-export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ children, variant = "solid", lg, className, ...rest }, ref) => {
+export const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
+  ({ children, variant = "solid", lg, className, href, type = "button", ...rest }, ref) => {
     const baseClasses =
       "inline-flex items-center justify-center gap-1.5 font-medium rounded-lg border-[1.5px] border-transparent whitespace-nowrap transition-all duration-200 outline-none";
     const sizeClasses = lg ? "py-[14px] px-7 text-[15px]" : "py-[9px] px-5 text-[13px]";
@@ -20,10 +22,21 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       gw: "bg-transparent text-white/70 border-white/30 hover:bg-white/10 hover:border-white/50",
     };
 
+    const merged = cn(baseClasses, sizeClasses, variantClasses[variant], className);
+
+    if (href) {
+      return (
+        <a href={href} ref={ref as React.Ref<HTMLAnchorElement>} className={merged}>
+          {children}
+        </a>
+      );
+    }
+
     return (
       <button
-        ref={ref}
-        className={cn(baseClasses, sizeClasses, variantClasses[variant], className)}
+        type={type}
+        ref={ref as React.Ref<HTMLButtonElement>}
+        className={merged}
         {...rest}
       >
         {children}

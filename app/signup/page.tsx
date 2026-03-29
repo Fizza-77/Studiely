@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/Button";
 import { BackButton } from "@/components/BackButton";
 import { SITE_URL } from "@/lib/site";
+import { STUDIELY_APP } from "@/lib/appUrls";
 
 export const metadata: Metadata = {
   title: "Create Account — Start Free",
@@ -94,16 +94,16 @@ export default function SignupPage() {
                 </span>
               </div>
 
-              <Button type="submit" variant="solid" lg className="w-full mt-1">
+              <Button href={STUDIELY_APP.signUp} variant="solid" lg className="w-full mt-1">
                 Sign Up
               </Button>
             </form>
 
             <p className="mt-5 text-[12px] text-muted text-center">
               Already have an account?{" "}
-              <Link href="/login" className="text-teal hover:text-teal-dk font-medium">
+              <a href={STUDIELY_APP.login} className="text-teal hover:text-teal-dk font-medium">
                 Login
-              </Link>
+              </a>
             </p>
           </div>
         </div>

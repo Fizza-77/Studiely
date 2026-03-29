@@ -8,6 +8,7 @@ import { SectionHeader } from "@/components/SectionHeader";
 import { Reveal } from "@/components/Reveal";
 import { NotesCardIcon, QuizCardIcon, FlashcardsCardIcon, ExamCardIcon } from "@/components/Icons";
 import { CUR_DATA } from "@/lib/data";
+import { STUDIELY_APP } from "@/lib/appUrls";
 // Map the selected option to a glow color
 function getGlowColor(sel: string) {
   switch (sel) {
@@ -405,6 +406,10 @@ export const StudyToolsSection = ({ sectionRef }: StudyToolsSectionProps) => {
       }}
       whileTap={canGo ? { scale: 0.97 } : {}}
    onClick={() => {
+  if (sel === "notes") {
+    window.location.assign(STUDIELY_APP.library);
+    return;
+  }
   router.push(`/start-learning-smarter${sel ? `?tool=${sel}` : ""}`);
 }}
       className={`flex items-center justify-center gap-3 sm:gap-4 text-white border-none rounded-[14px] text-[16px] sm:text-[18px] font-semibold shrink-0 transition-all duration-300 w-full max-w-[480px] h-[72px] sm:h-[84px] overflow-hidden px-4 sm:px-5 ${

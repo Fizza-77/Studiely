@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/Button";
+import { STUDIELY_APP } from "@/lib/appUrls";
 export const HeroSection = () => (
   <section className="relative overflow-hidden pt-[66px] sm:pt-[72px] md:pt-[88px] pb-14 sm:pb-16 md:pb-20 lg:pb-24 bg-bg-base border-t border-border-default">
     
@@ -69,11 +70,9 @@ export const HeroSection = () => (
             transition={{ duration: 0.6, delay: 0.54 }}
             className="flex flex-col sm:flex-row gap-2.5 mb-[18px] md:mb-[22px]"
           >
-            <Link href="/signup">
-              <Button variant="solid" lg>
-                Get Started Free →
-              </Button>
-            </Link>
+            <Button href={STUDIELY_APP.signUp} variant="solid" lg>
+              Get Started Free →
+            </Button>
             <Link href="#how-it-works">
               <Button variant="outline" lg>
                 See How It Works
