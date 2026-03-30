@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "deploy:firebase:merge": "node scripts/merge-firebase-deploy.mjs",
+    "predeploy:firebase": "npm run build && npm run deploy:firebase:merge",
+    "deploy:firebase": "npm run predeploy:firebase && npx firebase deploy --only hosting"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.99.2",
@@ -27,6 +30,7 @@
     "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
+    "firebase-tools": "^14.25.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

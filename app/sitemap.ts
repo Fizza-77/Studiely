@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { getBlogSlugsForConfiguredSite } from "@/lib/blogs";
 import { SITE_URL } from "@/lib/site";
 
-export const revalidate = 3600;
+export const dynamic = "force-static";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticRoutes: MetadataRoute.Sitemap = [
@@ -13,7 +13,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 1,
     },
     {
-      url: `${SITE_URL}/pricing`,
+      url: `${SITE_URL}/app/pricing`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.9,

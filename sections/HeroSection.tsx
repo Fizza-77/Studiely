@@ -70,7 +70,7 @@ export const HeroSection = () => (
             transition={{ duration: 0.6, delay: 0.54 }}
             className="flex flex-col sm:flex-row gap-2.5 mb-[18px] md:mb-[22px]"
           >
-            <Button href={STUDIELY_APP.signUp} variant="solid" lg>
+            <Button href={STUDIELY_APP.home} variant="solid" lg>
               Get Started Free →
             </Button>
             <Link href="#how-it-works">
@@ -149,9 +149,13 @@ export const HeroSection = () => (
                 </div>
               </div>
 
-              <button className="w-full p-2.5 bg-navy text-white text-[13px] font-medium rounded-lg mb-[14px]">
+              <Button
+                href={STUDIELY_APP.notes}
+                variant="solid"
+                className="w-full py-2.5 px-2.5 text-[13px] font-medium rounded-lg mb-[14px]"
+              >
                 Generate Study Content →
-              </button>
+              </Button>
 
               <div className="flex gap-[6px]">
                 {[

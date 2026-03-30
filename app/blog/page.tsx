@@ -6,7 +6,8 @@ import { PageHeader } from "@/components/PageHeader";
 import { getBlogsForConfiguredSite } from "@/lib/blogs";
 import { DEFAULT_OG_IMAGE_PATH, SITE_URL } from "@/lib/site";
 
-export const revalidate = 10;
+export const dynamic = "force-static";
+
 type BlogListItem = {
   slug: string;
   title: string;

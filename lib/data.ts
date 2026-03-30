@@ -217,7 +217,21 @@ export const REVIEWS_2 = [
   },
 ];
 
-export const PRICING_PLANS = [
+export type PricingPlan = {
+  name: string;
+  price: string;
+  cad: string;
+  feats: string[];
+  miss: string[];
+  cta: string;
+  fine: string;
+  sub?: string;
+  badge?: string;
+  featured?: boolean;
+  orig?: string;
+};
+
+export const PRICING_PLANS: PricingPlan[] = [
   {
     name: "Free",
     price: "$0",
@@ -299,6 +313,7 @@ export const PRICING_PLANS = [
     ],
     miss: [],
     cta: "Choose Annual",
+    fine: "Cancel anytime.",
     featured: true,
   },
 ];

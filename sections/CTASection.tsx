@@ -25,7 +25,7 @@ export const CTASection = () => (
       <Reveal delay={0.2}>
         <div className="flex gap-3 justify-center mb-5 flex-wrap -mt-5">
           <Button
-            href={STUDIELY_APP.signUp}
+            href={STUDIELY_APP.home}
             variant="white"
             lg
             className="transition-all duration-200 hover:-translate-y-[2px] hover:shadow-[0_10px_22px_rgba(0,0,0,0.12)]"

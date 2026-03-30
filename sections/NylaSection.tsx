@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { STUDIELY_APP } from "@/lib/appUrls";
 import { SectionHeader } from "@/components/SectionHeader";
 import { Reveal } from "@/components/Reveal";
 import { Button } from "@/components/Button";
@@ -102,7 +103,7 @@ export const NylaSection = ({ sectionRef }: NylaSectionProps) => {
                     placeholder="Ask Nyla anything…"
                     className="flex-1 border border-border-default rounded-[7px] px-[13px] py-[9px] text-[13px] text-body outline-none min-w-0 font-sans transition-colors duration-150 focus:border-indigo"
                   />
-                  <Link href="/app-nyla" className="shrink-0">
+                  <Link href={STUDIELY_APP.nyla} className="shrink-0">
                     <button className="bg-indigo text-white px-4 py-[9px] rounded-[7px] border-none text-[15px] font-medium shrink-0 outline-none hover:bg-indigo/90">
                       →
                     </button>
@@ -133,7 +134,7 @@ export const NylaSection = ({ sectionRef }: NylaSectionProps) => {
             </ul>
             <Reveal delay={0.3}>
               <div className="mt-7 flex flex-col sm:flex-row gap-2.5">
-                <Link href="/app-nyla">
+                <Link href={STUDIELY_APP.nyla}>
                   <Button variant="solid" lg className="bg-indigo border-indigo hover:opacity-90">
                     Chat with Nyla →
                   </Button>

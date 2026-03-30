@@ -1,0 +1,40 @@
+{
+  "hosting": {
+    "public": "deploy",
+    "cleanUrls": true,
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "redirects": [
+      {
+        "source": "/blog/full/:slug",
+        "destination": "/blog/:slug",
+        "type": 301
+      },
+      {
+        "source": "/pricing",
+        "destination": "/app/pricing",
+        "type": 301
+      },
+      {
+        "source": "/pricing/",
+        "destination": "/app/pricing",
+        "type": 301
+      },
+      {
+        "source": "/app/exam-practice",
+        "destination": "/app/exampractice",
+        "type": 301
+      },
+      {
+        "source": "/app/exam-practice/",
+        "destination": "/app/exampractice",
+        "type": 301
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "/app/**",
+        "destination": "/app/index.html"
+      }
+    ]
+  }
+}

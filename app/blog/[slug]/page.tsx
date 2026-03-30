@@ -4,12 +4,22 @@ import { notFound } from "next/navigation";
 import { Footer } from "@/components/Footer";
 import { PageHeader } from "@/components/PageHeader";
 import { buildBlogPostingJsonLd } from "@/lib/blogSchema";
-import { getBlogBySlugForConfiguredSite } from "@/lib/blogs";
+import {
+  getBlogBySlugForConfiguredSite,
+  getBlogSlugsForConfiguredSite,
+} from "@/lib/blogs";
 import { DEFAULT_OG_IMAGE_PATH, SITE_URL } from "@/lib/site";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
 };
+
+export const dynamic = "force-static";
+
+export async function generateStaticParams() {
+  const rows = await getBlogSlugsForConfiguredSite();
+  return rows.map((row) => ({ slug: row.slug }));
+}
 
 async function getStudielyBlogBySlug(slug: string) {
   const blog = await getBlogBySlugForConfiguredSite(slug);

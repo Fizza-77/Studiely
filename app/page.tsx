@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { useState, useRef, useEffect } from "react";
 import { Navbar } from "@/components/Navbar";
+import { STUDIELY_APP } from "@/lib/appUrls";
 import { Footer } from "@/components/Footer";
 import { NylaAvatar } from "@/components/Icons";
 import { HeroSection } from "@/sections/HeroSection";
@@ -12,7 +13,6 @@ import { StudyToolsSection } from "@/sections/StudyToolsSection";
 import { WritingSection } from "@/sections/WritingSection";
 import { NylaSection } from "@/sections/NylaSection";
 import { ReviewsSection } from "@/sections/ReviewsSection";
-import { PricingSection } from "@/sections/PricingSection";
 import { CTASection } from "@/sections/CTASection";
 import { SisterSection } from "@/sections/SisterSection";
 export default function Home() {
@@ -85,7 +85,7 @@ export default function Home() {
             </div>
             <div className="flex md:justify-end">
               <Link
-                href="/pricing"
+                href={STUDIELY_APP.pricing}
                 className="inline-flex w-full sm:w-auto items-center justify-center px-6 sm:px-8 py-3 rounded-lg bg-navy text-white text-[14px] font-medium shadow-[0_10px_30px_rgba(0,0,0,0.16)] hover:bg-navy/90 hover:shadow-[0_16px_40px_rgba(0,0,0,0.18)] transition-all duration-200"
               >
                 View Pricing

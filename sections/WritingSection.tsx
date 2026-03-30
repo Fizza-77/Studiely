@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -166,11 +165,11 @@ export const WritingSection = ({ sectionRef }: WritingSectionProps) => {
                     </span>
                   </div>
 
-                  <Link href="/app-writing-feedback" className="block">
-                    <button className="w-full p-2.5 bg-navy text-white text-[13px] font-medium border-none rounded-lg outline-none cursor-pointer hover:bg-navy/90 focus:bg-navy/90 transition-colors">
+                  <a href={STUDIELY_APP.examPractice} className="block">
+                    <span className="flex w-full p-2.5 bg-navy text-white text-[13px] font-medium rounded-lg items-center justify-center hover:bg-navy/90 transition-colors">
                       Submit for AI Feedback →
-                    </button>
-                  </Link>
+                    </span>
+                  </a>
                 </div>
               </div>
             </Reveal>

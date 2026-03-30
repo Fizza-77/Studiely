@@ -16,6 +16,12 @@
 /.next/
 /out/
 
+# firebase merged deploy (Next out + Flutter app/)
+/deploy/
+
+# optional local path for Flutter web build output before merge
+/flutter-web-build/
+
 # production
 /build
 

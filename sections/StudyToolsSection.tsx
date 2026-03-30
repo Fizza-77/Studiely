@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { useRouter } from "next/navigation";
 import { SectionHeader } from "@/components/SectionHeader";
 import { Reveal } from "@/components/Reveal";
 import { NotesCardIcon, QuizCardIcon, FlashcardsCardIcon, ExamCardIcon } from "@/components/Icons";
@@ -96,22 +95,10 @@ const COUNTRIES = [
 
 export const StudyToolsSection = ({ sectionRef }: StudyToolsSectionProps) => {
   const [chosen, setChosen] = useState(false);
-  const [busy, setBusy] = useState(false);
-  const [done, setDone] = useState(false);
   const [sel, setSel] = useState<string | null>(null);
-  const router = useRouter();
 
   const tool = TOOLS.find((t) => t.id === sel)!;
   const canGo = chosen; // button active as soon as a card is selected
-  const go = () => {
-    if (!canGo) return;
-    setBusy(true);
-    setDone(false);
-    setTimeout(() => {
-      setBusy(false);
-      setDone(true);
-    }, 1800);
-  };
 
    return (
     <section id="features" ref={sectionRef} className="py-14 sm:py-16 md:py-20 lg:py-24 bg-white">
@@ -135,7 +122,6 @@ export const StudyToolsSection = ({ sectionRef }: StudyToolsSectionProps) => {
                   onClick={() => {
                     setSel(t.id);
                     setChosen(true);
-                    setDone(false);
                   }}
                   transition={{ duration: 0.18 }}
                   className="rounded-[14px] p-[24px_20px_44px] cursor-pointer relative shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-colors duration-200"
@@ -406,12 +392,10 @@ export const StudyToolsSection = ({ sectionRef }: StudyToolsSectionProps) => {
       }}
       whileTap={canGo ? { scale: 0.97 } : {}}
    onClick={() => {
-  if (sel === "notes") {
-    window.location.assign(STUDIELY_APP.library);
-    return;
-  }
-  router.push(`/start-learning-smarter${sel ? `?tool=${sel}` : ""}`);
-}}
+        if (!canGo) return;
+        // All study-tool cards open the same Flutter screen (Generate Notes).
+        window.location.assign(STUDIELY_APP.notes);
+      }}
       className={`flex items-center justify-center gap-3 sm:gap-4 text-white border-none rounded-[14px] text-[16px] sm:text-[18px] font-semibold shrink-0 transition-all duration-300 w-full max-w-[480px] h-[72px] sm:h-[84px] overflow-hidden px-4 sm:px-5 ${
         canGo ? "cursor-pointer" : "cursor-default"
       }`}
@@ -459,23 +443,19 @@ export const StudyToolsSection = ({ sectionRef }: StudyToolsSectionProps) => {
 
       {/* Stateful text */}
       <motion.div
-        key={busy ? "busy" : chosen ? sel : "default"}
+        key={chosen ? sel : "default"}
         initial={{ opacity: 0, y: 6 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -6 }}
         transition={{ duration: 0.22 }}
         className="min-w-0 w-[220px] sm:w-[260px] flex flex-col justify-center items-start text-left"
       >
-        {busy ? (
-          <span>Generating…</span>
-        ) : (
-          <>
-            <span className="block text-[11px] font-normal opacity-70 tracking-[0.5px] uppercase mb-[3px]">
-              {chosen ? "Ready" : "Select a tool above"}
-            </span>
-            <span className="truncate w-full">{chosen ? tool?.cta : "Start Learning Smarter"}</span>
-          </>
-        )}
+        <>
+          <span className="block text-[11px] font-normal opacity-70 tracking-[0.5px] uppercase mb-[3px]">
+            {chosen ? "Ready" : "Select a tool above"}
+          </span>
+          <span className="truncate w-full">{chosen ? tool?.cta : "Start Learning Smarter"}</span>
+        </>
       </motion.div>
     </motion.button>
   </div>

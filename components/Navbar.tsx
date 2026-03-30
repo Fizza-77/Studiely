@@ -30,7 +30,7 @@ export const Navbar = ({ visibleSections = [] }: NavbarProps) => {
 
   const links = [
     ["Features", "#features"],
-    ["Pricing", "/pricing"],
+    ["Pricing", STUDIELY_APP.pricing],
     ["FAQs", "/faqs"],
     ["Blogs", "/blog"],
     ["Nyla AI", "/nyla"],
@@ -93,7 +93,7 @@ export const Navbar = ({ visibleSections = [] }: NavbarProps) => {
     <Button href={STUDIELY_APP.login} variant="outline" className="py-2 px-4 text-[13px]">
       Login
     </Button>
-    <Button href={STUDIELY_APP.signUp} variant="solid" className="py-2 px-4 text-[13px]">
+    <Button href={STUDIELY_APP.home} variant="solid" className="py-2 px-4 text-[13px]">
       Get Started Free
     </Button>
   </div>
@@ -143,7 +143,7 @@ className="flex md:hidden flex-col gap-[5px] bg-transparent border-none p-1"
               <Button href={STUDIELY_APP.login} variant="outline" className="w-full flex-1">
                 Login
               </Button>
-              <Button href={STUDIELY_APP.signUp} variant="solid" className="w-full flex-1">
+              <Button href={STUDIELY_APP.home} variant="solid" className="w-full flex-1">
                 Get Started Free
               </Button>
             </div>
