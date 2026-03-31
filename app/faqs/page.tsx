@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Footer } from "@/components/Footer";
 import { SITE_URL } from "@/lib/site";
 import { SectionHeader } from "@/components/SectionHeader";
 import { FaqItem } from "@/components/FaqItem";
 import { PageHeader } from "@/components/PageHeader";
+import { STUDIELY_APP } from "@/lib/appUrls";
 
 export const metadata: Metadata = {
   title: "FAQs — Studiely AI Study Tools, Pricing & Features",
@@ -409,39 +411,8 @@ export default function FaqsPage() {
 
   <p className="mt-2">Free plan includes 5 free credits total.</p>
 
-  <div className="mt-4 overflow-x-auto">
-    <table className="w-full max-w-xl border border-border-default text-sm">
-      <thead>
-        <tr className="bg-gray-50 text-left">
-          <th className="px-4 py-2 font-semibold">Plan</th>
-          <th className="px-4 py-2 font-semibold">Price</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr className="border-t border-border-default">
-          <td className="px-4 py-2">Monthly</td>
-          <td className="px-4 py-2">$26.99</td>
-        </tr>
-        <tr className="border-t border-border-default">
-          <td className="px-4 py-2">3 Months</td>
-          <td className="px-4 py-2">$76.99</td>
-        </tr>
-        <tr className="border-t border-border-default">
-          <td className="px-4 py-2">6 Months</td>
-          <td className="px-4 py-2">$149.99</td>
-        </tr>
-        <tr className="border-t border-border-default">
-          <td className="px-4 py-2 font-medium">
-            12 Months (Best Value)
-          </td>
-          <td className="px-4 py-2">$269.99</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
   <p className="mt-4">
-    Exam Practice Add-on: $50 USD for 50 credits (non-expiring).
+    For full <Link href={STUDIELY_APP.pricing} className="underline">pricing</Link>, please see the pricing page.
   </p>
 </FaqItem>
               <FaqItem question="Can I cancel my subscription?">

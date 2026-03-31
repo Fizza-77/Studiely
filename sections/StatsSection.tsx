@@ -7,7 +7,7 @@ export const StatsSection = () => (
   <div className="border-t border-b border-border-default bg-white">
     <div className="wrap">
       
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[1px] bg-border-default">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 border-l border-border-default">
         
         {[
           { n: "100", pre: "", suf: "+", label: "Students Trust Studiely", col: "var(--color-navy)" },
@@ -19,7 +19,7 @@ export const StatsSection = () => (
           <Reveal
             key={i}
             delay={i * 0.06}
-            className="bg-white text-center py-6 sm:py-7 px-4"
+            className="bg-white text-center py-6 sm:py-7 px-4 border-r border-b border-border-default h-full"
           >
             
             <div
@@ -36,8 +36,12 @@ export const StatsSection = () => (
           </Reveal>
         ))}
 
+        {/* fillers for 3-column tablet view to keep grid lines consistent */}
+        <div className="hidden md:block lg:hidden border-r border-b border-border-default bg-white" />
+        <div className="hidden md:block lg:hidden border-r border-b border-border-default bg-white" />
+
       </div>
-      <div className="border-t border-border-default text-center py-5 sm:py-6 px-4">
+      <div className="text-center py-5 sm:py-6 px-4">
         <p className="text-[13px] sm:text-[14px] text-muted max-w-[800px] mx-auto leading-relaxed">
           These numbers are live, real, and updated every week. We're a new platform — we'd rather show you where we actually are than pretend to be somewhere we're not. Join us early and help us build something genuine.
         </p>
