@@ -3,6 +3,7 @@ import { Nunito, Nunito_Sans } from "next/font/google";
 import "./globals.css";
 import { CookieConsentBanner } from "@/components/CookieConsentBanner";
 import { DEFAULT_OG_IMAGE_PATH, SITE_URL } from "@/lib/site";
+import Script from "next/script";
 
 const nunitoSans = Nunito_Sans({
   subsets: ["latin"],
@@ -89,6 +90,24 @@ export default function RootLayout({
       className={`${nunitoSans.variable} ${nunito.variable}`}
       suppressHydrationWarning
     >
+      <head>
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-NXQX4TMW7X"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-NXQX4TMW7X');
+            `,
+          }}
+        />
+      </head>
       <body className="antialiased font-sans bg-bg-base text-body">
         <script
           type="application/ld+json"

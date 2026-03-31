@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { NylaAvatar, StudyToolsNavIcon, WritingNavIcon } from "./Icons";
@@ -19,6 +20,7 @@ interface NavbarProps {
 }
 
 export const Navbar = ({ visibleSections = [] }: NavbarProps) => {
+  const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -34,7 +36,7 @@ export const Navbar = ({ visibleSections = [] }: NavbarProps) => {
     ["FAQs", "/faqs"],
     ["Blogs", "/blog"],
     ["Nyla AI", "/nyla"],
-    ["Contact Us", "#contact"],
+    ["Contact Us", "/contact"],
   ];
 
   return (
@@ -130,14 +132,24 @@ className="flex md:hidden flex-col gap-[5px] bg-transparent border-none p-1"
             className="fixed top-[66px] left-0 right-0 z-[399] bg-white border-b border-border-default p-4 sm:p-6 md:hidden shadow-lg"
           >
             {links.map(([l, h]) => (
-              <Link
+              <a
                 key={l}
                 href={h}
-                onClick={() => setOpen(false)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setOpen(false);
+                  
+                  if (h.startsWith('#')) {
+                    const el = document.getElementById(h.substring(1));
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  } else {
+                    router.push(h);
+                  }
+                }}
                 className="block text-base text-body py-3 border-b border-border-lt last:border-b-0"
               >
                 {l}
-              </Link>
+              </a>
             ))}
             <div className="flex flex-col sm:flex-row gap-2 mt-4">
               <Button href={STUDIELY_APP.login} variant="outline" className="w-full flex-1">
