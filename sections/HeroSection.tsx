@@ -63,22 +63,22 @@ export const HeroSection = () => (
             quizzes, flashcards, and exam questions aligned to your exact board.
           </motion.p>
 
-          {/* Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.54 }}
-            className="flex flex-col sm:flex-row gap-2.5 mb-[18px] md:mb-[22px]"
-          >
-            <Button href={STUDIELY_APP.home} variant="solid" lg>
-              Get Started Free →
-            </Button>
-            <Link href="#how-it-works">
-              <Button variant="outline" lg>
-                See How It Works
-              </Button>
-            </Link>
-          </motion.div>
+<motion.div
+  initial={{ opacity: 0, y: 14 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6, delay: 0.54 }}
+  className="flex flex-col items-center sm:flex-row sm:justify-center lg:justify-start gap-2.5 mb-[18px] md:mb-[22px]"
+>
+  <Button href={STUDIELY_APP.home} variant="solid" lg>
+    Get Started Free →
+  </Button>
+
+  <Link href="#how-it-works">
+    <Button variant="outline" lg>
+      See How It Works
+    </Button>
+  </Link>
+</motion.div>
 
           {/* Trust text */}
           <motion.p
