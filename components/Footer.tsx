@@ -17,23 +17,26 @@ export const Footer = () => (
           Studiely
         </div>
 
-        <nav className="flex gap-4 flex-wrap text-[12px]" aria-label="Footer">
-        <Link href="/privacy-policy" className="text-muted hover:text-navy">
-  Privacy Policy
-</Link>
-        <Link href="/terms-of-service" className="text-muted hover:text-navy">
-          Terms of Service
-        </Link>
-        <Link href="/acceptable-use" className="text-muted hover:text-navy">
-          Acceptable Use Policy
-        </Link>
-        <Link href="/cookie-policy" className="text-muted hover:text-navy">
-          Cookie Policy
-        </Link>
-        <Link href="/disclaimer" className="text-muted hover:text-navy">
-          Disclaimer
-        </Link>
-        </nav>
+        <nav
+  className="flex items-center justify-between gap-2 text-[10px] sm:text-[11px] md:text-[12px] whitespace-nowrap"
+  aria-label="Footer"
+>
+  <Link href="/privacy-policy" className="text-muted hover:text-navy">
+    Privacy Policy
+  </Link>
+  <Link href="/terms-of-service" className="text-muted hover:text-navy">
+    Terms of Service
+  </Link>
+  <Link href="/acceptable-use" className="text-muted hover:text-navy">
+    Acceptable Use Policy
+  </Link>
+  <Link href="/cookie-policy" className="text-muted hover:text-navy">
+    Cookie Policy
+  </Link>
+  <Link href="/disclaimer" className="text-muted hover:text-navy">
+    Disclaimer
+  </Link>
+</nav>
       </div>
 
       {/* Bottom legal (compressed, SAME content) */}
