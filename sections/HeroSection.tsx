@@ -85,8 +85,7 @@ export const HeroSection = () => (
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.68 }}
-            className="text-[12px] text-gray-500"
-          >
+className="text-[12px] text-gray-500 text-center lg:text-left"          >
             🔒 No credit card required · Free Trial · Cancel Anytime
           </motion.p>
         </div>
