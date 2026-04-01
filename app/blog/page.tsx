@@ -67,7 +67,7 @@ export default async function BlogPage() {
           >
             {posts.length === 0 ? (
               <p className="text-muted text-[13px]">
-                Blog posts will appear here once they are published from the admin panel.
+                Blog posts will appear here once they are published.
               </p>
             ) : (
               posts.map((post) => (

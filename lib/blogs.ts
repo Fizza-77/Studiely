@@ -1,6 +1,7 @@
 import { supabase } from "@/lib/supabaseClient";
 import { cache } from "react";
 
+const SITE_ID = process.env.SITE_ID ?? process.env.NEXT_PUBLIC_SITE_ID;
 const SITE_KEY = process.env.SITE_KEY;
 
 const SUPABASE_QUERY_RETRIES = Math.max(
@@ -81,22 +82,31 @@ export type BlogPostRow = BlogListRow & {
   content: string | null;
 };
 
-let cachedSiteId: string | null = null;
-
 const getSiteId = cache(async (): Promise<string> => {
+  if (SITE_ID) {
+    return SITE_ID;
+  }
+
   if (!SITE_KEY) {
     throw new Error("Missing SITE_KEY environment variable.");
   }
 
   const data = await execPostgrestWithRetries("resolve site_id", () =>
-    supabase.from("sites").select("id").eq("site_key", SITE_KEY).single() as PromiseLike<{
+    supabase
+      .from("sites")
+      .select("id")
+      .eq("site_key", SITE_KEY)
+      .limit(1)
+      .maybeSingle() as PromiseLike<{
       data: { id: string } | null;
       error: { message?: string; code?: string } | null;
     }>
   );
 
   if (!data?.id) {
-    throw new Error(`Failed to resolve site_id for site_key "${SITE_KEY}"`);
+    throw new Error(
+      `Failed to resolve site_id for site_key "${SITE_KEY}". Set SITE_ID or NEXT_PUBLIC_SITE_ID, or add a SELECT policy for the sites row.`
+    );
   }
 
   return data.id;
