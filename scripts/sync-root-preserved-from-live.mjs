@@ -27,6 +27,7 @@ export async function syncRootPreservedFromLive(deployRoot) {
     const rel = outPath.slice(deployRoot.length + 1).replace(/\\/g, "/");
     if (rel.startsWith("_next/") || rel.startsWith("app/")) return true;
     if (rel === "index.html") return true;
+    if (rel === "smartlink/index.html" || rel.startsWith("smartlink/")) return true;
     return false;
   }
 

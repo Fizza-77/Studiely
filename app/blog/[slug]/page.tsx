@@ -11,13 +11,14 @@ import {
 import { DEFAULT_OG_IMAGE_PATH, SITE_URL } from "@/lib/site";
 
 type PageProps = {
-  params: Promise<{ slug: string }>;
+  params: { slug: string };
 };
 
-export const dynamic = "force-static";
-
-export async function generateStaticParams() {
+export async function generateStaticParams(): Promise<{ slug: string }[]> {
   const rows = await getBlogSlugsForConfiguredSite();
+  if (!rows || rows.length === 0) {
+    return [{ slug: "coming-soon" }];
+  }
   return rows.map((row) => ({ slug: row.slug }));
 }
 
@@ -30,7 +31,7 @@ async function getStudielyBlogBySlug(slug: string) {
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const { slug } = await params;
+  const { slug } = params;
   if (!slug) return { title: "Blog Post" };
 
   const result = await getStudielyBlogBySlug(slug);
@@ -74,11 +75,36 @@ export async function generateMetadata({
 }
 
 export default async function BlogPostPage({ params }: PageProps) {
-  const { slug } = await params;
+  const { slug } = params;
   if (!slug) return notFound();
 
   const result = await getStudielyBlogBySlug(slug);
-  if (!result) return notFound();
+  if (!result) {
+    if (slug !== "coming-soon") return notFound();
+    return (
+      <>
+        <PageHeader
+          label="Blog"
+          title="Coming soon"
+          sub="New Studiely articles will appear here once they are published."
+          variant="compact"
+        />
+        <main className="bg-bg-base min-h-screen pt-[32px] pb-[40px]">
+          <div className="wrap max-w-[760px] mx-auto px-4">
+            <article className="bg-white border border-border-default rounded-xl p-6 md:p-8 text-[14px] text-body leading-[1.8] prose prose-sm max-w-none">
+              <p>We’re working on new content. Check back soon.</p>
+              <p>
+                <Link href="/blog" className="text-teal hover:text-teal-dk font-medium">
+                  View all articles
+                </Link>
+              </p>
+            </article>
+          </div>
+        </main>
+        <Footer />
+      </>
+    );
+  }
 
   const { blog } = result;
   const jsonLd = buildBlogPostingJsonLd(blog);
