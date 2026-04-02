@@ -101,7 +101,11 @@ export const StudyToolsSection = ({ sectionRef }: StudyToolsSectionProps) => {
   const canGo = chosen; // button active as soon as a card is selected
 
    return (
-    <section id="features" ref={sectionRef} className="py-14 sm:py-16 md:py-20 lg:py-24 bg-white">
+    <section
+      id="features"
+      ref={sectionRef}
+      className="scroll-mt-[calc(66px+12px)] py-10 sm:py-12 md:py-14 lg:py-16 bg-white"
+    >
       <div className="wrap">
         <SectionHeader
           label="AI Study Tools"
@@ -124,7 +128,7 @@ export const StudyToolsSection = ({ sectionRef }: StudyToolsSectionProps) => {
                     setChosen(true);
                   }}
                   transition={{ duration: 0.18 }}
-                  className="rounded-[14px] p-[24px_20px_44px] cursor-pointer relative shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-colors duration-200"
+                  className="rounded-[14px] p-[24px_20px_44px] cursor-pointer relative flex flex-col items-center text-center shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-colors duration-200"
                   style={{
                     border: `1.5px solid ${active ? t.color : t.border}`,
                     background: active ? `linear-gradient(150deg,${t.lt} 0%,#fff 100%)` : "#fafaf8",
@@ -139,22 +143,22 @@ export const StudyToolsSection = ({ sectionRef }: StudyToolsSectionProps) => {
                       style={{ background: t.color, boxShadow: `0 0 10px ${t.color}` }}
                     />
                   )}
-                  <div className="mb-[14px]">
+                  <div className="mb-3 flex w-full shrink-0 items-center justify-center">
                     <Icon />
                   </div>
                   <div
-                    className="w-5 h-[2.5px] rounded-sm mb-[11px] transition-opacity duration-200"
+                    className="w-5 h-[2.5px] rounded-sm mb-[11px] shrink-0 transition-opacity duration-200"
                     style={{ background: t.color, opacity: active ? 1 : 0.4 }}
                   />
-                  <h3 className="font-serif text-[17px] font-normal text-navy mb-[7px] tracking-[-0.15px]">
+                  <h3 className="font-serif text-[17px] font-normal text-navy mb-[7px] tracking-[-0.15px] w-full">
                     {t.label}
                   </h3>
-                  <p className="text-[12.5px] text-muted leading-[1.68] font-light">{t.desc}</p>
+                  <p className="text-[12.5px] text-muted leading-[1.68] font-light w-full">{t.desc}</p>
                   <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: active ? 1 : 0 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute bottom-3.5 left-5 inline-flex items-center gap-[5px] text-[11px] font-semibold pointer-events-none"
+                    className="absolute bottom-3.5 left-1/2 -translate-x-1/2 inline-flex items-center gap-[5px] text-[11px] font-semibold pointer-events-none"
                     style={{ color: t.color }}
                   >
                     <span

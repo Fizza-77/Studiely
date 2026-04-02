@@ -1,19 +1,30 @@
 "use client";
 
 import type { ReactNode } from "react";
+import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
 import { cn } from "@/lib/utils";
-import { Facebook, Instagram, Linkedin, Play, X, Youtube } from "lucide-react";
+import {
+  Facebook,
+  Instagram,
+  Link as LinkIcon,
+  Linkedin,
+  Play,
+  X,
+  Youtube,
+} from "lucide-react";
 
-/** Empty strings = non-navigating placeholder until you add the URL. */
+/** Empty strings = non-navigating placeholder until you add the URL (including `APP_DOWNLOAD_SMART_LINK`). */
 const SOCIAL_YOUTUBE = "https://www.youtube.com/@Studiely";
 const SOCIAL_X = "https://x.com/studiely_";
 const SOCIAL_LINKEDIN = "https://www.linkedin.com/company/studiely/";
 const SOCIAL_INSTAGRAM = "https://www.instagram.com/studiely_";
 const SOCIAL_FACEBOOK = "https://www.facebook.com/Studiely/";
 const SOCIAL_TIKTOK = "https://www.tiktok.com/@studiely_";
-const APP_STORE_IOS = "";
-const APP_STORE_ANDROID = "";
+const APP_STORE_IOS = "https://apps.apple.com/us/app/eduplayce/id6758246110";
+const APP_STORE_ANDROID = "https://play.google.com/store/apps/details?id=com.skyensolutions.eduplayce.eduplayce";
+/** Smart link (e.g. Branch / deferred deep link) — add URL when ready. */
+const APP_DOWNLOAD_SMART_LINK = "www.studiely.com/smartlink";
 
 const socialIconClass =
   "inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/20 text-white/85 transition-colors hover:border-white/40 hover:bg-white/10 hover:text-white sm:h-10 sm:w-10";
@@ -63,7 +74,7 @@ function StoreAnchor({
       aria-label={label}
       aria-disabled={!active}
       className={cn(
-        "inline-flex min-h-[44px] w-full max-w-[220px] items-center justify-center rounded-lg border border-white/18 px-4 py-2.5 text-[13px] font-medium text-white/90 transition-colors hover:border-white/35 hover:bg-white/10 sm:min-h-0 sm:w-auto sm:max-w-none",
+        "inline-flex min-h-[44px] min-w-0 flex-1 basis-0 items-center justify-center rounded-lg border border-white/18 px-2.5 py-2.5 text-[12px] font-medium text-white/90 transition-colors hover:border-white/35 hover:bg-white/10 sm:px-4 sm:text-[13px]",
         !active && "opacity-55"
       )}
       onClick={(e) => {
@@ -135,11 +146,38 @@ export const CTASection = () => (
             </SocialAnchor>
           </div>
 
-          <p className="text-[11px] font-medium uppercase tracking-[0.12em] text-white/45 mt-6 mb-3">
-            Download our app
-          </p>
+          <div className="mt-6 mb-3 flex items-center justify-center gap-2">
+            <p className="text-[11px] font-medium uppercase tracking-[0.12em] text-white/45">
+              Download now
+            </p>
+           {/* <a
+              href={
+                APP_DOWNLOAD_SMART_LINK.trim()
+                  ? /^https?:\/\//i.test(APP_DOWNLOAD_SMART_LINK.trim())
+                    ? APP_DOWNLOAD_SMART_LINK.trim()
+                    : `https://${APP_DOWNLOAD_SMART_LINK.trim()}`
+                  : "#"
+              }
+              target={APP_DOWNLOAD_SMART_LINK.trim() ? "_blank" : undefined}
+              rel={APP_DOWNLOAD_SMART_LINK.trim() ? "noopener noreferrer" : undefined}
+              aria-label="App download smart link"
+              className={cn(
+                "inline-flex shrink-0 rounded-sm text-white/70 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/40",
+                !APP_DOWNLOAD_SMART_LINK.trim() && "pointer-events-none opacity-50",
+              )}
+              onClick={(e) => {
+                if (!APP_DOWNLOAD_SMART_LINK.trim()) e.preventDefault();
+              }}
+            >
+              <LinkIcon
+                className="size-4 sm:size-[17px]"
+                strokeWidth={2}
+                aria-hidden
+              />
+            </a> */}
+          </div>
 
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3">
+          <div className="flex w-full flex-row flex-nowrap items-stretch justify-center gap-2 sm:gap-3">
             <StoreAnchor href={APP_STORE_IOS} label="Download on the App Store">
               <span className="flex items-center gap-2">
                 <svg
@@ -160,6 +198,19 @@ export const CTASection = () => (
                 Google Play
               </span>
             </StoreAnchor>
+          </div>
+
+          <div className="mt-6 pt-5 border-t border-white/10 flex flex-col items-center">
+            <p className="text-[11px] font-medium uppercase tracking-[0.12em] text-white/45 mb-3">
+              Scan QR
+            </p>
+            <Image
+              src="/QR.jpeg"
+              alt="QR code to open Studiely"
+              width={88}
+              height={88}
+              className="h-[80px] w-[80px] sm:h-[88px] sm:w-[88px] shrink-0 rounded-md border border-white/20 object-contain bg-white p-1"
+            />
           </div>
         </div>
       </Reveal>

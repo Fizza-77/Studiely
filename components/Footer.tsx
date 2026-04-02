@@ -1,5 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
+
+/** Sister product URLs — edit here when you change them. */
+const MAKE_MY_LESSON_URL = "https://makemylesson.ai";
+const LINGUATUDE_URL = "https://linguatude.com";
+
+const footerLinkClass =
+  "text-[#6b6b76] underline underline-offset-[3px] decoration-[#6b6b76]/50 hover:text-navy hover:decoration-navy";
+
 export const Footer = () => (
   <footer className="bg-bg-base border-t border-border-default py-5">
     <div className="wrap flex flex-col gap-3">
@@ -43,18 +51,18 @@ export const Footer = () => (
 <div className="w-full border-t border-border-lt pt-3 text-[11px] text-[#6b6b76] leading-[1.5] space-y-1 text-center">
           <p>
           Studiely is a sister platform of{" "}
-          <a href="https://makemylesson.ai" target="_blank" rel="noopener noreferrer" className="hover:text-navy">
+          <a href={MAKE_MY_LESSON_URL} target="_blank" rel="noopener noreferrer" className={footerLinkClass}>
             Make My Lesson
           </a>{" "}
           and{" "}
-          <a href="https://linguatude.com" target="_blank" rel="noopener noreferrer" className="hover:text-navy">
+          <a href={LINGUATUDE_URL} target="_blank" rel="noopener noreferrer" className={footerLinkClass}>
             Linguatude
           </a>.
         </p>
 
         <p>
           Studiely is part of the Skyen Solutions family of EdTech products. For custom software development, websites, and mobile applications, visit{" "}
-          <a href="https://skyensystems.com" target="_blank" rel="noopener noreferrer" className="hover:text-navy">
+          <a href="https://skyensystems.com" target="_blank" rel="noopener noreferrer" className={footerLinkClass}>
             Skyen Systems
           </a>.
         </p>

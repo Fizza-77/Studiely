@@ -133,17 +133,17 @@ export const NylaSection = ({ sectionRef }: NylaSectionProps) => {
               ))}
             </ul>
             <Reveal delay={0.3}>
-              <div className="mt-7 flex flex-col sm:flex-row gap-2.5">
-                <Link href={STUDIELY_APP.nyla}>
+              <div className="mt-7 flex flex-col sm:flex-row gap-2.5 items-center justify-center w-full lg:items-start lg:justify-start">
+                <Link href={STUDIELY_APP.nyla} className="inline-flex shrink-0">
                   <Button variant="solid" lg className="bg-indigo border-indigo hover:opacity-90">
                     Chat with Nyla →
                   </Button>
                 </Link>
-                <Link href="/app-nyla-learn-more">
+           {/* <Link href="/app-nyla-learn-more">
                   <Button variant="outline" lg>
                     Learn More
                   </Button>
-                </Link>
+                </Link> */}
               </div>
             </Reveal>
           </div>
