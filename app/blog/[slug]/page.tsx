@@ -5,7 +5,7 @@ import { Footer } from "@/components/Footer";
 import { PageHeader } from "@/components/PageHeader";
 import { buildBlogPostingJsonLd } from "@/lib/blogSchema";
 import {
-  getBlogBySlugForConfiguredSite,
+  getBlogBySlugForStudiely,
   getBlogSlugsForConfiguredSite,
 } from "@/lib/blogs";
 import { DEFAULT_OG_IMAGE_PATH, SITE_URL } from "@/lib/site";
@@ -23,7 +23,7 @@ export async function generateStaticParams(): Promise<{ slug: string }[]> {
 }
 
 async function getStudielyBlogBySlug(slug: string) {
-  const blog = await getBlogBySlugForConfiguredSite(slug);
+  const blog = await getBlogBySlugForStudiely(slug);
   if (!blog) return null;
   return { blog };
 }
@@ -118,7 +118,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         }}
       />
       <PageHeader
-        label="Blog"
+        label={blog.category?.name ? `Blog · ${blog.category.name}` : "Blog"}
         title={blog.title}
         sub={
           blog.description ||
@@ -137,6 +137,11 @@ export default async function BlogPostPage({ params }: PageProps) {
                   className="w-full h-auto rounded-xl object-cover"
                 />
               </div>
+            )}
+            {blog.category && (
+              <p className="not-prose mb-6 inline-flex items-center rounded-full border border-border-default px-2.5 py-1 text-[11px] text-muted">
+                {blog.category.name}
+              </p>
             )}
             {blog.content ? (
               <div dangerouslySetInnerHTML={{ __html: blog.content }} />

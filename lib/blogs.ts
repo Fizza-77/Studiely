@@ -1,8 +1,7 @@
 import { supabase } from "@/lib/supabaseClient";
 import { cache } from "react";
 
-const SITE_ID = process.env.SITE_ID ?? process.env.NEXT_PUBLIC_SITE_ID;
-const SITE_KEY = process.env.SITE_KEY;
+const STUDIELY_SITE_KEY = "studiely";
 
 const SUPABASE_QUERY_RETRIES = Math.max(
   1,
@@ -65,6 +64,7 @@ const BLOG_SEO_FIELDS =
   "slug, title, description, meta_title, meta_description, cover_image_url, display_date, author_name, keywords, article_section";
 
 export type BlogListRow = {
+  id: string;
   slug: string;
   title: string;
   description: string | null;
@@ -75,27 +75,90 @@ export type BlogListRow = {
   author_name: string | null;
   keywords: string | null;
   article_section: string | null;
+  category: BlogCategoryRef | null;
 };
 
 export type BlogPostRow = BlogListRow & {
-  id: string;
   content: string | null;
 };
 
-const getSiteId = cache(async (): Promise<string> => {
-  if (SITE_ID) {
-    return SITE_ID;
-  }
+export type BlogCategoryRef = {
+  id: string;
+  name: string;
+  slug: string;
+};
 
-  if (!SITE_KEY) {
-    throw new Error("Missing SITE_KEY environment variable.");
-  }
+export type BlogCategoryRow = BlogCategoryRef & {
+  sort_order: number;
+};
 
-  const data = await execPostgrestWithRetries("resolve site_id", () =>
+export type BlogIndexSeo = {
+  title: string;
+  description: string;
+  headline: string;
+  subheadline: string;
+  empty_state_message: string;
+};
+
+export type BlogIndexDataForStudiely = {
+  site_id: string;
+  seo: BlogIndexSeo;
+  categories: BlogCategoryRow[];
+  posts: BlogListRow[];
+};
+
+type SiteBlogPageRow = {
+  id: string;
+  blog_page_meta_title?: string | null;
+  blog_page_meta_description?: string | null;
+  blog_page_headline?: string | null;
+  blog_page_subheadline?: string | null;
+  blog_page_empty_state_message?: string | null;
+};
+
+const DEFAULT_INDEX_SEO: BlogIndexSeo = {
+  title: "Blog - Study Tips, Exam Prep & Product Updates",
+  description:
+    "Practical revision ideas, curriculum tips, and Studiely product news for students on IGCSE, GCSE, IB, and more.",
+  headline: "Studiely Blog",
+  subheadline:
+    "Explore articles on smarter studying, exam strategies, and how to get the most out of Studiely.",
+  empty_state_message: "Blog posts will appear here once they are published.",
+};
+
+function normalizeCategory(value: unknown): BlogCategoryRef | null {
+  if (!value || Array.isArray(value) || typeof value !== "object") return null;
+  const row = value as Partial<BlogCategoryRef>;
+  if (!row.id || !row.name || !row.slug) return null;
+  return {
+    id: row.id,
+    name: row.name,
+    slug: row.slug,
+  };
+}
+
+function toSeo(site: SiteBlogPageRow | null): BlogIndexSeo {
+  if (!site) return DEFAULT_INDEX_SEO;
+  return {
+    title: site.blog_page_meta_title?.trim() || DEFAULT_INDEX_SEO.title,
+    description:
+      site.blog_page_meta_description?.trim() || DEFAULT_INDEX_SEO.description,
+    headline: site.blog_page_headline?.trim() || DEFAULT_INDEX_SEO.headline,
+    subheadline:
+      site.blog_page_subheadline?.trim() || DEFAULT_INDEX_SEO.subheadline,
+    empty_state_message:
+      site.blog_page_empty_state_message?.trim() ||
+      DEFAULT_INDEX_SEO.empty_state_message,
+  };
+}
+
+/** Resolve Studiely's site id from site_key. Returns null when not found. */
+export const getSiteIdForStudiely = cache(async (): Promise<string | null> => {
+  const data = await execPostgrestWithRetries("resolve studiely site_id", () =>
     supabase
       .from("sites")
       .select("id")
-      .eq("site_key", SITE_KEY)
+      .eq("site_key", STUDIELY_SITE_KEY)
       .limit(1)
       .maybeSingle() as PromiseLike<{
       data: { id: string } | null;
@@ -103,31 +166,150 @@ const getSiteId = cache(async (): Promise<string> => {
     }>
   );
 
-  if (!data?.id) {
-    throw new Error(
-      `Failed to resolve site_id for site_key "${SITE_KEY}". Set SITE_ID or NEXT_PUBLIC_SITE_ID, or add a SELECT policy for the sites row.`
+  return data?.id ?? null;
+});
+
+async function loadStudielyBlogPageSeo(siteId: string): Promise<SiteBlogPageRow | null> {
+  try {
+    return await execPostgrestWithRetries("load studiely blog page seo", () =>
+      supabase
+        .from("sites")
+        .select(
+          "id, blog_page_meta_title, blog_page_meta_description, blog_page_headline, blog_page_subheadline, blog_page_empty_state_message"
+        )
+        .eq("id", siteId)
+        .limit(1)
+        .maybeSingle() as PromiseLike<{
+        data: SiteBlogPageRow | null;
+        error: { message?: string; code?: string } | null;
+      }>
+    );
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    const missingEmptyStateColumn =
+      message.includes("blog_page_empty_state_message") &&
+      message.includes("does not exist");
+
+    if (!missingEmptyStateColumn) {
+      throw error;
+    }
+
+    return await execPostgrestWithRetries(
+      "load studiely blog page seo (legacy schema)",
+      () =>
+        supabase
+          .from("sites")
+          .select(
+            "id, blog_page_meta_title, blog_page_meta_description, blog_page_headline, blog_page_subheadline"
+          )
+          .eq("id", siteId)
+          .limit(1)
+          .maybeSingle() as PromiseLike<{
+          data: SiteBlogPageRow | null;
+          error: { message?: string; code?: string } | null;
+        }>
     );
   }
+}
 
-  return data.id;
-});
+/**
+ * Fetch Studiely blog index payload: site SEO fields, site categories and posts.
+ */
+export async function getBlogIndexDataForStudiely(): Promise<BlogIndexDataForStudiely> {
+  const siteId = await getSiteIdForStudiely();
+
+  if (!siteId) {
+    return {
+      site_id: "",
+      seo: DEFAULT_INDEX_SEO,
+      categories: [],
+      posts: [],
+    };
+  }
+
+  const [siteRow, categoriesData, postsData] = await Promise.all([
+    loadStudielyBlogPageSeo(siteId),
+    execPostgrestWithRetries("load studiely blog categories", () =>
+      supabase
+        .from("blog_categories")
+        .select("id, name, slug, sort_order")
+        .eq("site_id", siteId)
+        .order("sort_order", { ascending: true })
+        .order("name", { ascending: true })
+    ),
+    execPostgrestWithRetries("load studiely blogs", () =>
+      supabase
+        .from("blogs")
+        .select(
+          `id, ${BLOG_SEO_FIELDS}, category:blog_categories(id, name, slug)`
+        )
+        .eq("site_id", siteId)
+        .order("display_date", { ascending: false })
+    ),
+  ]);
+
+  const categories = ((categoriesData ?? []) as Array<{
+    id: string;
+    name: string;
+    slug: string;
+    sort_order: number | null;
+  }>).map((row) => ({
+    id: row.id,
+    name: row.name,
+    slug: row.slug,
+    sort_order: row.sort_order ?? 0,
+  }));
+
+  const posts = ((postsData ?? []) as Array<
+    Omit<BlogListRow, "category"> & { category: unknown }
+  >).map((row) => ({
+    ...row,
+    category: normalizeCategory(row.category),
+  }));
+
+  return {
+    site_id: siteId,
+    seo: toSeo(siteRow),
+    categories,
+    posts,
+  };
+}
+
+/** Fetch a single Studiely blog by slug with joined category. */
+export async function getBlogBySlugForStudiely(
+  slug: string
+): Promise<BlogPostRow | null> {
+  const siteId = await getSiteIdForStudiely();
+  if (!siteId) return null;
+
+  const row = await execPostgrestWithRetries(`fetch studiely blog "${slug}"`, () =>
+    supabase
+      .from("blogs")
+      .select(
+        `id, content, ${BLOG_SEO_FIELDS}, category:blog_categories(id, name, slug)`
+      )
+      .eq("site_id", siteId)
+      .eq("slug", slug)
+      .maybeSingle()
+  );
+
+  if (!row) return null;
+
+  const typedRow = row as Omit<BlogPostRow, "category"> & { category: unknown };
+  return {
+    ...typedRow,
+    category: normalizeCategory(typedRow.category),
+  };
+}
 
 
 /**
  * Get all blogs for configured site (includes SEO / Schema.org fields).
  */
 export async function getBlogsForConfiguredSite(): Promise<BlogListRow[]> {
-  const siteId = await getSiteId();
-
   try {
-    const data = await execPostgrestWithRetries("load blogs", () =>
-      supabase
-        .from("blogs")
-        .select(BLOG_SEO_FIELDS)
-        .eq("site_id", siteId)
-        .order("display_date", { ascending: false })
-    );
-    return (data ?? []) as BlogListRow[];
+    const data = await getBlogIndexDataForStudiely();
+    return data.posts;
   } catch (e) {
     if (process.env.BUILD_SKIP_BLOGS_ON_SUPABASE_ERROR === "1") {
       console.warn(
@@ -145,18 +327,7 @@ export async function getBlogsForConfiguredSite(): Promise<BlogListRow[]> {
 export async function getBlogBySlugForConfiguredSite(
   slug: string
 ): Promise<BlogPostRow | null> {
-  const siteId = await getSiteId();
-
-  const data = await execPostgrestWithRetries(`fetch blog "${slug}"`, () =>
-    supabase
-      .from("blogs")
-      .select(`id, content, ${BLOG_SEO_FIELDS}`)
-      .eq("site_id", siteId)
-      .eq("slug", slug)
-      .maybeSingle()
-  );
-
-  return (data ?? null) as BlogPostRow | null;
+  return getBlogBySlugForStudiely(slug);
 }
 
 /**
@@ -165,7 +336,8 @@ export async function getBlogBySlugForConfiguredSite(
 export async function getBlogSlugsForConfiguredSite(): Promise<
   { slug: string; display_date: string | null }[]
 > {
-  const siteId = await getSiteId();
+  const siteId = await getSiteIdForStudiely();
+  if (!siteId) return [];
 
   try {
     const data = await execPostgrestWithRetries("fetch blog slugs", () =>
