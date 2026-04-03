@@ -4,9 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node scripts/clean-next-dev.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "check:vps-dns": "node scripts/check-vps-dns.mjs",
     "deploy:firebase:merge": "node scripts/merge-firebase-deploy.mjs",
     "predeploy:firebase": "npm run build && npm run deploy:firebase:merge",
     "deploy:firebase": "npm run predeploy:firebase && npx firebase deploy --only hosting"
