@@ -154,8 +154,11 @@ function toSeo(site: SiteBlogPageRow | null): BlogIndexSeo {
 
 /** Resolve Studiely's site id from site_key. Returns null when not found. */
 export const getSiteIdForStudiely = cache(async (): Promise<string | null> => {
+  const client = supabase;
+  if (!client) return null;
+
   const data = await execPostgrestWithRetries("resolve studiely site_id", () =>
-    supabase
+    client
       .from("sites")
       .select("id")
       .eq("site_key", STUDIELY_SITE_KEY)
@@ -170,9 +173,12 @@ export const getSiteIdForStudiely = cache(async (): Promise<string | null> => {
 });
 
 async function loadStudielyBlogPageSeo(siteId: string): Promise<SiteBlogPageRow | null> {
+  const client = supabase;
+  if (!client) return null;
+
   try {
     return await execPostgrestWithRetries("load studiely blog page seo", () =>
-      supabase
+      client
         .from("sites")
         .select(
           "id, blog_page_meta_title, blog_page_meta_description, blog_page_headline, blog_page_subheadline, blog_page_empty_state_message"
@@ -197,7 +203,7 @@ async function loadStudielyBlogPageSeo(siteId: string): Promise<SiteBlogPageRow 
     return await execPostgrestWithRetries(
       "load studiely blog page seo (legacy schema)",
       () =>
-        supabase
+        client
           .from("sites")
           .select(
             "id, blog_page_meta_title, blog_page_meta_description, blog_page_headline, blog_page_subheadline"
@@ -227,10 +233,20 @@ export async function getBlogIndexDataForStudiely(): Promise<BlogIndexDataForStu
     };
   }
 
+  const client = supabase;
+  if (!client) {
+    return {
+      site_id: siteId,
+      seo: DEFAULT_INDEX_SEO,
+      categories: [],
+      posts: [],
+    };
+  }
+
   const [siteRow, categoriesData, postsData] = await Promise.all([
     loadStudielyBlogPageSeo(siteId),
     execPostgrestWithRetries("load studiely blog categories", () =>
-      supabase
+      client
         .from("blog_categories")
         .select("id, name, slug, sort_order")
         .eq("site_id", siteId)
@@ -238,7 +254,7 @@ export async function getBlogIndexDataForStudiely(): Promise<BlogIndexDataForStu
         .order("name", { ascending: true })
     ),
     execPostgrestWithRetries("load studiely blogs", () =>
-      supabase
+      client
         .from("blogs")
         .select(
           `id, ${BLOG_SEO_FIELDS}, category:blog_categories(id, name, slug)`
@@ -282,8 +298,11 @@ export async function getBlogBySlugForStudiely(
   const siteId = await getSiteIdForStudiely();
   if (!siteId) return null;
 
+  const client = supabase;
+  if (!client) return null;
+
   const row = await execPostgrestWithRetries(`fetch studiely blog "${slug}"`, () =>
-    supabase
+    client
       .from("blogs")
       .select(
         `id, content, ${BLOG_SEO_FIELDS}, category:blog_categories(id, name, slug)`
@@ -339,9 +358,12 @@ export async function getBlogSlugsForConfiguredSite(): Promise<
   const siteId = await getSiteIdForStudiely();
   if (!siteId) return [];
 
+  const client = supabase;
+  if (!client) return [];
+
   try {
     const data = await execPostgrestWithRetries("fetch blog slugs", () =>
-      supabase.from("blogs").select("slug, display_date").eq("site_id", siteId)
+      client.from("blogs").select("slug, display_date").eq("site_id", siteId)
     );
     return (data ?? []) as { slug: string; display_date: string | null }[];
   } catch (e) {

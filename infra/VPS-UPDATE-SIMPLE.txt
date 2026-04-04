@@ -88,6 +88,22 @@ STEP 7 — Get vps-main (use THIS if checkout vps-main failed before)
 
 
 --------------------------------------------------------------------------------
+STEP 7b — Upload .env.production (blog + sitemap need Supabase; file is NOT in Git)
+--------------------------------------------------------------------------------
+  `.env*` is ignored by Git, so a fresh clone has no NEXT_PUBLIC_SUPABASE_* vars.
+
+  On your Mac, open a second Terminal window and run (fix the path if your
+  project folder is elsewhere):
+
+    scp "/Users/rentamac/Desktop/web issues/Studiely/.env.production" root@187.124.250.67:/var/www/studiely/site/.env.production
+
+  Enter the server password when asked.
+
+  Without this file the project can still build, but the exported blog index
+  will have no posts from the database until you add it and rebuild.
+
+
+--------------------------------------------------------------------------------
 STEP 8 — Build the site
 --------------------------------------------------------------------------------
   Copy-paste:
@@ -115,6 +131,22 @@ STEP 10 — Check it worked
   You should see your latest commit message (e.g. "urls-fixed").
 
   Open https://studiely.com in your browser and refresh.
+
+
+--------------------------------------------------------------------------------
+If you deploy with rsync from your Mac (instead of building on the server)
+--------------------------------------------------------------------------------
+  Nginx serves ONLY the built folder: /var/www/studiely/site/out
+  Your git repo and package.json live in:     /var/www/studiely/site/
+
+  NEVER run rsync to /var/www/studiely/ with --delete. That deletes site/
+  and breaks the server.
+
+  Safe example (from your project folder, after npm run build):
+
+    rsync -avz --delete "out/" "root@YOUR_VPS_IP:/var/www/studiely/site/out/"
+
+  That updates the live HTML/JS only and leaves source code next to out/ alone.
 
 
 --------------------------------------------------------------------------------
