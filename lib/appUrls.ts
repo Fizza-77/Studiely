@@ -3,7 +3,7 @@
  * Example: NEXT_PUBLIC_STUDIELY_APP_ORIGIN=http://localhost:8080
  */
 export const STUDIELY_APP_ORIGIN =
-  process.env.NEXT_PUBLIC_STUDIELY_APP_ORIGIN?.replace(/\/$/, "") ?? "https://www.studiely.com";
+  process.env.NEXT_PUBLIC_STUDIELY_APP_ORIGIN?.replace(/\/$/, "") ?? "https://www.studiely.app";
 
 export const STUDIELY_APP = {
   /** Flutter web shell landing (dashboard home), base-href `/app/`. */
