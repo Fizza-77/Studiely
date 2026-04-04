@@ -16,18 +16,83 @@ Use the password or SSH key from Hostinger. Create a deploy user if you prefer n
 
 `scripts/vps-setup.sh` lives **inside the GitHub repo**. If you run it from `/root` you get **No such file or directory** — clone first, then run setup from the project folder.
 
-As **root** (or use `sudo` where needed):
+### Why `Permission denied (publickey)` happens
+
+SSH keys are **per computer**. A key configured in **Android Studio / your PC** is **not** on the VPS. The VPS must either use **HTTPS + a token**, or have its **own** SSH key added to GitHub.
+
+GitHub **does not accept your account password** for `git clone` over HTTPS; use a **Personal Access Token** (below) instead of a password.
+
+### Clean up a failed clone (run on the VPS if needed)
+
+```bash
+cd /var/www/studiely
+rm -rf Studiely .git
+```
+
+Use the trailing **`.`** in `git clone ... .` so files land **directly** in `/var/www/studiely`, not in a `Studiely/` subfolder.
+
+### Option A — HTTPS + Personal Access Token (simplest)
+
+1. On GitHub (in a browser): **Settings → Developer settings → Personal access tokens**. Create a **classic** token with the **`repo`** scope (needed for private repos).
+2. On the VPS:
 
 ```bash
 apt-get update -y
 apt-get install -y git ca-certificates curl
 mkdir -p /var/www/studiely
 cd /var/www/studiely
+rm -rf Studiely .git 2>/dev/null || true
 git clone -b web-hosting-and-urls --single-branch https://github.com/Fizza-77/Studiely.git .
+```
+
+When Git asks for credentials:
+
+- **Username:** your GitHub username (or `Fizza-77` if Git accepts it — use the account that can access the repo).
+- **Password:** paste the **token** (not your GitHub login password).
+
+Then:
+
+```bash
 git pull origin web-hosting-and-urls
 ```
 
-If `vps-hosting/` or `scripts/vps-setup.sh` is missing after clone, that branch on GitHub is behind your laptop — **push** the latest `web-hosting-and-urls` from your PC, then run `git pull` again on the server.
+### Option B — SSH deploy key on the VPS (no token in prompts after setup)
+
+On the VPS:
+
+```bash
+ssh-keygen -t ed25519 -f /root/.ssh/github_studiely -N ""
+cat /root/.ssh/github_studiely.pub
+```
+
+Copy the **one line** that starts with `ssh-ed25519`. In GitHub: **repo → Settings → Deploy keys → Add deploy key** — paste it, allow read access, save.
+
+Then:
+
+```bash
+printf '%s\n' \
+  'Host github.com' \
+  '  HostName github.com' \
+  '  User git' \
+  '  IdentityFile /root/.ssh/github_studiely' \
+  '  IdentitiesOnly yes' \
+  >> /root/.ssh/config
+chmod 600 /root/.ssh/config
+mkdir -p /var/www/studiely
+cd /var/www/studiely
+rm -rf Studiely .git 2>/dev/null || true
+git clone -b web-hosting-and-urls --single-branch git@github.com:Fizza-77/Studiely.git .
+git pull origin web-hosting-and-urls
+```
+
+### After a successful clone
+
+```bash
+cd /var/www/studiely
+ls package.json scripts/vps-setup.sh vps-hosting/README.md
+```
+
+If `vps-hosting/` or `scripts/vps-setup.sh` is missing, the **`web-hosting-and-urls` branch on GitHub** may be behind your laptop — **push** from your PC, then `git pull` on the server.
 
 ## 3. One-time server setup
 
@@ -75,6 +140,19 @@ sudo ln -sf /etc/nginx/sites-available/studiely /etc/nginx/sites-enabled/
 sudo rm -f /etc/nginx/sites-enabled/default
 sudo nginx -t && sudo systemctl reload nginx
 ```
+
+**Branch:** You should always build from **`web-hosting-and-urls` at the latest commit**. After `vps-setup.sh`, run this once before the first build (and anytime you want to confirm you match GitHub):
+
+```bash
+cd /var/www/studiely
+git fetch origin
+git checkout web-hosting-and-urls
+git pull origin web-hosting-and-urls
+git branch --show-current
+git log -1 --oneline
+```
+
+You should see `web-hosting-and-urls` and the newest commit message/SHA. Later, **`scripts/vps-deploy.sh`** runs the same `fetch` / `checkout` / `pull` before each deploy.
 
 Build:
 
@@ -135,4 +213,6 @@ USE_MERGE=1 bash scripts/vps-deploy.sh
 | Problem | What to do |
 |--------|------------|
 | `scripts/vps-setup.sh: No such file or directory` | You are not in the repo. Run `cd /var/www/studiely` and `ls scripts/vps-setup.sh` — if missing, complete **step 2** (clone) first. |
-| `fatal: destination path '.' already exists and is not an empty directory` | Use an empty folder: `rm -rf /var/www/studiely/*` (only if it has no data you need) or pick another path. |
+| `Permission denied (publickey)` when using `git@github.com` | The VPS has no GitHub SSH key. Use **Option A** (HTTPS + token) or **Option B** (deploy key) in step 2. |
+| `Password authentication is not supported` (HTTPS) | GitHub requires a **Personal Access Token** as the “password”, not your GitHub account password. |
+| `fatal: destination path '.' already exists and is not an empty directory` | Run `cd /var/www/studiely && rm -rf Studiely .git` then clone again with `... Studiely.git .` |
