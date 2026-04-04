@@ -1,0 +1,159 @@
+================================================================================
+  STUDIELY VPS — UPDATE THE WEBSITE (SIMPLE STEPS)
+================================================================================
+
+Use this when you have new code on GitHub (branch "vps-main") and want the
+live site to match it.
+
+You need: your Mac, Terminal, the server password, and GitHub access to the
+Studiely repo (same account that can push to the project).
+
+
+--------------------------------------------------------------------------------
+STEP 1 — Open Terminal on your Mac
+--------------------------------------------------------------------------------
+  Open the Terminal app (Spotlight: type "Terminal", press Enter).
+
+
+--------------------------------------------------------------------------------
+STEP 2 — Connect to the server
+--------------------------------------------------------------------------------
+  Type this and press Enter (use YOUR server IP if different):
+
+    ssh root@187.124.250.67
+
+  Enter the root password when asked.
+
+
+--------------------------------------------------------------------------------
+STEP 3 — One-time fix so Git works (only do this once per server)
+--------------------------------------------------------------------------------
+  Copy-paste this whole line, press Enter:
+
+    git config --global --add safe.directory /var/www/studiely/site
+
+  (This stops the "dubious ownership" error.)
+
+
+--------------------------------------------------------------------------------
+STEP 4 — Go into the website folder
+--------------------------------------------------------------------------------
+  Copy-paste:
+
+    cd /var/www/studiely/site
+
+  Always run Git from HERE. If you see "not a git repository", you forgot
+  this step.
+
+
+--------------------------------------------------------------------------------
+STEP 5 — Remove extra lock file (one-time, stops confusing warnings)
+--------------------------------------------------------------------------------
+  If this file exists, delete it:
+
+    rm -f /var/www/studiely/package-lock.json
+
+
+--------------------------------------------------------------------------------
+STEP 6 — GitHub login (token, not password)
+--------------------------------------------------------------------------------
+  If Git asks for Username / Password:
+  - Username = your GitHub username
+  - Password = Personal Access Token (classic), scope "repo"
+    GitHub → Settings → Developer settings → Personal access tokens.
+
+  Plain GitHub passwords do NOT work for git fetch.
+
+
+--------------------------------------------------------------------------------
+STEP 7 — Get vps-main (use THIS if checkout vps-main failed before)
+--------------------------------------------------------------------------------
+  Plain "git fetch origin" sometimes does NOT create origin/vps-main on the
+  server. Use this block instead — it always pulls that branch:
+
+    cd /var/www/studiely/site
+    git fetch origin refs/heads/vps-main:refs/remotes/origin/vps-main
+    git checkout -B vps-main origin/vps-main
+    git reset --hard origin/vps-main
+
+  Alternative (same result, uses FETCH_HEAD):
+
+    git fetch origin vps-main
+    git checkout -B vps-main FETCH_HEAD
+    git reset --hard FETCH_HEAD
+
+  Optional — fix fetch for all branches (one time):
+
+    git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+
+
+--------------------------------------------------------------------------------
+STEP 8 — Build the site
+--------------------------------------------------------------------------------
+  Copy-paste:
+
+    npm ci && npm run build
+
+  Wait until it finishes without errors.
+
+
+--------------------------------------------------------------------------------
+STEP 9 — Fix file ownership (so the studiely user can edit later)
+--------------------------------------------------------------------------------
+  Copy-paste:
+
+    chown -R studiely:studiely /var/www/studiely/site
+
+
+--------------------------------------------------------------------------------
+STEP 10 — Check it worked
+--------------------------------------------------------------------------------
+  Copy-paste:
+
+    git log -1 --oneline
+
+  You should see your latest commit message (e.g. "urls-fixed").
+
+  Open https://studiely.com in your browser and refresh.
+
+
+--------------------------------------------------------------------------------
+Why studiely.app shows the same site as studiely.com
+--------------------------------------------------------------------------------
+  Domains are names that point to servers (DNS). If studiely.app and
+  studiely.com both point to the SAME server IP (or same CDN / Firebase),
+  the browser will load whatever that host is configured to serve.
+
+  Your VPS nginx is set up for studiely.com. If studiely.app's DNS A record
+  points to the same VPS, nginx may still serve the marketing site (default
+  or same files). That is normal — it is not magic, it is DNS + one server.
+
+  To show something different on studiely.app you must either:
+  - Point studiely.app DNS elsewhere (e.g. Firebase / Flutter host only), or
+  - Add a separate nginx server_name for studiely.app with a different root
+    or redirect (ask your dev ops person).
+
+
+--------------------------------------------------------------------------------
+Flutter app links (studiely.app vs studiely.com)
+--------------------------------------------------------------------------------
+  If buttons send you to studiely.com/app/... but you want studiely.app/app/...,
+  edit the file .env.production in /var/www/studiely/site and add or change:
+
+    NEXT_PUBLIC_STUDIELY_APP_ORIGIN=https://www.studiely.app
+
+  Then run STEP 8 again (npm ci && npm run build).
+
+
+--------------------------------------------------------------------------------
+Quick copy-paste block (after STEP 1–3 done once)
+--------------------------------------------------------------------------------
+  cd /var/www/studiely/site
+  git fetch origin refs/heads/vps-main:refs/remotes/origin/vps-main
+  git checkout -B vps-main origin/vps-main
+  git reset --hard origin/vps-main
+  npm ci && npm run build
+  chown -R studiely:studiely /var/www/studiely/site
+  git log -1 --oneline
+
+================================================================================
