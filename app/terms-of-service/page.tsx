@@ -1,12 +1,7 @@
-import fs from 'fs';
-import path from 'path';
+import { loadLegalHtml } from "@/lib/loadLegalHtml";
 
 export default function TermsOfService() {
-  const filePath = path.join(
-    process.cwd(),
-    'app/terms-of-service/V1.4_Terms_of_Service_Studiely.html'
-  );
-  const html = fs.readFileSync(filePath, 'utf-8');
+  const html = loadLegalHtml("V1.4_Terms_of_Service_Studiely.html");
 
   return <div dangerouslySetInnerHTML={{ __html: html }} />;
 }
