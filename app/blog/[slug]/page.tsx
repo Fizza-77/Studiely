@@ -10,6 +10,9 @@ import {
 } from "@/lib/blogs";
 import { DEFAULT_OG_IMAGE_PATH, SITE_URL } from "@/lib/site";
 
+export const revalidate = 10;
+export const dynamicParams = true;
+
 type PageProps = {
   params: { slug: string };
 };

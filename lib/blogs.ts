@@ -1,5 +1,6 @@
 import { getSupabase, isSupabaseConfigured } from "@/lib/supabaseClient";
 import { cache } from "react";
+import { unstable_cache } from "next/cache";
 
 const STUDIELY_SITE_KEY = "studiely";
 
@@ -11,6 +12,7 @@ const SUPABASE_RETRY_DELAY_MS = Math.max(
   500,
   Number(process.env.SUPABASE_BUILD_RETRY_DELAY_MS || "2000")
 );
+const BLOG_ISR_REVALIDATE_SECONDS = 10;
 
 function isTransientSupabaseFailure(message: string): boolean {
   if (!message) return false;
@@ -218,6 +220,11 @@ async function loadStudielyBlogPageSeo(siteId: string): Promise<SiteBlogPageRow 
  * Fetch Studiely blog index payload: site SEO fields, site categories and posts.
  */
 export async function getBlogIndexDataForStudiely(): Promise<BlogIndexDataForStudiely> {
+  return getBlogIndexDataForStudielyCached();
+}
+
+const getBlogIndexDataForStudielyCached = unstable_cache(
+  async (): Promise<BlogIndexDataForStudiely> => {
   const siteId = await getSiteIdForStudiely();
 
   if (!siteId) {
@@ -275,12 +282,20 @@ export async function getBlogIndexDataForStudiely(): Promise<BlogIndexDataForStu
     categories,
     posts,
   };
-}
+  },
+  ["studiely-blog-index-v1"],
+  { revalidate: BLOG_ISR_REVALIDATE_SECONDS }
+);
 
 /** Fetch a single Studiely blog by slug with joined category. */
 export async function getBlogBySlugForStudiely(
   slug: string
 ): Promise<BlogPostRow | null> {
+  return getBlogBySlugForStudielyCached(slug);
+}
+
+const getBlogBySlugForStudielyCached = unstable_cache(
+  async (slug: string): Promise<BlogPostRow | null> => {
   const siteId = await getSiteIdForStudiely();
   if (!siteId) return null;
 
@@ -302,7 +317,10 @@ export async function getBlogBySlugForStudiely(
     ...typedRow,
     category: normalizeCategory(typedRow.category),
   };
-}
+  },
+  ["studiely-blog-by-slug-v1"],
+  { revalidate: BLOG_ISR_REVALIDATE_SECONDS }
+);
 
 
 /**
@@ -338,6 +356,11 @@ export async function getBlogBySlugForConfiguredSite(
 export async function getBlogSlugsForConfiguredSite(): Promise<
   { slug: string; display_date: string | null }[]
 > {
+  return getBlogSlugsForConfiguredSiteCached();
+}
+
+const getBlogSlugsForConfiguredSiteCached = unstable_cache(
+  async (): Promise<{ slug: string; display_date: string | null }[]> => {
   const siteId = await getSiteIdForStudiely();
   if (!siteId) return [];
 
@@ -355,4 +378,7 @@ export async function getBlogSlugsForConfiguredSite(): Promise<
     }
     throw e;
   }
-}
+  },
+  ["studiely-blog-slugs-v1"],
+  { revalidate: BLOG_ISR_REVALIDATE_SECONDS }
+);

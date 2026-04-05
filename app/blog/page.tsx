@@ -6,7 +6,7 @@ import { PageHeader } from "@/components/PageHeader";
 import { getBlogIndexDataForStudiely } from "@/lib/blogs";
 import { DEFAULT_OG_IMAGE_PATH, SITE_URL } from "@/lib/site";
 
-export const dynamic = "force-static";
+export const revalidate = 10;
 
 type BlogPageProps = {
   searchParams?: {
