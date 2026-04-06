@@ -134,92 +134,125 @@ STEP 10 — Check it worked
 
 
 --------------------------------------------------------------------------------
-STEP 11 — Studiely only: SSL + direct page URLs (full runbook)
+STEP 11 — Fix “403 Forbidden” when opening a page URL directly (Studiely vhost only)
 --------------------------------------------------------------------------------
-  Scope: only `/etc/nginx/sites-available/studiely.com` and Certbot `-d` names
-  below. Other websites on the same VPS are not edited.
+  Next.js export creates both `privacy-policy.html` and a `privacy-policy/`
+  folder (metadata only). Nginx must try the `.html` file BEFORE the folder,
+  or `/privacy-policy` hits the empty folder → 403.
 
-  Why 403 on /privacy-policy, /smartlink, etc.: Next export has both
-  `page.html` and a `page/` folder (RSC metadata, no index.html). Nginx must
-  try `$uri.html` before `$uri/` or the empty directory yields 403.
-
-  Why SSL breaks: copying the repo’s HTTP-only `infra/nginx-studiely.com.conf`
-  over the live file removes Certbot’s `listen 443 ssl` and certificate
-  lines. Use Certbot again or edit the existing file — do not wipe SSL.
-
-  --- A) Backup and inspect (VPS) ---
+  If you ALREADY use Certbot HTTPS for studiely.com: do NOT overwrite the
+  whole nginx file from your laptop (you would remove ssl lines). Instead SSH
+  in and fix `try_files` in BOTH server blocks (port 80 and 443):
 
     ssh root@187.124.250.67
-    cp -a /etc/nginx/sites-available/studiely.com /etc/nginx/sites-available/studiely.com.bak.$(date +%Y%m%d%H%M)
-    nginx -t
-    grep -n "listen 443\|ssl_certificate" /etc/nginx/sites-available/studiely.com || true
-    certbot certificates
-
-  --- B) Let’s Encrypt (studiely.com + www only) ---
-
-    apt-get update
-    apt-get install -y certbot python3-certbot-nginx
-    certbot --nginx -d studiely.com -d www.studiely.com
-
-  If a cert already exists and you only need renewal (name from
-  `certbot certificates`):
-
-    certbot renew --cert-name studiely.com
-
-  Last resort — re-issue after backup (deletes that cert line, then new one):
-
-    certbot delete --cert-name studiely.com
-    certbot --nginx -d studiely.com -d www.studiely.com
-
-  --- C) try_files in BOTH port 80 and port 443 server { } blocks ---
-
     nano /etc/nginx/sites-available/studiely.com
 
-  In every `location / { ... }` for studiely.com / www.studiely.com, use:
+  In each `location / { ... }` for studiely.com, use exactly:
 
     try_files $uri.html $uri $uri/ /404.html;
 
-  Certbot’s HTTPS block must match (fix 443 if 403 persists on HTTPS only).
-
-  --- D) Reload and quick HTTP checks ---
+  Then:
 
     nginx -t && systemctl reload nginx
-    curl -sI -o /dev/null -w "%{http_code}\n" https://www.studiely.com/privacy-policy
-    curl -sI -o /dev/null -w "%{http_code}\n" https://studiely.com/smartlink
 
-  Expect 200, or 301 then 200 if you redirect apex ↔ www.
+  If you still use the stock HTTP-only file from this repo, you can replace
+  it from your Mac (then run Certbot if you need SSL — see STEP 12):
 
-  --- E) Redeploy static site (Studiely only) — pick one ---
+    scp "/path/to/Studiely/infra/nginx-studiely.com.conf" root@187.124.250.67:/etc/nginx/sites-available/studiely.com
+    ssh root@187.124.250.67 'nginx -t && systemctl reload nginx'
 
-  On VPS:
 
-    cd /var/www/studiely/site
-    git fetch origin refs/heads/vps-main:refs/remotes/origin/vps-main
-    git checkout -B vps-main origin/vps-main
-    git reset --hard origin/vps-main
-    npm ci && npm run build
+--------------------------------------------------------------------------------
+STEP 12 — SSL certificates for studiely.com only (does not change other sites)
+--------------------------------------------------------------------------------
+  Certbot picks the server_name you pass; other nginx sites are untouched.
 
-  From Mac (after `npm run build`):
+    ssh root@187.124.250.67
+    apt-get update && apt-get install -y certbot python3-certbot-nginx
+    certbot --nginx -d studiely.com -d www.studiely.com
 
-    rsync -avz --delete "out/" "root@187.124.250.67:/var/www/studiely/site/out/"
+  Follow the prompts. Afterward, open the studiely.com config again and
+  confirm the HTTPS `server { ... }` block still has the same `try_files`
+  line as STEP 11 (Certbot sometimes copies the old line — if 403 returns,
+  fix `try_files` in the 443 block).
 
-  Nginx `root` must stay `/var/www/studiely/site/out`.
 
-  --- F) Fresh HTTP-only vhost from repo (then run B) ---
+--------------------------------------------------------------------------------
+STEP 13 — Browser says “connection is not private” (fix SSL for Studiely only)
+--------------------------------------------------------------------------------
+  This usually means: no HTTPS on nginx for Studiely, expired cert, or cert
+  not valid for the exact name you typed (studiely.com vs www.studiely.com).
+  Replacing /etc/nginx/sites-available/studiely.com with the repo’s HTTP-only
+  file removes Certbot’s ssl_certificate lines — fix by running Certbot again
+  on ONLY these two names (other vhosts are not modified).
 
-  Only if you have NOT run Certbot yet on this file:
+  A) SSH in (use your real IP if different):
 
-    scp "/Users/rentamac/Desktop/web issues/Studiely/infra/nginx-studiely.com.conf" root@187.124.250.67:/etc/nginx/sites-available/studiely.com
-    ssh root@187.124.250.67 'ln -sf /etc/nginx/sites-available/studiely.com /etc/nginx/sites-enabled/studiely.com && nginx -t && systemctl reload nginx'
+    ssh root@187.124.250.67
 
-  Then run section B.
+  B) DNS check (from the server — both should show THIS server’s public IP):
 
-  --- G) If still broken, capture ---
+    getent hosts studiely.com
+    getent hosts www.studiely.com
 
-    nginx -t
+  If either points elsewhere, fix DNS at your registrar first; Let’s Encrypt
+  will fail or browsers will show warnings.
+
+  C) Open ports 80 and 443 (safe to run; does not remove other rules):
+
+    ufw status
+    ufw allow 'Nginx Full'
+    ufw reload
+
+  D) See what certificates exist (Studiely-related lines only you eyeball):
+
     certbot certificates
-    grep -E "server_name|listen|ssl_certificate" /etc/nginx/sites-available/studiely.com
-    tail -50 /var/log/nginx/studiely-error.log
+
+  E) Re-install / repair nginx plugin and re-attach HTTPS to Studiely only.
+     This command does NOT pass any other domain; Certbot edits the vhost that
+     already has server_name studiely.com / www.studiely.com:
+
+    apt-get update
+    apt-get install -y certbot python3-certbot-nginx
+    certbot --nginx -d studiely.com -d www.studiely.com --redirect
+
+  If Certbot says a certificate already exists and asks to “expand” or
+  “reinstall”, choose the option that puts BOTH names on one certificate.
+
+  F) Test nginx and reload:
+
+    nginx -t && systemctl reload nginx
+
+  G) Confirm the certificate served to the browser (on the server):
+
+    echo | openssl s_client -servername studiely.com -connect 127.0.0.1:443 2>/dev/null | openssl x509 -noout -subject -dates -ext subjectAltName
+
+    echo | openssl s_client -servername www.studiely.com -connect 127.0.0.1:443 2>/dev/null | openssl x509 -noout -subject -dates -ext subjectAltName
+
+  subjectAltName should list BOTH DNS:studiely.com and DNS:www.studiely.com
+  (or one line with both). Dates should be “not after” in the future.
+
+  H) Deep links + HTTPS: open ONLY the Studiely config and ensure EVERY
+     `server { ... }` that listens on 443 for studiely.com has this inside
+     `location / {`:
+
+    try_files $uri.html $uri $uri/ /404.html;
+
+     And that it has valid Let’s Encrypt paths (Certbot adds these; do not
+     point at another site’s cert):
+
+    ssl_certificate /etc/letsencrypt/live/studiely.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/studiely.com/privkey.pem;
+
+     If ssl_certificate lines are missing on 443, step (E) did not apply —
+     run (E) again after `nginx -t` succeeds on the HTTP server block.
+
+  I) Dry-run renewal (optional):
+
+    certbot renew --dry-run
+
+  Then test in the browser (incognito): https://studiely.com/privacy-policy
+  and https://www.studiely.com/smartlink
 
 
 --------------------------------------------------------------------------------
