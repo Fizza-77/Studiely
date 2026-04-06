@@ -134,6 +134,19 @@ STEP 10 — Check it worked
 
 
 --------------------------------------------------------------------------------
+STEP 10b — If direct URLs return 403, refresh nginx config
+--------------------------------------------------------------------------------
+  This project requires nginx `try_files` order:
+
+    try_files $uri $uri.html $uri/ /404.html;
+
+  Apply latest repo config to the server:
+
+    scp "/Users/rentamac/Desktop/web issues/Studiely/infra/nginx-studiely.com.conf" root@187.124.250.67:/etc/nginx/sites-available/studiely.com
+    ssh root@187.124.250.67 'ln -sf /etc/nginx/sites-available/studiely.com /etc/nginx/sites-enabled/studiely.com && nginx -t && systemctl reload nginx'
+
+
+--------------------------------------------------------------------------------
 If you deploy with rsync from your Mac (instead of building on the server)
 --------------------------------------------------------------------------------
   Nginx serves ONLY the built folder: /var/www/studiely/site/out
