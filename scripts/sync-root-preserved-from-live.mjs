@@ -28,6 +28,8 @@ export async function syncRootPreservedFromLive(deployRoot) {
     if (rel.startsWith("_next/") || rel.startsWith("app/")) return true;
     if (rel === "index.html") return true;
     if (rel === "smartlink/index.html" || rel.startsWith("smartlink/")) return true;
+    /* Next static export now emits /legal/**; do not replace with fetched HTML. */
+    if (rel.startsWith("legal/")) return true;
     return false;
   }
 

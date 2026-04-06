@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studiely — Privacy Policy (Web Version)</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:           #181926;
+    --teal:           #00B09B;
+    --indigo:         #5448C8;
+    --amber:          #D97B2A;
+    --rose:           #C94A72;
+    --navy-soft:      #1e2035;
+    --text-primary:   #181926;
+    --text-secondary: #4a4d6a;
+    --text-muted:     #8b8fa8;
+    --border:         #e4e5ef;
+    --bg:             #f8f8fc;
+    --white:          #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    line-height: 1.7;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Header ── */
+  header {
+    background: var(--navy);
+    padding: 3rem 2rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 50% 120%, rgba(0,176,155,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .wordmark {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+  .wordmark-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    color: #fff;
+    background: rgba(255,255,255,0.08);
+    border: 0.5px solid rgba(255,255,255,0.18);
+    padding: 6px 16px;
+    border-radius: 40px;
+  }
+  header h1 {
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+    position: relative;
+  }
+  .header-meta {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    position: relative;
+  }
+  .meta-pill {
+    font-size: 11px;
+    font-family: 'DM Mono', monospace;
+    color: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.06);
+    border: 0.5px solid rgba(255,255,255,0.12);
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+  .meta-pill span { color: var(--teal); }
+
+  /* ── Layout ── */
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 5rem;
+  }
+
+  /* ── Intro block ── */
+  .intro-block {
+    background: var(--white);
+    border: 0.5px solid var(--border);
+    border-left: 3px solid var(--teal);
+    border-radius: 12px;
+    padding: 1.5rem 1.75rem;
+    margin-bottom: 2.5rem;
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+  }
+  .intro-block p { margin-bottom: 1rem; }
+  .intro-block p:last-child { margin-bottom: 0; }
+
+  /* ── Sections ── */
+  .section {
+    margin-bottom: 2rem;
+    background: var(--white);
+    border: 0.5px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 1.25rem 1.75rem;
+    border-bottom: 0.5px solid var(--border);
+    background: #fafafa;
+  }
+  .section-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--white);
+    background: var(--navy);
+    min-width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    padding: 0 5px;
+    letter-spacing: 0;
+  }
+  .section-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .section-body {
+    padding: 1.5rem 1.75rem;
+  }
+  .section-body > p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    font-size: 14.5px;
+  }
+  .section-body > p:last-child { margin-bottom: 0; }
+
+  /* ── Subsections ── */
+  .subsection { margin: 1.25rem 0; }
+  .subsection:first-child { margin-top: 0; }
+  .subsection-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  /* ── Lists ── */
+  ul.policy-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin: 0.75rem 0;
+  }
+  ul.policy-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+  ul.policy-list li::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--teal);
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+
+  /* ── Info grid ── */
+  .info-grid {
+    display: grid;
+    gap: 1px;
+    background: var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0.75rem 0;
+    border: 0.5px solid var(--border);
+  }
+  .info-row {
+    display: flex;
+    background: var(--white);
+  }
+  .info-row:first-child { border-radius: 10px 10px 0 0; }
+  .info-row:last-child  { border-radius: 0 0 10px 10px; }
+  .info-label {
+    width: 200px;
+    flex-shrink: 0;
+    padding: 10px 14px;
+    font-size: 11px;
+    font-weight: 600;
+    font-family: 'DM Mono', monospace;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: #fafbff;
+    border-right: 0.5px solid var(--border);
+  }
+  .info-value {
+    padding: 10px 14px;
+    font-size: 13.5px;
+    color: var(--text-primary);
+    line-height: 1.6;
+  }
+
+  /* ── Service table ── */
+  .service-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0.75rem 0;
+    font-size: 13.5px;
+  }
+  .service-table th {
+    text-align: left;
+    font-size: 11px;
+    font-family: 'DM Mono', monospace;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 8px 12px;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .service-table td {
+    padding: 10px 12px;
+    border-bottom: 0.5px solid var(--border);
+    color: var(--text-secondary);
+    vertical-align: top;
+    font-size: 13.5px;
+  }
+  .service-table tr:last-child td { border-bottom: none; }
+  .service-table td:first-child {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--teal);
+    white-space: nowrap;
+  }
+
+  /* ── Data badges ── */
+  .data-badge {
+    font-size: 10px;
+    font-family: 'DM Mono', monospace;
+    font-weight: 500;
+    padding: 3px 9px;
+    border-radius: 20px;
+    letter-spacing: 0.04em;
+  }
+  .badge-teal   { background: rgba(0,176,155,0.10);  color: #007a6b; border: 0.5px solid rgba(0,176,155,0.30); }
+  .badge-indigo { background: rgba(84,72,200,0.10);  color: var(--indigo); border: 0.5px solid rgba(84,72,200,0.30); }
+  .badge-amber  { background: rgba(217,123,42,0.10); color: #9a5010; border: 0.5px solid rgba(217,123,42,0.30); }
+  .badge-rose   { background: rgba(201,74,114,0.10); color: #8f2550; border: 0.5px solid rgba(201,74,114,0.30); }
+  .badge-navy   { background: rgba(24,25,38,0.08);   color: var(--navy); border: 0.5px solid rgba(24,25,38,0.20); }
+
+  /* ── Compliance tags ── */
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin: 0.75rem 0;
+  }
+  .tag {
+    font-size: 11px;
+    font-family: 'DM Mono', monospace;
+    font-weight: 500;
+    padding: 4px 11px;
+    border-radius: 20px;
+    background: #eef0fa;
+    color: var(--indigo);
+    border: 0.5px solid rgba(84,72,200,0.2);
+  }
+
+  /* ── Retention rows ── */
+  .retention-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .retention-row:last-of-type { border-bottom: none; }
+  .retention-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .retention-label {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    flex: 1;
+  }
+  .retention-period {
+    font-family: 'DM Mono', monospace;
+    font-size: 11.5px;
+    color: var(--text-muted);
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  /* ── Callout boxes ── */
+  .highlight-box {
+    background: #f0eefd;
+    border: 0.5px solid rgba(84,72,200,0.25);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin: 0.75rem 0;
+  }
+  .highlight-box p {
+    color: #3a3080 !important;
+    font-size: 13.5px !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* ── Links ── */
+  a.email-link, a.url-link {
+    color: var(--indigo);
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    font-size: 12.5px;
+  }
+  a.email-link:hover, a.url-link:hover { text-decoration: underline; }
+
+  /* ── Footer ── */
+  footer {
+    background: var(--navy);
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+  }
+  .footer-wordmark {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 0.75rem;
+  }
+  footer p {
+    font-size: 12.5px;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.6;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    .info-label        { width: 130px; font-size: 10px; }
+    .info-value        { font-size: 12.5px; }
+    .section-body      { padding: 1.25rem; }
+    .section-header    { padding: 1rem 1.25rem; }
+    .container         { padding: 2rem 1rem 4rem; }
+  }
+  @media (max-width: 400px) {
+    .info-row     { flex-direction: column; }
+    .info-label   { width: 100%; border-right: none; border-bottom: 0.5px solid var(--border); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── Header ── -->
+<header>
+  <div class="wordmark">
+    <span class="wordmark-badge">S T U D I E L Y</span>
+  </div>
+  <h1>Privacy Policy</h1>
+  <div class="header-meta">
+    <span class="meta-pill">Effective Date: <span>January 15, 2026</span></span>
+    <span class="meta-pill">Last Updated: <span>February 28, 2026</span></span>
+    <span class="meta-pill">Version: <span>1.4</span></span>
+    <span class="meta-pill">Platform: <span>Web</span></span>
+  </div>
+</header>
+
+<!-- ── Main ── -->
+<div class="container">
+
+  <!-- Introduction -->
+  <div class="intro-block">
+    <p>Studiely is an educational technology platform operated by Qismat Ventures W.L.L ("we," "us," or "our"). We are committed to protecting the privacy, safety, and rights of all users, including students, parents, teachers, institutions, and administrators—particularly children.</p>
+    <p>This Privacy Policy applies to users who access and use Studiely through our website and web-based services. It explains what information we collect, how we use it, with whom we share it, how long we keep it, and the rights you have regarding your personal data.</p>
+    <p>Studiely is designed for educational purposes and may be used in school or home learning environments.</p>
+  </div>
+
+  <!-- 1. Company Information -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <div class="section-title">Company Information</div>
+    </div>
+    <div class="section-body">
+      <div class="info-grid">
+        <div class="info-row">
+          <div class="info-label">Company Name</div>
+          <div class="info-value">Qismat Ventures W.L.L</div>
+        </div>
+        <div class="info-row">
+          <div class="info-label">Registered Address</div>
+          <div class="info-value">Office 501, Building 1025, Road 3621, Block 436, Al-Seef, Bahrain</div>
+        </div>
+        <div class="info-row">
+          <div class="info-label">Registration No.</div>
+          <div class="info-value">190698-1</div>
+        </div>
+        <div class="info-row">
+          <div class="info-label">Country</div>
+          <div class="info-value">Kingdom of Bahrain</div>
+        </div>
+        <div class="info-row">
+          <div class="info-label">Primary Contact</div>
+          <div class="info-value"><a href="mailto:admin@qismatventures.com" class="email-link">admin@qismatventures.com</a></div>
+        </div>
+        <div class="info-row">
+          <div class="info-label">Fallback Privacy</div>
+          <div class="info-value"><a href="mailto:privacy@Studiely.com" class="email-link">privacy@Studiely.com</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Scope & Compliance -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <div class="section-title">Scope &amp; Compliance</div>
+    </div>
+    <div class="section-body">
+      <p>This Privacy Policy complies with the following frameworks and regulations where applicable:</p>
+      <div class="tag-row">
+        <span class="tag">GDPR &amp; UK GDPR</span>
+        <span class="tag">COPPA</span>
+        <span class="tag">UK Age-Appropriate Design Code</span>
+        <span class="tag">FERPA-aligned principles</span>
+        <span class="tag">International data protection laws</span>
+      </div>
+      <p>Studiely applies heightened protections for children and student users.</p>
+    </div>
+  </div>
+
+  <!-- 3. Third-Party Services & Firebase -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <div class="section-title">Third-Party Services &amp; Firebase Disclosure</div>
+    </div>
+    <div class="section-body">
+      <p>Studiely uses the following Google Firebase services for its web platform:</p>
+      <table class="service-table">
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Firebase Authentication</td><td>User authentication</td></tr>
+          <tr><td>Cloud Firestore</td><td>Data storage</td></tr>
+          <tr><td>Firebase Analytics</td><td>Anonymous usage analytics</td></tr>
+          <tr><td>Firebase Crashlytics</td><td>Crash reporting</td></tr>
+          <tr><td>Firebase Remote Config</td><td>Feature configuration</td></tr>
+        </tbody>
+      </table>
+      <p>Firebase acts as a data processor where applicable, and Studiely acts as the data controller.</p>
+      <p>Firebase Privacy Policy: <a href="https://firebase.google.com/policies/privacy" class="url-link" target="_blank" rel="noopener">https://firebase.google.com/policies/privacy</a></p>
+      <p>No Firebase services are used for advertising or behavioral profiling of children.</p>
+    </div>
+  </div>
+
+  <!-- 4. Data We Collect -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">4</div>
+      <div class="section-title">Data We Collect</div>
+    </div>
+    <div class="section-body">
+      <p>We collect only data necessary for educational functionality, platform improvement, and legal compliance.</p>
+
+      <div class="subsection">
+        <div class="subsection-title"><span class="data-badge badge-teal">4.1</span>&nbsp; Account &amp; Identifiers</div>
+        <ul class="policy-list">
+          <li>Email address</li>
+          <li>Firebase UID</li>
+          <li>User role (Student, Parent, Teacher, Institution, Administrator)</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <div class="subsection-title"><span class="data-badge badge-indigo">4.2</span>&nbsp; Educational Content &amp; Usage Data</div>
+        <ul class="policy-list">
+          <li>Study notes, summaries, generated materials</li>
+          <li>Quiz questions, answers, results</li>
+          <li>Curriculum and subject selections</li>
+          <li>Learning progress and performance metrics</li>
+          <li>User preferences and settings</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <div class="subsection-title"><span class="data-badge badge-amber">4.3</span>&nbsp; Analytics Data</div>
+        <ul class="policy-list">
+          <li>Page views and navigation patterns</li>
+          <li>Feature usage metrics</li>
+          <li>Approximate location (country/region only)</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <div class="subsection-title"><span class="data-badge badge-navy">4.4</span>&nbsp; Technical &amp; Device Data</div>
+        <ul class="policy-list">
+          <li>Browser and device information</li>
+          <li>Crash logs and diagnostics</li>
+          <li>Session identifiers</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <div class="subsection-title"><span class="data-badge badge-teal">4.5</span>&nbsp; Subscription &amp; Payment Data (Web)</div>
+        <ul class="policy-list">
+          <li>Subscription tier and status</li>
+          <li>Transaction identifiers</li>
+          <li>Subscription start/end dates</li>
+          <li>Payment platform used (e.g., Paddle)</li>
+        </ul>
+        <p style="font-size:13px;color:var(--text-muted);margin-top:6px;">We do not store credit card or payment instrument details.</p>
+      </div>
+
+      <div class="subsection">
+        <div class="subsection-title"><span class="data-badge badge-rose">4.6</span>&nbsp; Data We Do Not Collect</div>
+        <ul class="policy-list">
+          <li>Precise location data</li>
+          <li>Phone numbers</li>
+          <li>Advertising identifiers</li>
+          <li>Biometric identifiers</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Children & Families -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">5</div>
+      <div class="section-title">Children &amp; Families</div>
+    </div>
+    <div class="section-body">
+      <p>Studiely may be used by children, including those under 13.</p>
+      <ul class="policy-list">
+        <li>No advertising to children</li>
+        <li>No behavioral tracking</li>
+        <li>Parental consent required where applicable</li>
+        <li>Parents may review or delete data</li>
+      </ul>
+      <p>Requests may be submitted to: <a href="mailto:admin@qismatventures.com" class="email-link">admin@qismatventures.com</a></p>
+    </div>
+  </div>
+
+  <!-- 6. Cookies -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">6</div>
+      <div class="section-title">Cookies &amp; Similar Technologies</div>
+    </div>
+    <div class="section-body">
+      <p>Studiely may use cookies or similar technologies for analytics and essential functionality. Users may control cookies via browser settings.</p>
+    </div>
+  </div>
+
+  <!-- 7. How We Use Your Data -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">7</div>
+      <div class="section-title">How We Use Your Data</div>
+    </div>
+    <div class="section-body">
+      <p>We use data to:</p>
+      <ul class="policy-list">
+        <li>Provide educational features</li>
+        <li>Authenticate users</li>
+        <li>Generate learning materials</li>
+        <li>Track progress</li>
+        <li>Improve platform functionality</li>
+        <li>Provide subscription services</li>
+        <li>Comply with legal obligations</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 8. Data Sharing -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">8</div>
+      <div class="section-title">Data Sharing</div>
+    </div>
+    <div class="section-body">
+      <p>We do not sell personal data.</p>
+      <p>Data is shared only:</p>
+      <ul class="policy-list">
+        <li>With service providers (e.g., Firebase, payment processors)</li>
+        <li>When legally required</li>
+        <li>During corporate restructuring, with notice where required</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 9. International Transfers -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">9</div>
+      <div class="section-title">International Transfers &amp; Storage</div>
+    </div>
+    <div class="section-body">
+      <p>Data may be stored on servers outside your country, including the United States, using appropriate safeguards such as Standard Contractual Clauses.</p>
+    </div>
+  </div>
+
+  <!-- 10. Data Retention -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">10</div>
+      <div class="section-title">Data Retention</div>
+    </div>
+    <div class="section-body">
+      <div class="retention-row">
+        <div class="retention-dot" style="background: var(--teal);"></div>
+        <div class="retention-label">Active accounts</div>
+        <div class="retention-period">Retained while in use</div>
+      </div>
+      <div class="retention-row">
+        <div class="retention-dot" style="background: var(--amber);"></div>
+        <div class="retention-label">Inactive accounts</div>
+        <div class="retention-period">Deleted after 2 years</div>
+      </div>
+      <div class="retention-row">
+        <div class="retention-dot" style="background: var(--rose);"></div>
+        <div class="retention-label">Legal/security records</div>
+        <div class="retention-period">Up to 7 years</div>
+      </div>
+      <div class="retention-row">
+        <div class="retention-dot" style="background: var(--indigo);"></div>
+        <div class="retention-label">Financial records</div>
+        <div class="retention-period">As required by law</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11. User Rights -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">11</div>
+      <div class="section-title">User Rights</div>
+    </div>
+    <div class="section-body">
+      <p>You may request:</p>
+      <ul class="policy-list">
+        <li>Access</li>
+        <li>Correction</li>
+        <li>Deletion</li>
+        <li>Data portability</li>
+      </ul>
+      <p>Requests should be sent to: <a href="mailto:admin@qismatventures.com" class="email-link">admin@qismatventures.com</a></p>
+    </div>
+  </div>
+
+  <!-- 12. Account Deletion -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">12</div>
+      <div class="section-title">Account Deletion</div>
+    </div>
+    <div class="section-body">
+      <p>You may request deletion by emailing <a href="mailto:admin@qismatventures.com" class="email-link">admin@qismatventures.com</a>. Verified requests are completed within 30 days, subject to legal retention requirements.</p>
+    </div>
+  </div>
+
+  <!-- 13. Analytics Controls -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">13</div>
+      <div class="section-title">Analytics Controls</div>
+    </div>
+    <div class="section-body">
+      <p>Users may opt out of non-essential analytics through browser settings or by contacting us.</p>
+      <div class="highlight-box">
+        <p>Analytics for children are disabled by default where required.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 14. Children's Privacy -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">14</div>
+      <div class="section-title">Children's Privacy</div>
+    </div>
+    <div class="section-body">
+      <p>Studiely applies enhanced protections for minors, including no advertising and full parental control.</p>
+    </div>
+  </div>
+
+  <!-- 15. Changes to This Policy -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">15</div>
+      <div class="section-title">Changes to This Policy</div>
+    </div>
+    <div class="section-body">
+      <p>We may update this policy periodically. Continued use constitutes acceptance.</p>
+    </div>
+  </div>
+
+  <!-- 16. Contact -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">16</div>
+      <div class="section-title">Contact</div>
+    </div>
+    <div class="section-body">
+      <div class="info-grid">
+        <div class="info-row">
+          <div class="info-label">Primary Contact</div>
+          <div class="info-value"><a href="mailto:admin@qismatventures.com" class="email-link">admin@qismatventures.com</a></div>
+        </div>
+        <div class="info-row">
+          <div class="info-label">Fallback Privacy</div>
+          <div class="info-value"><a href="mailto:privacy@Studiely.com" class="email-link">privacy@Studiely.com</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<!-- ── Footer ── -->
+<footer>
+  <div class="footer-wordmark">S T U D I E L Y</div>
+  <p>Thank you for using Studiely. We are dedicated to providing a safe, compliant, and privacy-respecting educational environment.</p>
+</footer>
+
+</body>
+</html>

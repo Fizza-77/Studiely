@@ -1,7 +1,9 @@
-import { loadLegalHtml } from "@/lib/loadLegalHtml";
+import fs from 'fs';
+import path from 'path';
 
 export default function Disclaimer() {
-  const html = loadLegalHtml("studiely-disclaimer.html");
+  const filePath = path.join(process.cwd(), 'legal/studiely-disclaimer.html');
+  const html = fs.readFileSync(filePath, 'utf-8');
 
   return <div dangerouslySetInnerHTML={{ __html: html }} />;
 }

@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studiely — Terms of Service</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:           #181926;
+    --teal:           #00B09B;
+    --indigo:         #5448C8;
+    --amber:          #D97B2A;
+    --rose:           #C94A72;
+    --navy-soft:      #1e2035;
+    --text-primary:   #181926;
+    --text-secondary: #4a4d6a;
+    --text-muted:     #8b8fa8;
+    --border:         #e4e5ef;
+    --bg:             #f8f8fc;
+    --white:          #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    line-height: 1.7;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Header ── */
+  header {
+    background: var(--navy);
+    padding: 3rem 2rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 50% 120%, rgba(0,176,155,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .wordmark {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+  .wordmark-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    color: #fff;
+    background: rgba(255,255,255,0.08);
+    border: 0.5px solid rgba(255,255,255,0.18);
+    padding: 6px 16px;
+    border-radius: 40px;
+  }
+  header h1 {
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+    position: relative;
+  }
+  .header-meta {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    position: relative;
+  }
+  .meta-pill {
+    font-size: 11px;
+    font-family: 'DM Mono', monospace;
+    color: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.06);
+    border: 0.5px solid rgba(255,255,255,0.12);
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+  .meta-pill span { color: var(--teal); }
+
+  /* ── Layout ── */
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 5rem;
+  }
+
+  /* ── Intro block ── */
+  .intro-block {
+    background: var(--white);
+    border: 0.5px solid var(--border);
+    border-left: 3px solid var(--teal);
+    border-radius: 12px;
+    padding: 1.5rem 1.75rem;
+    margin-bottom: 2.5rem;
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+  }
+  .intro-block p { margin-bottom: 0.85rem; }
+  .intro-block p:last-child { margin-bottom: 0; }
+
+  /* ── Sections ── */
+  .section {
+    margin-bottom: 2rem;
+    background: var(--white);
+    border: 0.5px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 1.25rem 1.75rem;
+    border-bottom: 0.5px solid var(--border);
+    background: #fafafa;
+  }
+  .section-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--white);
+    background: var(--navy);
+    min-width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    letter-spacing: 0;
+    padding: 0 5px;
+  }
+  .section-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .section-body {
+    padding: 1.5rem 1.75rem;
+  }
+  .section-body > p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    font-size: 14.5px;
+  }
+  .section-body > p:last-child { margin-bottom: 0; }
+
+  /* ── Lists ── */
+  ul.policy-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin: 0.75rem 0;
+  }
+  ul.policy-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+  ul.policy-list li::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--teal);
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+
+  /* ── Two-column split list ── */
+  .split-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 1.5rem;
+    margin: 0.75rem 0;
+  }
+  .split-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    list-style: none;
+  }
+  .split-list li::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--teal);
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+
+  /* ── Info grid ── */
+  .info-grid {
+    display: grid;
+    gap: 1px;
+    background: var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0.75rem 0;
+    border: 0.5px solid var(--border);
+  }
+  .info-row {
+    display: flex;
+    background: var(--white);
+  }
+  .info-row:first-child { border-radius: 10px 10px 0 0; }
+  .info-row:last-child  { border-radius: 0 0 10px 10px; }
+  .info-label {
+    width: 200px;
+    flex-shrink: 0;
+    padding: 10px 14px;
+    font-size: 11px;
+    font-weight: 600;
+    font-family: 'DM Mono', monospace;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: #fafbff;
+    border-right: 0.5px solid var(--border);
+  }
+  .info-value {
+    padding: 10px 14px;
+    font-size: 13.5px;
+    color: var(--text-primary);
+    line-height: 1.6;
+  }
+
+  /* ── Liability row ── */
+  .liability-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0.75rem 0;
+    border: 0.5px solid var(--border);
+  }
+  .liability-cell {
+    background: var(--white);
+    padding: 1rem 1.25rem;
+  }
+  .liability-cell:first-child { border-radius: 10px 0 0 10px; }
+  .liability-cell:last-child  { border-radius: 0 10px 10px 0; }
+  .liability-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+  .liability-value {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+  }
+
+  /* ── Callout boxes ── */
+  .highlight-box {
+    background: #f0eefd;
+    border: 0.5px solid rgba(84,72,200,0.25);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin: 0.75rem 0;
+  }
+  .highlight-box p {
+    color: #3a3080 !important;
+    font-size: 13.5px !important;
+    margin-bottom: 0 !important;
+  }
+  .warning-box {
+    background: rgba(217,123,42,0.07);
+    border: 0.5px solid rgba(217,123,42,0.3);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin: 0.75rem 0;
+  }
+  .warning-box p {
+    color: #7a3f00 !important;
+    font-size: 13.5px !important;
+    margin-bottom: 0 !important;
+  }
+  .rose-box {
+    background: rgba(201,74,114,0.06);
+    border: 0.5px solid rgba(201,74,114,0.25);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin: 0.75rem 0;
+  }
+  .rose-box p {
+    color: #6e1a35 !important;
+    font-size: 13.5px !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* ── Data badges ── */
+  .data-badge {
+    font-size: 10px;
+    font-family: 'DM Mono', monospace;
+    font-weight: 500;
+    padding: 3px 9px;
+    border-radius: 20px;
+    letter-spacing: 0.04em;
+  }
+  .badge-teal   { background: rgba(0,176,155,0.10);  color: #007a6b; border: 0.5px solid rgba(0,176,155,0.30); }
+  .badge-indigo { background: rgba(84,72,200,0.10);  color: var(--indigo); border: 0.5px solid rgba(84,72,200,0.30); }
+  .badge-amber  { background: rgba(217,123,42,0.10); color: #9a5010; border: 0.5px solid rgba(217,123,42,0.30); }
+  .badge-rose   { background: rgba(201,74,114,0.10); color: #8f2550; border: 0.5px solid rgba(201,74,114,0.30); }
+  .badge-navy   { background: rgba(24,25,38,0.08);   color: var(--navy); border: 0.5px solid rgba(24,25,38,0.20); }
+
+  /* ── Subsections ── */
+  .subsection { margin: 1.25rem 0; }
+  .subsection:first-child { margin-top: 0; }
+  .subsection-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  /* ── Links ── */
+  a.email-link {
+    color: var(--indigo);
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    font-size: 12.5px;
+  }
+  a.email-link:hover { text-decoration: underline; }
+
+  /* ── Footer ── */
+  footer {
+    background: var(--navy);
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+  }
+  .footer-wordmark {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 0.75rem;
+  }
+  footer p {
+    font-size: 12.5px;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.6;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    .info-label        { width: 130px; font-size: 10px; }
+    .info-value        { font-size: 12.5px; }
+    .section-body      { padding: 1.25rem; }
+    .section-header    { padding: 1rem 1.25rem; }
+    .container         { padding: 2rem 1rem 4rem; }
+    .split-list        { grid-template-columns: 1fr; }
+    .liability-grid    { grid-template-columns: 1fr; }
+    .liability-cell:first-child { border-radius: 10px 10px 0 0; }
+    .liability-cell:last-child  { border-radius: 0 0 10px 10px; }
+  }
+  @media (max-width: 400px) {
+    .info-row     { flex-direction: column; }
+    .info-label   { width: 100%; border-right: none; border-bottom: 0.5px solid var(--border); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── Header ── -->
+<header>
+  <div class="wordmark">
+    <span class="wordmark-badge">S T U D I E L Y</span>
+  </div>
+  <h1>Terms of Service</h1>
+  <div class="header-meta">
+    <span class="meta-pill">Effective Date: <span>January 13, 2026</span></span>
+    <span class="meta-pill">Last Updated: <span>February 28, 2026</span></span>
+    <span class="meta-pill">Operator: <span>Qismat Ventures W.L.L</span></span>
+  </div>
+</header>
+
+<!-- ── Main ── -->
+<div class="container">
+
+  <!-- Introduction -->
+  <div class="intro-block">
+    <p>Welcome to Studiely, an educational technology platform operated by Qismat Ventures W.L.L ("Studiely," "we," "us," or "our").</p>
+    <p>These Terms of Service ("Terms") govern access to and use of Studiely across all platforms, including mobile applications, websites, and future services.</p>
+    <p>By accessing or using Studiely, you agree to be bound by these Terms. If you are a parent, guardian, teacher, or institution, you agree on behalf of the student(s) under your supervision.</p>
+    <p>Contact: <a href="mailto:admin@qismatventures.com" class="email-link">admin@qismatventures.com</a></p>
+  </div>
+
+  <!-- 1. Introduction -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <div class="section-title">Introduction</div>
+    </div>
+    <div class="section-body">
+      <p>Welcome to Studiely, an educational technology platform operated by Qismat Ventures W.L.L ("Studiely," "we," "us," or "our").</p>
+      <p>These Terms of Service ("Terms") govern access to and use of Studiely across all platforms, including mobile applications, websites, and future services.</p>
+      <p>By accessing or using Studiely, you agree to be bound by these Terms. If you are a parent, guardian, teacher, or institution, you agree on behalf of the student(s) under your supervision.</p>
+      <div class="info-grid">
+        <div class="info-row">
+          <div class="info-label">Contact</div>
+          <div class="info-value"><a href="mailto:admin@qismatventures.com" class="email-link">admin@qismatventures.com</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Eligibility & User Roles -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <div class="section-title">Eligibility &amp; User Roles</div>
+    </div>
+    <div class="section-body">
+      <p>Studiely supports multiple user roles, including:</p>
+      <ul class="split-list">
+        <li>Students</li>
+        <li>Parents / Legal Guardians</li>
+        <li>Teachers / Educators</li>
+        <li>Institutions / Schools</li>
+        <li>Administrators</li>
+      </ul>
+      <p>Children may only use Studiely under supervision and with consent as required by applicable law.</p>
+      <p>You represent that:</p>
+      <ul class="policy-list">
+        <li>All information provided is accurate</li>
+        <li>You have authority to act on behalf of any child or institution you represent</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 3. Account Registration & Responsibility -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <div class="section-title">Account Registration &amp; Responsibility</div>
+    </div>
+    <div class="section-body">
+      <ul class="policy-list">
+        <li>Some features require account registration.</li>
+        <li>You are responsible for maintaining the confidentiality of login credentials.</li>
+        <li>You are responsible for all activity occurring under your account.</li>
+      </ul>
+      <p>Studiely may suspend or terminate accounts that:</p>
+      <ul class="policy-list">
+        <li>Violate these Terms</li>
+        <li>Provide false information</li>
+        <li>Pose safety or legal risks</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 4. Educational Purpose Disclaimer -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">4</div>
+      <div class="section-title">Educational Purpose Disclaimer</div>
+    </div>
+    <div class="section-body">
+      <p>Studiely is designed to support learning, not replace:</p>
+      <ul class="policy-list">
+        <li>Teachers</li>
+        <li>Schools</li>
+        <li>Parental supervision</li>
+        <li>Professional educational judgment</li>
+      </ul>
+      <div class="warning-box">
+        <p>Educational content, AI-generated suggestions, or automated feedback may contain errors, should be reviewed by a qualified human, and are provided "as-is" for educational assistance only.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Acceptable Use -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">5</div>
+      <div class="section-title">Acceptable Use</div>
+    </div>
+    <div class="section-body">
+      <p>Users agree not to:</p>
+      <ul class="policy-list">
+        <li>Upload harmful, abusive, or illegal content</li>
+        <li>Harass, bully, or exploit others</li>
+        <li>Share personal or sensitive information inappropriately</li>
+        <li>Attempt to bypass security or access restricted systems</li>
+        <li>Use Studiely for non-educational or commercial exploitation</li>
+      </ul>
+      <div class="highlight-box">
+        <p>Additional rules are detailed in the Acceptable Use Policy, which forms part of these Terms.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. User-Generated Content -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">6</div>
+      <div class="section-title">User-Generated Content</div>
+    </div>
+    <div class="section-body">
+      <p>Users may submit educational content such as responses, assignments, or creative work.</p>
+      <ul class="policy-list">
+        <li>Users retain ownership of their content.</li>
+        <li>By submitting content, you grant Studiely a limited, non-exclusive, royalty-free license to store, display, and process the content solely for platform functionality and educational purposes.</li>
+      </ul>
+      <p>Studiely reserves the right to remove content that violates policies or laws.</p>
+    </div>
+  </div>
+
+  <!-- 7. Intellectual Property -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">7</div>
+      <div class="section-title">Intellectual Property</div>
+    </div>
+    <div class="section-body">
+      <p>All Studiely software, design, content, branding, and materials are owned by or licensed to Qismat Ventures W.L.L.</p>
+      <p>Users may not:</p>
+      <ul class="policy-list">
+        <li>Copy, distribute, or modify platform materials</li>
+        <li>Reverse engineer or exploit platform technology</li>
+        <li>Use branding without written permission</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 8. Payments & Subscriptions -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">8</div>
+      <div class="section-title">Payments &amp; Subscriptions</div>
+    </div>
+    <div class="section-body">
+      <p>Some features may require payment.</p>
+      <ul class="policy-list">
+        <li>Pricing, billing cycles, and renewal terms are disclosed at the point of purchase.</li>
+        <li>Refunds are governed by the Refund &amp; Payments Policy.</li>
+        <li>App store purchases are subject to third-party platform rules.</li>
+      </ul>
+      <div class="warning-box">
+        <p>Failure to pay may result in suspension of paid features.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9. Suspension & Termination -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">9</div>
+      <div class="section-title">Suspension &amp; Termination</div>
+    </div>
+    <div class="section-body">
+      <p>Studiely may suspend or terminate access:</p>
+      <ul class="policy-list">
+        <li>For violations of these Terms</li>
+        <li>To protect users, children, or platform integrity</li>
+        <li>To comply with legal obligations</li>
+      </ul>
+      <p>Users may stop using Studiely at any time. Certain obligations survive termination.</p>
+    </div>
+  </div>
+
+  <!-- 10. Third-Party Services -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">10</div>
+      <div class="section-title">Third-Party Services</div>
+    </div>
+    <div class="section-body">
+      <p>Studiely may integrate third-party tools or links.</p>
+      <ul class="policy-list">
+        <li>Studiely is not responsible for third-party services</li>
+        <li>Use of third-party services is subject to their terms</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 11. Disclaimer of Warranties -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">11</div>
+      <div class="section-title">Disclaimer of Warranties</div>
+    </div>
+    <div class="section-body">
+      <p>Studiely is provided "as is" and "as available."</p>
+      <p>We do not guarantee:</p>
+      <ul class="policy-list">
+        <li>Uninterrupted service</li>
+        <li>Error-free content</li>
+        <li>Specific educational outcomes</li>
+      </ul>
+      <div class="rose-box">
+        <p>Use of Studiely is at your own risk, to the extent permitted by law.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 12. Limitation of Liability -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">12</div>
+      <div class="section-title">Limitation of Liability</div>
+    </div>
+    <div class="section-body">
+      <p>To the maximum extent permitted by law:</p>
+      <div class="liability-grid">
+        <div class="liability-cell">
+          <div class="liability-label">Excluded Damages</div>
+          <div class="liability-value">Studiely is not liable for indirect, incidental, or consequential damages.</div>
+        </div>
+        <div class="liability-cell">
+          <div class="liability-label">Liability Cap</div>
+          <div class="liability-value">Total liability shall not exceed the amount paid in the preceding 12 months, or USD 100, whichever is greater.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 13. Indemnification -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">13</div>
+      <div class="section-title">Indemnification</div>
+    </div>
+    <div class="section-body">
+      <p>You agree to indemnify and hold harmless Studiely and Qismat Ventures W.L.L from claims arising from:</p>
+      <ul class="policy-list">
+        <li>Your use of the platform</li>
+        <li>Violation of these Terms</li>
+        <li>Misuse of content or data</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 14. Governing Law & Jurisdiction -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">14</div>
+      <div class="section-title">Governing Law &amp; Jurisdiction</div>
+    </div>
+    <div class="section-body">
+      <div class="info-grid">
+        <div class="info-row">
+          <div class="info-label">Governing Law</div>
+          <div class="info-value">Kingdom of Bahrain</div>
+        </div>
+        <div class="info-row">
+          <div class="info-label">Conflict of Law</div>
+          <div class="info-value">Conflict of law principles do not apply</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 15. Changes to These Terms -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">15</div>
+      <div class="section-title">Changes to These Terms</div>
+    </div>
+    <div class="section-body">
+      <p>We may update these Terms periodically. Continued use of Studiely after changes constitutes acceptance.</p>
+    </div>
+  </div>
+
+  <!-- 16. Contact Information -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">16</div>
+      <div class="section-title">Contact Information</div>
+    </div>
+    <div class="section-body">
+      <p>For questions or concerns regarding these Terms:</p>
+      <div class="info-grid">
+        <div class="info-row">
+          <div class="info-label">Contact</div>
+          <div class="info-value"><a href="mailto:admin@qismatventures.com" class="email-link">admin@qismatventures.com</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<!-- ── Footer ── -->
+<footer>
+  <div class="footer-wordmark">S T U D I E L Y</div>
+  <p>© Qismat Ventures W.L.L. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

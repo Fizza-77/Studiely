@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studiely — Privacy Policy (Apple App Store)</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:           #181926;
+    --teal:           #00B09B;
+    --indigo:         #5448C8;
+    --amber:          #D97B2A;
+    --rose:           #C94A72;
+    --navy-soft:      #1e2035;
+    --text-primary:   #181926;
+    --text-secondary: #4a4d6a;
+    --text-muted:     #8b8fa8;
+    --border:         #e4e5ef;
+    --bg:             #f8f8fc;
+    --white:          #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    line-height: 1.7;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Header ── */
+  header {
+    background: var(--navy);
+    padding: 3rem 2rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 50% 120%, rgba(0,176,155,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .wordmark {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+  .wordmark-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    color: #fff;
+    background: rgba(255,255,255,0.08);
+    border: 0.5px solid rgba(255,255,255,0.18);
+    padding: 6px 16px;
+    border-radius: 40px;
+  }
+  header h1 {
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+    position: relative;
+  }
+  .header-meta {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    position: relative;
+  }
+  .meta-pill {
+    font-size: 11px;
+    font-family: 'DM Mono', monospace;
+    color: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.06);
+    border: 0.5px solid rgba(255,255,255,0.12);
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+  .meta-pill span { color: var(--teal); }
+
+  /* ── Layout ── */
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 5rem;
+  }
+
+  /* ── Intro block ── */
+  .intro-block {
+    background: var(--white);
+    border: 0.5px solid var(--border);
+    border-left: 3px solid var(--teal);
+    border-radius: 12px;
+    padding: 1.5rem 1.75rem;
+    margin-bottom: 2.5rem;
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+  }
+  .intro-block p { margin-bottom: 1rem; }
+  .intro-block p:last-child { margin-bottom: 0; }
+
+  /* ── Sections ── */
+  .section {
+    margin-bottom: 2rem;
+    background: var(--white);
+    border: 0.5px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 1.25rem 1.75rem;
+    border-bottom: 0.5px solid var(--border);
+    background: #fafafa;
+  }
+  .section-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--white);
+    background: var(--navy);
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    letter-spacing: 0;
+  }
+  .section-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .section-body {
+    padding: 1.5rem 1.75rem;
+  }
+  .section-body p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    font-size: 14.5px;
+  }
+  .section-body p:last-child { margin-bottom: 0; }
+
+  /* ── Subsections ── */
+  .subsection { margin: 1.25rem 0; }
+  .subsection:first-child { margin-top: 0; }
+  .subsection-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  /* ── Lists ── */
+  ul.policy-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin: 0.75rem 0;
+  }
+  ul.policy-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+  ul.policy-list li::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--teal);
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+
+  /* ── Info grid ── */
+  .info-grid {
+    display: grid;
+    gap: 1px;
+    background: var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0.75rem 0;
+    border: 0.5px solid var(--border);
+  }
+  .info-row {
+    display: flex;
+    background: var(--white);
+  }
+  .info-row:first-child { border-radius: 10px 10px 0 0; }
+  .info-row:last-child  { border-radius: 0 0 10px 10px; }
+  .info-label {
+    width: 200px;
+    flex-shrink: 0;
+    padding: 10px 14px;
+    font-size: 11px;
+    font-weight: 600;
+    font-family: 'DM Mono', monospace;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: #fafbff;
+    border-right: 0.5px solid var(--border);
+  }
+  .info-value {
+    padding: 10px 14px;
+    font-size: 13.5px;
+    color: var(--text-primary);
+    line-height: 1.6;
+  }
+
+  /* ── Service table ── */
+  .service-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0.75rem 0;
+    font-size: 13.5px;
+  }
+  .service-table th {
+    text-align: left;
+    font-size: 11px;
+    font-family: 'DM Mono', monospace;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 8px 12px;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .service-table td {
+    padding: 10px 12px;
+    border-bottom: 0.5px solid var(--border);
+    color: var(--text-secondary);
+    vertical-align: top;
+    font-size: 13.5px;
+    line-height: 1.55;
+  }
+  .service-table tr:last-child td { border-bottom: none; }
+  .service-table td:first-child {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--teal);
+    white-space: nowrap;
+    width: 220px;
+  }
+
+  /* ── Data badges ── */
+  .data-badge {
+    font-size: 10px;
+    font-family: 'DM Mono', monospace;
+    font-weight: 500;
+    padding: 3px 9px;
+    border-radius: 20px;
+    letter-spacing: 0.04em;
+  }
+  .badge-teal   { background: rgba(0,176,155,0.10);  color: #007a6b; border: 0.5px solid rgba(0,176,155,0.30); }
+  .badge-indigo { background: rgba(84,72,200,0.10);  color: var(--indigo); border: 0.5px solid rgba(84,72,200,0.30); }
+  .badge-amber  { background: rgba(217,123,42,0.10); color: #9a5010; border: 0.5px solid rgba(217,123,42,0.30); }
+  .badge-rose   { background: rgba(201,74,114,0.10); color: #8f2550; border: 0.5px solid rgba(201,74,114,0.30); }
+  .badge-navy   { background: rgba(24,25,38,0.08);   color: var(--navy); border: 0.5px solid rgba(24,25,38,0.20); }
+
+  /* ── Compliance tags ── */
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin: 0.75rem 0;
+  }
+  .tag {
+    font-size: 11px;
+    font-family: 'DM Mono', monospace;
+    font-weight: 500;
+    padding: 4px 11px;
+    border-radius: 20px;
+    background: #eef0fa;
+    color: var(--indigo);
+    border: 0.5px solid rgba(84,72,200,0.2);
+  }
+
+  /* ── Retention rows ── */
+  .retention-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .retention-row:last-of-type { border-bottom: none; }
+  .retention-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .retention-label {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    flex: 1;
+  }
+  .retention-period {
+    font-family: 'DM Mono', monospace;
+    font-size: 11.5px;
+    color: var(--text-muted);
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  /* ── Callout boxes ── */
+  .highlight-box {
+    background: #f0eefd;
+    border: 0.5px solid rgba(84,72,200,0.25);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin: 0.75rem 0;
+  }
+  .highlight-box p {
+    color: #3a3080 !important;
+    font-size: 13.5px !important;
+    margin-bottom: 0 !important;
+  }
+  .warning-box {
+    background: rgba(217,123,42,0.07);
+    border: 0.5px solid rgba(217,123,42,0.3);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin: 0.75rem 0;
+  }
+  .warning-box p {
+    color: #7a3f00 !important;
+    font-size: 13.5px !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* ── Links ── */
+  a.email-link, a.url-link {
+    color: var(--indigo);
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    font-size: 12.5px;
+  }
+  a.email-link:hover, a.url-link:hover { text-decoration: underline; }
+
+  /* ── Footer ── */
+  footer {
+    background: var(--navy);
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+  }
+  .footer-wordmark {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 0.75rem;
+  }
+  footer p {
+    font-size: 12.5px;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.6;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    .info-label        { width: 130px; font-size: 10px; }
+    .info-value        { font-size: 12.5px; }
+    .section-body      { padding: 1.25rem; }
+    .section-header    { padding: 1rem 1.25rem; }
+    .container         { padding: 2rem 1rem 4rem; }
+    .service-table     { font-size: 12.5px; }
+    .service-table td,
+    .service-table th  { padding: 8px 10px; }
+    .service-table td:first-child { width: auto; white-space: normal; }
+  }
+  @media (max-width: 400px) {
+    .info-row          { flex-direction: column; }
+    .info-label        { width: 100%; border-right: none; border-bottom: 0.5px solid var(--border); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── Header ── -->
+<header>
+  <div class="wordmark">
+    <span class="wordmark-badge">S T U D I E L Y</span>
+  </div>
+  <h1>Privacy Policy</h1>
+  <div class="header-meta">
+    <span class="meta-pill">Effective Date: <span>January 14, 2026</span></span>
+    <span class="meta-pill">Last Updated: <span>February 28, 2026</span></span>
+    <span class="meta-pill">Platform: <span>Apple App Store</span></span>
+  </div>
+</header>
+
+<!-- ── Main ── -->
+<div class="container">
+
+  <!-- Introduction -->
+  <div class="intro-block">
+    <p>Studiely is an educational technology platform operated by Qismat Ventures W.L.L ("we," "us," or "our"). We are committed to protecting the privacy, safety, and rights of all users, including students, parents, teachers, institutions, and administrators, particularly children.</p>
+    <p>This Privacy Policy applies to users who download and use Studiely via the Apple App Store. It explains what data, if any, your app and any third parties collect from your users, how you and any third parties use the data, and the users' privacy rights. This policy clearly and explicitly identifies what data is collected, how it is collected, and all uses of that data. It also confirms that any third party with whom data is shared (such as service providers) provides the same or equal protection of user data as stated in this policy. We explain our data retention and deletion policies below, including how a user can revoke consent and/or request deletion of their data.</p>
+    <p>We collect only the data necessary for providing educational features, improving the app, and ensuring security (data minimization principle). Data is limited to educational purposes and not used for advertising, marketing, or any unauthorized purposes. Paid functionality is not dependent on allowing the app to access data (such as Contacts or Photos). We secure user consent for data collection where required, and users can withdraw consent at any time as described below. If we rely on legitimate interests for processing (e.g., under GDPR), we ensure compliance with applicable laws.</p>
+    <p>This Privacy Policy is accessible within the app in an easily accessible manner, such as via a dedicated settings or help section.</p>
+  </div>
+
+  <!-- Company Information -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num" style="width:auto;padding:0 8px;font-size:9px;letter-spacing:0.04em;">CO</div>
+      <div class="section-title">Company Information</div>
+    </div>
+    <div class="section-body">
+      <div class="info-grid">
+        <div class="info-row">
+          <div class="info-label">Company Name</div>
+          <div class="info-value">Qismat Ventures W.L.L</div>
+        </div>
+        <div class="info-row">
+          <div class="info-label">Registered Address</div>
+          <div class="info-value">Office 501, Building 1025, Road 3621, Block 436 – Al-Seef</div>
+        </div>
+        <div class="info-row">
+          <div class="info-label">Registration No.</div>
+          <div class="info-value">190698-1</div>
+        </div>
+        <div class="info-row">
+          <div class="info-label">Country</div>
+          <div class="info-value">Bahrain</div>
+        </div>
+        <div class="info-row">
+          <div class="info-label">Contact</div>
+          <div class="info-value"><a href="mailto:admin@qismatventures.com" class="email-link">admin@qismatventures.com</a></div>
+        </div>
+      </div>
+      <p>For any questions, concerns, data requests, parental consent matters, revocation of consent, or account deletion, please email us at <a href="mailto:admin@qismatventures.com" class="email-link">admin@qismatventures.com</a>. We respond to requests promptly, typically within 30 days.</p>
+    </div>
+  </div>
+
+  <!-- 1. Scope & Compliance -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <div class="section-title">Scope &amp; Compliance</div>
+    </div>
+    <div class="section-body">
+      <p>This policy complies with:</p>
+      <div class="tag-row">
+        <span class="tag">Apple App Store Review Guidelines</span>
+        <span class="tag">App Tracking Transparency (ATT)</span>
+        <span class="tag">COPPA (US, under-13)</span>
+        <span class="tag">GDPR &amp; UK GDPR</span>
+        <span class="tag">UK Age-Appropriate Design Code</span>
+        <span class="tag">FERPA-aligned principles</span>
+        <span class="tag">International data protection laws</span>
+      </div>
+      <p>We are committed to Apple's guidelines for apps that may be used by or appeal to children, including those in the Kids Category or handling minors' data. Studiely is designed for educational use and may collect, transmit, or share personal information from minors (e.g., name, email, persistent identifiers like Firebase UID), so we include this privacy policy and comply with all relevant children's privacy statutes.</p>
+    </div>
+  </div>
+
+  <!-- 2. Third-Party Services & Firebase -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <div class="section-title">Third-Party Services &amp; Firebase Disclosure</div>
+    </div>
+    <div class="section-body">
+      <p>Studiely uses the following Google Firebase services as third-party processors:</p>
+      <table class="service-table">
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Firebase Authentication</td><td>User authentication and identity management</td></tr>
+          <tr><td>Cloud Firestore</td><td>Secure data storage</td></tr>
+          <tr><td>Firebase Analytics</td><td>App usage analytics, limited to improving app quality and learning outcomes; anonymized where possible</td></tr>
+          <tr><td>Firebase Crashlytics</td><td>Crash reporting and error tracking</td></tr>
+          <tr><td>Firebase Remote Config</td><td>App configuration</td></tr>
+        </tbody>
+      </table>
+      <p>These services provide the same or equal protection of user data as stated in this policy. For more information, see the Firebase Privacy Policy: <a href="https://firebase.google.com/support/privacy" class="url-link" target="_blank" rel="noopener">https://firebase.google.com/support/privacy</a></p>
+      <p>Data processed by Firebase is handled in compliance with Apple's terms, our instructions as the data controller (under GDPR), and applicable laws. We do not share data with third parties for their own purposes without consent.</p>
+    </div>
+  </div>
+
+  <!-- 3. Data We Collect -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <div class="section-title">Data We Collect</div>
+    </div>
+    <div class="section-body">
+      <p>We collect only the minimum data required for the app's core educational functionality, account management, analytics to improve the app, and legal compliance. Data collection is explained below, including how it is collected and its uses. We do not collect data for purposes other than those stated without obtaining further consent.</p>
+
+      <div class="subsection">
+        <div class="subsection-title"><span class="data-badge badge-teal">3.1</span>&nbsp; Account &amp; Identity Data</div>
+        <p style="font-size:13px;color:var(--text-muted);margin-bottom:0.5rem;">Collected directly during registration or login via Firebase Authentication.</p>
+        <ul class="policy-list">
+          <li>Name (if provided, optional)</li>
+          <li>Email address</li>
+          <li>User role (e.g., Student, Parent, Teacher, Institution, Administrator)</li>
+          <li>Firebase Authentication User ID (UID, a persistent identifier)</li>
+        </ul>
+        <div class="highlight-box">
+          <p>Uses: To create and manage accounts, authenticate users, and provide role-based features.</p>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <div class="subsection-title"><span class="data-badge badge-indigo">3.2</span>&nbsp; Educational &amp; Generated Content</div>
+        <p style="font-size:13px;color:var(--text-muted);margin-bottom:0.5rem;">Collected when users interact with features, stored via Cloud Firestore.</p>
+        <ul class="policy-list">
+          <li>Study notes, summaries, and educational materials generated or inputted</li>
+          <li>Quiz questions, answers, results, scores, and completion data</li>
+          <li>Curriculum selections, subjects, and topics</li>
+          <li>Subject and topic preferences</li>
+          <li>Study modes, difficulty settings, and user preferences</li>
+          <li>Generated content metadata (e.g., subjects, topics, difficulty levels)</li>
+        </ul>
+        <div class="highlight-box">
+          <p>Uses: Solely to support learning, track progress, and provide personalized educational assistance. This data is not repurposed without consent.</p>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <div class="subsection-title"><span class="data-badge badge-amber">3.3</span>&nbsp; Analytics &amp; Usage Data</div>
+        <p style="font-size:13px;color:var(--text-muted);margin-bottom:0.5rem;">Collected automatically via Firebase Analytics.</p>
+        <ul class="policy-list">
+          <li>Screen views and navigation patterns</li>
+          <li>Feature interactions (e.g., button clicks, feature usage)</li>
+          <li>In-app search history (topics/subjects searched)</li>
+          <li>Quiz performance and completion data</li>
+          <li>Approximate location (country/region only, inferred for service improvement)</li>
+        </ul>
+        <p style="font-size:13px;color:var(--text-muted);margin-top:6px;">We do not collect, use, or share precise location data.</p>
+        <div class="highlight-box">
+          <p>Uses: To analyze app performance, improve user experience, and enhance educational outcomes. Data is anonymized or aggregated where possible. No data is used to build user profiles or for advertising.</p>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <div class="subsection-title"><span class="data-badge badge-teal">3.4</span>&nbsp; Subscription &amp; Billing Data</div>
+        <p style="font-size:13px;color:var(--text-muted);margin-bottom:0.5rem;">Collected via Apple's in-app purchase system.</p>
+        <ul class="policy-list">
+          <li>Subscription plan type and status</li>
+          <li>Purchase tokens and transaction identifiers</li>
+          <li>Subscription start and end dates</li>
+        </ul>
+        <div class="warning-box">
+          <p>Payments and subscriptions are processed exclusively by Apple Inc. Studiely does not store or have access to payment card details or other financial information. Apple may collect and process transaction data independently in accordance with its own privacy policy. Subscriptions are managed and can be canceled via your Apple ID settings.</p>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <div class="subsection-title"><span class="data-badge badge-navy">3.5</span>&nbsp; Device &amp; Technical Data</div>
+        <p style="font-size:13px;color:var(--text-muted);margin-bottom:0.5rem;">Collected automatically via Firebase services.</p>
+        <ul class="policy-list">
+          <li>Device type, model, and OS version</li>
+          <li>App version</li>
+          <li>Crash logs, diagnostic reports, and error data (e.g., device model, OS version, RAM)</li>
+          <li>Session IDs and installation IDs</li>
+        </ul>
+        <div class="highlight-box">
+          <p>Uses: For troubleshooting, crash reporting, and ensuring app compatibility.</p>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <div class="subsection-title"><span class="data-badge badge-rose">3.6</span>&nbsp; Data We Do Not Collect</div>
+        <p>Studiely does not collect:</p>
+        <ul class="policy-list">
+          <li>Precise location data</li>
+          <li>Phone numbers</li>
+          <li>Advertising identifiers (IDFA)</li>
+          <li>Other sensitive data prohibited under Apple guidelines for children</li>
+          <li>Data from APIs like Contacts, Photos, HealthKit, or Location Services</li>
+          <li>Personal information compiled from device sources or public databases without consent</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. App Tracking Transparency -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">4</div>
+      <div class="section-title">App Tracking Transparency (ATT)</div>
+    </div>
+    <div class="section-body">
+      <p>Studiely complies with Apple's App Tracking Transparency framework. We do not track users or their devices across apps or websites owned by other companies for advertising or data brokerage purposes. We do not use advertising identifiers (IDFA) or any data for third-party advertising, measurement, or sharing with data brokers.</p>
+      <div class="highlight-box">
+        <p>No permission prompt is required via ATT APIs because no such tracking occurs.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Children's Privacy -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">5</div>
+      <div class="section-title">Children's Privacy – COPPA &amp; Apple Kids Compliance</div>
+    </div>
+    <div class="section-body">
+      <p>Studiely may be used by children (including under 13) for educational purposes. We:</p>
+      <ul class="policy-list">
+        <li>Comply with COPPA and Apple's guidelines for apps in the Kids Category or handling minors' data</li>
+        <li>Do not serve any behavioral advertising, third-party advertising, or use children's data for marketing</li>
+        <li>Limit data collection to what is strictly necessary for educational functionality and app improvement</li>
+        <li>Require verifiable parental consent before collecting, using, or disclosing personal information from children under 13</li>
+        <li>Allow parents/legal guardians to review, access, correct, delete, or withdraw consent for their child's data at any time</li>
+        <li>Do not include third-party analytics or advertising except in limited, compliant cases</li>
+        <li>Provide a parental gate for any features requiring age verification, distinct from COPPA consent</li>
+      </ul>
+      <div class="highlight-box">
+        <p>Our use of Firebase Analytics is anonymized, does not collect/transmit identifiable info like name, DOB, email, precise location, or device info for kids, and is subject to human review for appropriateness.</p>
+      </div>
+      <p>Parents may request data review, deletion, withdrawal of consent, or manage their child's account by emailing <a href="mailto:admin@qismatventures.com" class="email-link">admin@qismatventures.com</a>. We do not send personal information or device info from children to third parties except as necessary for app functionality (e.g., Firebase processing).</p>
+    </div>
+  </div>
+
+  <!-- 6. Cookies -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">6</div>
+      <div class="section-title">Cookies &amp; Similar Technologies</div>
+    </div>
+    <div class="section-body">
+      <p>Firebase services may use cookies or similar technologies (e.g., persistent identifiers) for analytics and functionality. These are managed through your device settings or app preferences. You can disable non-essential ones, though some are required for core app operation.</p>
+    </div>
+  </div>
+
+  <!-- 7. How We Use Your Data -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">7</div>
+      <div class="section-title">How We Use Your Data</div>
+    </div>
+    <div class="section-body">
+      <p>We use collected data solely to:</p>
+      <ul class="policy-list">
+        <li>Provide, maintain, and improve educational features (e.g., generating content, tracking progress)</li>
+        <li>Authenticate users and manage accounts</li>
+        <li>Analyze usage for app improvements (anonymized where possible)</li>
+        <li>Handle subscriptions and billing (via Apple)</li>
+        <li>Detect and fix crashes/errors</li>
+        <li>Comply with legal obligations, such as age verification or record-keeping</li>
+      </ul>
+      <p>Data is not used for any other purposes without obtaining further explicit consent. We do not use data to build contact databases, user profiles, or for marketing/advertising. Health or sensitive data is not collected.</p>
+    </div>
+  </div>
+
+  <!-- 8. Data Sharing -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">8</div>
+      <div class="section-title">Data Sharing</div>
+    </div>
+    <div class="section-body">
+      <p>We do not sell, rent, or share your data for marketing or advertising. We share data only:</p>
+      <ul class="policy-list">
+        <li>With Google/Firebase as processors for the services described (they provide equal data protection)</li>
+        <li>As required by law, to respond to legal processes, or to protect rights/safety</li>
+        <li>In the event of a merger/acquisition (with notice and consent where required)</li>
+      </ul>
+      <p>No data is shared with third parties to improve the app or for advertising except as permitted under Apple guidelines and with consent. We do not share data from health APIs (none used) or for data mining.</p>
+    </div>
+  </div>
+
+  <!-- 9. Data Storage & International Transfers -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">9</div>
+      <div class="section-title">Data Storage &amp; International Transfers</div>
+    </div>
+    <div class="section-body">
+      <p>Data is stored securely on Google Firebase servers, which may be located outside your country of residence (including the US). We use appropriate safeguards, including:</p>
+      <ul class="policy-list">
+        <li>Standard Contractual Clauses (SCCs)</li>
+        <li>Firebase's compliance with international data protection standards (e.g., EU-U.S. Data Privacy Framework)</li>
+        <li>Encryption and access controls</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 10. Data Retention -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">10</div>
+      <div class="section-title">Data Retention</div>
+    </div>
+    <div class="section-body">
+      <p>We retain data only as long as necessary:</p>
+      <div class="retention-row">
+        <div class="retention-dot" style="background: var(--teal);"></div>
+        <div class="retention-label">Active accounts</div>
+        <div class="retention-period">Retained while in use</div>
+      </div>
+      <div class="retention-row">
+        <div class="retention-dot" style="background: var(--amber);"></div>
+        <div class="retention-label">Inactive accounts</div>
+        <div class="retention-period">Deleted after 2 years</div>
+      </div>
+      <div class="retention-row">
+        <div class="retention-dot" style="background: var(--rose);"></div>
+        <div class="retention-label">Legal &amp; security records</div>
+        <div class="retention-period">Up to 7 years</div>
+      </div>
+      <div class="retention-row">
+        <div class="retention-dot" style="background: var(--indigo);"></div>
+        <div class="retention-label">Subscription records</div>
+        <div class="retention-period">As required by law</div>
+      </div>
+      <p style="margin-top: 1rem;">Data is securely deleted or anonymized when no longer needed.</p>
+    </div>
+  </div>
+
+  <!-- 11. User Rights -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">11</div>
+      <div class="section-title">User Rights</div>
+    </div>
+    <div class="section-body">
+      <p>Depending on your location and applicable laws (e.g., GDPR, COPPA), you may request:</p>
+      <ul class="policy-list">
+        <li>Access to your data (including a copy)</li>
+        <li>Correction of inaccurate data</li>
+        <li>Deletion of your data</li>
+        <li>Portability of your data (in a structured format)</li>
+        <li>Restriction or objection to processing</li>
+        <li>Withdrawal of consent (without affecting prior lawful processing)</li>
+      </ul>
+      <p>For children under 13, parents/guardians can exercise these rights on their behalf. To exercise rights or revoke consent, contact <a href="mailto:admin@qismatventures.com" class="email-link">admin@qismatventures.com</a>. We provide an easily accessible way to withdraw consent within the app (e.g., via settings). We do not discriminate against users exercising rights.</p>
+    </div>
+  </div>
+
+  <!-- 12. Account Deletion -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">12</div>
+      <div class="section-title">Account Deletion</div>
+    </div>
+    <div class="section-body">
+      <p>Apps supporting account creation must offer account deletion within the app. You can delete your account and associated data:</p>
+      <ul class="policy-list">
+        <li>Directly within the app (via the settings menu or account management section)</li>
+        <li>Or by emailing <a href="mailto:admin@qismatventures.com" class="email-link">admin@qismatventures.com</a> and providing your registered email address</li>
+      </ul>
+      <p>We will delete your account and data within 30 days, except where legally required to retain it (e.g., for security, fraud prevention, or accounting purposes). Upon deletion, we revoke all consents and stop processing your data.</p>
+    </div>
+  </div>
+
+  <!-- 13. Analytics Opt-Out -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">13</div>
+      <div class="section-title">Analytics Opt-Out</div>
+    </div>
+    <div class="section-body">
+      <p>You can opt out of non-essential analytics collection by:</p>
+      <ul class="policy-list">
+        <li>Adjusting your device settings (e.g., Limit Ad Tracking or app privacy preferences)</li>
+        <li>Contacting us at <a href="mailto:admin@qismatventures.com" class="email-link">admin@qismatventures.com</a> to request opt-out</li>
+      </ul>
+      <div class="highlight-box">
+        <p>Some analytics may be necessary for core app functionality and cannot be disabled. Since we do not track across apps, no ATT prompt is shown.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 14. Changes to This Policy -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">14</div>
+      <div class="section-title">Changes to This Policy</div>
+    </div>
+    <div class="section-body">
+      <p>We may update this Privacy Policy periodically to reflect changes in practices or laws. We will notify users of material changes (e.g., via in-app notice, email, or app update). Continued use of Studiely after changes constitutes acceptance of the updated policy.</p>
+    </div>
+  </div>
+
+  <!-- 15. Contact Us -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">15</div>
+      <div class="section-title">Contact Us</div>
+    </div>
+    <div class="section-body">
+      <p>For questions, data requests, parental consent, revocation of consent, account deletion, or concerns:</p>
+      <div class="info-grid">
+        <div class="info-row">
+          <div class="info-label">Primary Contact</div>
+          <div class="info-value"><a href="mailto:admin@qismatventures.com" class="email-link">admin@qismatventures.com</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<!-- ── Footer ── -->
+<footer>
+  <div class="footer-wordmark">S T U D I E L Y</div>
+  <p>Thank you for using Studiely. We are dedicated to providing a safe, privacy-respecting educational environment.</p>
+</footer>
+
+</body>
+</html>

@@ -1,7 +1,12 @@
-import { loadLegalHtml } from "@/lib/loadLegalHtml";
+import fs from 'fs';
+import path from 'path';
 
 export default function AcceptableUsePolicy() {
-  const html = loadLegalHtml("studiely-acceptable-use-policy.html");
+  const filePath = path.join(
+    process.cwd(),
+    'legal/studiely-acceptable-use-policy.html'
+  );
+  const html = fs.readFileSync(filePath, 'utf-8');
 
   return <div dangerouslySetInnerHTML={{ __html: html }} />;
 }

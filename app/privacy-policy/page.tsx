@@ -1,7 +1,9 @@
-import { loadLegalHtml } from "@/lib/loadLegalHtml";
+import fs from 'fs';
+import path from 'path';
 
 export default function PrivacyPolicy() {
-  const html = loadLegalHtml("studiely-privacy-policy.html");
+  const filePath = path.join(process.cwd(), 'legal/studiely-privacy-policy.html');
+  const html = fs.readFileSync(filePath, 'utf-8');
 
   return <div dangerouslySetInnerHTML={{ __html: html }} />;
 }

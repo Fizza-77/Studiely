@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studiely — Delete Account &amp; Data</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:           #181926;
+    --teal:           #00B09B;
+    --indigo:         #5448C8;
+    --amber:          #D97B2A;
+    --rose:           #C94A72;
+    --navy-soft:      #1e2035;
+    --text-primary:   #181926;
+    --text-secondary: #4a4d6a;
+    --text-muted:     #8b8fa8;
+    --border:         #e4e5ef;
+    --bg:             #f8f8fc;
+    --white:          #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    line-height: 1.7;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Header ── */
+  header {
+    background: var(--navy);
+    padding: 3rem 2rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 50% 120%, rgba(201,74,114,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .wordmark {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+  .wordmark-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    color: #fff;
+    background: rgba(255,255,255,0.08);
+    border: 0.5px solid rgba(255,255,255,0.18);
+    padding: 6px 16px;
+    border-radius: 40px;
+  }
+  header h1 {
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+    position: relative;
+  }
+  .header-meta {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    position: relative;
+  }
+  .meta-pill {
+    font-size: 11px;
+    font-family: 'DM Mono', monospace;
+    color: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.06);
+    border: 0.5px solid rgba(255,255,255,0.12);
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+  .meta-pill span { color: var(--teal); }
+  .meta-pill.rose span { color: #f4829e; }
+
+  /* ── Layout ── */
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 5rem;
+  }
+
+  /* ── Intro block ── */
+  .intro-block {
+    background: var(--white);
+    border: 0.5px solid var(--border);
+    border-left: 3px solid var(--rose);
+    border-radius: 12px;
+    padding: 1.5rem 1.75rem;
+    margin-bottom: 2.5rem;
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+  }
+
+  /* ── Sections ── */
+  .section {
+    margin-bottom: 2rem;
+    background: var(--white);
+    border: 0.5px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 1.25rem 1.75rem;
+    border-bottom: 0.5px solid var(--border);
+    background: #fafafa;
+  }
+  .section-icon {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--white);
+    background: var(--navy);
+    min-width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    padding: 0 5px;
+    letter-spacing: 0;
+  }
+  .section-icon.rose-icon  { background: var(--rose); }
+  .section-icon.teal-icon  { background: var(--teal); }
+  .section-icon.amber-icon { background: var(--amber); }
+  .section-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .section-body {
+    padding: 1.5rem 1.75rem;
+  }
+  .section-body > p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    font-size: 14.5px;
+  }
+  .section-body > p:last-child { margin-bottom: 0; }
+
+  /* ── Numbered steps ── */
+  ol.steps-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 0.75rem 0;
+    border: 0.5px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  ol.steps-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 1rem 1.25rem;
+    border-bottom: 0.5px solid var(--border);
+    background: var(--white);
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+  ol.steps-list li:last-child { border-bottom: none; }
+  .step-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--white);
+    background: var(--rose);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .step-content { flex: 1; }
+  .step-content strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+
+  /* ── Sub-steps (indented) ── */
+  ul.sub-steps {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 8px;
+  }
+  ul.sub-steps li {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+  }
+  ul.sub-steps li::before {
+    content: '→';
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--rose);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* ── Policy lists ── */
+  ul.policy-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin: 0.75rem 0;
+  }
+  ul.policy-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+  ul.policy-list li::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--teal);
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+
+  /* ── Data deletion categories ── */
+  .data-category {
+    border: 0.5px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0.75rem 0;
+  }
+  .data-category-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0.75rem 1.1rem;
+    background: #fafafa;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .data-category-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .data-category-body {
+    padding: 0.85rem 1.1rem;
+  }
+  .data-category-body ul.policy-list { margin: 0; }
+
+  /* ── Retention table ── */
+  .retention-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0.75rem 0;
+    font-size: 13.5px;
+    border: 0.5px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .retention-table th {
+    text-align: left;
+    font-size: 10.5px;
+    font-family: 'DM Mono', monospace;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 9px 13px;
+    border-bottom: 0.5px solid var(--border);
+    background: #fafafa;
+  }
+  .retention-table td {
+    padding: 11px 13px;
+    border-bottom: 0.5px solid var(--border);
+    color: var(--text-secondary);
+    vertical-align: top;
+    font-size: 13.5px;
+    line-height: 1.55;
+  }
+  .retention-table tr:last-child td { border-bottom: none; }
+  .retention-table td:first-child {
+    font-size: 13px;
+    color: var(--text-primary);
+    font-weight: 500;
+    width: 38%;
+  }
+  .retention-table td:nth-child(2) {
+    font-family: 'DM Mono', monospace;
+    font-size: 11.5px;
+    color: var(--amber);
+    white-space: nowrap;
+    width: 22%;
+  }
+
+  /* ── Data badges ── */
+  .data-badge {
+    font-size: 10px;
+    font-family: 'DM Mono', monospace;
+    font-weight: 500;
+    padding: 3px 9px;
+    border-radius: 20px;
+    letter-spacing: 0.04em;
+  }
+  .badge-teal   { background: rgba(0,176,155,0.10);  color: #007a6b; border: 0.5px solid rgba(0,176,155,0.30); }
+  .badge-indigo { background: rgba(84,72,200,0.10);  color: var(--indigo); border: 0.5px solid rgba(84,72,200,0.30); }
+  .badge-amber  { background: rgba(217,123,42,0.10); color: #9a5010; border: 0.5px solid rgba(217,123,42,0.30); }
+  .badge-rose   { background: rgba(201,74,114,0.10); color: #8f2550; border: 0.5px solid rgba(201,74,114,0.30); }
+  .badge-navy   { background: rgba(24,25,38,0.08);   color: var(--navy); border: 0.5px solid rgba(24,25,38,0.20); }
+
+  /* ── Callout boxes ── */
+  .highlight-box {
+    background: #f0eefd;
+    border: 0.5px solid rgba(84,72,200,0.25);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin: 0.75rem 0;
+  }
+  .highlight-box p {
+    color: #3a3080 !important;
+    font-size: 13.5px !important;
+    margin-bottom: 0 !important;
+  }
+  .warning-box {
+    background: rgba(217,123,42,0.07);
+    border: 0.5px solid rgba(217,123,42,0.3);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin: 0.75rem 0;
+  }
+  .warning-box p {
+    color: #7a3f00 !important;
+    font-size: 13.5px !important;
+    margin-bottom: 0 !important;
+  }
+  .rose-box {
+    background: rgba(201,74,114,0.06);
+    border: 0.5px solid rgba(201,74,114,0.25);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin: 0.75rem 0;
+  }
+  .rose-box p {
+    color: #6e1a35 !important;
+    font-size: 13.5px !important;
+    margin-bottom: 0.5rem !important;
+  }
+  .rose-box p:last-child { margin-bottom: 0 !important; }
+
+  /* ── Info grid ── */
+  .info-grid {
+    display: grid;
+    gap: 1px;
+    background: var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0.75rem 0;
+    border: 0.5px solid var(--border);
+  }
+  .info-row {
+    display: flex;
+    background: var(--white);
+  }
+  .info-row:first-child { border-radius: 10px 10px 0 0; }
+  .info-row:last-child  { border-radius: 0 0 10px 10px; }
+  .info-label {
+    width: 200px;
+    flex-shrink: 0;
+    padding: 10px 14px;
+    font-size: 11px;
+    font-weight: 600;
+    font-family: 'DM Mono', monospace;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: #fafbff;
+    border-right: 0.5px solid var(--border);
+  }
+  .info-value {
+    padding: 10px 14px;
+    font-size: 13.5px;
+    color: var(--text-primary);
+    line-height: 1.6;
+  }
+
+  /* ── Links ── */
+  a.email-link, a.url-link {
+    color: var(--indigo);
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    font-size: 12.5px;
+  }
+  a.email-link:hover, a.url-link:hover { text-decoration: underline; }
+
+  /* ── Footer ── */
+  footer {
+    background: var(--navy);
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+  }
+  .footer-wordmark {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 0.75rem;
+  }
+  footer p {
+    font-size: 12.5px;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.8;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    .info-label              { width: 130px; font-size: 10px; }
+    .info-value              { font-size: 12.5px; }
+    .section-body            { padding: 1.25rem; }
+    .section-header          { padding: 1rem 1.25rem; }
+    .container               { padding: 2rem 1rem 4rem; }
+    .retention-table         { font-size: 12.5px; }
+    .retention-table td,
+    .retention-table th      { padding: 8px 10px; }
+    .retention-table td:first-child  { width: auto; }
+    .retention-table td:nth-child(2) { white-space: normal; }
+  }
+  @media (max-width: 400px) {
+    .info-row   { flex-direction: column; }
+    .info-label { width: 100%; border-right: none; border-bottom: 0.5px solid var(--border); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── Header ── -->
+<header>
+  <div class="wordmark">
+    <span class="wordmark-badge">S T U D I E L Y</span>
+  </div>
+  <h1>Delete Account &amp; Data</h1>
+  <div class="header-meta">
+    <span class="meta-pill">Last Updated: <span>February 28, 2026</span></span>
+    <span class="meta-pill">Developer: <span>Qismat Ventures W.L.L</span></span>
+    <span class="meta-pill rose"><span>Permanent Action</span></span>
+  </div>
+</header>
+
+<!-- ── Main ── -->
+<div class="container">
+
+  <!-- Intro -->
+  <div class="intro-block">
+    This document explains how users of Studiely can request the deletion of their account and associated personal data from our website and web-based services.
+  </div>
+
+  <!-- How to Request -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon rose-icon">→</div>
+      <div class="section-title">How to Request Deletion of Your Account &amp; Data</div>
+    </div>
+    <div class="section-body">
+      <p>To permanently delete your Studiely account and all associated personal data, please follow these steps:</p>
+      <ol class="steps-list">
+
+        <li>
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <strong>Send an email to:</strong>
+            <a href="mailto:admin@qismatventures.com" class="email-link">admin@qismatventures.com</a>
+          </div>
+        </li>
+
+        <li>
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <strong>Use the following subject line:</strong>
+            Account Deletion Request – Studiely
+          </div>
+        </li>
+
+        <li>
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <strong>In the body of the email, please include:</strong>
+            <ul class="sub-steps">
+              <li>Your registered email address used in the Studiely app</li>
+              <li>Your full name (if you provided one in the app)</li>
+              <li>A clear statement confirming that you wish to delete your account and all associated data</li>
+            </ul>
+          </div>
+        </li>
+
+        <li>
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <strong>Identity verification</strong>
+            We will verify your identity using the registered email address you provide.
+          </div>
+        </li>
+
+        <li>
+          <div class="step-num">5</div>
+          <div class="step-content">
+            <strong>After successful verification, we will:</strong>
+            <ul class="sub-steps">
+              <li>Confirm receipt of your request within 48 hours</li>
+              <li>Complete the full account and data deletion process within 30 days</li>
+            </ul>
+          </div>
+        </li>
+
+      </ol>
+    </div>
+  </div>
+
+  <!-- What Data Will Be Deleted -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon teal-icon">✓</div>
+      <div class="section-title">What Data Will Be Deleted</div>
+    </div>
+    <div class="section-body">
+      <p>Upon processing your verified request, we will permanently delete:</p>
+
+      <div class="data-category">
+        <div class="data-category-header">
+          <span class="data-badge badge-teal">1</span>
+          <span class="data-category-title">Account Information</span>
+        </div>
+        <div class="data-category-body">
+          <ul class="policy-list">
+            <li>Email address</li>
+            <li>Firebase UID (unique user identifier)</li>
+            <li>User role (Student, Parent, Teacher, etc.)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="data-category">
+        <div class="data-category-header">
+          <span class="data-badge badge-indigo">2</span>
+          <span class="data-category-title">All Educational Content Created or Stored</span>
+        </div>
+        <div class="data-category-body">
+          <ul class="policy-list">
+            <li>Study notes, summaries and generated materials</li>
+            <li>Quizzes (questions, answers, results)</li>
+            <li>Learning progress, quiz scores and performance data</li>
+            <li>Curriculum selections, subject/topic preferences</li>
+            <li>Difficulty settings, study modes and other user preferences</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="data-category">
+        <div class="data-category-header">
+          <span class="data-badge badge-amber">3</span>
+          <span class="data-category-title">Analytics &amp; Usage Data Linked to Your Account</span>
+        </div>
+        <div class="data-category-body">
+          <ul class="policy-list">
+            <li>Analytics and usage data linked to your account</li>
+            <li>Any other personal identifiers associated with your Studiely account</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Data We May Need to Retain -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon amber-icon">!</div>
+      <div class="section-title">Data We May Need to Retain</div>
+    </div>
+    <div class="section-body">
+      <p>In accordance with applicable laws and for legitimate purposes, we may retain limited categories of data even after account deletion. This retained data will no longer be linked to your identity or used for any personal purposes.</p>
+      <table class="retention-table">
+        <thead>
+          <tr>
+            <th>Data Category</th>
+            <th>Retention Period</th>
+            <th>Reason</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Aggregate / anonymized analytics data</td>
+            <td>Indefinitely</td>
+            <td>General app improvement only — not personally identifiable</td>
+          </tr>
+          <tr>
+            <td>Legal, security, fraud prevention &amp; compliance records</td>
+            <td>Up to 7 years</td>
+            <td>Legal obligations, dispute resolution, or prevention of abuse</td>
+          </tr>
+          <tr>
+            <td>Subscription and accounting / financial records</td>
+            <td>5–7 years</td>
+            <td>Tax, accounting, and legal compliance purposes</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Additional Information -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">i</div>
+      <div class="section-title">Additional Information</div>
+    </div>
+    <div class="section-body">
+      <p>For complete details about how we collect, use, store, and protect your data, please review our full Privacy Policy available at: <a href="https://Studiely.com/legal/privacy-policy" class="url-link" target="_blank" rel="noopener">https://Studiely.com/legal/privacy-policy</a></p>
+      <div class="highlight-box">
+        <p>Questions? If you have any questions about the deletion process or need assistance, please contact us at: <a href="mailto:admin@qismatventures.com" class="email-link">admin@qismatventures.com</a></p>
+      </div>
+      <p>We are committed to protecting your privacy and processing your request promptly and securely.</p>
+    </div>
+  </div>
+
+  <!-- Developer Info -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">Co</div>
+      <div class="section-title">Developer Information</div>
+    </div>
+    <div class="section-body">
+      <div class="info-grid">
+        <div class="info-row">
+          <div class="info-label">Company</div>
+          <div class="info-value">Qismat Ventures W.L.L</div>
+        </div>
+        <div class="info-row">
+          <div class="info-label">Address</div>
+          <div class="info-value">Office 501, Building 1025, Road 3621, Block 436, Al-Seef, Kingdom of Bahrain</div>
+        </div>
+        <div class="info-row">
+          <div class="info-label">Registration No.</div>
+          <div class="info-value">190698-1</div>
+        </div>
+        <div class="info-row">
+          <div class="info-label">Contact</div>
+          <div class="info-value"><a href="mailto:admin@qismatventures.com" class="email-link">admin@qismatventures.com</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<!-- ── Footer ── -->
+<footer>
+  <div class="footer-wordmark">S T U D I E L Y</div>
+  <p>© Qismat Ventures W.L.L. All rights reserved.<br>
+  We are dedicated to providing a safe, compliant, and privacy-respecting educational environment.</p>
+</footer>
+
+</body>
+</html>
