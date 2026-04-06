@@ -9,6 +9,7 @@ import {
   getBlogSlugsForConfiguredSite,
 } from "@/lib/blogs";
 import { DEFAULT_OG_IMAGE_PATH, SITE_URL } from "@/lib/site";
+import { buildBreadcrumbSchema } from "@/lib/seo";
 
 type PageProps = {
   params: { slug: string };
@@ -81,8 +82,15 @@ export default async function BlogPostPage({ params }: PageProps) {
   const result = await getStudielyBlogBySlug(slug);
   if (!result) {
     if (slug !== "coming-soon") return notFound();
+    const breadcrumbSchema = buildBreadcrumbSchema("Coming soon", "/blog/coming-soon");
     return (
       <>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(breadcrumbSchema),
+          }}
+        />
         <PageHeader
           label="Blog"
           title="Coming soon"
@@ -108,9 +116,16 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   const { blog } = result;
   const jsonLd = buildBlogPostingJsonLd(blog);
+  const breadcrumbSchema = buildBreadcrumbSchema(blog.title, `/blog/${blog.slug}`);
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema),
+        }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

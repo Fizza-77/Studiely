@@ -6,11 +6,12 @@ import { SectionHeader } from "@/components/SectionHeader";
 import { FaqItem } from "@/components/FaqItem";
 import { PageHeader } from "@/components/PageHeader";
 import { STUDIELY_APP } from "@/lib/appUrls";
+import { buildBreadcrumbSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "FAQs — Studiely AI Study Tools, Pricing & Features",
+  title: "Studiely FAQs — How AI Study Tools Work for Your Curriculum",
   description:
-    "Clear answers on curriculum support, fair usage, Premium vs Free, Nyla AI, exam practice, and how Studiely generates notes, quizzes, and flashcards.",
+    "Find answers about Studiely's AI study tools, curricula coverage, free credits, Premium plans and Exam Practice — for GCSE, IB, A-Level, SAT, HSC and more.",
   alternates: { canonical: `${SITE_URL}/faqs` },
   openGraph: {
     title: "Studiely FAQs — How It Works",
@@ -28,9 +29,86 @@ export const metadata: Metadata = {
   },
 };
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "What curricula does Studiely support?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text:
+          "Studiely supports British curricula (Cambridge IGCSE, AS and A Level, " +
+          "Pearson Edexcel GCSE, UK National Curriculum), IB (PYP, MYP, Diploma SL and HL), " +
+          "US (Common Core, AP, Digital SAT), Australian (NSW HSC, VCE, QCE, WACE, SACE, " +
+          "TCE, ACT SSC, NTCERT, NAPLAN) and all Canadian provincial curricula.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Is Studiely free to use?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text:
+          "Studiely offers 5 one-time free credits to try every study tool, " +
+          "plus 3 one-time free Exam Practice trials — no card required. " +
+          "Premium plans are available for unlimited access.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is Nyla?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text:
+          "Nyla is Studiely's AI tutor. She knows your curriculum, exam board " +
+          "and grade level and is available 24/7 to answer syllabus-relevant " +
+          "questions without booking or waiting.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How does Exam Practice work?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text:
+          "Exam Practice offers three modes: Untimed Practice with full tutor-mode " +
+          "feedback, Timed Practice with coaching on efficiency and time management, " +
+          "and Exam Simulation under strict exam conditions. You can also upload " +
+          "handwritten work — OCR reads it and AI evaluates it against your board's " +
+          "mark scheme, then delivers a shareable Report Card.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Which countries does Studiely cover?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text:
+          "Studiely is built for students in the United Kingdom, United States, " +
+          "Australia and Canada, covering all major curricula and exam boards " +
+          "in each country.",
+      },
+    },
+  ],
+};
+
+const breadcrumbSchema = buildBreadcrumbSchema("FAQs", "/faqs");
+
 export default function FaqsPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
      <PageHeader
   label="Support & Help"
   title="Frequently Asked Questions (FAQ)"

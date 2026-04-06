@@ -48,7 +48,7 @@ export const HeroSection = () => (
               transition={{ duration: 0.75, delay: 0.28 }}
               className="block text-[clamp(32px,7vw,62px)] leading-[1.08]"
             >
-              In <em className="text-teal">Minutes.</em>
+              Start in <em className="text-teal">Seconds.</em>
             </motion.span>
           </h1>
 
@@ -59,8 +59,9 @@ export const HeroSection = () => (
   transition={{ duration: 0.7, delay: 0.42 }}
   className="text-[15px] md:text-[16.5px] leading-[1.75] text-grey-800 font-light mb-7 md:mb-9 max-w-[100%] md:max-w-[460px]"
 >
-            Select your curriculum, pick your grade and topic — Studiely instantly generates notes,
-            quizzes, flashcards, and exam questions aligned to your exact board.
+            Select your curriculum and exam board. Type your topic. Studiely instantly generates
+            revision notes, flashcards, quizzes and exam practice — calibrated to exactly what your
+            examiner expects.
           </motion.p>
 
 <motion.div
@@ -70,7 +71,7 @@ export const HeroSection = () => (
   className="flex flex-col items-center sm:flex-row sm:justify-center lg:justify-start gap-2.5 mb-[18px] md:mb-[22px]"
 >
   <Button href={STUDIELY_APP.home} variant="solid" lg>
-    Get Started Free →
+    Get Started Free
   </Button>
 
   <Link href="#how-it-works">
@@ -86,7 +87,8 @@ export const HeroSection = () => (
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.68 }}
 className="text-[12px] text-gray-500 text-center lg:text-left"          >
-            🔒 No credit card required · Free Trial · Cancel Anytime
+            No credit card required · 5 free one-time credits · Works for GCSE, IB, A-Level, SAT,
+            HSC and more
           </motion.p>
         </div>
 

@@ -46,8 +46,8 @@ export const ReviewsSection = () => (
     <div className="wrap mb-10 sm:mb-12 md:mb-[52px] relative">
     <SectionHeader
   label="Student Reviews"
-  title="Loved by Students Worldwide"
-  sub="Trusted by 10,000+ students across schools, colleges, and universities."
+  title="What Students Say"
+  sub="Real feedback from students studying across the UK, US, Australia and Canada."
 subClassName="inline-block bg-white/80 backdrop-blur-sm px-4 py-1.5 rounded-md shadow-sm mx-auto"/>
     </div>
     <div className="mqw overflow-hidden mb-4">

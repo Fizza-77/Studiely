@@ -47,32 +47,10 @@ export const Footer = () => (
 </nav>
       </div>
 
-      {/* Bottom legal (compressed, SAME content) */}
+      {/* Bottom legal */}
 <div className="w-full border-t border-border-lt pt-3 text-[11px] text-[#6b6b76] leading-[1.5] space-y-1 text-center">
-          <p>
-          Studiely is a sister platform of{" "}
-          <a href={MAKE_MY_LESSON_URL} target="_blank" rel="noopener noreferrer" className={footerLinkClass}>
-            Make My Lesson
-          </a>{" "}
-          and{" "}
-          <a href={LINGUATUDE_URL} target="_blank" rel="noopener noreferrer" className={footerLinkClass}>
-            Linguatude
-          </a>.
-        </p>
-
         <p>
-          Studiely is part of the Skyen Solutions family of EdTech products. For custom software development, websites, and mobile applications, visit{" "}
-          <a href="https://skyensystems.com" target="_blank" rel="noopener noreferrer" className={footerLinkClass}>
-            Skyen Systems
-          </a>.
-        </p>
-
-        <p>
-          Studiely is a product of Skyen Solutions, a trade name of Qismat Ventures W.L.L. (CR 190698-1) — Office 501, Building 1025, Road 3621, Block 436, Al Seef, Bahrain.
-        </p>
-
-        <p>
-          © {new Date().getFullYear()} Studiely. All rights reserved.
+          Studiely is not affiliated with, endorsed by, or an official product of Cambridge Assessment International Education, Pearson Edexcel, AQA, OCR, the IB Organisation, or any other examination board. Content does not replace official syllabus materials.
         </p>
       </div>
     </div>

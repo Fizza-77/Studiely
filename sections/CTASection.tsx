@@ -103,7 +103,7 @@ export const CTASection = () => (
           Studiely
         </h2>
         <p className="mt-2 text-sm sm:text-base text-white/80">
-          AI Powered study tools for students.
+          AI study tools for GCSE, IB, A-Level, SAT, HSC and every major curriculum.
         </p>
       </Reveal>
 
@@ -148,7 +148,7 @@ export const CTASection = () => (
 
           <div className="mt-6 mb-3 flex items-center justify-center gap-2">
             <p className="text-[11px] font-medium uppercase tracking-[0.12em] text-white/45">
-              Download now
+              Study anywhere. Download the app.
             </p>
            {/* <a
               href={

@@ -36,7 +36,21 @@ export const NylaSection = ({ sectionRef }: NylaSectionProps) => {
       />
 
       <div className="wrap relative">
-      {/* Section heading */}
+        <SectionHeader
+          label="Nyla - AI Study Tutor"
+          title="Meet Nyla. Your AI Tutor, Always On."
+          sub=""
+        />
+
+        <Reveal delay={0.03}>
+          <p className="text-center text-[15px] sm:text-[16px] leading-[1.75] text-body font-light max-w-[860px] mx-auto mb-10 sm:mb-12">
+            Most AI assistants give generic answers. Nyla doesn&apos;t. She knows your curriculum,
+            your exam board and your grade level before you ask your first question. Ask her to
+            explain a concept, walk through a topic, generate a practice question or clarify what
+            your mark scheme actually wants - and every answer is grounded in your syllabus.
+            Available 24/7. No booking. No waiting for a reply.
+          </p>
+        </Reveal>
 
 
         <div className="two-col grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-14 lg:gap-[72px] items-center">
@@ -116,11 +130,11 @@ export const NylaSection = ({ sectionRef }: NylaSectionProps) => {
           <div>
             <ul className="flex flex-col gap-3.5 list-none p-0 m-0">
               {[
-                ["Ask Nyla anything about your notes or topic", "var(--color-teal)"],
-                ["Get instant explanations and examples", "var(--color-indigo)"],
-                ["Available on every page, every tool", "var(--color-amber)"],
-                ["Remembers your curriculum and grade context", "var(--color-teal)"],
-                ["Priority support for Premium subscribers", "var(--color-indigo)"],
+                ["Ask anything about your syllabus - get instant, relevant answers", "var(--color-teal)"],
+                ["Knows your curriculum, exam board and grade level automatically", "var(--color-indigo)"],
+                ["Available on every page, across every tool", "var(--color-amber)"],
+                ["Answers calibrated to your exact grade - no irrelevant detail", "var(--color-teal)"],
+                ["Priority responses for Premium subscribers", "var(--color-indigo)"],
               ].map(([b, col], i) => (
                 <Reveal key={b} delay={i * 0.07}>
                   <li className="flex gap-[11px] items-start text-[14.5px] text-body font-light leading-[1.62]">

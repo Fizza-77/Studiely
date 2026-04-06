@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { HomePageContent } from "@/components/HomePageContent";
 import { SITE_URL } from "@/lib/site";
+import { buildBreadcrumbSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Features — AI Study Tools",
@@ -9,6 +10,18 @@ export const metadata: Metadata = {
   alternates: { canonical: `${SITE_URL}/` },
 };
 
+const breadcrumbSchema = buildBreadcrumbSchema("Features", "/features");
+
 export default function FeaturesPage() {
-  return <HomePageContent scrollToFeaturesOnMount />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema),
+        }}
+      />
+      <HomePageContent scrollToFeaturesOnMount />
+    </>
+  );
 }

@@ -21,10 +21,10 @@ export const SisterSection = () => (
 {/* Content (kept aligned with rest of page) */}
 <div className="relative max-w-[1100px] mx-auto text-center py-10 sm:py-11 md:py-12 px-4 sm:px-6">
   <h2 className="text-2xl sm:text-3xl md:text-5xl font-semibold tracking-tight text-white mb-3">
-    Sister Platforms
+    Part of a Wider EdTech Family
   </h2>
   <p className="text-white/90 text-base sm:text-lg max-w-[700px] mx-auto">
-    Supporting both students and educators through AI-powered tools.
+    Studiely is one of three platforms built by Skyen Solutions to support learning at every stage.
   </p>
 </div>
 
@@ -41,14 +41,14 @@ export const SisterSection = () => (
             <div className="h-full rounded-2xl bg-white p-6 md:p-7">
 
             <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-1 text-gray-900">
-  Make My Lesson
+  Make My Lesson — For Teachers
 </h3>
 
 <p className="text-teal-600 font-semibold text-sm md:text-base mb-4">
-  AI-Powered Lesson Planning for Teachers
+  AI-powered lesson planning
 </p>
               <p className="text-base font-medium text-gray-800 mb-3">
-                For the teacher on the other side of the student.
+                Generates complete, curriculum-aligned teaching materials from a single topic — lesson plans, presentations, activities and assessments.
               </p>
 
               <p className="text-gray-600 text-sm leading-relaxed">
@@ -60,14 +60,7 @@ export const SisterSection = () => (
                 >
                   Make My Lesson
                 </a>{" "}
-                is our sister platform built for teachers. It generates complete,
-                curriculum-aligned teaching materials from a single topic —
-                including lesson plans, presentations, activities, and
-                assessments across major global curriculum systems.
-                <br /><br />
-                Where Studiely supports the student preparing for the exam,
-                Make My Lesson supports the teacher preparing the lesson that
-                gets them there.
+                is our sister platform built for teachers. Where Studiely supports the student preparing for the exam, Make My Lesson supports the teacher preparing the lesson.
               </p>
 
             </div>
@@ -81,15 +74,15 @@ export const SisterSection = () => (
             <div className="h-full rounded-2xl bg-white p-6 md:p-7">
 
             <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-1 text-gray-900">
-  Linguatude
+  Linguatude — For English Test Preparation
 </h3>
 
 <p className="text-teal-600 font-semibold text-sm md:text-base mb-4">
-  AI English Test Preparation
+  IELTS, TOEFL, PTE and Cambridge
 </p>
 
               <p className="text-base font-medium text-gray-800 mb-3">
-                For the learner preparing for the test that opens the next door.
+                Built for learners whose next university place, immigration step or career opportunity depends on achieving a target English score.
               </p>
 
               <p className="text-gray-600 text-sm leading-relaxed">
@@ -101,13 +94,7 @@ export const SisterSection = () => (
                 >
                   Linguatude
                 </a>{" "}
-                is built for learners preparing for IELTS, TOEFL iBT, PTE Academic,
-                and Cambridge exams.
-                <br /><br />
-                Where Studiely supports school and curriculum preparation,
-                Linguatude supports learners whose next university place,
-                immigration step, or career opportunity depends on achieving
-                a target English score.
+                is built for learners whose next university place, immigration step or career opportunity depends on achieving a target English score. Where Studiely supports curriculum study, Linguatude supports the test that opens the next door.
               </p>
 
             </div>

@@ -12,7 +12,7 @@ export const StatsSection = () => (
         {[
           { n: "100", pre: "", suf: "+", label: "Students Trust Studiely", col: "var(--color-navy)" },
           { n: "75", pre: "", suf: "%", label: "Study Time Saved", col: "var(--color-teal)" },
-          { n: "3", pre: "", suf: "×", label: "Faster Exam Prep", col: "var(--color-navy)" },
+          { n: "3", pre: "", suf: "x", label: "Faster Exam Prep", col: "var(--color-navy)" },
           { n: "4.8", pre: "★ ", suf: "", label: "Average Student Rating", col: "var(--color-amber)" },
         ].map((s, i) => (
           
@@ -43,7 +43,7 @@ export const StatsSection = () => (
       </div>
       <div className="text-center py-5 sm:py-6 px-4">
         <p className="text-[13px] sm:text-[14px] text-muted max-w-[800px] mx-auto leading-relaxed">
-          These numbers are live, real, and updated every week. We're a new platform — we'd rather show you where we actually are than pretend to be somewhere we're not. Join us early and help us build something genuine.
+          Built to support major curricula and exam boards across the UK, US, Australia, and Canada.
         </p>
       </div>
     </div>

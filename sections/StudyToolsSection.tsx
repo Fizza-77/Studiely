@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { SectionHeader } from "@/components/SectionHeader";
 import { Reveal } from "@/components/Reveal";
@@ -27,13 +26,13 @@ function getGlowColor(sel: string) {
 const TOOLS = [
   {
     id: "notes",
-    label: "Generate Notes",
+    label: "Revision Notes",
     cta: "Generate Notes",
     color: "#00b09b",
     lt: "#dff6f2",
     glow: "rgba(0,176,155,.14)",
     border: "rgba(0,176,155,.22)",
-    desc: "AI creates detailed, structured study notes for any subject and topic — tailored to your curriculum and grade level.",
+    desc: "AI generates fully structured notes for any topic. Depth and length are matched to your curriculum, grade and exam board - not a generic summary. No uploads. No prep. Type your topic and generate.",
     previewLabel: "Study Notes",
     preview:
       "Photosynthesis is the process by which plants convert light energy into chemical energy stored in glucose.\n\n• Light-dependent reactions occur in the thylakoid membrane\n• Carbon fixation occurs via the Calvin cycle in the stroma\n• Net equation: 6CO₂ + 6H₂O + light → C₆H₁₂O₆ + 6O₂\n• Chlorophyll is the primary photosynthetic pigment",
@@ -41,13 +40,13 @@ const TOOLS = [
   },
    {
     id: "flashcards",
-    label: "Create Flashcards",
+    label: "Flashcard Generator",
     cta: "Create Flashcards",
     color: "#2563eb",
     lt: "#eff6ff",
     glow: "rgba(37,99,235,.13)",
     border: "rgba(37,99,235,.22)",
-    desc: "Build spaced-repetition flashcard decks from key concepts to boost memory retention and active recall.",
+    desc: "Spaced-repetition decks built automatically from any topic - up to 30 cards per set. Spaced repetition is the most evidence-backed method for long-term memory retention. Export to Anki on Premium.",
     previewLabel: "Flashcards",
     preview:
       "FRONT: What is the net equation for photosynthesis?\n────────────────────────────────\nBACK: 6CO₂ + 6H₂O + light energy → C₆H₁₂O₆ + 6O₂\n\n── Card 1 of 12 · Deck: Photosynthesis ──",
@@ -55,30 +54,30 @@ const TOOLS = [
   },
     {
     id: "quiz",
-    label: "Generate Quiz",
+    label: "Quiz Generator",
     cta: "Generate Quiz",
     color: "#d97b2a",
     lt: "#fff1e4",
     glow: "rgba(217,123,42,.13)",
     border: "rgba(217,123,42,.22)",
-    desc: "Auto-create topic-based quizzes — multiple choice, true/false, short-answer — at your chosen difficulty level.",
+    desc: "Multiple-choice, true/false and short-answer questions at beginner, intermediate or advanced difficulty. Instant feedback after every question. Syllabus content only - nothing off-topic.",
     previewLabel: "Quiz",
     preview:
       "Q1. What is the primary pigment in photosynthesis?\n  ○ Carotene\n  ● Chlorophyll ✓\n  ○ Xanthophyll\n  ○ Phycocyanin\n\nQ2. Where does the Calvin cycle occur?\n  ● Stroma of the chloroplast ✓\n  ○ Thylakoid membrane\n  ○ Cytoplasm",
     Icon: QuizCardIcon,
   },
   {
-    id: "exam",
-    label: "Exam Questions",
-    cta: "Generate Exam Questions",
+    id: "exam-writing-mode",
+    label: "Exam Writing Mode",
+    cta: "Start Exam Writing Mode",
     color: "#c94a72",
     lt: "#ffedf3",
     glow: "rgba(201,74,114,.13)",
     border: "rgba(201,74,114,.22)",
-    desc: "Practice with structured, exam-style questions with guided answers — formatted to match your specific exam board.",
-    previewLabel: "Exam Question",
+    desc: "Write under timed conditions in the app. Live countdown, word count tracker and AI feedback assessed against your exam board's command words and structure. Three one-time free trials per account.",
+    previewLabel: "Exam Writing",
     preview:
-      "[IGCSE Biology — 8 marks]\nDescribe the light-dependent stage of photosynthesis, including the role of chlorophyll and the products formed.\n\nMark Scheme:\n✓ Chlorophyll absorbs light energy [1]\n✓ Water molecules split via photolysis [1]\n✓ ATP and reduced NADP (NADPH) are produced [2]\n✓ Oxygen released as a by-product [1]",
+      "Timer: 00:24:10\nWord count: 312\nFeedback: Improve structure around command terms and add one developed evaluation point.",
     Icon: ExamCardIcon,
   },
 ];
@@ -86,12 +85,6 @@ const TOOLS = [
 interface StudyToolsSectionProps {
   sectionRef?: React.Ref<HTMLElement>;
 }
-const COUNTRIES = [
-  { key: "uk", label: "United Kingdom", flag: "/curriculum-logos/UK.png" },
-  { key: "us", label: "United States", flag: "/curriculum-logos/US.png" },
-  { key: "au", label: "Australia", flag: "/curriculum-logos/australia.png" },
-  { key: "ca", label: "Canada", flag: "/curriculum-logos/canada.png" },
-];
 
 export const StudyToolsSection = ({ sectionRef }: StudyToolsSectionProps) => {
   const [chosen, setChosen] = useState(false);
@@ -109,8 +102,8 @@ export const StudyToolsSection = ({ sectionRef }: StudyToolsSectionProps) => {
       <div className="wrap">
         <SectionHeader
           label="AI Study Tools"
-          title="4 Powerful Tools — One Platform"
-          sub="Select your curriculum and topic, pick a tool, and generate perfectly curriculum-aligned content in seconds."
+          title="Four Tools. One Platform. Every Curriculum."
+          sub="Pick your curriculum, type your topic and choose a tool. Content generates in seconds - structured to your exact grade level and exam board."
         />
 
       {/* ── TOOL CARDS ── */}
@@ -170,6 +163,17 @@ export const StudyToolsSection = ({ sectionRef }: StudyToolsSectionProps) => {
                 </motion.div>
               );
             })}
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.05}>
+          <div className="border border-border-default rounded-[14px] p-5 sm:p-6 bg-[#fafaf8] mb-8">
+            <h3 className="font-serif text-[20px] text-navy mb-2">Common mistakes students do</h3>
+            <p className="text-[13px] text-muted leading-[1.7]">
+              Students often lose marks by misunderstanding command words, skipping key steps in long-answer
+              methods, and mixing up core terms in definitions. Many also write answers that are correct in idea
+              but not aligned to the exact wording and structure examiners award marks for.
+            </p>
           </div>
         </Reveal>
 
@@ -462,51 +466,6 @@ export const StudyToolsSection = ({ sectionRef }: StudyToolsSectionProps) => {
         </>
       </motion.div>
     </motion.button>
-  </div>
-</Reveal>
-<Reveal delay={0.18}>
-  <div className="w-full mt-10 sm:mt-12 px-0 sm:px-2 md:px-6">
-    
-    {/* Section title */}
-    <div className="text-center mb-8">
-      <h2 className="text-lg font-semibold text-slate-800">
-        Supported Countries
-      </h2>
-      <p className="text-sm text-slate-500 mt-1">
-        Full curriculum coverage across major education systems
-      </p>
-    </div>
-
-    {/* Grid */}
-    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 md:gap-5 max-w-4xl mx-auto">
-      {COUNTRIES.map((item) => (
-        <div
-          key={item.key}
-          className="group flex flex-col items-center justify-center gap-3 rounded-2xl border border-slate-200 bg-white px-5 py-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200"
-        >
-          {/* Flag */}
-          <div className="h-12 w-12 overflow-hidden rounded-full border border-indigo-100">
-            <Image
-              src={item.flag}
-              alt={`${item.label} flag`}
-              width={48}
-              height={48}
-              className="w-full h-full object-cover"
-            />
-          </div>
-
-          {/* Country */}
-          <span className="text-sm font-semibold text-slate-800 text-center">
-            {item.label}
-          </span>
-
-          {/* Subtext */}
-          <span className="text-xs text-slate-500">
-            All Curricula
-          </span>
-        </div>
-      ))}
-    </div>
   </div>
 </Reveal>
       </div>

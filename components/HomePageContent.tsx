@@ -9,6 +9,8 @@ import { NylaAvatar } from "@/components/Icons";
 import { HeroSection } from "@/sections/HeroSection";
 import { StatsSection } from "@/sections/StatsSection";
 import { HowItWorksSection } from "@/sections/HowItWorksSection";
+import { SupportedCountriesSection } from "@/sections/SupportedCountriesSection";
+import { RewardsProgressSection } from "@/sections/RewardsProgressSection";
 import { StudyToolsSection } from "@/sections/StudyToolsSection";
 import { WritingSection } from "@/sections/WritingSection";
 import { NylaSection } from "@/sections/NylaSection";
@@ -81,28 +83,66 @@ export function HomePageContent({ scrollToFeaturesOnMount = false }: HomePageCon
         <WritingSection sectionRef={writingRef} />
         <HowItWorksSection />
         <NylaSection sectionRef={nylaRef} />
+        <SupportedCountriesSection />
+        <RewardsProgressSection />
         <ReviewsSection />
         <section
           aria-labelledby="homepage-pricing-heading"
           className="bg-white border-t border-border-default"
         >
-          <div className="wrap py-10 sm:py-12 md:py-14 grid gap-6 sm:gap-8 md:grid-cols-[3fr_2fr] items-center">
-            <div>
+          <div className="wrap py-10 sm:py-12 md:py-14">
+            <div className="mb-7 sm:mb-8">
               <h2
                 id="homepage-pricing-heading"
                 className="font-serif text-[clamp(26px,3vw,32px)] text-navy mb-3"
               >
-                Choose a plan that grows with you
+                Choose a Plan That Works for You
               </h2>
               <p className="text-[14px] text-gray-600 max-w-[460px] mb-4">
-                Compare free and paid plans, see exactly what&apos;s included, and pick the
-                curriculum-aligned AI study toolkit that fits your exam goals and budget.
-              </p>
-              <p className="text-[13px] text-gray-600">
-                Transparent pricing, no hidden fees, and you can cancel anytime.
+                Free to start. No hidden fees. Cancel anytime.
               </p>
             </div>
-            <div className="flex md:justify-end">
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
+              <article className="rounded-xl border border-border-default bg-[#fafaf8] p-5 sm:p-6">
+                <p className="text-[11px] uppercase tracking-[1.3px] font-semibold text-teal mb-1.5">Free</p>
+                <h3 className="font-serif text-[22px] text-navy mb-1">Free</h3>
+                <p className="text-[13px] text-muted mb-3.5">Get started today</p>
+                <p className="text-[13px] text-muted leading-[1.7] whitespace-pre-line">
+                  5 one-time credits to try every study tool.{"\n"}
+                  3 one-time Exam Practice trials.{"\n"}
+                  Per email account - not monthly.
+                </p>
+              </article>
+
+              <article className="rounded-xl border border-border-default bg-[#fafaf8] p-5 sm:p-6">
+                <p className="text-[11px] uppercase tracking-[1.3px] font-semibold text-indigo mb-1.5">Premium</p>
+                <h3 className="font-serif text-[22px] text-navy mb-1">Premium</h3>
+                <p className="text-[13px] text-muted mb-3.5">For serious exam preparation</p>
+                <p className="text-[13px] text-muted leading-[1.7] whitespace-pre-line">
+                  Unlimited AI study generations (fair usage).{"\n"}
+                  PDF and Word export.{"\n"}
+                  Offline access.{"\n"}
+                  Priority Nyla responses.{"\n"}
+                  Learning analytics.{"\n"}
+                  Full rewards system - streaks, certificates, referrals.{"\n"}
+                  Available monthly, 3-month, 6-month and annually.
+                </p>
+              </article>
+
+              <article className="rounded-xl border border-border-default bg-[#fafaf8] p-5 sm:p-6">
+                <p className="text-[11px] uppercase tracking-[1.3px] font-semibold text-amber mb-1.5">Exam Practice</p>
+                <h3 className="font-serif text-[22px] text-navy mb-1">Exam Practice</h3>
+                <p className="text-[13px] text-muted mb-3.5">Available separately</p>
+                <p className="text-[13px] text-muted leading-[1.7] whitespace-pre-line">
+                  Dedicated exam-style practice with three modes - Untimed, Timed and Exam Simulation.{"\n"}
+                  Includes OCR handwriting upload and Report Card.{"\n"}
+                  3 one-time free trials included with every account.
+                </p>
+              </article>
+            </div>
+
+            <div className="mt-6 sm:mt-7 flex md:justify-end">
               <Link
                 href={STUDIELY_APP.pricing}
                 className="inline-flex w-full sm:w-auto items-center justify-center px-6 sm:px-8 py-3 rounded-lg bg-navy text-white text-[14px] font-medium shadow-[0_10px_30px_rgba(0,0,0,0.16)] hover:bg-navy/90 hover:shadow-[0_16px_40px_rgba(0,0,0,0.18)] transition-all duration-200"

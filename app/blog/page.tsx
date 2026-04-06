@@ -5,6 +5,7 @@ import { Footer } from "@/components/Footer";
 import { PageHeader } from "@/components/PageHeader";
 import { getBlogIndexDataForStudiely } from "@/lib/blogs";
 import { DEFAULT_OG_IMAGE_PATH, SITE_URL } from "@/lib/site";
+import { buildBreadcrumbSchema } from "@/lib/seo";
 
 export const dynamic = "force-static";
 
@@ -16,8 +17,9 @@ type BlogPageProps = {
 
 export async function generateMetadata(): Promise<Metadata> {
   const indexData = await getBlogIndexDataForStudiely();
-  const title = indexData.seo.title;
-  const description = indexData.seo.description;
+  const title = "Studiely Blog — Study Tips, Exam Guides & Revision Advice";
+  const description =
+    "Revision strategies, curriculum guides, exam technique and AI study tips — written for GCSE, A-Level, IB, SAT and HSC students preparing for real exams.";
 
   return {
     title,
@@ -43,6 +45,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function BlogPage({ searchParams }: BlogPageProps) {
   const indexData = await getBlogIndexDataForStudiely();
   const { posts, categories, seo } = indexData;
+  const breadcrumbSchema = buildBreadcrumbSchema("Blog", "/blog");
 
   const activeCategory = searchParams?.category?.trim() || "";
   const hasActiveCategory = categories.some((cat) => cat.slug === activeCategory);
@@ -52,6 +55,12 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema),
+        }}
+      />
       <PageHeader
         label="Resources"
         title={seo.headline}

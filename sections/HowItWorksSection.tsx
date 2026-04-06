@@ -15,28 +15,28 @@ export const HowItWorksSection = ({ sectionRef }: HowItWorksSectionProps) => (
     <div className="wrap">
       <SectionHeader
         label="How It Works"
-        title="Ready in 3 Simple Steps"
-        sub="No uploads. No setup. Just pick your curriculum, enter your topic, and generate."
+        title="Up and Running in Three Steps"
+        sub="No uploads. No setup. No textbook hunting. Just pick your curriculum, type your topic and generate."
       />
       <Reveal>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-[1px] bg-border-default border border-border-default rounded-xl overflow-hidden max-w-[900px] mx-auto">
           {[
             [
               "01",
-              "Select Your Curriculum",
-              "Choose from British (UK National, Cambridge, Edexcel), US (Standards, AP), IB (PYP, MYP, DP), Australian, Canadian, and more.",
+              "Choose Your Curriculum",
+              "Select your country, exam board and grade level. Studiely calibrates every tool to your exact specification before you type a single topic.",
               "border-l-teal text-teal hover:bg-bg-base",
             ],
             [
               "02",
-              "Choose Grade & Topic",
-              "Pick your year group or grade level. Then type your subject and the specific topic you want to study.",
+              "Enter Your Topic",
+              "Type the subject and topic you need to cover. No files, no uploads, no configuration.",
               "border-l-indigo text-indigo hover:bg-bg-base",
             ],
             [
               "03",
-              "Generate & Study",
-              "Select a tool — Notes, Quiz, Flashcards, or Exam Questions — and your content is ready in seconds.",
+              "Generate and Study",
+              "Choose a tool — notes, flashcards, quiz or exam practice — and your content is ready in seconds.",
               "border-l-amber text-amber hover:bg-bg-base",
             ],
           ].map(([n, t, d, styles]) => (

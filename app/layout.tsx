@@ -19,45 +19,72 @@ const nunito = Nunito({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
- title: {
-  default: "Studiely | AI Study Tools for IGCSE, GCSE & IB",
-  template: "%s | Studiely",
-},
+  title: {
+    default: "Studiely — AI Study App for GCSE, IB, SAT & All Curricula",
+    template: "%s | Studiely",
+  },
   description:
-    "Pick your board, grade, and topic — get notes, quizzes, flashcards, and exam-style questions tuned to British, IB, US, and other international curricula. Start free.",
+    "Generate revision notes, flashcards, quizzes and exam practice " +
+    "aligned to your exact curriculum and exam board. " +
+    "GCSE, IB, A-Level, SAT, HSC and more. Free to start.",
+  keywords: [
+    "AI study app",
+    "revision notes",
+    "flashcards",
+    "exam practice",
+    "GCSE revision",
+    "IB study",
+    "A-Level",
+    "SAT prep",
+    "HSC",
+    "Common Core",
+    "IGCSE",
+    "AI tutor",
+    "spaced repetition",
+    "quiz generator",
+  ],
+  authors: [{ name: "Studiely", url: "https://www.studiely.com" }],
+  creator: "Studiely",
+  publisher: "Studiely",
   icons: {
     icon: "/logo.jpeg",
     shortcut: "/logo.jpeg",
     apple: "/logo.jpeg",
   },
   openGraph: {
-    title:
-      "Studiely — Curriculum-Aligned AI Study Tools for International Students",
-    description:
-      "Notes, quizzes, flashcards, and exam questions matched to your syllabus — not generic AI summaries.",
-    url: SITE_URL,
-    siteName: "Studiely",
     type: "website",
-    locale: "en_US",
+    siteName: "Studiely",
+    title: "Studiely — AI Study App for GCSE, IB, SAT & All Curricula",
+    description:
+      "Generate revision notes, flashcards, quizzes and exam practice " +
+      "aligned to your exact curriculum and exam board. Free to start.",
+    url: SITE_URL,
     images: [
       {
         url: DEFAULT_OG_IMAGE_PATH,
         width: 1200,
         height: 630,
-        alt: "Studiely — AI study tools for your curriculum",
+        alt: "Studiely — AI Study App for GCSE, IB, SAT and all curricula",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title:
-      "Studiely — Curriculum-Aligned AI Notes, Quizzes & Flashcards",
+    title: "Studiely — AI Study App for GCSE, IB, SAT & All Curricula",
     description:
-      "Study tools built for IGCSE, GCSE, IB, A-Level, and more — aligned to what you actually learn in class.",
+      "Revision notes, flashcards, quizzes and exam practice " +
+      "for every curriculum. Free to start.",
     images: [DEFAULT_OG_IMAGE_PATH],
   },
   alternates: {
     canonical: SITE_URL,
+    languages: {
+      "en-GB": SITE_URL,
+      "en-US": SITE_URL,
+      "en-AU": SITE_URL,
+      "en-CA": SITE_URL,
+      "x-default": SITE_URL,
+    },
   },
   robots: {
     index: true,
@@ -65,6 +92,8 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
     },
   },
 };

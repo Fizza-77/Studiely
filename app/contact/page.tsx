@@ -5,13 +5,21 @@ import { Mail, ArrowRight } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { BackButton } from "@/components/BackButton";
+import { buildBreadcrumbSchema } from "@/lib/seo";
 
 const EMAIL = "support@studiely.com";
 const mailtoHref = `mailto:${EMAIL}?subject=${encodeURIComponent("Studiely — Support request")}`;
+const breadcrumbSchema = buildBreadcrumbSchema("Contact Us", "/contact");
 
 export default function ContactUs() {
   return (
     <div className="min-h-screen bg-bg-base text-body selection:bg-teal selection:text-white flex flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema),
+        }}
+      />
       <Navbar />
 
       <main className="flex-1 w-full px-4 sm:px-6 md:px-8 relative">

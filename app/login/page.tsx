@@ -5,6 +5,7 @@ import { Button } from "@/components/Button";
 import { BackButton } from "@/components/BackButton";
 import { SITE_URL } from "@/lib/site";
 import { STUDIELY_APP } from "@/lib/appUrls";
+import { buildBreadcrumbSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Log In — Studiely",
@@ -14,9 +15,17 @@ export const metadata: Metadata = {
   robots: { index: false, follow: true },
 };
 
+const breadcrumbSchema = buildBreadcrumbSchema("Log In", "/login");
+
 export default function LoginPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema),
+        }}
+      />
       <main className="bg-bg-base min-h-screen pt-[96px] pb-[60px]">
         <div className="absolute top-4 left-4 z-30">
           <BackButton

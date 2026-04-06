@@ -3,12 +3,13 @@ import { Footer } from "@/components/Footer";
 import { PageHeader } from "@/components/PageHeader";
 import { NylaSection } from "@/sections/NylaSection";
 import { DEFAULT_OG_IMAGE_PATH, SITE_URL } from "@/lib/site";
+import { buildBreadcrumbSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Nyla AI — Your Curriculum-Aware Study Assistant",
+  title: "Nyla — Your 24/7 AI Tutor for GCSE, IB & All Curricula",
   description:
-    "Ask Nyla in plain English: get explanations tied to your grade and board, then turn answers into notes, flashcards, quizzes, or exam-style questions.",
-  alternates: { canonical: `${SITE_URL}/nyla` },
+    "Nyla knows your curriculum, exam board and grade level. Ask anything about your syllabus and get instant, accurate answers anytime.",
+  alternates: { canonical: "https://www.studiely.com/nyla" },
   openGraph: {
     title: "Nyla — Studiely’s Built-In AI Tutor",
     description:
@@ -27,9 +28,17 @@ export const metadata: Metadata = {
   },
 };
 
+const breadcrumbSchema = buildBreadcrumbSchema("Nyla", "/nyla");
+
 export default function NylaFeaturePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema),
+        }}
+      />
       <PageHeader
         label="Nyla AI"
         title="Your Personal AI Study Assistant"
