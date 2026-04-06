@@ -134,16 +134,47 @@ STEP 10 — Check it worked
 
 
 --------------------------------------------------------------------------------
-STEP 10b — If direct URLs return 403, refresh nginx config
+STEP 11 — Fix “403 Forbidden” when opening a page URL directly (Studiely vhost only)
 --------------------------------------------------------------------------------
-  This project requires nginx `try_files` order:
+  Next.js export creates both `privacy-policy.html` and a `privacy-policy/`
+  folder (metadata only). Nginx must try the `.html` file BEFORE the folder,
+  or `/privacy-policy` hits the empty folder → 403.
 
-    try_files $uri $uri.html $uri/ /404.html;
+  If you ALREADY use Certbot HTTPS for studiely.com: do NOT overwrite the
+  whole nginx file from your laptop (you would remove ssl lines). Instead SSH
+  in and fix `try_files` in BOTH server blocks (port 80 and 443):
 
-  Apply latest repo config to the server:
+    ssh root@187.124.250.67
+    nano /etc/nginx/sites-available/studiely.com
 
-    scp "/Users/rentamac/Desktop/web issues/Studiely/infra/nginx-studiely.com.conf" root@187.124.250.67:/etc/nginx/sites-available/studiely.com
-    ssh root@187.124.250.67 'ln -sf /etc/nginx/sites-available/studiely.com /etc/nginx/sites-enabled/studiely.com && nginx -t && systemctl reload nginx'
+  In each `location / { ... }` for studiely.com, use exactly:
+
+    try_files $uri.html $uri $uri/ /404.html;
+
+  Then:
+
+    nginx -t && systemctl reload nginx
+
+  If you still use the stock HTTP-only file from this repo, you can replace
+  it from your Mac (then run Certbot if you need SSL — see STEP 12):
+
+    scp "/path/to/Studiely/infra/nginx-studiely.com.conf" root@187.124.250.67:/etc/nginx/sites-available/studiely.com
+    ssh root@187.124.250.67 'nginx -t && systemctl reload nginx'
+
+
+--------------------------------------------------------------------------------
+STEP 12 — SSL certificates for studiely.com only (does not change other sites)
+--------------------------------------------------------------------------------
+  Certbot picks the server_name you pass; other nginx sites are untouched.
+
+    ssh root@187.124.250.67
+    apt-get update && apt-get install -y certbot python3-certbot-nginx
+    certbot --nginx -d studiely.com -d www.studiely.com
+
+  Follow the prompts. Afterward, open the studiely.com config again and
+  confirm the HTTPS `server { ... }` block still has the same `try_files`
+  line as STEP 11 (Certbot sometimes copies the old line — if 403 returns,
+  fix `try_files` in the 443 block).
 
 
 --------------------------------------------------------------------------------
