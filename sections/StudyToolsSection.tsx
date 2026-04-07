@@ -90,8 +90,7 @@ export const StudyToolsSection = ({ sectionRef }: StudyToolsSectionProps) => {
   const [chosen, setChosen] = useState(false);
   const [sel, setSel] = useState<string | null>(null);
 
-  const tool = TOOLS.find((t) => t.id === sel)!;
-  const canGo = chosen; // button active as soon as a card is selected
+  const tool = sel ? TOOLS.find((t) => t.id === sel) : undefined;
 
    return (
     <section
@@ -387,8 +386,8 @@ export const StudyToolsSection = ({ sectionRef }: StudyToolsSectionProps) => {
  {/* ── BIG GENERATE BUTTON WITH DYNAMIC COLOR & CARD-LIKE GLOW ── */}
 <Reveal delay={0.4}>
   <div className="mt-12 sm:mt-14 md:mt-16 flex justify-center">
-    <motion.button
-      type="button"
+    <motion.a
+      href={STUDIELY_APP.notes}
       whileHover={{
         scale: 1.025,
         boxShadow: `0 16px 48px ${
@@ -398,19 +397,12 @@ export const StudyToolsSection = ({ sectionRef }: StudyToolsSectionProps) => {
         }`,
         transition: { type: "spring", stiffness: 300, damping: 20 },
       }}
-      whileTap={canGo ? { scale: 0.97 } : {}}
-   onClick={() => {
-        if (!canGo) return;
-        // All study-tool cards open the same Flutter screen (Generate Notes).
-        window.location.assign(STUDIELY_APP.notes);
-      }}
-      className={`flex items-center justify-center gap-3 sm:gap-4 text-white border-none rounded-[14px] text-[16px] sm:text-[18px] font-semibold shrink-0 transition-all duration-300 w-full max-w-[480px] h-[72px] sm:h-[84px] overflow-hidden px-4 sm:px-5 ${
-        canGo ? "cursor-pointer" : "cursor-default"
-      }`}
-      style={{
+      whileTap={{ scale: 0.97 }}
+      className="flex items-center justify-center gap-3 sm:gap-4 text-white border-none rounded-[14px] text-[16px] sm:text-[18px] font-semibold shrink-0 transition-all duration-300 w-full max-w-[480px] h-[72px] sm:h-[84px] overflow-hidden px-4 sm:px-5 cursor-pointer no-underline"
+        style={{
         background: `linear-gradient(135deg, ${
-          chosen ? tool?.color : "#5448c8"
-        } 0%, ${chosen ? tool?.color : "#4338b8"}dd 100%)`,
+          chosen && tool?.color ? tool.color : "#5448c8"
+        } 0%, ${chosen && tool?.color ? tool.color : "#4338b8"}dd 100%)`,
         // Always-on glow
         boxShadow: `0 8px 28px ${
           sel
@@ -465,7 +457,7 @@ export const StudyToolsSection = ({ sectionRef }: StudyToolsSectionProps) => {
           <span className="truncate w-full">{chosen ? tool?.cta : "Start Learning Smarter"}</span>
         </>
       </motion.div>
-    </motion.button>
+    </motion.a>
   </div>
 </Reveal>
       </div>
