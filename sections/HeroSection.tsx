@@ -25,7 +25,7 @@ export const HeroSection = () => (
           </motion.div>
 
           {/* Headline — single H1 for SEO; visual hierarchy preserved with spans */}
-          <h1 className="font-serif text-navy tracking-[-1px] mb-5 md:mb-6">
+          <h1 className="font-serif text-navy tracking-[-1px] mb-5 md:mb-6 text-center lg:text-left">
             <motion.span
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}

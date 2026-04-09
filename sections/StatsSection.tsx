@@ -41,9 +41,14 @@ export const StatsSection = () => (
         <div className="hidden md:block lg:hidden border-r border-b border-border-default bg-white" />
 
       </div>
-      <div className="text-center py-5 sm:py-6 px-4">
+      <div className="text-center py-5 sm:py-6 px-4 space-y-3">
         <p className="text-[13px] sm:text-[14px] text-muted max-w-[800px] mx-auto leading-relaxed">
           Built to support major curricula and exam boards across the UK, US, Australia, and Canada.
+        </p>
+        <p className="text-[11.5px] sm:text-[12.5px] text-muted/90 max-w-[720px] mx-auto leading-[1.65] font-light italic">
+          These numbers are live, real, and updated every week. We&apos;re a new platform — we&apos;d
+          rather show you where we actually are than pretend to be somewhere we&apos;re not. Join us
+          early and help us build something genuine.
         </p>
       </div>
     </div>

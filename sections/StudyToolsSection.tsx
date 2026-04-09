@@ -91,7 +91,7 @@ const TOOLS = [
   },
   {
     id: "common-mistakes",
-    label: "Common mistakes students make",
+    label: "Common Mistakes Students Make",
     cta: "Explore common mistakes",
     color: "#7c3aed",
     lt: "#f5f3ff",
