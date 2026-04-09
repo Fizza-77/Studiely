@@ -26,9 +26,24 @@ export const Footer = () => (
         </div>
 
         <nav
-          className="flex items-center justify-between gap-2 text-[10px] sm:text-[11px] md:text-[12px] whitespace-nowrap"
+          className="flex items-center justify-between gap-2 text-[10px] sm:text-[11px] md:text-[12px] whitespace-nowrap flex-wrap"
           aria-label="Footer"
         >
+          <Link href="/" className="text-muted hover:text-navy">
+            Home
+          </Link>
+          <Link href="/app/pricing" className="text-muted hover:text-navy">
+            Pricing
+          </Link>
+          <Link href="/faqs" className="text-muted hover:text-navy">
+            FAQs
+          </Link>
+          <Link href="/blog" className="text-muted hover:text-navy">
+            Blog
+          </Link>
+          <Link href="/nyla" className="text-muted hover:text-navy">
+            Nyla AI
+          </Link>
           <Link href="/privacy-policy" className="text-muted hover:text-navy">
             Privacy Policy
           </Link>

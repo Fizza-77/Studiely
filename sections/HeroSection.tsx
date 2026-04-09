@@ -78,10 +78,35 @@ export const HeroSection = () => (
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.68 }}
-className="text-[12px] text-gray-500 text-center lg:text-left"          >
+            className="text-[12px] text-gray-500 text-center lg:text-left"
+          >
             No credit card required · 5 free one-time credits · Works for GCSE, IB, A-Level, SAT,
             HSC and more
           </motion.p>
+          <motion.nav
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.76 }}
+            aria-label="Popular pages"
+            className="mt-4 text-[12px] text-muted text-center lg:text-left leading-relaxed"
+          >
+            <span className="text-gray-500">Popular:</span>{" "}
+            <Link href="/faqs" className="text-teal hover:text-teal-dk underline underline-offset-2">
+              FAQs
+            </Link>
+            {" · "}
+            <Link href="/nyla" className="text-teal hover:text-teal-dk underline underline-offset-2">
+              Nyla AI tutor
+            </Link>
+            {" · "}
+            <Link href="/blog" className="text-teal hover:text-teal-dk underline underline-offset-2">
+              Blog
+            </Link>
+            {" · "}
+            <Link href="/app/pricing" className="text-teal hover:text-teal-dk underline underline-offset-2">
+              Pricing
+            </Link>
+          </motion.nav>
         </div>
 
         {/* RIGHT: MOCKUP */}

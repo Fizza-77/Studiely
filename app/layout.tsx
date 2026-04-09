@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     "spaced repetition",
     "quiz generator",
   ],
-  authors: [{ name: "Studiely", url: "https://www.studiely.com" }],
+  authors: [{ name: "Studiely", url: SITE_URL }],
   creator: "Studiely",
   publisher: "Studiely",
   icons: {
@@ -76,8 +76,8 @@ export const metadata: Metadata = {
       "for every curriculum. Free to start.",
     images: [DEFAULT_OG_IMAGE_PATH],
   },
+  /** Per-route canonical is set in each page’s metadata to avoid duplicate signals. */
   alternates: {
-    canonical: SITE_URL,
     languages: {
       "en-GB": SITE_URL,
       "en-US": SITE_URL,

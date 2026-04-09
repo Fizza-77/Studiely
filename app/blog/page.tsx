@@ -17,9 +17,10 @@ type BlogPageProps = {
 
 export async function generateMetadata(): Promise<Metadata> {
   const indexData = await getBlogIndexDataForStudiely();
-  const title = "Studiely Blog — Study Tips, Exam Guides & Revision Advice";
+  const title = "Studiely Blog — AI Learning, Flashcards & Exam Practice Tips";
   const description =
-    "Revision strategies, curriculum guides, exam technique and AI study tips — written for GCSE, A-Level, IB, SAT and HSC students preparing for real exams.";
+    "AI learning and study tips for real exams: revision strategies, IGCSE and IB guides, flashcards, exam practice ideas, " +
+    "and student tools — for GCSE, A-Level, SAT and HSC students.";
 
   return {
     title,

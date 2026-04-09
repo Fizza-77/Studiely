@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
 import { HomePageContent } from "@/components/HomePageContent";
+import { SITE_URL } from "@/lib/site";
 
 const webAppSchema = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
   name: "Studiely",
-  url: "https://www.studiely.com",
+  url: SITE_URL,
   applicationCategory: "EducationApplication",
   operatingSystem: "iOS, Android, Web",
   description:
-    "AI study app generating curriculum-aligned revision notes, flashcards, " +
-    "quizzes and exam practice for GCSE, IB, A-Level, SAT, HSC and more.",
+    "AI study assistant and student tools: curriculum-aligned revision notes, flashcards, " +
+    "AI learning, quizzes and exam practice for IGCSE, GCSE, IB, A-Level, SAT, HSC and more.",
   offers: {
     "@type": "Offer",
     price: "0",
@@ -36,16 +37,32 @@ const webAppSchema = {
   provider: {
     "@type": "Organization",
     name: "Studiely",
-    url: "https://www.studiely.com",
+    url: SITE_URL,
   },
 };
 
+const homeTitle = "Studiely — AI Study Assistant, IGCSE Tutor & Exam Practice";
+const homeDescription =
+  "Studiely is your AI study assistant for real exams: AI learning, flashcards, quizzes, and exam practice " +
+  "for IGCSE, IB, GCSE, A-Level, SAT & more. Student tools aligned to your board — start free.";
+
 export const metadata: Metadata = {
-  title: "Studiely — AI Study App for GCSE, IB, SAT & All Curricula",
-  description:
-    "Generate revision notes, flashcards, quizzes and exam practice aligned to US, Australia, Canada, UK curriculas.",
+  title: homeTitle,
+  description: homeDescription,
   alternates: {
-    canonical: "https://www.studiely.com",
+    canonical: SITE_URL,
+  },
+  openGraph: {
+    title: homeTitle,
+    description: homeDescription,
+    url: SITE_URL,
+    type: "website",
+    siteName: "Studiely",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: homeTitle,
+    description: homeDescription,
   },
 };
 

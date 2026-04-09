@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "Features — AI Study Tools",
   description:
     "Notes, flashcards, quizzes, and exam-style questions — curriculum-aligned AI study tools on one platform.",
-  alternates: { canonical: `${SITE_URL}/` },
+  alternates: { canonical: `${SITE_URL}/features` },
 };
 
 const breadcrumbSchema = buildBreadcrumbSchema("Features", "/features");

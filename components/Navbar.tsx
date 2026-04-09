@@ -30,7 +30,7 @@ export const Navbar = ({ visibleSections = [] }: NavbarProps) => {
 
   const links = [
     ["Features", "/features"],
-    ["Pricing", STUDIELY_APP.pricing],
+    ["Pricing", "/app/pricing"],
     ["FAQs", "/faqs"],
     ["Blogs", "/blog"],
     ["Nyla AI", "/nyla"],

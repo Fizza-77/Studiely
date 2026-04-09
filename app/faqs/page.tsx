@@ -2,96 +2,32 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Footer } from "@/components/Footer";
 import { SITE_URL } from "@/lib/site";
-import { SectionHeader } from "@/components/SectionHeader";
 import { FaqItem } from "@/components/FaqItem";
 import { PageHeader } from "@/components/PageHeader";
-import { STUDIELY_APP } from "@/lib/appUrls";
 import { buildBreadcrumbSchema } from "@/lib/seo";
+import { FAQ_PAGE_JSON_LD } from "@/lib/faqSchema";
+
+const faqTitle = "Studiely FAQs — AI Study Assistant, IGCSE Tutor & Student Tools";
+const faqDescription =
+  "Answers about Studiely: AI learning, flashcards, exam practice, IGCSE and international curricula, " +
+  "free credits, Premium plans, Nyla AI tutor, and account security — for students and parents.";
 
 export const metadata: Metadata = {
-  title: "Studiely FAQs — How AI Study Tools Work for Your Curriculum",
-  description:
-    "Find answers about Studiely's AI study tools, curricula coverage, free credits, Premium plans and Exam Practice — for GCSE, IB, A-Level, SAT, HSC and more.",
+  title: faqTitle,
+  description: faqDescription,
   alternates: { canonical: `${SITE_URL}/faqs` },
   openGraph: {
-    title: "Studiely FAQs — How It Works",
-    description:
-      "Everything students and parents ask: boards supported, credits, subscriptions, and what each study tool does.",
+    title: "Studiely FAQs — AI Study Tools & Exam Practice",
+    description: faqDescription,
     url: `${SITE_URL}/faqs`,
     type: "website",
     siteName: "Studiely",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Studiely FAQs",
-    description:
-      "Support answers for Studiely — curricula, pricing, AI tools, and account questions.",
+    title: "Studiely FAQs — AI Learning & Student Tools",
+    description: faqDescription,
   },
-};
-
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "What curricula does Studiely support?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text:
-          "Studiely supports British curricula (Cambridge IGCSE, AS and A Level, " +
-          "Pearson Edexcel GCSE, UK National Curriculum), IB (PYP, MYP, Diploma SL and HL), " +
-          "US (Common Core, AP, Digital SAT), Australian (NSW HSC, VCE, QCE, WACE, SACE, " +
-          "TCE, ACT SSC, NTCERT, NAPLAN) and all Canadian provincial curricula.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Is Studiely free to use?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text:
-          "Studiely offers 5 one-time free credits to try every study tool, " +
-          "plus 3 one-time free Exam Practice trials — no card required. " +
-          "Premium plans are available for unlimited access.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What is Nyla?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text:
-          "Nyla is Studiely's AI tutor. She knows your curriculum, exam board " +
-          "and grade level and is available 24/7 to answer syllabus-relevant " +
-          "questions without booking or waiting.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "How does Exam Practice work?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text:
-          "Exam Practice offers three modes: Untimed Practice with full tutor-mode " +
-          "feedback, Timed Practice with coaching on efficiency and time management, " +
-          "and Exam Simulation under strict exam conditions. You can also upload " +
-          "handwritten work — OCR reads it and AI evaluates it against your board's " +
-          "mark scheme, then delivers a shareable Report Card.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Which countries does Studiely cover?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text:
-          "Studiely is built for students in the United Kingdom, United States, " +
-          "Australia and Canada, covering all major curricula and exam boards " +
-          "in each country.",
-      },
-    },
-  ],
 };
 
 const breadcrumbSchema = buildBreadcrumbSchema("FAQs", "/faqs");
@@ -107,17 +43,62 @@ export default function FaqsPage() {
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_PAGE_JSON_LD) }}
       />
-     <PageHeader
-  label="Support & Help"
-  title="Frequently Asked Questions (FAQ)"
-  sub="Find answers about Studiely AI study tools, pricing, notes generator, quizzes, flashcards, and exam-style practice questions."
-  variant="compact"
-/>
+      <PageHeader
+        label="Support & Help"
+        title="Frequently Asked Questions (FAQ)"
+        sub="Find answers about Studiely AI study tools, pricing, notes generator, quizzes, flashcards, and exam-style practice questions."
+        variant="compact"
+      />
       <main className="bg-bg-base min-h-screen pt-[32px] pb-[40px]">
         <div className="wrap max-w-[1120px] mx-auto px-4">
-     {/*    <SectionHeader
+          <section
+            className="mb-8 bg-white border border-border-default rounded-xl p-6 md:p-8 shadow-[0_6px_24px_rgba(0,0,0,0.03)]"
+            aria-labelledby="faq-intro-heading"
+          >
+            <h2 id="faq-intro-heading" className="font-serif text-[20px] md:text-[22px] text-navy mb-3">
+              AI study assistant &amp; exam prep — how Studiely helps students
+            </h2>
+            <div className="text-[13px] md:text-[14px] text-body leading-[1.75] space-y-4">
+              <p>
+                Studiely is an{" "}
+                <strong className="font-semibold text-navy">AI study assistant</strong> built for real school
+                workloads: revision notes,{" "}
+                <Link href="/features" className="text-teal hover:text-teal-dk underline underline-offset-2">
+                  flashcards
+                </Link>
+                , quizzes, and{" "}
+                <strong className="font-semibold text-navy">exam practice</strong> aligned to your curriculum and exam
+                board. Whether you are preparing for{" "}
+                <strong className="font-semibold text-navy">IGCSE</strong>, GCSE, IB, AP, or national programs, the
+                tools are designed to feel like{" "}
+                <strong className="font-semibold text-navy">student tools</strong> you can use every week—not generic
+                chat that ignores your syllabus.
+              </p>
+              <p>
+                This FAQ explains how accounts, credits, and subscriptions work; how{" "}
+                <Link href="/nyla" className="text-teal hover:text-teal-dk underline underline-offset-2">
+                  Nyla
+                </Link>
+                , our built-in tutor, fits into revision; and how Exam Practice and fair-usage limits apply. For plan
+                options and billing, see our{" "}
+                <Link href="/app/pricing" className="text-teal hover:text-teal-dk underline underline-offset-2">
+                  pricing page
+                </Link>
+                . For study tips and curriculum guides, browse the{" "}
+                <Link href="/blog" className="text-teal hover:text-teal-dk underline underline-offset-2">
+                  Studiely blog
+                </Link>
+                . New here? Start from the{" "}
+                <Link href="/" className="text-teal hover:text-teal-dk underline underline-offset-2">
+                  homepage
+                </Link>{" "}
+                to explore features, or jump into the sections below.
+              </p>
+            </div>
+          </section>
+          {/*    <SectionHeader
             label="Support & Help"
             title="Studiely — Frequently Asked Questions (FAQ)"
             sub="Version: v1.3 (Launch) — Updated 25th March 2026"
@@ -490,7 +471,11 @@ export default function FaqsPage() {
   <p className="mt-2">Free plan includes 5 free credits total.</p>
 
   <p className="mt-4">
-    For full <Link href={STUDIELY_APP.pricing} className="underline">pricing</Link>, please see the pricing page.
+    For full{" "}
+    <Link href="/app/pricing" className="underline">
+      pricing
+    </Link>{" "}
+    (and in-app checkout), see the pricing page or open Studiely in the app.
   </p>
 </FaqItem>
               <FaqItem question="Can I cancel my subscription?">

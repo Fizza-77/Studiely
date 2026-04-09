@@ -1,19 +1,23 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Footer } from "@/components/Footer";
 import { PageHeader } from "@/components/PageHeader";
 import { NylaSection } from "@/sections/NylaSection";
 import { DEFAULT_OG_IMAGE_PATH, SITE_URL } from "@/lib/site";
-import { buildBreadcrumbSchema } from "@/lib/seo";
+import { buildBreadcrumbSchema, buildNylaFeatureSchema } from "@/lib/seo";
+
+const nylaTitle = "Nyla — AI Tutor & Study Assistant for IGCSE, IB & Exam Practice";
+const nylaDescription =
+  "Meet Nyla: Studiely’s AI tutor for syllabus-aware help, flashcards, and exam practice. " +
+  "Built for students who want AI learning that matches their curriculum and grade.";
 
 export const metadata: Metadata = {
-  title: "Nyla — Your 24/7 AI Tutor for GCSE, IB & All Curricula",
-  description:
-    "Nyla knows your curriculum, exam board and grade level. Ask anything about your syllabus and get instant, accurate answers anytime.",
-  alternates: { canonical: "https://www.studiely.com/nyla" },
+  title: nylaTitle,
+  description: nylaDescription,
+  alternates: { canonical: `${SITE_URL}/nyla` },
   openGraph: {
-    title: "Nyla — Studiely’s Built-In AI Tutor",
-    description:
-      "Help when you’re stuck on a topic, without waiting for chat that ignores your syllabus.",
+    title: "Nyla — Studiely’s AI Tutor for Curriculum-Aligned Learning",
+    description: nylaDescription,
     url: `${SITE_URL}/nyla`,
     siteName: "Studiely",
     type: "website",
@@ -21,9 +25,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Nyla AI — Studiely",
-    description:
-      "Natural-language help that respects your curriculum, grade, and exam expectations.",
+    title: "Nyla — AI Tutor for IGCSE & IB",
+    description: nylaDescription,
     images: [DEFAULT_OG_IMAGE_PATH],
   },
 };
@@ -31,12 +34,20 @@ export const metadata: Metadata = {
 const breadcrumbSchema = buildBreadcrumbSchema("Nyla", "/nyla");
 
 export default function NylaFeaturePage() {
+  const nylaPageSchema = buildNylaFeatureSchema();
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(breadcrumbSchema),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(nylaPageSchema),
         }}
       />
       <PageHeader
@@ -47,6 +58,55 @@ export default function NylaFeaturePage() {
         variant="compact"
       />
       <main className="bg-bg-base min-h-screen pt-[32px] pb-[40px]">
+        <div className="wrap max-w-[1120px] mx-auto px-4 pb-10">
+          <section
+            className="bg-white border border-border-default rounded-xl p-6 md:p-8 shadow-[0_6px_24px_rgba(0,0,0,0.03)]"
+            aria-labelledby="nyla-intro-heading"
+          >
+            <h2 id="nyla-intro-heading" className="font-serif text-[20px] md:text-[22px] text-navy mb-3">
+              Why students use Nyla for AI learning &amp; revision
+            </h2>
+            <div className="text-[13px] md:text-[14px] text-body leading-[1.75] space-y-4">
+              <p>
+                Most generic chat tools are not built for school: they guess your level, ignore mark schemes, and drift
+                off-topic.{" "}
+                <strong className="font-semibold text-navy">Nyla</strong> is different—she is Studiely’s built-in{" "}
+                <strong className="font-semibold text-navy">AI study assistant</strong> that uses your selected
+                curriculum, exam board, and grade so explanations stay within syllabus expectations. Whether you are
+                revising for <strong className="font-semibold text-navy">IGCSE</strong>, IB, GCSE, or other international
+                programs, you get answers you can trust as a starting point, then turn into{" "}
+                <strong className="font-semibold text-navy">flashcards</strong>, quizzes, or structured{" "}
+                <strong className="font-semibold text-navy">exam practice</strong> inside the same app.
+              </p>
+              <p>
+                Parents and students often ask how this relates to a human tutor. Nyla does not replace your teacher or
+                past papers—but she is there at midnight when a question blocks you, and she connects cleanly to the rest
+                of Studiely’s <strong className="font-semibold text-navy">student tools</strong> so revision stays
+                organised. Explore{" "}
+                <Link href="/features" className="text-teal hover:text-teal-dk underline underline-offset-2">
+                  all features
+                </Link>
+                , read the{" "}
+                <Link href="/faqs" className="text-teal hover:text-teal-dk underline underline-offset-2">
+                  FAQ
+                </Link>
+                , compare plans on{" "}
+                <Link href="/app/pricing" className="text-teal hover:text-teal-dk underline underline-offset-2">
+                  pricing
+                </Link>
+                , or browse study tips on the{" "}
+                <Link href="/blog" className="text-teal hover:text-teal-dk underline underline-offset-2">
+                  blog
+                </Link>
+                . You can always return to the{" "}
+                <Link href="/" className="text-teal hover:text-teal-dk underline underline-offset-2">
+                  Studiely homepage
+                </Link>{" "}
+                for the full product story.
+              </p>
+            </div>
+          </section>
+        </div>
         <NylaSection />
         <section className="bg-white border-t border-border-default">
           <div className="wrap py-12 md:py-16 grid gap-8 md:grid-cols-3">
