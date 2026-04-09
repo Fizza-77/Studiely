@@ -103,9 +103,14 @@ export const HeroSection = () => (
               Blog
             </Link>
             {" · "}
-            <Link href="/app/pricing" className="text-teal hover:text-teal-dk underline underline-offset-2">
+            <a
+              href={STUDIELY_APP.pricing}
+              className="text-teal hover:text-teal-dk underline underline-offset-2"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Pricing
-            </Link>
+            </a>
           </motion.nav>
         </div>
 

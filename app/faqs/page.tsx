@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Footer } from "@/components/Footer";
 import { SITE_URL } from "@/lib/site";
+import { STUDIELY_APP } from "@/lib/appUrls";
 import { FaqItem } from "@/components/FaqItem";
 import { PageHeader } from "@/components/PageHeader";
 import { buildBreadcrumbSchema } from "@/lib/seo";
@@ -83,9 +84,14 @@ export default function FaqsPage() {
                 </Link>
                 , our built-in tutor, fits into revision; and how Exam Practice and fair-usage limits apply. For plan
                 options and billing, see our{" "}
-                <Link href="/app/pricing" className="text-teal hover:text-teal-dk underline underline-offset-2">
+                <a
+                  href={STUDIELY_APP.pricing}
+                  className="text-teal hover:text-teal-dk underline underline-offset-2"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   pricing page
-                </Link>
+                </a>
                 . For study tips and curriculum guides, browse the{" "}
                 <Link href="/blog" className="text-teal hover:text-teal-dk underline underline-offset-2">
                   Studiely blog
@@ -472,10 +478,10 @@ export default function FaqsPage() {
 
   <p className="mt-4">
     For full{" "}
-    <Link href="/app/pricing" className="underline">
+    <a href={STUDIELY_APP.pricing} className="underline" target="_blank" rel="noopener noreferrer">
       pricing
-    </Link>{" "}
-    (and in-app checkout), see the pricing page or open Studiely in the app.
+    </a>
+    , please see the pricing page.
   </p>
 </FaqItem>
               <FaqItem question="Can I cancel my subscription?">

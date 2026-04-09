@@ -4,6 +4,7 @@ import { Footer } from "@/components/Footer";
 import { PageHeader } from "@/components/PageHeader";
 import { NylaSection } from "@/sections/NylaSection";
 import { DEFAULT_OG_IMAGE_PATH, SITE_URL } from "@/lib/site";
+import { STUDIELY_APP } from "@/lib/appUrls";
 import { buildBreadcrumbSchema, buildNylaFeatureSchema } from "@/lib/seo";
 
 const nylaTitle = "Nyla — AI Tutor & Study Assistant for IGCSE, IB & Exam Practice";
@@ -91,9 +92,14 @@ export default function NylaFeaturePage() {
                   FAQ
                 </Link>
                 , compare plans on{" "}
-                <Link href="/app/pricing" className="text-teal hover:text-teal-dk underline underline-offset-2">
+                <a
+                  href={STUDIELY_APP.pricing}
+                  className="text-teal hover:text-teal-dk underline underline-offset-2"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   pricing
-                </Link>
+                </a>
                 , or browse study tips on the{" "}
                 <Link href="/blog" className="text-teal hover:text-teal-dk underline underline-offset-2">
                   blog

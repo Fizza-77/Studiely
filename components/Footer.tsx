@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { STUDIELY_APP } from "@/lib/appUrls";
 
 const MAKE_MY_LESSON_URL = "https://makemylesson.ai";
 const LINGUATUDE_URL = "https://linguatude.com";
@@ -32,9 +33,14 @@ export const Footer = () => (
           <Link href="/" className="text-muted hover:text-navy">
             Home
           </Link>
-          <Link href="/app/pricing" className="text-muted hover:text-navy">
+          <a
+            href={STUDIELY_APP.pricing}
+            className="text-muted hover:text-navy"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Pricing
-          </Link>
+          </a>
           <Link href="/faqs" className="text-muted hover:text-navy">
             FAQs
           </Link>

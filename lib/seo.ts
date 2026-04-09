@@ -1,45 +1,5 @@
 import { SITE_URL } from "@/lib/site";
 
-/** WebPage + Product for /app/pricing — helps discovery of plans and scope. */
-export function buildPricingPageSchema() {
-  const url = `${SITE_URL}/app/pricing`;
-  return {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebPage",
-        "@id": `${url}#webpage`,
-        url,
-        name: "Studiely Pricing — AI Study Assistant & Student Tools",
-        description:
-          "Free and Premium plans for Studiely: AI learning with notes, flashcards, quizzes, exam practice, and Nyla AI tutor — aligned to IGCSE, IB, and international curricula.",
-        isPartOf: { "@type": "WebSite", name: "Studiely", url: SITE_URL },
-        about: {
-          "@type": "SoftwareApplication",
-          name: "Studiely",
-          applicationCategory: "EducationalApplication",
-          operatingSystem: "Web, iOS, Android",
-        },
-      },
-      {
-        "@type": "Product",
-        name: "Studiely Premium",
-        brand: { "@type": "Brand", name: "Studiely" },
-        description:
-          "Subscription access to AI study tools: revision notes, spaced-repetition flashcards, quizzes, exam-style questions, and priority access to Nyla.",
-        offers: {
-          "@type": "AggregateOffer",
-          priceCurrency: "USD",
-          availability: "https://schema.org/InStock",
-          offerCount: 4,
-          lowPrice: "26.99",
-          highPrice: "269.99",
-        },
-      },
-    ],
-  };
-}
-
 /** WebPage for /nyla — complements breadcrumb and clarifies the tutor feature. */
 export function buildNylaFeatureSchema() {
   const url = `${SITE_URL}/nyla`;
