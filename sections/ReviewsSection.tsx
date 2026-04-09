@@ -47,7 +47,7 @@ export const ReviewsSection = () => (
     <SectionHeader
   label="Student Reviews"
   title="What Students Say"
-  sub="Real feedback from students studying across the UK, US, Australia and Canada."
+  sub="Real feedback from students studying across the world."
 subClassName="inline-block bg-white/80 backdrop-blur-sm px-4 py-1.5 rounded-md shadow-sm mx-auto"/>
     </div>
     <div className="mqw overflow-hidden mb-4">

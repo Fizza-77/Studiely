@@ -195,6 +195,49 @@ export const FlashcardsCardIcon = () => (
   </svg>
 );
 
+/** Card-style icon: document with caution marks — pairs with other study-tool card icons. */
+export const CommonMistakesCardIcon = () => (
+  <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+    <rect x="6" y="4" width="28" height="34" rx="4" fill="#f3e8ff" stroke="#7c3aed" strokeWidth="1.5" />
+    <path d="M14 12h12M14 17h18M14 22h14" stroke="#7c3aed" strokeWidth="1.3" strokeLinecap="round" opacity=".45" />
+    <circle cx="16" cy="29" r="5" fill="#fef3c7" stroke="#d97706" strokeWidth="1.2" />
+    <path d="M16 27v2.2M16 31.2v.35" stroke="#b45309" strokeWidth="1.4" strokeLinecap="round" />
+    <circle cx="28" cy="29" r="5" fill="#fee2e2" stroke="#dc2626" strokeWidth="1.2" />
+    <path d="M26.2 26.8l3.6 3.6M29.8 26.8l-3.6 3.6" stroke="#b91c1c" strokeWidth="1.2" strokeLinecap="round" />
+    <circle cx="36" cy="36" r="8" fill="#7c3aed" />
+    <path d="M33 36l2 2 4.5-4.5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+  </svg>
+);
+
+export const StreakRewardIcon = ({ size = 40 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 40 40" fill="none" aria-hidden>
+    <circle cx="20" cy="20" r="18" fill="#dff6f2" stroke="#00b09b" strokeWidth="1.3" />
+    <path
+      d="M20 8c-2 4-6 6.5-6 11a6 6 0 1012 0c0-4.5-4-7-6-11z"
+      fill="#00b09b"
+      opacity=".25"
+    />
+    <path d="M20 14v10M20 24l-3-3M20 24l3-3" stroke="#00b09b" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+export const CertificateRewardIcon = ({ size = 40 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 40 40" fill="none" aria-hidden>
+    <rect x="8" y="6" width="24" height="20" rx="2" fill="#eef2ff" stroke="#4338ca" strokeWidth="1.3" />
+    <path d="M14 12h12M14 16h10M14 20h8" stroke="#4338ca" strokeWidth="1.2" strokeLinecap="round" opacity=".5" />
+    <path d="M14 28l6 4 6-4v-4H14v4z" fill="#c7d2fe" stroke="#4338ca" strokeWidth="1.2" />
+  </svg>
+);
+
+export const ReferRewardIcon = ({ size = 40 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 40 40" fill="none" aria-hidden>
+    <circle cx="14" cy="16" r="6" fill="#fff7ed" stroke="#d97b2a" strokeWidth="1.3" />
+    <circle cx="26" cy="16" r="6" fill="#fff7ed" stroke="#d97b2a" strokeWidth="1.3" />
+    <path d="M10 30c0-4 3.5-7 10-7s10 3 10 7" stroke="#d97b2a" strokeWidth="1.4" strokeLinecap="round" fill="none" />
+    <path d="M22 26l4 4 6-6" stroke="#d97b2a" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
 export const ExamCardIcon = () => (
   <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
     <rect x="6" y="5" width="28" height="32" rx="4" fill="#ffedf3" stroke="#c94a72" strokeWidth="1.5" />

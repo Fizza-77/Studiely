@@ -30,17 +30,9 @@ export const HeroSection = () => (
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.75, delay: 0.08 }}
-              className="block font-bold text-[clamp(26px,5vw,40px)] leading-[1.1] mb-1"
+              className="block font-bold text-[clamp(26px,5vw,40px)] leading-[1.1] mb-1 whitespace-nowrap max-[380px]:whitespace-normal max-[380px]:text-[clamp(22px,5vw,36px)]"
             >
-              Study Smarter.
-            </motion.span>
-            <motion.span
-              initial={{ opacity: 0, y: 28 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.75, delay: 0.18 }}
-              className="block font-bold text-[clamp(26px,5vw,40px)] leading-[1.1] mb-1"
-            >
-              Score Higher.
+              Study Smarter. Score Higher.
             </motion.span>
             <motion.span
               initial={{ opacity: 0, y: 28 }}

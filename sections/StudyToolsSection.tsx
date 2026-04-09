@@ -1,10 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type CSSProperties } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { SectionHeader } from "@/components/SectionHeader";
 import { Reveal } from "@/components/Reveal";
-import { NotesCardIcon, QuizCardIcon, FlashcardsCardIcon, ExamCardIcon } from "@/components/Icons";
+import {
+  NotesCardIcon,
+  QuizCardIcon,
+  FlashcardsCardIcon,
+  ExamCardIcon,
+  CommonMistakesCardIcon,
+} from "@/components/Icons";
 import { CUR_DATA } from "@/lib/data";
 import { STUDIELY_APP } from "@/lib/appUrls";
 // Map the selected option to a glow color
@@ -18,7 +24,10 @@ function getGlowColor(sel: string) {
       return "rgba(255, 166, 0, 0.45)"; // orange
 
     case "exam":
+    case "exam-writing-mode":
       return "rgba(255, 0, 128, 0.48)"; // pink
+    case "common-mistakes":
+      return "rgba(124, 58, 237, 0.42)"; // violet
     default:
       return "rgba(26,35,126,0.35)"; // dark blue fallback
   }
@@ -80,6 +89,19 @@ const TOOLS = [
       "Timer: 00:24:10\nWord count: 312\nFeedback: Improve structure around command terms and add one developed evaluation point.",
     Icon: ExamCardIcon,
   },
+  {
+    id: "common-mistakes",
+    label: "Common mistakes students make",
+    cta: "Explore common mistakes",
+    color: "#7c3aed",
+    lt: "#f5f3ff",
+    glow: "rgba(124,58,237,.14)",
+    border: "rgba(124,58,237,.22)",
+    desc: "Students often lose marks by misunderstanding command words, skipping key steps in long-answer methods, and mixing up core terms. Many write answers that are correct in idea but not aligned to what examiners award marks for.",
+    previewLabel: "Common mistakes",
+    preview: "",
+    Icon: CommonMistakesCardIcon,
+  },
 ];
 
 interface StudyToolsSectionProps {
@@ -101,13 +123,13 @@ export const StudyToolsSection = ({ sectionRef }: StudyToolsSectionProps) => {
       <div className="wrap">
         <SectionHeader
           label="AI Study Tools"
-          title="Four Tools. One Platform. Every Curriculum."
+          title="Five Tools. One Platform. Every Curriculum."
           sub="Pick your curriculum, type your topic and choose a tool. Content generates in seconds - structured to your exact grade level and exam board."
         />
 
       {/* ── TOOL CARDS ── */}
         <Reveal>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[14px] mb-8">
+          <div className="flex flex-row flex-nowrap gap-[14px] overflow-x-auto pb-2 mb-8 [-webkit-overflow-scrolling:touch] snap-x snap-mandatory sm:snap-none">
             {TOOLS.map((t) => {
               const active = sel === t.id;
               const { Icon } = t;
@@ -120,7 +142,7 @@ export const StudyToolsSection = ({ sectionRef }: StudyToolsSectionProps) => {
                     setChosen(true);
                   }}
                   transition={{ duration: 0.18 }}
-                  className="rounded-[14px] p-[24px_20px_44px] cursor-pointer relative flex flex-col items-center text-center shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-colors duration-200"
+                  className="rounded-[14px] p-[24px_20px_44px] cursor-pointer relative flex flex-col items-center text-center shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-colors duration-200 min-w-[168px] max-w-[220px] flex-1 basis-[168px] sm:min-w-[140px] sm:max-w-none sm:flex-1 sm:basis-0 snap-center shrink-0 sm:shrink"
                   style={{
                     border: `1.5px solid ${active ? t.color : t.border}`,
                     background: active ? `linear-gradient(150deg,${t.lt} 0%,#fff 100%)` : "#fafaf8",
@@ -162,17 +184,6 @@ export const StudyToolsSection = ({ sectionRef }: StudyToolsSectionProps) => {
                 </motion.div>
               );
             })}
-          </div>
-        </Reveal>
-
-        <Reveal delay={0.05}>
-          <div className="border border-border-default rounded-[14px] p-5 sm:p-6 bg-[#fafaf8] mb-8">
-            <h3 className="font-serif text-[20px] text-navy mb-2">Common mistakes students do</h3>
-            <p className="text-[13px] text-muted leading-[1.7]">
-              Students often lose marks by misunderstanding command words, skipping key steps in long-answer
-              methods, and mixing up core terms in definitions. Many also write answers that are correct in idea
-              but not aligned to the exact wording and structure examiners award marks for.
-            </p>
           </div>
         </Reveal>
 
@@ -386,78 +397,91 @@ export const StudyToolsSection = ({ sectionRef }: StudyToolsSectionProps) => {
  {/* ── BIG GENERATE BUTTON WITH DYNAMIC COLOR & CARD-LIKE GLOW ── */}
 <Reveal delay={0.4}>
   <div className="mt-12 sm:mt-14 md:mt-16 flex justify-center">
-    <motion.a
-      href={STUDIELY_APP.notes}
-      whileHover={{
-        scale: 1.025,
-        boxShadow: `0 16px 48px ${
-          sel
-            ? getGlowColor(sel) // glow matches selected card
-            : "rgba(26,35,126,0.5)" // idle dark blue if nothing selected
-        }`,
-        transition: { type: "spring", stiffness: 300, damping: 20 },
-      }}
-      whileTap={{ scale: 0.97 }}
-      className="flex items-center justify-center gap-3 sm:gap-4 text-white border-none rounded-[14px] text-[16px] sm:text-[18px] font-semibold shrink-0 transition-all duration-300 w-full max-w-[480px] h-[72px] sm:h-[84px] overflow-hidden px-4 sm:px-5 cursor-pointer no-underline"
-        style={{
+    {(() => {
+      const ctaStyle: CSSProperties = {
         background: `linear-gradient(135deg, ${
           chosen && tool?.color ? tool.color : "#5448c8"
         } 0%, ${chosen && tool?.color ? tool.color : "#4338b8"}dd 100%)`,
-        // Always-on glow
-        boxShadow: `0 8px 28px ${
-          sel
-            ? getGlowColor(sel) // glow matches selected card
-            : "rgba(26,35,126,0.35)" // idle subtle dark blue glow
-        }`,
-      }}
-    >
-     <svg
-  width="42"
-  height="32"
-  viewBox="0 0 90 68"
-  fill="none"
-  className="shrink-0 transition-opacity duration-300"
->
-  <rect x="2" y="52" width="62" height="8" rx="2.5" fill="currentColor" opacity=".9" />
-  <rect x="8" y="60" width="8" height="6" rx="1.5" fill="currentColor" opacity=".7" />
-  <rect x="30" y="60" width="8" height="6" rx="1.5" fill="currentColor" opacity=".7" />
-  <rect x="8" y="14" width="14" height="38" rx="2" fill="currentColor" opacity=".85" />
-  <rect x="10" y="19" width="10" height="6" rx="1" fill="white" opacity=".25" />
-  <rect x="10" y="32" width="10" height="3" rx="1" fill="white" opacity=".18" />
-  <rect x="10" y="37" width="7" height="3" rx="1" fill="white" opacity=".18" />
-  <rect x="24" y="20" width="13" height="32" rx="2" fill="currentColor" opacity=".7" />
-  <rect x="26" y="25" width="9" height="5" rx="1" fill="white" opacity=".25" />
-  <g transform="rotate(-12 42 52)">
-    <rect x="36" y="18" width="12" height="34" rx="2" fill="currentColor" opacity=".55" />
-    <rect x="38" y="23" width="8" height="4" rx="1" fill="white" opacity=".22" />
-    <rect x="38" y="30" width="6" height="3" rx="1" fill="white" opacity=".18" />
-  </g>
-  <path d="M62 28 L80 22 L62 16 L44 22 Z" fill="currentColor" opacity=".9" />
-  <path d="M53 25 L53 38 Q53 42 62 44 Q71 42 71 38 L71 25" fill="currentColor" opacity=".6" />
-  <line x1="80" y1="22" x2="80" y2="34" stroke="currentColor" strokeWidth="2" strokeLinecap="round" opacity=".8" />
-  <circle cx="80" cy="36" r="2.8" fill="currentColor" opacity=".8" />
-  <line x1="80" y1="38" x2="78" y2="44" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity=".6" />
-  <line x1="80" y1="38" x2="80" y2="45" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity=".6" />
-  <line x1="80" y1="38" x2="82" y2="44" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity=".6" />
-</svg>
-
-      {/* Stateful text */}
-      <motion.div
-        key={chosen ? sel : "default"}
-        initial={{ opacity: 0, y: 6 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -6 }}
-        transition={{ duration: 0.22 }}
-        className="min-w-0 w-[220px] sm:w-[260px] flex flex-col justify-center items-start text-left"
-      >
+        boxShadow: `0 8px 28px ${sel ? getGlowColor(sel) : "rgba(26,35,126,0.35)"}`,
+      };
+      const ctaClass =
+        "flex items-center justify-center gap-3 sm:gap-4 text-white border-none rounded-[14px] text-[16px] sm:text-[18px] font-semibold shrink-0 transition-all duration-300 w-full max-w-[480px] h-[72px] sm:h-[84px] overflow-hidden px-4 sm:px-5";
+      const inner = (
         <>
-          <span className="block text-[11px] font-normal opacity-70 tracking-[0.5px] uppercase mb-[3px]">
-            {chosen ? "Ready" : "Select a tool above"}
-          </span>
-          <span className="truncate w-full">{chosen ? tool?.cta : "Start Learning Smarter"}</span>
+          <svg
+            width="42"
+            height="32"
+            viewBox="0 0 90 68"
+            fill="none"
+            className="shrink-0 transition-opacity duration-300"
+            aria-hidden
+          >
+            <rect x="2" y="52" width="62" height="8" rx="2.5" fill="currentColor" opacity=".9" />
+            <rect x="8" y="60" width="8" height="6" rx="1.5" fill="currentColor" opacity=".7" />
+            <rect x="30" y="60" width="8" height="6" rx="1.5" fill="currentColor" opacity=".7" />
+            <rect x="8" y="14" width="14" height="38" rx="2" fill="currentColor" opacity=".85" />
+            <rect x="10" y="19" width="10" height="6" rx="1" fill="white" opacity=".25" />
+            <rect x="10" y="32" width="10" height="3" rx="1" fill="white" opacity=".18" />
+            <rect x="10" y="37" width="7" height="3" rx="1" fill="white" opacity=".18" />
+            <rect x="24" y="20" width="13" height="32" rx="2" fill="currentColor" opacity=".7" />
+            <rect x="26" y="25" width="9" height="5" rx="1" fill="white" opacity=".25" />
+            <g transform="rotate(-12 42 52)">
+              <rect x="36" y="18" width="12" height="34" rx="2" fill="currentColor" opacity=".55" />
+              <rect x="38" y="23" width="8" height="4" rx="1" fill="white" opacity=".22" />
+              <rect x="38" y="30" width="6" height="3" rx="1" fill="white" opacity=".18" />
+            </g>
+            <path d="M62 28 L80 22 L62 16 L44 22 Z" fill="currentColor" opacity=".9" />
+            <path d="M53 25 L53 38 Q53 42 62 44 Q71 42 71 38 L71 25" fill="currentColor" opacity=".6" />
+            <line x1="80" y1="22" x2="80" y2="34" stroke="currentColor" strokeWidth="2" strokeLinecap="round" opacity=".8" />
+            <circle cx="80" cy="36" r="2.8" fill="currentColor" opacity=".8" />
+            <line x1="80" y1="38" x2="78" y2="44" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity=".6" />
+            <line x1="80" y1="38" x2="80" y2="45" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity=".6" />
+            <line x1="80" y1="38" x2="82" y2="44" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity=".6" />
+          </svg>
+          <motion.div
+            key={chosen ? sel : "default"}
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.22 }}
+            className="min-w-0 w-[220px] sm:w-[260px] flex flex-col justify-center items-start text-left"
+          >
+            <span className="block text-[11px] font-normal opacity-70 tracking-[0.5px] uppercase mb-[3px]">
+              {chosen ? "Ready" : "Select a tool above"}
+            </span>
+            <span className="truncate w-full">{chosen ? tool?.cta : "Start Learning Smarter"}</span>
+          </motion.div>
         </>
-      </motion.div>
-    </motion.a>
+      );
+      if (sel === "common-mistakes") {
+        return (
+          <motion.div
+            role="button"
+            aria-disabled
+            tabIndex={0}
+            className={`${ctaClass} cursor-not-allowed opacity-[0.97]`}
+            style={ctaStyle}
+          >
+            {inner}
+          </motion.div>
+        );
+      }
+      return (
+        <motion.a
+          href={STUDIELY_APP.notes}
+          whileHover={{
+            scale: 1.025,
+            boxShadow: `0 16px 48px ${sel ? getGlowColor(sel) : "rgba(26,35,126,0.5)"}`,
+            transition: { type: "spring", stiffness: 300, damping: 20 },
+          }}
+          whileTap={{ scale: 0.97 }}
+          className={`${ctaClass} cursor-pointer no-underline`}
+          style={ctaStyle}
+        >
+          {inner}
+        </motion.a>
+      );
+    })()}
   </div>
 </Reveal>
       </div>

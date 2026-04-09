@@ -225,7 +225,7 @@ export const WritingSection = ({ sectionRef }: WritingSectionProps) => {
       </svg>
 
       {/* Button text */}
-      Exam Practice Smarter
+      Start Exam Practice
     </motion.a>
   </div>
 </Reveal>
