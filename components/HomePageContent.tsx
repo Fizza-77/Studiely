@@ -26,16 +26,26 @@ type HomePageContentProps = {
 export function HomePageContent({ scrollToFeaturesOnMount = false }: HomePageContentProps) {
   const nylaHref = "/nyla";
   const [visibleSections, setVisibleSections] = useState<string[]>([]);
+  const curriculumRef = useRef<HTMLElement>(null);
   const toolsRef = useRef<HTMLElement>(null);
   const writingRef = useRef<HTMLElement>(null);
   const nylaRef = useRef<HTMLElement>(null);
+  const rewardsRef = useRef<HTMLElement>(null);
+  const reviewsRef = useRef<HTMLElement>(null);
+  const pricingRef = useRef<HTMLElement>(null);
+  const sisterRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const ORDER = ["tools", "writing", "nyla"];
+    const ORDER = ["curriculum", "tools", "writing", "nyla", "rewards", "reviews", "pricing", "sister"];
     const sections = [
+      { id: "curriculum", ref: curriculumRef },
       { id: "tools", ref: toolsRef },
       { id: "writing", ref: writingRef },
       { id: "nyla", ref: nylaRef },
+      { id: "rewards", ref: rewardsRef },
+      { id: "reviews", ref: reviewsRef },
+      { id: "pricing", ref: pricingRef },
+      { id: "sister", ref: sisterRef },
     ];
 
     const observers = sections.map(({ id, ref }) => {
@@ -83,10 +93,12 @@ export function HomePageContent({ scrollToFeaturesOnMount = false }: HomePageCon
         <WritingSection sectionRef={writingRef} />
         <HowItWorksSection />
         <NylaSection sectionRef={nylaRef} />
-        <SupportedCountriesSection />
-        <RewardsProgressSection />
-        <ReviewsSection />
+        <SupportedCountriesSection sectionRef={curriculumRef} />
+        <RewardsProgressSection sectionRef={rewardsRef} />
+        <ReviewsSection sectionRef={reviewsRef} />
         <section
+          id="pricing"
+          ref={pricingRef}
           aria-labelledby="homepage-pricing-heading"
           className="bg-white border-t border-border-default"
         >
@@ -156,7 +168,7 @@ export function HomePageContent({ scrollToFeaturesOnMount = false }: HomePageCon
             </div>
           </div>
         </section>
-        <SisterSection />
+        <SisterSection sectionRef={sisterRef} />
         <CTASection />
       </main>
       <Footer />

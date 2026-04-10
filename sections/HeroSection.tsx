@@ -18,14 +18,14 @@ export const HeroSection = () => (
             initial={{ opacity: 0, x: -16 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7 }}
-            className="inline-flex items-center gap-2 text-[10px] font-semibold tracking-[1.4px] uppercase text-teal mb-[18px] md:mb-[22px]"
+            className="flex w-fit mx-auto items-center justify-center gap-2 text-[10px] font-semibold tracking-[1.4px] uppercase text-teal text-center mb-[18px] md:mb-[22px]"
           >
             <span className="w-5 h-[1.5px] bg-teal block" />
             AI-Powered Study Tool for Students
           </motion.div>
 
           {/* Headline — single H1 for SEO; visual hierarchy preserved with spans */}
-          <h1 className="font-serif text-navy tracking-[-1px] mb-5 md:mb-6 text-center lg:text-left">
+          <h1 className="font-serif text-navy tracking-[-1px] mb-5 md:mb-6 text-center">
             <motion.span
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
@@ -38,7 +38,7 @@ export const HeroSection = () => (
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.75, delay: 0.28 }}
-              className="block text-[clamp(32px,7vw,62px)] leading-[1.08]"
+              className="block text-center text-[clamp(32px,7vw,62px)] leading-[1.08]"
             >
               Start in <em className="text-teal">Seconds.</em>
             </motion.span>

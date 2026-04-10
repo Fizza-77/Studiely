@@ -2,8 +2,12 @@
 
 import { Reveal } from "@/components/Reveal";
 
-export const SisterSection = () => (
-<section className="bg-gradient-to-b from-white to-teal-50/40 py-14 sm:py-16 md:py-20 lg:py-[90px] relative border-t border-gray-200/60">
+interface SisterSectionProps {
+  sectionRef?: React.Ref<HTMLElement>;
+}
+
+export const SisterSection = ({ sectionRef }: SisterSectionProps) => (
+<section ref={sectionRef} className="bg-gradient-to-b from-white to-teal-50/40 py-14 sm:py-16 md:py-20 lg:py-[90px] relative border-t border-gray-200/60">
 
    <div className="wrap">
 

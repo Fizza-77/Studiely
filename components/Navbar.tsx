@@ -3,15 +3,29 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { NylaAvatar, StudyToolsNavIcon, WritingNavIcon } from "./Icons";
+import {
+  CurriculumNavIcon,
+  NylaAvatar,
+  PricingNavIcon,
+  ReviewsNavIcon,
+  RewardsNavIcon,
+  SisterPlatformNavIcon,
+  StudyToolsNavIcon,
+  WritingNavIcon,
+} from "./Icons";
 import { Button } from "./Button";
 import Image from "next/image";
 import { STUDIELY_APP } from "@/lib/appUrls";
 
 export const NAV_PILLS = [
+  { id: "curriculum", label: "Curriculum", Icon: ({ sz }: { sz: number }) => <CurriculumNavIcon size={sz} /> },
   { id: "tools", label: "Powerful Tools", Icon: ({ sz }: { sz: number }) => <StudyToolsNavIcon size={sz} /> },
   { id: "writing", label: "Exam Practice", Icon: ({ sz }: { sz: number }) => <WritingNavIcon size={sz} /> },
   { id: "nyla", label: "Nyla", Icon: ({ sz }: { sz: number }) => <NylaAvatar size={sz} /> },
+  { id: "rewards", label: "Rewards & Progress", Icon: ({ sz }: { sz: number }) => <RewardsNavIcon size={sz} /> },
+  { id: "reviews", label: "Reviews", Icon: ({ sz }: { sz: number }) => <ReviewsNavIcon size={sz} /> },
+  { id: "pricing", label: "Pricing", Icon: ({ sz }: { sz: number }) => <PricingNavIcon size={sz} /> },
+  { id: "sister", label: "Sister Platform", Icon: ({ sz }: { sz: number }) => <SisterPlatformNavIcon size={sz} /> },
 ];
 
 interface NavbarProps {

@@ -40,8 +40,12 @@ const RCard = ({ quote, name, role, initials, col }: RCardProps) => (
   </div>
 );
 
-export const ReviewsSection = () => (
-  <section className="py-14 sm:py-16 md:py-20 lg:py-24 bg-bg-base overflow-hidden relative">
+interface ReviewsSectionProps {
+  sectionRef?: React.Ref<HTMLElement>;
+}
+
+export const ReviewsSection = ({ sectionRef }: ReviewsSectionProps) => (
+  <section ref={sectionRef} className="py-14 sm:py-16 md:py-20 lg:py-24 bg-bg-base overflow-hidden relative">
     <EduPattern opacity={0.045} stroke="#00b09b" />
     <div className="wrap mb-10 sm:mb-12 md:mb-[52px] relative">
     <SectionHeader

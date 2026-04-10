@@ -148,6 +148,50 @@ export const WritingNavIcon = ({ size = 20 }: { size?: number }) => (
   </svg>
 );
 
+export const CurriculumNavIcon = ({ size = 20 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 36 36" fill="none" aria-hidden>
+    <rect x="5" y="7" width="26" height="22" rx="4" fill="#e6fffb" stroke="#00b09b" strokeWidth="1.4" />
+    <path d="M11 13h14M11 17h9M11 21h11" stroke="#00b09b" strokeWidth="1.4" strokeLinecap="round" opacity=".75" />
+    <circle cx="26" cy="24" r="5" fill="#00b09b" opacity=".18" />
+    <path d="M26 22v4M24 24h4" stroke="#00b09b" strokeWidth="1.4" strokeLinecap="round" />
+  </svg>
+);
+
+export const RewardsNavIcon = ({ size = 20 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 36 36" fill="none" aria-hidden>
+    <circle cx="18" cy="18" r="13" fill="#fff7ed" stroke="#d97b2a" strokeWidth="1.3" />
+    <path d="M18 9l2.5 5.1 5.6.8-4.1 4 1 5.6L18 22l-5 2.5 1-5.6-4.1-4 5.6-.8L18 9z" fill="#d97b2a" opacity=".75" />
+  </svg>
+);
+
+export const ReviewsNavIcon = ({ size = 20 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 36 36" fill="none" aria-hidden>
+    <rect x="5" y="7" width="26" height="18" rx="5" fill="#fff" stroke="#2563eb" strokeWidth="1.3" />
+    <path d="M13 25l-4 4v-4" stroke="#2563eb" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M11 13h14M11 17h10" stroke="#2563eb" strokeWidth="1.3" strokeLinecap="round" opacity=".75" />
+    <circle cx="26" cy="17" r="3.2" fill="#2563eb" opacity=".2" />
+  </svg>
+);
+
+export const PricingNavIcon = ({ size = 20 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 36 36" fill="none" aria-hidden>
+    <rect x="6" y="6" width="24" height="24" rx="6" fill="#eef2ff" stroke="#4338ca" strokeWidth="1.3" />
+    <path d="M15 12h8M15 18h8M15 24h8" stroke="#4338ca" strokeWidth="1.4" strokeLinecap="round" opacity=".75" />
+    <circle cx="12" cy="12" r="1.5" fill="#4338ca" />
+    <circle cx="12" cy="18" r="1.5" fill="#4338ca" />
+    <circle cx="12" cy="24" r="1.5" fill="#4338ca" />
+  </svg>
+);
+
+export const SisterPlatformNavIcon = ({ size = 20 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 36 36" fill="none" aria-hidden>
+    <rect x="5" y="9" width="10" height="18" rx="2" fill="#e6fffb" stroke="#00b09b" strokeWidth="1.3" />
+    <rect x="14" y="6" width="10" height="21" rx="2" fill="#e0f2fe" stroke="#0284c7" strokeWidth="1.3" />
+    <rect x="23" y="11" width="8" height="16" rx="2" fill="#fff7ed" stroke="#d97b2a" strokeWidth="1.3" />
+    <path d="M9 14h2M18 12h2M26 15h2" stroke="#0f172a" strokeWidth="1" strokeLinecap="round" opacity=".45" />
+  </svg>
+);
+
 export const NotesCardIcon = () => (
   <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
     <rect x="4" y="3" width="30" height="36" rx="5" fill="#dff6f2" stroke="#00b09b" strokeWidth="1.5" />

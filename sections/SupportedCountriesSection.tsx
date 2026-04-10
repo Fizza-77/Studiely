@@ -39,9 +39,13 @@ const COUNTRIES = [
   },
 ];
 
-export const SupportedCountriesSection = () => {
+interface SupportedCountriesSectionProps {
+  sectionRef?: React.Ref<HTMLElement>;
+}
+
+export const SupportedCountriesSection = ({ sectionRef }: SupportedCountriesSectionProps) => {
   return (
-    <section className="py-10 sm:py-12 md:py-14 bg-white border-t border-border-default">
+    <section ref={sectionRef} className="py-10 sm:py-12 md:py-14 bg-white border-t border-border-default">
       <div className="wrap">
         <Reveal>
           <div className="text-center mb-8 sm:mb-10">
