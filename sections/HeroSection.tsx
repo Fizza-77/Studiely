@@ -83,7 +83,7 @@ export const HeroSection = () => (
             No credit card required · 5 free one-time credits · Works for GCSE, IB, A-Level, SAT,
             HSC and more
           </motion.p>
-          <motion.nav
+      {/*    <motion.nav
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.76 }}
@@ -111,7 +111,7 @@ export const HeroSection = () => (
             >
               Pricing
             </a>
-          </motion.nav>
+          </motion.nav> */}
         </div>
 
         {/* RIGHT: MOCKUP */}

@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
-import { Nunito, Nunito_Sans } from "next/font/google";
+import { DM_Sans, DM_Serif_Display } from "next/font/google";
 import "./globals.css";
 import { CookieConsentBanner } from "@/components/CookieConsentBanner";
 import { DEFAULT_OG_IMAGE_PATH, SITE_URL } from "@/lib/site";
 import Script from "next/script";
 
-const nunitoSans = Nunito_Sans({
+const dmSans = DM_Sans({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
 });
 
-const nunito = Nunito({
+const dmSerifDisplay = DM_Serif_Display({
+  weight: "400",
   subsets: ["latin"],
   variable: "--font-serif",
   display: "swap",
@@ -116,7 +117,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${nunitoSans.variable} ${nunito.variable}`}
+      className={`${dmSans.variable} ${dmSerifDisplay.variable}`}
       suppressHydrationWarning
     >
       <head>

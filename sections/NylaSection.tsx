@@ -60,7 +60,7 @@ export const NylaSection = ({ sectionRef }: NylaSectionProps) => {
                 <div className="bg-indigo-lt border-b border-[#dddaf8] px-[18px] py-[14px] flex items-center gap-3">
                   <NylaAvatar size={46} />
                   <div>
-                    <div className="text-[15px] font-semibold text-navy font-serif">Nyla</div>
+                    <div className="text-[15px] font-semibold text-navy">Nyla</div>
                     <div className="text-[11px] text-teal flex items-center gap-1.5">
                       <span className="w-1.5 h-1.5 rounded-full bg-teal inline-block" />
                       Online — AI Study Assistant

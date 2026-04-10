@@ -41,7 +41,7 @@ export const FaqItem = ({ question, children }: FaqItemProps) => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-            className="px-3.5 pb-3.5 pt-0 text-[13px] text-muted leading-[1.7] border-t border-border-lt"
+            className="px-3.5 pb-3.5 pt-0 text-[13px] text-body leading-[1.75] border-t border-border-lt [&_p+p]:mt-3 [&_ul]:mt-2 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-1.5 [&_ol]:mt-2 [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:space-y-1.5"
           >
             {children}
           </motion.dd>

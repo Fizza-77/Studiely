@@ -44,10 +44,10 @@ export const HowItWorksSection = ({ sectionRef }: HowItWorksSectionProps) => (
               key={n}
               className={`bg-white px-5 sm:px-6 lg:px-8 py-8 sm:py-9 lg:py-10 transition-colors duration-180 border-l-[3px] h-full ${styles}`}
             >
-              <span className="font-serif text-[11px] italic mb-4 block leading-none">
+              <span className="text-[11px] italic mb-4 block leading-none">
                 Step {n}
               </span>
-              <h4 className="font-serif text-[20px] font-normal text-navy mb-2.5">
+              <h4 className="text-[20px] font-normal text-navy mb-2.5">
                 {t}
               </h4>
               <p className="text-[13.5px] text-muted leading-[1.72] font-light">

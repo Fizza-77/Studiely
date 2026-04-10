@@ -164,7 +164,7 @@ export const StudyToolsSection = ({ sectionRef }: StudyToolsSectionProps) => {
                     className="w-5 h-[2.5px] rounded-sm mb-[11px] shrink-0 transition-opacity duration-200"
                     style={{ background: t.color, opacity: active ? 1 : 0.4 }}
                   />
-                  <h3 className="font-serif text-[17px] font-normal text-navy mb-[7px] tracking-[-0.15px] w-full">
+                  <h3 className="text-[17px] font-normal text-navy mb-[7px] tracking-[-0.15px] w-full">
                     {t.label}
                   </h3>
                   <p className="text-[12.5px] text-muted leading-[1.68] font-light w-full">{t.desc}</p>

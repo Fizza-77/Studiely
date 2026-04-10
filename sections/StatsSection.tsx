@@ -23,7 +23,7 @@ export const StatsSection = () => (
           >
             
             <div
-              className="font-serif text-[clamp(20px,4.5vw,28px)] font-normal mb-1 tracking-[-0.5px]"
+              className="text-[clamp(20px,4.5vw,28px)] font-normal mb-1 tracking-[-0.5px]"
               style={{ color: s.col }}
             >
               <AnimNum target={s.n} pre={s.pre} suf={s.suf} />

@@ -61,7 +61,7 @@ export const PricingSection = ({ compact = false }) => {
                   )}
                   <h2
                     id={`plan-${plan.name}`}
-                    className={`font-serif text-[19px] font-normal mb-1.5 ${
+                    className={`text-[19px] font-normal mb-1.5 ${
                       plan.featured ? "text-white" : "text-navy"
                     }`}
                   >
@@ -77,7 +77,7 @@ export const PricingSection = ({ compact = false }) => {
                     </div>
                   )}
                   <div
-                    className={`font-serif text-[clamp(22px,2.2vw,28px)] tracking-[-0.5px] mb-0.5 ${
+                    className={`text-[clamp(22px,2.2vw,28px)] tracking-[-0.5px] mb-0.5 ${
                       plan.featured ? "text-white" : "text-navy"
                     }`}
                   >

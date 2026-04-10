@@ -132,7 +132,7 @@ export function CookieConsentBanner() {
                 </span>
               </div>
               <div>
-                <p className="font-serif text-white text-[15px] sm:text-base font-bold leading-tight">
+                <p className="text-white text-[15px] sm:text-base font-bold leading-tight">
                   3 quick ticks
                 </p>
                 <p className="text-[11px] sm:text-xs text-white/55 leading-snug mt-0.5">
@@ -172,7 +172,7 @@ export function CookieConsentBanner() {
                     </span>
                     <div className="min-w-0">
                       <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0">
-                        <span className="text-[13px] sm:text-sm font-bold text-white font-serif drop-shadow-sm">
+                        <span className="text-[13px] sm:text-sm font-bold text-white drop-shadow-sm">
                           {item.title}
                         </span>
                         <Link

@@ -109,7 +109,7 @@ export function HomePageContent({ scrollToFeaturesOnMount = false }: HomePageCon
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
               <article className="rounded-xl border border-border-default bg-[#fafaf8] p-5 sm:p-6 text-center">
                 <p className="text-[11px] uppercase tracking-[1.3px] font-semibold text-teal mb-1.5">Free</p>
-                <h3 className="font-serif text-[22px] text-navy mb-1">Free</h3>
+                <h3 className="text-[22px] text-navy mb-1">Free</h3>
                 <p className="text-[13px] text-muted mb-3.5">Get started today</p>
                 <p className="text-[13px] text-muted leading-[1.7] whitespace-pre-line text-left">
                   5 one-time credits to try every study tool.{"\n"}
@@ -120,7 +120,7 @@ export function HomePageContent({ scrollToFeaturesOnMount = false }: HomePageCon
 
               <article className="rounded-xl border border-border-default bg-[#fafaf8] p-5 sm:p-6 text-center">
                 <p className="text-[11px] uppercase tracking-[1.3px] font-semibold text-indigo mb-1.5">Premium</p>
-                <h3 className="font-serif text-[22px] text-navy mb-1">Premium</h3>
+                <h3 className="text-[22px] text-navy mb-1">Premium</h3>
                 <p className="text-[13px] text-muted mb-3.5">For serious exam preparation</p>
                 <p className="text-[13px] text-muted leading-[1.7] whitespace-pre-line text-left">
                   Unlimited AI study generations (fair usage).{"\n"}
@@ -135,7 +135,7 @@ export function HomePageContent({ scrollToFeaturesOnMount = false }: HomePageCon
 
               <article className="rounded-xl border border-border-default bg-[#fafaf8] p-5 sm:p-6 text-center">
                 <p className="text-[11px] uppercase tracking-[1.3px] font-semibold text-amber mb-1.5">Exam Practice</p>
-                <h3 className="font-serif text-[22px] text-navy mb-1">Exam Practice</h3>
+                <h3 className="text-[22px] text-navy mb-1">Exam Practice</h3>
                 <p className="text-[13px] text-muted mb-3.5">Available separately</p>
                 <p className="text-[13px] text-muted leading-[1.7] whitespace-pre-line text-left">
                   Dedicated exam-style practice with three modes - Untimed, Timed and Exam Simulation.{"\n"}
