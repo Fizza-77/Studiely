@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { HomePageContent } from "@/components/HomePageContent";
-import { SITE_URL } from "@/lib/site";
+import { DEFAULT_OG_IMAGE_PATH, SITE_URL } from "@/lib/site";
 
 const webAppSchema = {
   "@context": "https://schema.org",
@@ -58,11 +58,13 @@ export const metadata: Metadata = {
     url: SITE_URL,
     type: "website",
     siteName: "Studiely",
+    images: [{ url: DEFAULT_OG_IMAGE_PATH, alt: "Studiely" }],
   },
   twitter: {
     card: "summary_large_image",
     title: homeTitle,
     description: homeDescription,
+    images: [DEFAULT_OG_IMAGE_PATH],
   },
 };
 

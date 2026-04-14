@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { SITE_URL } from "@/lib/site";
+import { DEFAULT_OG_IMAGE_PATH, SITE_URL } from "@/lib/site";
 import { loadLegalDocument } from "./loadLegalDocument";
 
 export function legalPageMetadata(
@@ -19,6 +19,13 @@ export function legalPageMetadata(
       description: doc.description,
       url,
       siteName: "Studiely",
+      images: [{ url: DEFAULT_OG_IMAGE_PATH, alt: "Studiely" }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: doc.title,
+      description: doc.description,
+      images: [DEFAULT_OG_IMAGE_PATH],
     },
   };
 }

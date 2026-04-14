@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Footer } from "@/components/Footer";
-import { SITE_URL } from "@/lib/site";
+import { DEFAULT_OG_IMAGE_PATH, SITE_URL } from "@/lib/site";
 import { STUDIELY_APP } from "@/lib/appUrls";
 import { FaqItem } from "@/components/FaqItem";
 import { PageHeader } from "@/components/PageHeader";
@@ -25,11 +25,13 @@ export const metadata: Metadata = {
     url: `${SITE_URL}/faqs`,
     type: "website",
     siteName: "Studiely",
+    images: [{ url: DEFAULT_OG_IMAGE_PATH, alt: "Studiely FAQs" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Studiely FAQs — AI Learning & Student Tools",
     description: faqDescription,
+    images: [DEFAULT_OG_IMAGE_PATH],
   },
 };
 
