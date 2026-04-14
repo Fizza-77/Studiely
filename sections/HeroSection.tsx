@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { Button } from "@/components/Button";
 import { STUDIELY_APP } from "@/lib/appUrls";
 export const HeroSection = () => (
@@ -14,54 +13,29 @@ export const HeroSection = () => (
         {/* LEFT: TEXT */}
         <div>
           {/* Eyebrow */}
-          <motion.div
-            initial={{ opacity: 0, x: -16 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7 }}
-            className="flex w-fit mx-auto items-center justify-center gap-2 text-[10px] font-semibold tracking-[1.4px] uppercase text-teal text-center mb-[18px] md:mb-[22px]"
-          >
+          <div className="flex w-fit mx-auto items-center justify-center gap-2 text-[10px] font-semibold tracking-[1.4px] uppercase text-teal text-center mb-[18px] md:mb-[22px]">
             <span className="w-5 h-[1.5px] bg-teal block" />
             AI-Powered Study Tool for Students
-          </motion.div>
+          </div>
 
           {/* Headline — single H1 for SEO; visual hierarchy preserved with spans */}
           <h1 className="font-serif text-navy tracking-[-1px] mb-5 md:mb-6 text-center">
-            <motion.span
-              initial={{ opacity: 0, y: 28 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.75, delay: 0.08 }}
-              className="block font-bold text-[clamp(26px,5vw,40px)] leading-[1.1] mb-1 whitespace-nowrap max-[380px]:whitespace-normal max-[380px]:text-[clamp(22px,5vw,36px)]"
-            >
+            <span className="block font-bold text-[clamp(26px,5vw,40px)] leading-[1.1] mb-1 whitespace-nowrap max-[380px]:whitespace-normal max-[380px]:text-[clamp(22px,5vw,36px)]">
               Study Smarter. Score Higher.
-            </motion.span>
-            <motion.span
-              initial={{ opacity: 0, y: 28 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.75, delay: 0.28 }}
-              className="block text-center text-[clamp(32px,7vw,62px)] leading-[1.08]"
-            >
+            </span>
+            <span className="block text-center text-[clamp(32px,7vw,62px)] leading-[1.08]">
               Start in <em className="text-teal">Seconds.</em>
-            </motion.span>
+            </span>
           </h1>
 
           {/* Description */}
-         <motion.p
-  initial={{ opacity: 0, y: 18 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.7, delay: 0.42 }}
-  className="text-[15px] md:text-[16.5px] leading-[1.75] text-grey-800 font-light mb-7 md:mb-9 max-w-[100%] md:max-w-[460px]"
->
+         <p className="text-[15px] md:text-[16.5px] leading-[1.75] text-grey-800 font-light mb-7 md:mb-9 max-w-[100%] md:max-w-[460px]">
             Select your curriculum and exam board. Type your topic. Studiely instantly generates
             revision notes, flashcards, quizzes and exam practice — calibrated to exactly what your
             examiner expects.
-          </motion.p>
+          </p>
 
-<motion.div
-  initial={{ opacity: 0, y: 14 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.6, delay: 0.54 }}
-  className="flex flex-col items-center sm:flex-row sm:justify-center lg:justify-start gap-2.5 mb-[18px] md:mb-[22px]"
->
+<div className="flex flex-col items-center sm:flex-row sm:justify-center lg:justify-start gap-2.5 mb-[18px] md:mb-[22px]">
   <Button href={STUDIELY_APP.home} variant="solid" lg>
     Get Started Free
   </Button>
@@ -71,18 +45,13 @@ export const HeroSection = () => (
       See How It Works
     </Button>
   </Link>
-</motion.div>
+</div>
 
           {/* Trust text */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.68 }}
-            className="text-[12px] text-gray-500 text-center lg:text-left"
-          >
+          <p className="text-[12px] text-gray-500 text-center lg:text-left">
             No credit card required · 5 free one-time credits · Works for GCSE, IB, A-Level, SAT,
             HSC and more
-          </motion.p>
+          </p>
       {/*    <motion.nav
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -116,12 +85,7 @@ export const HeroSection = () => (
 
         {/* RIGHT: MOCKUP */}
         <div className="block max-w-[420px] mx-auto lg:max-w-none lg:mx-0">
-          <motion.div
-            initial={{ opacity: 0, x: 36 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.85, delay: 0.2 }}
-            className="scale-[0.94] sm:scale-100 origin-top bg-white border border-border-default rounded-[14px] overflow-hidden shadow-[0_10px_48px_rgba(0,0,0,0.08)]"
-          >
+          <div className="scale-[0.94] sm:scale-100 origin-top bg-white border border-border-default rounded-[14px] overflow-hidden shadow-[0_10px_48px_rgba(0,0,0,0.08)]">
             {/* Top bar */}
             <div className="flex items-center gap-2.5 px-4 py-[11px] border-b border-border-lt bg-bg-base">
               <div className="flex gap-[5px]">
@@ -205,7 +169,7 @@ export const HeroSection = () => (
                 ))}
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </div>

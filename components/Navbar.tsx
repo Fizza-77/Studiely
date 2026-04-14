@@ -56,7 +56,7 @@ export const Navbar = ({ visibleSections = [] }: NavbarProps) => {
       <header
         className={`fixed top-0 left-0 right-0 z-[400] transition-all duration-300 ${
           scrolled
-            ? "bg-bg-base/96 backdrop-blur-[12px] border-b border-border-default shadow-[0_1px_18px_rgba(0,0,0,0.06)]"
+            ? "bg-bg-base/96 md:backdrop-blur-[12px] border-b border-border-default shadow-[0_1px_18px_rgba(0,0,0,0.06)]"
             : "bg-bg-base border-b border-transparent shadow-none"
         }`}
       >

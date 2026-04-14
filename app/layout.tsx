@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { DM_Sans, DM_Serif_Display } from "next/font/google";
 import "./globals.css";
-import { CookieConsentBanner } from "@/components/CookieConsentBanner";
 import { DEFAULT_OG_IMAGE_PATH, SITE_URL } from "@/lib/site";
 import Script from "next/script";
+import { CookieConsentBannerClient } from "@/components/CookieConsentBannerClient";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -146,7 +146,7 @@ export default function RootLayout({
           }}
         />
         {children}
-        <CookieConsentBanner />
+        <CookieConsentBannerClient />
       </body>
     </html>
   );
