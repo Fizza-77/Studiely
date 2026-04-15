@@ -29,7 +29,7 @@ export const StatsSection = () => (
               <AnimNum target={s.n} pre={s.pre} suf={s.suf} />
             </div>
 
-            <div className="text-[11.5px] sm:text-[12px] text-muted leading-[1.4] max-w-[180px] mx-auto">
+            <div className="text-[11.5px] sm:text-[12px] text-body leading-[1.4] max-w-[180px] mx-auto">
               {s.label}
             </div>
 
@@ -42,10 +42,10 @@ export const StatsSection = () => (
 
       </div>
       <div className="text-center py-5 sm:py-6 px-4 space-y-3">
-        <p className="text-[13px] sm:text-[14px] text-muted max-w-[800px] mx-auto leading-relaxed">
+        <p className="text-[13px] sm:text-[14px] text-body max-w-[800px] mx-auto leading-relaxed">
           Built to support major curricula and exam boards across the UK, US, Australia, and Canada.
         </p>
-        <p className="text-[11.5px] sm:text-[12.5px] text-muted/90 max-w-[720px] mx-auto leading-[1.65] font-light italic">
+        <p className="text-[11.5px] sm:text-[12.5px] text-body/85 max-w-[720px] mx-auto leading-[1.65] font-light italic">
           These numbers are live, real, and updated every week. We&apos;re a new platform — we&apos;d
           rather show you where we actually are than pretend to be somewhere we&apos;re not. Join us
           early and help us build something genuine.

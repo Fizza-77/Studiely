@@ -143,38 +143,38 @@ export function HomePageContent({ scrollToFeaturesOnMount = false }: HomePageCon
               <article className="rounded-xl border border-border-default bg-[#fafaf8] p-5 sm:p-6 text-center">
                 <p className="text-[11px] uppercase tracking-[1.3px] font-semibold text-teal mb-1.5">Free</p>
                 <h3 className="text-[22px] text-navy mb-1">Free</h3>
-                <p className="text-[13px] text-muted mb-3.5">Get started today</p>
-                <p className="text-[13px] text-muted leading-[1.7] whitespace-pre-line text-left">
-                  5 one-time credits to try every study tool.{"\n"}
-                  3 one-time Exam Practice trials.{"\n"}
-                  Per email account - not monthly.
-                </p>
+                <p className="text-[13px] text-body mb-3.5">Get started today</p>
+                <ul className="text-[13px] text-body leading-[1.7] text-left space-y-1.5 m-0 pl-0">
+                  <li className="flex items-start gap-2"><span className="text-teal font-bold">✓</span> 5 one-time credits to try every study tool.</li>
+                  <li className="flex items-start gap-2"><span className="text-teal font-bold">✓</span> 3 one-time Exam Practice trials.</li>
+                  <li className="flex items-start gap-2"><span className="text-teal font-bold">✓</span> Per email account - not monthly.</li>
+                </ul>
               </article>
 
               <article className="rounded-xl border border-border-default bg-[#fafaf8] p-5 sm:p-6 text-center">
                 <p className="text-[11px] uppercase tracking-[1.3px] font-semibold text-indigo mb-1.5">Premium</p>
                 <h3 className="text-[22px] text-navy mb-1">Premium</h3>
-                <p className="text-[13px] text-muted mb-3.5">For serious exam preparation</p>
-                <p className="text-[13px] text-muted leading-[1.7] whitespace-pre-line text-left">
-                  Unlimited AI study generations (fair usage).{"\n"}
-                  PDF export{"\n"}
-                  Offline access.{"\n"}
-                  Priority Nyla responses.{"\n"}
-                  Learning analytics.{"\n"}
-                  Full rewards system - streaks, certificates, referrals.{"\n"}
-                  Available monthly, 3-month, 6-month and annually.
-                </p>
+                <p className="text-[13px] text-body mb-3.5">For serious exam preparation</p>
+                <ul className="text-[13px] text-body leading-[1.7] text-left space-y-1.5 m-0 pl-0">
+                  <li className="flex items-start gap-2"><span className="text-indigo font-bold">✓</span> Unlimited AI study generations (fair usage).</li>
+                  <li className="flex items-start gap-2"><span className="text-indigo font-bold">✓</span> PDF export</li>
+                  <li className="flex items-start gap-2"><span className="text-indigo font-bold">✓</span> Offline access.</li>
+                  <li className="flex items-start gap-2"><span className="text-indigo font-bold">✓</span> Priority Nyla responses.</li>
+                  <li className="flex items-start gap-2"><span className="text-indigo font-bold">✓</span> Learning analytics.</li>
+                  <li className="flex items-start gap-2"><span className="text-indigo font-bold">✓</span> Full rewards system - streaks, certificates, referrals.</li>
+                  <li className="flex items-start gap-2"><span className="text-indigo font-bold">✓</span> Available monthly, 3-month, 6-month and annually.</li>
+                </ul>
               </article>
 
               <article className="rounded-xl border border-border-default bg-[#fafaf8] p-5 sm:p-6 text-center">
                 <p className="text-[11px] uppercase tracking-[1.3px] font-semibold text-amber mb-1.5">Exam Practice</p>
                 <h3 className="text-[22px] text-navy mb-1">Exam Practice</h3>
-                <p className="text-[13px] text-muted mb-3.5">Available separately</p>
-                <p className="text-[13px] text-muted leading-[1.7] whitespace-pre-line text-left">
-                  Dedicated exam-style practice with three modes - Untimed, Timed and Exam Simulation.{"\n"}
-                  Includes OCR handwriting upload and Report Card.{"\n"}
-                  3 one-time free trials included with every account.
-                </p>
+                <p className="text-[13px] text-body mb-3.5">Available separately</p>
+                <ul className="text-[13px] text-body leading-[1.7] text-left space-y-1.5 m-0 pl-0">
+                  <li className="flex items-start gap-2"><span className="text-amber font-bold">✓</span> Dedicated exam-style practice with three modes - Untimed, Timed and Exam Simulation.</li>
+                  <li className="flex items-start gap-2"><span className="text-amber font-bold">✓</span> Includes OCR handwriting upload and Report Card.</li>
+                  <li className="flex items-start gap-2"><span className="text-amber font-bold">✓</span> 3 one-time free trials included with every account.</li>
+                </ul>
               </article>
             </div>
 

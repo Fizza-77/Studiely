@@ -59,7 +59,7 @@ export const RewardsProgressSection = ({ sectionRef }: RewardsProgressSectionPro
                     <Icon />
                   </div>
                   <h3 className="text-[20px] text-navy mb-2.5">{item.heading}</h3>
-                  <p className="text-[13px] text-muted leading-[1.7]">{item.body}</p>
+                  <p className="text-[13px] text-body leading-[1.7]">{item.body}</p>
                 </div>
               );
             })}

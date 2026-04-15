@@ -177,7 +177,7 @@ export function CookieConsentBanner() {
                         </span>
                         <Link
                           href={item.href}
-                          className="text-[10px] sm:text-[11px] font-semibold text-white/95 underline decoration-white/40 underline-offset-2 hover:decoration-white hover:text-white shrink-0"
+                          className="text-[10px] sm:text-[11px] font-semibold text-white/95 underline decoration-white/75 underline-offset-2 hover:decoration-white hover:text-white shrink-0"
                         >
                           Full policy →
                         </Link>
@@ -191,6 +191,7 @@ export function CookieConsentBanner() {
                     type="button"
                     role="switch"
                     aria-checked={agree[item.id]}
+                    aria-label={`Toggle ${item.title} policy`}
                     onClick={() => toggle(item.id)}
                     className={`shrink-0 self-end sm:self-center relative h-7 w-12 rounded-full transition-colors border-2 ${
                       agree[item.id]

@@ -13,8 +13,8 @@ export const HeroSection = () => (
         {/* LEFT: TEXT */}
         <div>
           {/* Eyebrow */}
-          <div className="flex w-fit mx-auto items-center justify-center gap-2 text-[10px] font-semibold tracking-[1.4px] uppercase text-teal text-center mb-[18px] md:mb-[22px]">
-            <span className="w-5 h-[1.5px] bg-teal block" />
+          <div className="flex w-fit mx-auto items-center justify-center gap-2 text-[10px] font-semibold tracking-[1.4px] uppercase text-teal-dk text-center mb-[18px] md:mb-[22px]">
+            <span className="w-5 h-[1.5px] bg-teal-dk block" />
             AI-Powered Study Tool for Students
           </div>
 
@@ -24,7 +24,7 @@ export const HeroSection = () => (
               Study Smarter. Score Higher.
             </span>
             <span className="block text-center text-[clamp(32px,7vw,62px)] leading-[1.08]">
-              Start in <em className="text-teal">Seconds.</em>
+              Start in <em className="text-teal-dk">Seconds.</em>
             </span>
           </h1>
 
@@ -106,7 +106,7 @@ export const HeroSection = () => (
                   ["Board", "Cambridge Intl."],
                 ].map(([l, v]) => (
                   <div key={l}>
-                    <label className="text-[10px] font-semibold uppercase tracking-[0.7px] text-muted block mb-[5px]">
+                    <label className="text-[10px] font-semibold uppercase tracking-[0.7px] text-body block mb-[5px]">
                       {l}
                     </label>
                     <div className="flex justify-between border border-border-default rounded-[7px] py-2 px-[11px] text-[13px] text-navy font-medium">
@@ -119,7 +119,7 @@ export const HeroSection = () => (
 
               <div className="grid grid-cols-2 gap-2.5 mb-[14px]">
                 <div>
-                  <label className="text-[10px] font-semibold uppercase tracking-[0.7px] text-muted block mb-[5px]">
+                  <label className="text-[10px] font-semibold uppercase tracking-[0.7px] text-body block mb-[5px]">
                     Grade
                   </label>
                   <div className="flex justify-between border border-border-default rounded-[7px] py-2 px-[11px] text-[13px] text-navy font-medium">
@@ -127,7 +127,7 @@ export const HeroSection = () => (
                   </div>
                 </div>
                 <div>
-                  <label className="text-[10px] font-semibold uppercase tracking-[0.7px] text-muted block mb-[5px]">
+                  <label className="text-[10px] font-semibold uppercase tracking-[0.7px] text-body block mb-[5px]">
                     Topic
                   </label>
                   <div className="border border-teal rounded-[7px] py-2 px-[11px] text-[13px] text-navy font-medium">
@@ -160,7 +160,7 @@ export const HeroSection = () => (
                     <div className="text-[14px] mb-[3px]">{ic}</div>
                     <div
                       className={`text-[9px] ${
-                        act ? "text-teal font-semibold" : "text-muted"
+                        act ? "text-teal font-semibold" : "text-body"
                       }`}
                     >
                       {lb}

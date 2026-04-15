@@ -47,10 +47,10 @@ export const HowItWorksSection = ({ sectionRef }: HowItWorksSectionProps) => (
               <span className="text-[11px] italic mb-4 block leading-none">
                 Step {n}
               </span>
-              <h4 className="text-[20px] font-normal text-navy mb-2.5">
+              <h3 className="text-[20px] font-normal text-navy mb-2.5">
                 {t}
-              </h4>
-              <p className="text-[13.5px] text-muted leading-[1.72] font-light">
+              </h3>
+              <p className="text-[13.5px] text-body leading-[1.72] font-light">
                 {d}
               </p>
             </div>

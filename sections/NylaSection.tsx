@@ -136,14 +136,14 @@ export const NylaSection = ({ sectionRef }: NylaSectionProps) => {
                 ["Answers calibrated to your exact grade - no irrelevant detail", "var(--color-teal)"],
                 ["Priority responses for Premium subscribers", "var(--color-indigo)"],
               ].map(([b, col], i) => (
-                <Reveal key={b} delay={i * 0.07}>
-                  <li className="flex gap-[11px] items-start text-[14.5px] text-body font-light leading-[1.62]">
+                <li key={b} className="text-[14.5px] text-body font-light leading-[1.62]">
+                  <Reveal delay={i * 0.07} className="flex gap-[11px] items-start">
                     <span className="mt-[2px] shrink-0 font-bold text-[12px]" style={{ color: col }}>
                       ✦
                     </span>
-                    {b}
-                  </li>
-                </Reveal>
+                    <span>{b}</span>
+                  </Reveal>
+                </li>
               ))}
             </ul>
             <Reveal delay={0.3}>

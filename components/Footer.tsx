@@ -33,30 +33,30 @@ export const Footer = () => (
           
           <a
             href={STUDIELY_APP.pricing}
-            className="text-muted hover:text-navy"
+            className="text-body hover:text-navy"
             target="_blank"
             rel="noopener noreferrer"
           >
             Pricing
           </a>
       
-          <Link href="/blog" className="text-muted hover:text-navy">
+          <Link href="/blog" className="text-body hover:text-navy">
             Blog
           </Link>
        
-          <Link href="/privacy-policy" className="text-muted hover:text-navy">
+          <Link href="/privacy-policy" className="text-body hover:text-navy">
             Privacy Policy
           </Link>
-          <Link href="/terms-of-service" className="text-muted hover:text-navy">
+          <Link href="/terms-of-service" className="text-body hover:text-navy">
             Terms of Service
           </Link>
-          <Link href="/acceptable-use" className="text-muted hover:text-navy">
+          <Link href="/acceptable-use" className="text-body hover:text-navy">
             Acceptable Use Policy
           </Link>
-          <Link href="/cookie-policy" className="text-muted hover:text-navy">
+          <Link href="/cookie-policy" className="text-body hover:text-navy">
             Cookie Policy
           </Link>
-          <Link href="/disclaimer" className="text-muted hover:text-navy">
+          <Link href="/disclaimer" className="text-body hover:text-navy">
             Disclaimer
           </Link>
         </nav>

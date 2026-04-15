@@ -61,17 +61,17 @@ export const WritingSection = ({ sectionRef }: WritingSectionProps) => {
                 ["AI feedback on your written response", "var(--color-teal)"],
                 ["Track your writing improvement over time", "var(--color-amber)"],
               ].map(([b, col], i) => (
-                <Reveal key={b} delay={i * 0.07}>
-                  <li className="flex gap-[11px] items-start text-[14.5px] text-body font-light leading-[1.62]">
+                <li key={b} className="text-[14.5px] text-body font-light leading-[1.62]">
+                  <Reveal delay={i * 0.07} className="flex gap-[11px] items-start">
                     <span
                       className="mt-[2px] shrink-0 font-semibold text-[13px]"
                       style={{ color: col }}
                     >
                       ✓
                     </span>
-                    {b}
-                  </li>
-                </Reveal>
+                    <span>{b}</span>
+                  </Reveal>
+                </li>
               ))}
             </ul>
 
@@ -110,7 +110,7 @@ export const WritingSection = ({ sectionRef }: WritingSectionProps) => {
 
                     <button
                       onClick={() => setRun((r) => !r)}
-                      className="text-[11px] px-2.5 py-1 border border-border-default rounded-md bg-white text-muted font-medium outline-none"
+                      className="text-[11px] px-2.5 py-1 border border-border-default rounded-md bg-white text-body font-medium outline-none"
                     >
                       {running ? "⏸ Pause" : "▶ Start"}
                     </button>
@@ -155,10 +155,10 @@ export const WritingSection = ({ sectionRef }: WritingSectionProps) => {
                   />
 
                   <div className="flex justify-between mt-[7px] mb-2.5">
-                    <span className="text-[11px] text-muted">{words} words</span>
+                    <span className="text-[11px] text-body">{words} words</span>
                     <span
                       className={`text-[11px] ${
-                        words >= 300 ? "text-teal" : "text-muted"
+                        words >= 300 ? "text-teal" : "text-body"
                       }`}
                     >
                       Aim: 300–450 words

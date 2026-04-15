@@ -167,7 +167,7 @@ export const StudyToolsSection = ({ sectionRef }: StudyToolsSectionProps) => {
                   <h3 className="text-[17px] font-normal text-navy mb-[7px] tracking-[-0.15px] w-full">
                     {t.label}
                   </h3>
-                  <p className="text-[12.5px] text-muted leading-[1.68] font-light w-full">{t.desc}</p>
+                  <p className="text-[12.5px] text-body leading-[1.68] font-light w-full">{t.desc}</p>
                   <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: active ? 1 : 0 }}
@@ -201,7 +201,7 @@ export const StudyToolsSection = ({ sectionRef }: StudyToolsSectionProps) => {
                   {tool.label} — Configure
                 </span>
               </div>
-              <span className="text-[11px] text-muted">
+              <span className="text-[11px] text-body">
                 Curriculum-aligned · No uploads needed
               </span>
             </div>
@@ -325,7 +325,7 @@ export const StudyToolsSection = ({ sectionRef }: StudyToolsSectionProps) => {
                     className="w-[9px] h-[9px] rounded-full animate-pulse-custom"
                     style={{ background: tool.color }}
                   />
-                  <span className="text-[13px] text-muted italic">
+                  <span className="text-[13px] text-body italic">
                     Generating <strong className="text-navy not-italic">{tool.label.toLowerCase()}</strong> for &quot;
                     <strong className="text-navy not-italic">{top}</strong>&quot; ({grd})…
                   </span>
@@ -382,10 +382,10 @@ export const StudyToolsSection = ({ sectionRef }: StudyToolsSectionProps) => {
                   <button className="py-1.5 px-3.5 bg-navy text-white border-none rounded-md text-[12px] font-medium outline-none">
                     Download PDF
                   </button>
-                  <button className="py-1.5 px-3.5 bg-white text-muted border border-border-default rounded-md text-[12px] outline-none">
+                  <button className="py-1.5 px-3.5 bg-white text-body border border-border-default rounded-md text-[12px] outline-none">
                     Copy Text
                   </button>
-                  <button className="py-1.5 px-3.5 bg-white text-muted border border-border-default rounded-md text-[12px] outline-none">
+                  <button className="py-1.5 px-3.5 bg-white text-body border border-border-default rounded-md text-[12px] outline-none">
                     Generate More
                   </button>
                 </div>

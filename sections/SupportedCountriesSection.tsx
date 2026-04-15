@@ -78,7 +78,7 @@ export const SupportedCountriesSection = ({ sectionRef }: SupportedCountriesSect
                   />
                   <p className="text-[16px] text-navy font-semibold">{country.label}</p>
                 </div>
-                <p className="text-[13px] text-muted leading-[1.65] whitespace-pre-line">{country.body}</p>
+                <p className="text-[13px] text-body leading-[1.65] whitespace-pre-line">{country.body}</p>
               </div>
             ))}
           </div>

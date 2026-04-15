@@ -90,7 +90,7 @@ export const PricingSection = ({ compact = false }) => {
                   </div>
                   <div
                     className={`text-[11px] mb-4 ${
-                      plan.featured ? "text-white/60" : "text-muted"
+                      plan.featured ? "text-white/60" : "text-body"
                     }`}
                   >
                     {plan.cad}

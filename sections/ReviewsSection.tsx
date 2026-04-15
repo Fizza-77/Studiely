@@ -34,7 +34,7 @@ const RCard = ({ quote, name, role, initials, col }: RCardProps) => (
       </div>
       <div>
         <div className="text-[13px] font-medium text-navy">{name}</div>
-        <div className="text-[11px] text-muted mt-[2px]">{role}</div>
+        <div className="text-[11px] text-body mt-[2px]">{role}</div>
       </div>
     </div>
   </div>
