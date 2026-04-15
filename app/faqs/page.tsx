@@ -32,9 +32,57 @@ export const metadata: Metadata = {
   },
 };
 
-export default function FaqsPage() {
+type ServerFaqItem = {
+  question: string;
+  answer: string;
+};
+
+type ServerFaqSection = {
+  id: string;
+  title: string;
+  intro: string;
+  items: ServerFaqItem[];
+};
+
+async function getFaqSections(): Promise<ServerFaqSection[]> {
+  return FAQ_SECTIONS.map((section) => ({
+    id: section.id,
+    title: section.title,
+    intro: section.intro,
+    items: section.items.map((item) => ({
+      question: item.question,
+      answer: item.schemaText,
+    })),
+  }));
+}
+
+function buildFaqJsonLd(sections: ServerFaqSection[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: sections.flatMap((section) =>
+      section.items.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: item.answer,
+        },
+      }))
+    ),
+  };
+}
+
+export default async function FaqsPage() {
+  const sections = await getFaqSections();
+  const faqJsonLd = buildFaqJsonLd(sections);
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <PageHeader
         label="Support & Help"
         title="Frequently Asked Questions (FAQ)"
@@ -58,10 +106,10 @@ export default function FaqsPage() {
           </div>
 
           <div className="space-y-8">
-            {FAQ_SECTIONS.map((section) => (
-              <div key={section.id} className="space-y-4">
+            {sections.map((section) => (
+              <section key={section.id} className="space-y-4" aria-labelledby={`${section.id}-title`}>
                 <p className="text-[12px] font-semibold uppercase tracking-[1.4px] text-muted">
-                  {section.title}
+                  <span id={`${section.id}-title`}>{section.title}</span>
                 </p>
                 <p className="text-[12px] text-muted">{section.intro}</p>
 
@@ -83,14 +131,16 @@ export default function FaqsPage() {
                         </span>
                       </summary>
                       <div className="faq-answer-panel grid grid-rows-[0fr] opacity-0 transition-[grid-template-rows,opacity] duration-300 ease-out group-open:grid-rows-[1fr] group-open:opacity-100">
-                        <div className="faq-answer overflow-hidden pt-4 text-[13px] md:text-[14px] text-body leading-[1.75] space-y-4 [&_p+p]:mt-3 [&_ul]:mt-2 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-1.5 [&_ol]:mt-2 [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:space-y-1.5">
-                          {item.answer}
+                        <div className="faq-answer overflow-hidden pt-4">
+                          <p className="text-[13px] md:text-[14px] text-body leading-[1.75]">
+                            {item.answer}
+                          </p>
                         </div>
                       </div>
                     </details>
                   ))}
                 </div>
-              </div>
+              </section>
             ))}
           </div>
         </section>
