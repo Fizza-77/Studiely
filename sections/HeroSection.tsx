@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Button } from "@/components/Button";
 import { STUDIELY_APP } from "@/lib/appUrls";
 export const HeroSection = () => (
-  <section className="relative overflow-hidden pt-[66px] sm:pt-[72px] md:pt-[88px] pb-14 sm:pb-16 md:pb-20 lg:pb-24 bg-bg-base border-t border-border-default">
+  <section className="relative overflow-hidden pt-3 sm:pt-4 md:pt-5 pb-14 sm:pb-16 md:pb-20 lg:pb-24 bg-bg-base border-t border-border-default">
     
     {/* Background glow removed */}
     <div className="wrap relative">
