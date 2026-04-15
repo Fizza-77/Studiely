@@ -199,4 +199,12 @@
   .blog-content hr {
     @apply my-8 border-0 border-t border-border-default;
   }
+
+  .faq-item > summary {
+    @apply select-none;
+  }
+
+  .faq-item > summary::-webkit-details-marker {
+    display: none;
+  }
 }
