@@ -121,13 +121,13 @@ export default function FaqsPage() {
                 {section.title}
               </h2>
               <p className="text-[12px] text-muted mb-5">{section.intro}</p>
-              <dl className="space-y-3">
+              <div className="space-y-3">
                 {section.items.map((item) => (
                   <FaqItem key={item.question} question={item.question}>
                     {item.answer}
                   </FaqItem>
                 ))}
-              </dl>
+              </div>
             </section>
           ))}
         </div>
