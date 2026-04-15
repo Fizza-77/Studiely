@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { useState, useRef, useEffect } from "react";
 import { STUDIELY_APP } from "@/lib/appUrls";
 import { Footer } from "@/components/Footer";
@@ -13,9 +14,15 @@ import { RewardsProgressSection } from "@/sections/RewardsProgressSection";
 import { StudyToolsSection } from "@/sections/StudyToolsSection";
 import { WritingSection } from "@/sections/WritingSection";
 import { NylaSection } from "@/sections/NylaSection";
-import { ReviewsSection } from "@/sections/ReviewsSection";
 import { CTASection } from "@/sections/CTASection";
-import { SisterSection } from "@/sections/SisterSection";
+
+// Defer below-the-fold sections to reduce initial JS/CSS bundle
+const ReviewsSection = dynamic(() => import("@/sections/ReviewsSection").then((m) => m.ReviewsSection), {
+  ssr: true,
+});
+const SisterSection = dynamic(() => import("@/sections/SisterSection").then((m) => m.SisterSection), {
+  ssr: true,
+});
 
 type HomePageContentProps = {
   /** When true (e.g. `/features` route), scroll to the features section after mount. */
