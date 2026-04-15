@@ -35,5 +35,16 @@
     "firebase-tools": "^14.25.0",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "browserslist": {
+    "production": [
+      "last 1 Chrome version",
+      "last 1 Edge version",
+      "last 1 Firefox version",
+      "last 1 Safari version"
+    ],
+    "development": [
+      "last 1 Chrome version"
+    ]
   }
 }
