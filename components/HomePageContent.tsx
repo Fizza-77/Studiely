@@ -47,17 +47,30 @@ export function HomePageContent({ scrollToFeaturesOnMount = false }: HomePageCon
       { id: "sister", ref: sisterRef },
     ];
 
+    const visibilityMap = new Map<string, boolean>();
+    let debounceTimer: NodeJS.Timeout;
+
+    const commitVisibilityChanges = () => {
+      setVisibleSections((prev) => {
+        const updated = new Set(prev);
+        visibilityMap.forEach((isVisible, id) => {
+          if (isVisible) {
+            updated.add(id);
+          } else {
+            updated.delete(id);
+          }
+        });
+        return ORDER.filter((s) => updated.has(s));
+      });
+      visibilityMap.clear();
+    };
+
     const observers = sections.map(({ id, ref }) => {
       const o = new IntersectionObserver(
         ([entry]) => {
-          setVisibleSections((prev) => {
-            if (entry.isIntersecting) {
-              if (prev.includes(id)) return prev;
-              return ORDER.filter((s) => [...prev, id].includes(s));
-            } else {
-              return prev.filter((s) => s !== id);
-            }
-          });
+          visibilityMap.set(id, entry.isIntersecting);
+          clearTimeout(debounceTimer);
+          debounceTimer = setTimeout(commitVisibilityChanges, 50);
         },
         { threshold: 0.18, rootMargin: "-66px 0px 0px 0px" }
       );
@@ -65,7 +78,10 @@ export function HomePageContent({ scrollToFeaturesOnMount = false }: HomePageCon
       return o;
     });
 
-    return () => observers.forEach((o) => o.disconnect());
+    return () => {
+      clearTimeout(debounceTimer);
+      observers.forEach((o) => o.disconnect());
+    };
   }, []);
 
   useEffect(() => {
