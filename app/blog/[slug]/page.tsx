@@ -1,38 +1,32 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { cache } from "react";
 import { Footer } from "@/components/Footer";
 import { PageHeader } from "@/components/PageHeader";
 import { buildBlogPostingJsonLd } from "@/lib/blogSchema";
-import {
-  getBlogBySlugForStudiely,
-  getBlogSlugsForConfiguredSite,
-} from "@/lib/blogs";
+import { getBlogBySlugForStudiely } from "@/lib/blogs";
 import { DEFAULT_OG_IMAGE_PATH, SITE_URL } from "@/lib/site";
 import { buildBreadcrumbSchema } from "@/lib/seo";
 
 type PageProps = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
-export async function generateStaticParams(): Promise<{ slug: string }[]> {
-  const rows = await getBlogSlugsForConfiguredSite();
-  if (!rows || rows.length === 0) {
-    return [{ slug: "coming-soon" }];
-  }
-  return rows.map((row) => ({ slug: row.slug }));
-}
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+export const dynamicParams = true;
 
-async function getStudielyBlogBySlug(slug: string) {
+const getStudielyBlogBySlug = cache(async (slug: string) => {
   const blog = await getBlogBySlugForStudiely(slug);
   if (!blog) return null;
   return { blog };
-}
+});
 
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const { slug } = params;
+  const { slug } = await params;
   if (!slug) return { title: "Blog Post" };
 
   const result = await getStudielyBlogBySlug(slug);
@@ -76,7 +70,7 @@ export async function generateMetadata({
 }
 
 export default async function BlogPostPage({ params }: PageProps) {
-  const { slug } = params;
+  const { slug } = await params;
   if (!slug) return notFound();
 
   const result = await getStudielyBlogBySlug(slug);
@@ -159,7 +153,10 @@ export default async function BlogPostPage({ params }: PageProps) {
               </p>
             )}
             {blog.content ? (
-              <div dangerouslySetInnerHTML={{ __html: blog.content }} />
+              <div
+                className="blog-content"
+                dangerouslySetInnerHTML={{ __html: blog.content }}
+              />
             ) : (
               <p className="text-muted text-[13px]">
                 Content for this article has not been added yet.

@@ -7,16 +7,16 @@ import { getBlogIndexDataForStudiely } from "@/lib/blogs";
 import { DEFAULT_OG_IMAGE_PATH, SITE_URL } from "@/lib/site";
 import { buildBreadcrumbSchema } from "@/lib/seo";
 
-export const dynamic = "force-static";
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 type BlogPageProps = {
-  searchParams?: {
+  searchParams?: Promise<{
     category?: string;
-  };
+  }>;
 };
 
 export async function generateMetadata(): Promise<Metadata> {
-  const indexData = await getBlogIndexDataForStudiely();
   const title = "Studiely Blog — AI Learning, Flashcards & Exam Practice Tips";
   const description =
     "AI learning and study tips for real exams: revision strategies, IGCSE and IB guides, flashcards, exam practice ideas, " +
@@ -47,8 +47,9 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
   const indexData = await getBlogIndexDataForStudiely();
   const { posts, categories, seo } = indexData;
   const breadcrumbSchema = buildBreadcrumbSchema("Blog", "/blog");
+  const resolvedSearchParams = await searchParams;
 
-  const activeCategory = searchParams?.category?.trim() || "";
+  const activeCategory = resolvedSearchParams?.category?.trim() || "";
   const hasActiveCategory = categories.some((cat) => cat.slug === activeCategory);
   const visiblePosts = hasActiveCategory
     ? posts.filter((post) => post.category?.slug === activeCategory)
