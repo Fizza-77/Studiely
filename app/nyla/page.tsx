@@ -84,7 +84,7 @@ export default function NylaFeaturePage() {
                 past papers—but she is there at midnight when a question blocks you, and she connects cleanly to the rest
                 of Studiely’s <strong className="font-semibold text-navy">student tools</strong> so revision stays
                 organised. Explore{" "}
-                <Link href="/features" className="text-teal hover:text-teal-dk underline underline-offset-2">
+                      <Link href="/features#features" className="text-teal hover:text-teal-dk underline underline-offset-2">
                   all features
                 </Link>
                 , read the{" "}

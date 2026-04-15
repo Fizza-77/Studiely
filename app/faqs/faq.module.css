@@ -1,0 +1,7 @@
+:global(.faq-item > summary) {
+  user-select: none;
+}
+
+:global(.faq-item > summary::-webkit-details-marker) {
+  display: none;
+}

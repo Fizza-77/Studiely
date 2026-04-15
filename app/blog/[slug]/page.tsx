@@ -8,6 +8,7 @@ import { buildBlogPostingJsonLd } from "@/lib/blogSchema";
 import { getBlogBySlugForStudiely } from "@/lib/blogs";
 import { DEFAULT_OG_IMAGE_PATH, SITE_URL } from "@/lib/site";
 import { buildBreadcrumbSchema } from "@/lib/seo";
+import "../blog-content.module.css";
 
 type PageProps = {
   params: Promise<{ slug: string }>;

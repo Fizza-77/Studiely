@@ -5,6 +5,7 @@ import { Footer } from "@/components/Footer";
 import { DEFAULT_OG_IMAGE_PATH, SITE_URL } from "@/lib/site";
 import { PageHeader } from "@/components/PageHeader";
 import { FAQ_SECTIONS } from "@/lib/faq";
+import "./faq.module.css";
 
 const faqTitle = "Studiely FAQs — AI Study Platform, Curricula & Student Tools";
 const faqDescription =

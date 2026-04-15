@@ -96,13 +96,8 @@ export function HomePageContent({ scrollToFeaturesOnMount = false }: HomePageCon
     const scroll = () => {
       document.getElementById("features")?.scrollIntoView({ behavior: "instant", block: "start" });
     };
-    scroll();
-    const t1 = window.setTimeout(scroll, 50);
-    const t2 = window.setTimeout(scroll, 200);
-    return () => {
-      window.clearTimeout(t1);
-      window.clearTimeout(t2);
-    };
+    const frame = window.requestAnimationFrame(scroll);
+    return () => window.cancelAnimationFrame(frame);
   }, [scrollToFeaturesOnMount]);
 
   return (
