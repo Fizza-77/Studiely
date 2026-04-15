@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
-import { Navbar } from "@/components/Navbar";
 import { STUDIELY_APP } from "@/lib/appUrls";
 import { Footer } from "@/components/Footer";
 import { NylaAvatar } from "@/components/Icons";
@@ -85,7 +84,6 @@ export function HomePageContent({ scrollToFeaturesOnMount = false }: HomePageCon
 
   return (
     <>
-      <Navbar visibleSections={visibleSections} />
       <main role="main">
         <HeroSection />
         <StatsSection />

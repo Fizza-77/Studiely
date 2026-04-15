@@ -4,6 +4,7 @@ import "./globals.css";
 import { DEFAULT_OG_IMAGE_PATH, SITE_URL } from "@/lib/site";
 import Script from "next/script";
 import { CookieConsentBannerClient } from "@/components/CookieConsentBannerClient";
+import { Navbar } from "@/components/Navbar";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -145,7 +146,8 @@ export default function RootLayout({
             __html: JSON.stringify(organizationJsonLd),
           }}
         />
-        {children}
+        <Navbar />
+        <div className="pt-[66px]">{children}</div>
         <CookieConsentBannerClient />
       </body>
     </html>
