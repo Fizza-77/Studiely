@@ -1,7 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  images: { unoptimized: true },
   reactCompiler: true,
   experimental: {
     optimizePackageImports: ["@/components", "@/sections", "@/lib"],
