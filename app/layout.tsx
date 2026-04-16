@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { DM_Sans, DM_Serif_Display } from "next/font/google";
 import "./globals.css";
 import { DEFAULT_OG_IMAGE_PATH, SITE_URL } from "@/lib/site";
@@ -18,6 +18,12 @@ const dmSerifDisplay = DM_Serif_Display({
   variable: "--font-serif",
   display: "swap",
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#f8f8f6",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -123,12 +129,12 @@ export default function RootLayout({
     >
       <head>
         <Script
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           src="https://www.googletagmanager.com/gtag/js?id=G-NXQX4TMW7X"
         />
         <Script
           id="google-analytics"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];

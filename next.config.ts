@@ -3,7 +3,15 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   reactCompiler: true,
   experimental: {
-    optimizePackageImports: ["@/components", "@/sections", "@/lib"],
+    /** Inline global CSS into HTML to reduce render-blocking CSS on first paint (LCP). */
+    inlineCss: true,
+    optimizePackageImports: [
+      "lucide-react",
+      "framer-motion",
+      "@/components",
+      "@/sections",
+      "@/lib",
+    ],
   },
   compress: true,
   async redirects() {
