@@ -139,7 +139,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                       aria-label={`Reactions summary for ${post.title}`}
                     >
                       <span className="text-[11px] text-muted border border-border-default rounded-full px-2 py-1">
-                        Love {reactionCountsByBlog[post.id]?.love ?? 0}
+                        ❤️ {reactionCountsByBlog[post.id]?.love ?? 0}
                       </span>
                       <span className="text-[11px] text-muted border border-border-default rounded-full px-2 py-1">
                         👍 {reactionCountsByBlog[post.id]?.thumbs_up ?? 0}
