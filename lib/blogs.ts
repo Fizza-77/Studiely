@@ -1,7 +1,7 @@
 import { supabase } from "@/lib/supabaseClient";
 import { cache } from "react";
 
-const STUDIELY_SITE_KEY = "studiely";
+const STUDIELY_SITE_KEY = (process.env.SITE_KEY || "studiely").trim();
 
 const SUPABASE_QUERY_RETRIES = Math.max(
   1,

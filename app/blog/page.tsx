@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Footer } from "@/components/Footer";
 import { PageHeader } from "@/components/PageHeader";
-import { getBlogIndexDataForStudiely } from "@/lib/blogs";
+import { getBlogIndexPageDataWithReactions } from "@/lib/blogReactions";
 import { DEFAULT_OG_IMAGE_PATH, SITE_URL } from "@/lib/site";
 import { buildBreadcrumbSchema } from "@/lib/seo";
 
@@ -44,8 +44,8 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function BlogPage({ searchParams }: BlogPageProps) {
-  const indexData = await getBlogIndexDataForStudiely();
-  const { posts, categories, seo } = indexData;
+  const indexData = await getBlogIndexPageDataWithReactions();
+  const { posts, categories, seo, reactionCountsByBlog } = indexData;
   const breadcrumbSchema = buildBreadcrumbSchema("Blog", "/blog");
   const resolvedSearchParams = await searchParams;
 
@@ -134,6 +134,26 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                     <p className="text-[13px] text-muted leading-[1.7] mb-4">
                       {post.description || "Read the full article to learn more."}
                     </p>
+                    <div
+                      className="flex flex-wrap gap-2 mb-4"
+                      aria-label={`Reactions summary for ${post.title}`}
+                    >
+                      <span className="text-[11px] text-muted border border-border-default rounded-full px-2 py-1">
+                        Love {reactionCountsByBlog[post.id]?.love ?? 0}
+                      </span>
+                      <span className="text-[11px] text-muted border border-border-default rounded-full px-2 py-1">
+                        👍 {reactionCountsByBlog[post.id]?.thumbs_up ?? 0}
+                      </span>
+                      <span className="text-[11px] text-muted border border-border-default rounded-full px-2 py-1">
+                        👎 {reactionCountsByBlog[post.id]?.thumbs_down ?? 0}
+                      </span>
+                      <span className="text-[11px] text-muted border border-border-default rounded-full px-2 py-1">
+                        🎉 {reactionCountsByBlog[post.id]?.celebrationpop ?? 0}
+                      </span>
+                      <span className="text-[11px] text-muted border border-border-default rounded-full px-2 py-1">
+                        👏 {reactionCountsByBlog[post.id]?.clap ?? 0}
+                      </span>
+                    </div>
                   </div>
                   <Link
                     href={`/blog/${post.slug}`}

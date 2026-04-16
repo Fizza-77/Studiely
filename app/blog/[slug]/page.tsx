@@ -4,8 +4,9 @@ import { notFound } from "next/navigation";
 import { cache } from "react";
 import { Footer } from "@/components/Footer";
 import { PageHeader } from "@/components/PageHeader";
+import { BlogReactionButtons } from "@/components/BlogReactionButtons";
 import { buildBlogPostingJsonLd } from "@/lib/blogSchema";
-import { getBlogBySlugForStudiely } from "@/lib/blogs";
+import { getBlogPostBySlugWithReactions } from "@/lib/blogReactions";
 import { DEFAULT_OG_IMAGE_PATH, SITE_URL } from "@/lib/site";
 import { buildBreadcrumbSchema } from "@/lib/seo";
 import "../blog-content.module.css";
@@ -19,9 +20,9 @@ export const revalidate = 0;
 export const dynamicParams = true;
 
 const getStudielyBlogBySlug = cache(async (slug: string) => {
-  const blog = await getBlogBySlugForStudiely(slug);
-  if (!blog) return null;
-  return { blog };
+  const post = await getBlogPostBySlugWithReactions(slug);
+  if (!post) return null;
+  return post;
 });
 
 export async function generateMetadata({
@@ -109,7 +110,7 @@ export default async function BlogPostPage({ params }: PageProps) {
     );
   }
 
-  const { blog } = result;
+  const { blog, reactionData } = result;
   const jsonLd = buildBlogPostingJsonLd(blog);
   const breadcrumbSchema = buildBreadcrumbSchema(blog.title, `/blog/${blog.slug}`);
 
@@ -163,6 +164,17 @@ export default async function BlogPostPage({ params }: PageProps) {
                 Content for this article has not been added yet.
               </p>
             )}
+            <section
+              className="mt-8 pt-6 border-t border-border-default not-prose"
+              aria-label="Reaction counts"
+            >
+              <h2 className="font-serif text-[18px] text-navy mb-3">Reactions</h2>
+              <BlogReactionButtons
+                blogId={blog.id}
+                initialCounts={reactionData.counts}
+                initialUserReaction={reactionData.userReaction}
+              />
+            </section>
             <nav
               className="mt-10 pt-8 border-t border-border-default not-prose"
               aria-label="Related pages"
