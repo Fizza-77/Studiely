@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import { cache } from "react";
 import { Footer } from "@/components/Footer";
@@ -7,6 +8,7 @@ import { PageHeader } from "@/components/PageHeader";
 import { BlogReactionButtons } from "@/components/BlogReactionButtons";
 import { buildBlogPostingJsonLd } from "@/lib/blogSchema";
 import { getBlogPostBySlugWithReactions } from "@/lib/blogReactions";
+import { reactorIdForSsr } from "@/lib/reactorId";
 import { DEFAULT_OG_IMAGE_PATH, SITE_URL } from "@/lib/site";
 import { buildBreadcrumbSchema } from "@/lib/seo";
 import "../blog-content.module.css";
@@ -19,8 +21,8 @@ export const dynamic = "force-dynamic";
 export const revalidate = 0;
 export const dynamicParams = true;
 
-const getStudielyBlogBySlug = cache(async (slug: string) => {
-  const post = await getBlogPostBySlugWithReactions(slug);
+const getStudielyBlogBySlug = cache(async (slug: string, reactorId: string | null) => {
+  const post = await getBlogPostBySlugWithReactions(slug, reactorId);
   if (!post) return null;
   return post;
 });
@@ -31,7 +33,7 @@ export async function generateMetadata({
   const { slug } = await params;
   if (!slug) return { title: "Blog Post" };
 
-  const result = await getStudielyBlogBySlug(slug);
+  const result = await getStudielyBlogBySlug(slug, null);
   if (!result) return { title: "Blog Post" };
 
   const { blog } = result;
@@ -75,7 +77,9 @@ export default async function BlogPostPage({ params }: PageProps) {
   const { slug } = await params;
   if (!slug) return notFound();
 
-  const result = await getStudielyBlogBySlug(slug);
+  const h = await headers();
+  const reactorId = reactorIdForSsr(h);
+  const result = await getStudielyBlogBySlug(slug, reactorId);
   if (!result) {
     if (slug !== "coming-soon") return notFound();
     const breadcrumbSchema = buildBreadcrumbSchema("Coming soon", "/blog/coming-soon");
