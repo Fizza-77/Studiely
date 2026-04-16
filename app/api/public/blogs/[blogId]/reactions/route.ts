@@ -82,6 +82,16 @@ export async function POST(
   const existingVisitorId = req.cookies.get(VISITOR_COOKIE)?.value?.trim();
   const visitorId = existingVisitorId || randomUUID();
   const reactionData = await setReactionForVisitor(blogId, visitorId, body.reactionType);
+  if (reactionData.userReaction !== body.reactionType) {
+    return NextResponse.json(
+      {
+        error: "Reaction write failed.",
+        reason: "reaction-write-failed",
+        codes: ["supabase-write-failed-or-misconfigured"],
+      },
+      { status: 500 }
+    );
+  }
   const res = NextResponse.json(reactionData, { status: 200 });
   if (!existingVisitorId) {
     res.cookies.set(VISITOR_COOKIE, visitorId, {

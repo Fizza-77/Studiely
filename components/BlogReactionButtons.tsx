@@ -88,7 +88,15 @@ export function BlogReactionButtons({
         });
 
         if (!res.ok) {
-          throw new Error("Could not save reaction.");
+          const errorData = (await res.json().catch(() => null)) as
+            | { error?: string; reason?: string; codes?: string[] }
+            | null;
+          const reason = errorData?.reason ? ` (${errorData.reason})` : "";
+          const codes =
+            errorData?.codes && errorData.codes.length > 0
+              ? ` [${errorData.codes.join(", ")}]`
+              : "";
+          throw new Error((errorData?.error || "Could not save reaction.") + reason + codes);
         }
 
         const data = (await res.json().catch(() => null)) as
