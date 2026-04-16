@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Script from "next/script";
 import type { ReactionCounts, ReactionType } from "@/lib/blogReactions";
 
@@ -18,12 +18,13 @@ type TurnstileWindow = Window & {
         sitekey: string;
         size?: "normal" | "compact" | "invisible";
         callback?: (token: string) => void;
-        "error-callback"?: () => void;
+        "error-callback"?: (code?: string) => void;
         "expired-callback"?: () => void;
       }
     ) => string;
     execute: (widgetId: string) => void;
     reset: (widgetId: string) => void;
+    remove?: (widgetId: string) => void;
   };
 };
 
@@ -50,6 +51,12 @@ export function BlogReactionButtons({
   const widgetIdRef = useRef<string | null>(null);
   const turnstileContainerRef = useRef<HTMLDivElement | null>(null);
   const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY?.trim() || "";
+  /** Must match widget type in Cloudflare: "invisible" widget → "invisible"; Managed widget → "normal" or "compact". */
+  const widgetSize = (
+    process.env.NEXT_PUBLIC_TURNSTILE_WIDGET_SIZE?.trim().toLowerCase() || "normal"
+  ) as "invisible" | "normal" | "compact";
+
+  const [scriptLoaded, setScriptLoaded] = useState(false);
 
   const canSubmit = useMemo(() => Boolean(siteKey), [siteKey]);
 
@@ -109,22 +116,31 @@ export function BlogReactionButtons({
     [blogId, updateCountsAfterReaction]
   );
 
-  const onTurnstileScriptReady = useCallback(() => {
-    if (!siteKey || !turnstileContainerRef.current) return;
+  const submitReactionRef = useRef(submitReaction);
+  submitReactionRef.current = submitReaction;
+
+  /** Mount Turnstile after api.js loads — avoids race with ref + avoids display:none on widget host. */
+  useEffect(() => {
+    if (!scriptLoaded || !canSubmit || !turnstileContainerRef.current || widgetIdRef.current) return;
     const api = (window as TurnstileWindow).turnstile;
-    if (!api || widgetIdRef.current) return;
+    if (!api) return;
+
     widgetIdRef.current = api.render(turnstileContainerRef.current, {
       sitekey: siteKey,
-      size: "invisible",
+      size: widgetSize,
       callback: (token: string) => {
         setTurnstileToken(token);
         const pendingReaction = pendingReactionRef.current;
         if (pendingReaction) {
-          void submitReaction(pendingReaction, token);
+          void submitReactionRef.current(pendingReaction, token);
         }
       },
-      "error-callback": () => {
-        setError("Turnstile verification failed. Please try again.");
+      "error-callback": (code?: string) => {
+        setError(
+          code
+            ? `Turnstile error (${code}). Check site key and widget type in Cloudflare match this page.`
+            : "Turnstile verification failed. Check site key and allowed hostnames in Cloudflare."
+        );
         setIsSubmitting(false);
       },
       "expired-callback": () => {
@@ -132,7 +148,21 @@ export function BlogReactionButtons({
       },
     });
     setTurnstileReady(true);
-  }, [siteKey, submitReaction]);
+
+    return () => {
+      const id = widgetIdRef.current;
+      const api = (window as TurnstileWindow).turnstile;
+      if (id && api?.remove) {
+        try {
+          api.remove(id);
+        } catch {
+          /* ignore */
+        }
+      }
+      widgetIdRef.current = null;
+      setTurnstileReady(false);
+    };
+  }, [canSubmit, scriptLoaded, siteKey, widgetSize]);
 
   const handleReact = useCallback(
     async (reactionType: ReactionType) => {
@@ -147,11 +177,15 @@ export function BlogReactionButtons({
         setError("Verification is not ready yet. Please try again.");
         return;
       }
-      setIsSubmitting(true);
-      setError(null);
-      api.execute(widgetIdRef.current);
+      if (widgetSize === "invisible") {
+        setIsSubmitting(true);
+        setError(null);
+        api.execute(widgetIdRef.current);
+      } else {
+        setError("Complete the verification box above, then tap your reaction again.");
+      }
     },
-    [canSubmit, isSubmitting, submitReaction, turnstileToken]
+    [canSubmit, isSubmitting, submitReaction, turnstileToken, widgetSize]
   );
 
   return (
@@ -161,9 +195,18 @@ export function BlogReactionButtons({
           <Script
             src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
             strategy="afterInteractive"
-            onReady={onTurnstileScriptReady}
+            onLoad={() => setScriptLoaded(true)}
           />
-          <div ref={turnstileContainerRef} className="hidden" aria-hidden="true" />
+          {/* Do not use display:none — Turnstile iframe can fail. Visually hide instead for invisible mode. */}
+          <div
+            ref={turnstileContainerRef}
+            className={
+              widgetSize === "invisible"
+                ? "fixed left-0 top-0 -z-10 h-px w-px overflow-hidden opacity-0 pointer-events-none"
+                : "mb-4 min-h-[65px]"
+            }
+            aria-hidden={widgetSize === "invisible"}
+          />
         </>
       )}
 
