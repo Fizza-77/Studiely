@@ -1,11 +1,8 @@
 "use client";
 
-import { useId } from "react";
+const DEFAULT_PATTERN_ID = "edu-pattern";
 
-export const EduPattern = ({ opacity = 0.045, stroke = "#00b09b" }) => {
-  const reactId = useId();
-  // Ensure a valid ID selector
-  const id = `pattern-${reactId.replace(/:/g, "")}`;
+export const EduPattern = ({ opacity = 0.045, stroke = "#00b09b", id = DEFAULT_PATTERN_ID }) => {
 
   return (
     <svg
