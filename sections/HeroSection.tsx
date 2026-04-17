@@ -52,6 +52,13 @@ export const HeroSection = () => (
             No credit card required · 5 free one-time credits · Works for GCSE, IB, A-Level, SAT,
             HSC and more
           </p>
+          <p className="mt-2 text-[12px] text-gray-500 text-center lg:text-left">
+            Have questions?{" "}
+            <Link href="/faqs" className="text-teal hover:text-teal-dk underline underline-offset-2">
+              Read our FAQs
+            </Link>
+            .
+          </p>
       {/*    <motion.nav
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
