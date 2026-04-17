@@ -10,7 +10,7 @@ const webAppSchema = {
   applicationCategory: "EducationApplication",
   operatingSystem: "iOS, Android, Web",
   description:
-    "AI study assistant and student tools: curriculum-aligned revision notes, flashcards, " +
+    "AI study assistant and student tools: curriculum-aligned summary notes, flashcards, " +
     "AI learning, quizzes and exam practice for IGCSE, GCSE, IB, A-Level, SAT, HSC and more.",
   offers: {
     "@type": "Offer",
@@ -21,13 +21,13 @@ const webAppSchema = {
       "monthly, quarterly and annually.",
   },
   featureList: [
-    "AI revision notes",
+    "AI summary notes",
     "Spaced-repetition flashcards",
     "Quiz generator",
     "Exam practice with AI feedback",
     "AI tutor Nyla",
     "Mnemonics generator",
-    "Exam writing mode",
+    "Exam practice mode",
     "Study streaks and rewards",
   ],
   audience: {

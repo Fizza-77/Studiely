@@ -1,177 +1,179 @@
 "use client";
 
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { Button } from "@/components/Button";
 import { STUDIELY_APP } from "@/lib/appUrls";
+import { TOOLS } from "@/lib/studyTools";
+import { StatsBar } from "@/sections/StatsSection";
+
+/** Stronger drift so floating motion reads clearly on the cards. */
+const CARD_DRIFT = [
+  { x: [0, 14, -11, 9, -7, 0] as const, y: [0, -14, 12, -11, 8, 0] as const, duration: 14, delay: 0 },
+  { x: [0, -13, 11, -8, 7, 0] as const, y: [0, 12, -14, 10, -9, 0] as const, duration: 16, delay: 0.35 },
+  { x: [0, 12, -13, 8, -9, 0] as const, y: [0, -12, 14, -10, 8, 0] as const, duration: 15, delay: 0.7 },
+  { x: [0, -12, 13, -7, 6, 0] as const, y: [0, 13, -12, 9, -10, 0] as const, duration: 17, delay: 1.05 },
+  { x: [0, 11, -10, 11, -7, 0] as const, y: [0, -11, 11, -12, 9, 0] as const, duration: 18, delay: 1.4 },
+] as const;
+
 export const HeroSection = () => (
-  <section className="relative overflow-hidden pt-3 sm:pt-4 md:pt-5 pb-14 sm:pb-16 md:pb-20 lg:pb-24 bg-bg-base border-t border-border-default">
-    
-    {/* Background glow removed */}
-    <div className="wrap relative">
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-8 sm:gap-10 lg:gap-[72px] items-center">
-        
-        {/* LEFT: TEXT */}
-        <div>
-          {/* Eyebrow */}
-          <div className="flex w-fit mx-auto items-center justify-center gap-2 text-[10px] font-semibold tracking-[1.4px] uppercase text-teal-dk text-center mb-[18px] md:mb-[22px]">
-            <span className="w-5 h-[1.5px] bg-teal-dk block" />
-            AI-Powered Study Tool for Students
-          </div>
-
-          {/* Headline — single H1 for SEO; visual hierarchy preserved with spans */}
-          <h1 className="font-serif text-navy tracking-[-1px] mb-5 md:mb-6 text-center">
-            <span className="block font-bold text-[clamp(26px,5vw,40px)] leading-[1.1] mb-1 whitespace-nowrap max-[380px]:whitespace-normal max-[380px]:text-[clamp(22px,5vw,36px)]">
-              Study Smarter. Score Higher.
-            </span>
-            <span className="block text-center text-[clamp(32px,7vw,62px)] leading-[1.08]">
-              Start in <em className="text-teal-dk">Seconds.</em>
-            </span>
-          </h1>
-
-          {/* Description */}
-         <p className="text-[15px] md:text-[16.5px] leading-[1.75] text-grey-800 font-light mb-7 md:mb-9 max-w-[100%] md:max-w-[460px]">
-            Select your curriculum and exam board. Type your topic. Studiely instantly generates
-            revision notes, flashcards, quizzes and exam practice — calibrated to exactly what your
-            examiner expects.
-          </p>
-
-<div className="flex flex-col items-center sm:flex-row sm:justify-center lg:justify-start gap-2.5 mb-[18px] md:mb-[22px]">
-  <Button href={STUDIELY_APP.home} variant="solid" lg>
-    Get Started Free
-  </Button>
-
-  <Link href="#how-it-works">
-    <Button variant="outline" lg>
-      See How It Works
-    </Button>
-  </Link>
-</div>
-
-          {/* Trust text */}
-          <p className="text-[12px] text-gray-500 text-center lg:text-left">
-            No credit card required · 5 free one-time credits · Works for GCSE, IB, A-Level, SAT,
-            HSC and more
-          </p>
-      {/*    <motion.nav
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.76 }}
-            aria-label="Popular pages"
-            className="mt-4 text-[12px] text-muted text-center lg:text-left leading-relaxed"
-          >
-            <span className="text-gray-500">Popular:</span>{" "}
-            <Link href="/faqs" className="text-teal hover:text-teal-dk underline underline-offset-2">
-              FAQs
-            </Link>
-            {" · "}
-            <Link href="/nyla" className="text-teal hover:text-teal-dk underline underline-offset-2">
-              Nyla AI tutor
-            </Link>
-            {" · "}
-            <Link href="/blog" className="text-teal hover:text-teal-dk underline underline-offset-2">
-              Blog
-            </Link>
-            {" · "}
-            <a
-              href={STUDIELY_APP.pricing}
-              className="text-teal hover:text-teal-dk underline underline-offset-2"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Pricing
-            </a>
-          </motion.nav> */}
-        </div>
-
-        {/* RIGHT: MOCKUP */}
-        <div className="block max-w-[420px] mx-auto lg:max-w-none lg:mx-0">
-          <div className="scale-[0.94] sm:scale-100 origin-top bg-white border border-border-default rounded-[14px] overflow-hidden shadow-[0_10px_48px_rgba(0,0,0,0.08)]">
-            {/* Top bar */}
-            <div className="flex items-center gap-2.5 px-4 py-[11px] border-b border-border-lt bg-bg-base">
-              <div className="flex gap-[5px]">
-                {["#e5584e", "#e5a73a", "#3cba54"].map((c) => (
-                  <div key={c} className="w-[9px] h-[9px] rounded-full" style={{ background: c }} />
-                ))}
-              </div>
-              <span className="flex-1 text-center text-[11px] text-[#6f6f7a] font-mono">
-                studiely
-              </span>
+    <section
+      id="hero"
+      className="relative flex min-h-[calc(100svh-66px)] flex-col overflow-x-hidden overflow-y-visible bg-bg-base border-t border-border-default"
+    >
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.45]"
+        aria-hidden
+        style={{
+          background:
+            "radial-gradient(ellipse 80% 55% at 70% 20%, rgba(0, 176, 155, 0.09), transparent 55%), radial-gradient(ellipse 60% 45% at 15% 75%, rgba(84, 72, 200, 0.06), transparent 50%)",
+        }}
+      />
+      <div className="relative flex flex-1 flex-col min-h-0 w-full max-w-[min(100%,1320px)] mx-auto px-[clamp(12px,4.2vw,48px)] max-lg:pt-0 lg:pt-0 xl:pt-0 pb-4 sm:pb-5">
+        {/* max-lg: flex-none avoids a gap between cards + stats. lg+: flex-1 + spacer below grid (not justify-end) avoids a huge gap under the navbar (e.g. iPad Pro). */}
+        <div className="flex min-h-0 flex-col justify-start pt-1 pb-0 sm:pt-2 max-lg:flex-none max-lg:pb-1 lg:flex-1 lg:min-h-0 lg:pt-4 lg:pb-0 xl:pt-5">
+        <div className="grid shrink-0 grid-cols-1 items-start gap-6 sm:gap-7 md:gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:items-stretch lg:gap-6 xl:gap-7">
+          {/* LEFT: TEXT — column stretches with cards; body copy flexes to fill space on lg+ */}
+          <div className="flex min-h-0 w-full min-w-0 flex-col lg:h-full lg:pt-0">
+            <div className="flex w-fit mx-auto items-center justify-center gap-2 text-[9px] sm:text-[10px] font-semibold tracking-[1.2px] uppercase text-teal-dk text-center mb-4 sm:mb-5">
+              <span className="w-4 h-[1.5px] bg-teal-dk block shrink-0" />
+              AI-Powered Study Tool for Students
             </div>
 
-            {/* Mock content */}
-            <div className="p-[20px]">
-              <div className="grid grid-cols-2 gap-2.5 mb-2.5">
-                {[
-                  ["Curriculum", "British Curriculum"],
-                  ["Board", "Cambridge Intl."],
-                ].map(([l, v]) => (
-                  <div key={l}>
-                    <label className="text-[10px] font-semibold uppercase tracking-[0.7px] text-body block mb-[5px]">
-                      {l}
-                    </label>
-                    <div className="flex justify-between border border-border-default rounded-[7px] py-2 px-[11px] text-[13px] text-navy font-medium">
-                      {v}
-                      <span className="text-[#ccc] text-[9px]">▾</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
+            <h1 className="mb-5 font-serif text-navy tracking-[-1px] text-center sm:mb-6 md:mb-7 w-full">
+              <span className="mb-1 block font-bold leading-[1.08] text-[clamp(26px,5vw,40px)] whitespace-nowrap max-[380px]:whitespace-normal max-[380px]:text-[clamp(22px,5.2vw,34px)]">
+                Study Smarter. Score Higher.
+              </span>
+              <span className="block text-[clamp(30px,6.2vw,56px)] leading-[1.06]">
+                Start in <em className="text-teal-dk">Seconds.</em>
+              </span>
+            </h1>
 
-              <div className="grid grid-cols-2 gap-2.5 mb-[14px]">
-                <div>
-                  <label className="text-[10px] font-semibold uppercase tracking-[0.7px] text-body block mb-[5px]">
-                    Grade
-                  </label>
-                  <div className="flex justify-between border border-border-default rounded-[7px] py-2 px-[11px] text-[13px] text-navy font-medium">
-                    IGCSE <span className="text-[#ccc] text-[9px]">▾</span>
-                  </div>
-                </div>
-                <div>
-                  <label className="text-[10px] font-semibold uppercase tracking-[0.7px] text-body block mb-[5px]">
-                    Topic
-                  </label>
-                  <div className="border border-teal rounded-[7px] py-2 px-[11px] text-[13px] text-navy font-medium">
-                    Photosynthesis
-                  </div>
-                </div>
-              </div>
+            <p className="mt-2 mb-4 w-full max-w-none text-center text-[14px] font-light leading-[1.55] text-grey-800 sm:mt-3 sm:mb-5 sm:text-[15px] md:text-[16px] lg:mb-5 lg:min-h-0 lg:flex-1 lg:text-left lg:leading-[1.65]">
+              Select your curriculum and exam board. Type your topic. Studiely instantly generates
+              summary notes, flashcards, quizzes and exam practice — calibrated to exactly what your
+              examiner expects.
+            </p>
 
-              <Button
-                href={STUDIELY_APP.notes}
-                variant="solid"
-                className="w-full py-2.5 px-2.5 text-[13px] font-medium rounded-lg mb-[14px]"
-              >
-                Generate Study Content →
+            <div className="flex flex-col items-center sm:flex-row sm:justify-center gap-2 sm:gap-2.5 mb-3 sm:mb-3.5 w-full">
+              <Button href={STUDIELY_APP.home} variant="solid">
+                Get Started Free
               </Button>
 
-              <div className="flex gap-[6px]">
-                {[
-                  ["📝", "Notes", true],
-                  ["🧠", "Quiz", false],
-                  ["🗂️", "Cards", false],
-                  ["📋", "Exam", false],
-                ].map(([ic, lb, act]) => (
+              <Link href="#how-it-works">
+                <Button variant="outline">
+                  See How It Works
+                </Button>
+              </Link>
+            </div>
+
+            <p className="text-[11px] sm:text-[11.5px] text-gray-500 text-center lg:text-left leading-snug">
+              No credit card required · 5 free one-time credits · Works for GCSE, IB, A-Level, SAT,
+              HSC and more
+            </p>
+          </div>
+
+          {/* RIGHT: FLIP CARDS — extra vertical room below lg so drift has space */}
+          <div className="mx-auto w-full min-w-0 overflow-visible py-2 sm:max-lg:py-3 lg:mx-0 lg:py-0">
+            <div className="grid grid-cols-2 gap-2 overflow-visible px-0 pt-0 pb-0 sm:gap-2.5 sm:px-0.5 max-lg:pb-3 sm:max-lg:pb-4">
+              {TOOLS.map((t, i) => {
+                const { Icon, appHref } = t;
+                const d = CARD_DRIFT[i] ?? CARD_DRIFT[0];
+                const isWide = i === TOOLS.length - 1;
+                const shellClass =
+                  "group block h-[clamp(82px,16vw,110px)] sm:h-[clamp(88px,18vw,118px)] [perspective:900px] rounded-[8px] sm:rounded-[10px] outline-none";
+                const flipInner = (
                   <div
-                    key={lb as string}
-                    className={`flex-1 border rounded-[7px] py-2 px-1 text-center ${
-                      act ? "border-teal bg-teal-lt" : "border-border-default bg-white"
-                    }`}
+                    className="relative h-full w-full transition-transform duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] group-focus-within:[transform:rotateY(180deg)]"
                   >
-                    <div className="text-[14px] mb-[3px]">{ic}</div>
-                    <div
-                      className={`text-[9px] ${
-                        act ? "text-teal font-semibold" : "text-body"
-                      }`}
-                    >
-                      {lb}
-                    </div>
-                  </div>
-                ))}
-              </div>
+                        {/* Front */}
+                        <div
+                          className="absolute inset-0 flex flex-col items-center justify-center rounded-[8px] sm:rounded-[10px] px-1.5 py-1.5 sm:px-2 sm:py-2 text-center [backface-visibility:hidden] border shadow-[0_4px_24px_rgba(0,0,0,0.06)]"
+                          style={{
+                            borderColor: t.border,
+                            background: `linear-gradient(155deg, ${t.lt} 0%, #ffffff 92%)`,
+                            boxShadow: `0 6px 22px ${t.glow}`,
+                          }}
+                        >
+                          <div className="mb-0.5 flex shrink-0 items-center justify-center [&_svg]:max-h-[min(28px,6.5vw)] min-[400px]:[&_svg]:max-h-[32px] sm:[&_svg]:max-h-[36px]">
+                            <Icon />
+                          </div>
+                          <div
+                            className="h-[2px] w-5 rounded-sm mb-0.5 sm:mb-1 shrink-0"
+                            style={{ background: t.color }}
+                          />
+                          <h3 className="text-[10px] min-[400px]:text-[11px] sm:text-[12px] font-medium text-navy leading-tight tracking-[-0.1px] m-0 line-clamp-3">
+                            {t.label}
+                          </h3>
+                        </div>
+
+                        {/* Back */}
+                        <div
+                          className="absolute inset-0 flex flex-col rounded-[8px] sm:rounded-[10px] p-2 sm:p-2.5 text-left [backface-visibility:hidden] [transform:rotateY(180deg)] overflow-hidden border"
+                          style={{
+                            borderColor: t.border,
+                            background: `linear-gradient(165deg, #ffffff 0%, ${t.lt} 100%)`,
+                            boxShadow: `0 8px 28px ${t.glow}`,
+                          }}
+                        >
+                          <p className="text-[10px] sm:text-[11.5px] text-body leading-[1.45] font-light m-0 overflow-y-auto pr-0.5 flex-1 [scrollbar-width:thin]">
+                            {t.desc}
+                          </p>
+                          <span
+                            className="mt-1.5 shrink-0 text-[9.5px] sm:text-[11px] font-semibold uppercase tracking-[0.4px] line-clamp-2"
+                            style={{ color: t.color }}
+                          >
+                            {t.label}
+                          </span>
+                        </div>
+                      </div>
+                );
+                return (
+                  <motion.div
+                    key={t.id}
+                    className={isWide ? "col-span-2" : undefined}
+                    initial={false}
+                    animate={{ x: [...d.x], y: [...d.y] }}
+                    transition={{
+                      duration: d.duration,
+                      delay: d.delay,
+                      repeat: Infinity,
+                      repeatType: "mirror",
+                      ease: "easeInOut",
+                    }}
+                  >
+                    {appHref ? (
+                      <a
+                        href={appHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`${shellClass} no-underline text-inherit cursor-pointer focus-visible:ring-2 focus-visible:ring-teal-dk/40 focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base`}
+                        aria-label={`Open ${t.label} in the Studiely app`}
+                      >
+                        {flipInner}
+                      </a>
+                    ) : (
+                      <div
+                        className={`${shellClass} cursor-default`}
+                        tabIndex={0}
+                        aria-label={`${t.label} — preview only; open study tools in the app`}
+                      >
+                        {flipInner}
+                      </div>
+                    )}
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </div>
+        {/* lg+: absorbs extra viewport height below the grid so content stays near the top; hidden below lg (flex-none column has no spare height). */}
+        <div className="hidden min-h-0 min-w-0 flex-1 shrink lg:block" aria-hidden />
+        </div>
+
+        <div className="mt-4 sm:mt-5 shrink-0 w-full flex justify-center pb-2 sm:pb-3">
+          <StatsBar />
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 );

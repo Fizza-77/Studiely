@@ -11,8 +11,6 @@ import { StatsSection } from "@/sections/StatsSection";
 import { HowItWorksSection } from "@/sections/HowItWorksSection";
 import { SupportedCountriesSection } from "@/sections/SupportedCountriesSection";
 import { RewardsProgressSection } from "@/sections/RewardsProgressSection";
-import { StudyToolsSection } from "@/sections/StudyToolsSection";
-import { WritingSection } from "@/sections/WritingSection";
 import { NylaSection } from "@/sections/NylaSection";
 import { CTASection } from "@/sections/CTASection";
 
@@ -25,16 +23,14 @@ const SisterSection = dynamic(() => import("@/sections/SisterSection").then((m) 
 });
 
 type HomePageContentProps = {
-  /** When true (e.g. `/features` route), scroll to the features section after mount. */
-  scrollToFeaturesOnMount?: boolean;
+  /** When true (e.g. `/features` route), scroll to the hero after mount. */
+  scrollToHeroOnMount?: boolean;
 };
 
-export function HomePageContent({ scrollToFeaturesOnMount = false }: HomePageContentProps) {
+export function HomePageContent({ scrollToHeroOnMount = false }: HomePageContentProps) {
   const nylaHref = "/nyla";
   const [visibleSections, setVisibleSections] = useState<string[]>([]);
   const curriculumRef = useRef<HTMLElement>(null);
-  const toolsRef = useRef<HTMLElement>(null);
-  const writingRef = useRef<HTMLElement>(null);
   const nylaRef = useRef<HTMLElement>(null);
   const rewardsRef = useRef<HTMLElement>(null);
   const reviewsRef = useRef<HTMLElement>(null);
@@ -42,11 +38,9 @@ export function HomePageContent({ scrollToFeaturesOnMount = false }: HomePageCon
   const sisterRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const ORDER = ["curriculum", "tools", "writing", "nyla", "rewards", "reviews", "pricing", "sister"];
+    const ORDER = ["curriculum", "nyla", "rewards", "reviews", "pricing", "sister"];
     const sections = [
       { id: "curriculum", ref: curriculumRef },
-      { id: "tools", ref: toolsRef },
-      { id: "writing", ref: writingRef },
       { id: "nyla", ref: nylaRef },
       { id: "rewards", ref: rewardsRef },
       { id: "reviews", ref: reviewsRef },
@@ -92,21 +86,19 @@ export function HomePageContent({ scrollToFeaturesOnMount = false }: HomePageCon
   }, []);
 
   useEffect(() => {
-    if (!scrollToFeaturesOnMount) return;
+    if (!scrollToHeroOnMount) return;
     const scroll = () => {
-      document.getElementById("features")?.scrollIntoView({ behavior: "instant", block: "start" });
+      document.getElementById("hero")?.scrollIntoView({ behavior: "instant", block: "start" });
     };
     const frame = window.requestAnimationFrame(scroll);
     return () => window.cancelAnimationFrame(frame);
-  }, [scrollToFeaturesOnMount]);
+  }, [scrollToHeroOnMount]);
 
   return (
     <>
       <main role="main">
         <HeroSection />
         <StatsSection />
-        <StudyToolsSection sectionRef={toolsRef} />
-        <WritingSection sectionRef={writingRef} />
         <HowItWorksSection />
         <NylaSection sectionRef={nylaRef} />
         <SupportedCountriesSection sectionRef={curriculumRef} />

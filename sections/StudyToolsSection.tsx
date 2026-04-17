@@ -4,105 +4,9 @@ import { useState, type CSSProperties } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { SectionHeader } from "@/components/SectionHeader";
 import { Reveal } from "@/components/Reveal";
-import {
-  NotesCardIcon,
-  QuizCardIcon,
-  FlashcardsCardIcon,
-  ExamCardIcon,
-  CommonMistakesCardIcon,
-} from "@/components/Icons";
 import { CUR_DATA } from "@/lib/data";
 import { STUDIELY_APP } from "@/lib/appUrls";
-// Map the selected option to a glow color
-function getGlowColor(sel: string) {
-  switch (sel) {
-    case "notes":
-      return "rgba(0,255,200,0.35)"; // sea green
-    case "flashcards":
-         return "rgba(0,150,255,0.35)"; // light blue
-      case "quiz":
-      return "rgba(255, 166, 0, 0.45)"; // orange
-
-    case "exam":
-    case "exam-writing-mode":
-      return "rgba(255, 0, 128, 0.48)"; // pink
-    case "common-mistakes":
-      return "rgba(124, 58, 237, 0.42)"; // violet
-    default:
-      return "rgba(26,35,126,0.35)"; // dark blue fallback
-  }
-}
-const TOOLS = [
-  {
-    id: "notes",
-    label: "Revision Notes",
-    cta: "Generate Notes",
-    color: "#00b09b",
-    lt: "#dff6f2",
-    glow: "rgba(0,176,155,.14)",
-    border: "rgba(0,176,155,.22)",
-    desc: "AI generates fully structured notes for any topic. Depth and length are matched to your curriculum, grade and exam board - not a generic summary. No uploads. No prep. Type your topic and generate.",
-    previewLabel: "Study Notes",
-    preview:
-      "Photosynthesis is the process by which plants convert light energy into chemical energy stored in glucose.\n\n• Light-dependent reactions occur in the thylakoid membrane\n• Carbon fixation occurs via the Calvin cycle in the stroma\n• Net equation: 6CO₂ + 6H₂O + light → C₆H₁₂O₆ + 6O₂\n• Chlorophyll is the primary photosynthetic pigment",
-    Icon: NotesCardIcon,
-  },
-   {
-    id: "flashcards",
-    label: "Flashcard Generator",
-    cta: "Create Flashcards",
-    color: "#2563eb",
-    lt: "#eff6ff",
-    glow: "rgba(37,99,235,.13)",
-    border: "rgba(37,99,235,.22)",
-    desc: "Spaced-repetition decks built automatically from any topic - up to 30 cards per set. Spaced repetition is the most evidence-backed method for long-term memory retention. Export to Anki on Premium.",
-    previewLabel: "Flashcards",
-    preview:
-      "FRONT: What is the net equation for photosynthesis?\n────────────────────────────────\nBACK: 6CO₂ + 6H₂O + light energy → C₆H₁₂O₆ + 6O₂\n\n── Card 1 of 12 · Deck: Photosynthesis ──",
-    Icon: FlashcardsCardIcon,
-  },
-    {
-    id: "quiz",
-    label: "Quiz Generator",
-    cta: "Generate Quiz",
-    color: "#d97b2a",
-    lt: "#fff1e4",
-    glow: "rgba(217,123,42,.13)",
-    border: "rgba(217,123,42,.22)",
-    desc: "Multiple-choice, true/false and short-answer questions at beginner, intermediate or advanced difficulty. Instant feedback after every question. Syllabus content only - nothing off-topic.",
-    previewLabel: "Quiz",
-    preview:
-      "Q1. What is the primary pigment in photosynthesis?\n  ○ Carotene\n  ● Chlorophyll ✓\n  ○ Xanthophyll\n  ○ Phycocyanin\n\nQ2. Where does the Calvin cycle occur?\n  ● Stroma of the chloroplast ✓\n  ○ Thylakoid membrane\n  ○ Cytoplasm",
-    Icon: QuizCardIcon,
-  },
-  {
-    id: "exam-writing-mode",
-    label: "Exam Writing Mode",
-    cta: "Start Exam Writing Mode",
-    color: "#c94a72",
-    lt: "#ffedf3",
-    glow: "rgba(201,74,114,.13)",
-    border: "rgba(201,74,114,.22)",
-    desc: "Write under timed conditions in the app. Live countdown, word count tracker and AI feedback assessed against your exam board's command words and structure. Three one-time free trials per account.",
-    previewLabel: "Exam Writing",
-    preview:
-      "Timer: 00:24:10\nWord count: 312\nFeedback: Improve structure around command terms and add one developed evaluation point.",
-    Icon: ExamCardIcon,
-  },
-  {
-    id: "common-mistakes",
-    label: "Common Mistakes Students Make",
-    cta: "Explore common mistakes",
-    color: "#7c3aed",
-    lt: "#f5f3ff",
-    glow: "rgba(124,58,237,.14)",
-    border: "rgba(124,58,237,.22)",
-    desc: "Students often lose marks by misunderstanding command words, skipping key steps in long-answer methods, and mixing up core terms. Many write answers that are correct in idea but not aligned to what examiners award marks for.",
-    previewLabel: "Common mistakes",
-    preview: "",
-    Icon: CommonMistakesCardIcon,
-  },
-];
+import { TOOLS, getGlowColor } from "@/lib/studyTools";
 
 interface StudyToolsSectionProps {
   sectionRef?: React.Ref<HTMLElement>;
@@ -127,61 +31,38 @@ export const StudyToolsSection = ({ sectionRef }: StudyToolsSectionProps) => {
           sub="Pick your curriculum, type your topic and choose a tool. Content generates in seconds - structured to your exact grade level and exam board."
         />
 
-      {/* ── TOOL CARDS ── */}
+        {/* Tool chips — full cards live in the hero; this keeps the CTA flow */}
         <Reveal>
-          <div className="flex flex-row flex-nowrap gap-[14px] overflow-x-auto pb-2 mb-8 [-webkit-overflow-scrolling:touch] snap-x snap-mandatory sm:snap-none">
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-2.5 mb-8 sm:mb-10 max-w-[920px] mx-auto">
             {TOOLS.map((t) => {
               const active = sel === t.id;
               const { Icon } = t;
               return (
-                <motion.div
+                <button
                   key={t.id}
-                  whileHover={{ y: -6 }}
+                  type="button"
                   onClick={() => {
                     setSel(t.id);
                     setChosen(true);
                   }}
-                  transition={{ duration: 0.18 }}
-                  className="rounded-[14px] p-[24px_20px_44px] cursor-pointer relative flex flex-col items-center text-center shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-colors duration-200 min-w-[168px] max-w-[220px] flex-1 basis-[168px] sm:min-w-[140px] sm:max-w-none sm:flex-1 sm:basis-0 snap-center shrink-0 sm:shrink"
+                  className="relative inline-flex items-center gap-2 rounded-full pl-2.5 pr-3.5 py-2 text-left transition-all duration-200 border text-[12.5px] sm:text-[13px] font-medium text-navy max-w-full sm:max-w-[280px]"
                   style={{
-                    border: `1.5px solid ${active ? t.color : t.border}`,
+                    borderColor: active ? t.color : t.border,
                     background: active ? `linear-gradient(150deg,${t.lt} 0%,#fff 100%)` : "#fafaf8",
-                    boxShadow: active ? `0 8px 32px ${t.glow}` : "0 2px 8px rgba(0,0,0,.04)",
+                    boxShadow: active ? `0 6px 22px ${t.glow}` : "0 1px 4px rgba(0,0,0,.04)",
                   }}
                 >
                   {active && (
-                    <motion.div
-                      layoutId="selDot"
-                      transition={{ type: "spring", stiffness: 500, damping: 28 }}
-                      className="absolute top-3 right-3 w-[9px] h-[9px] rounded-full"
-                      style={{ background: t.color, boxShadow: `0 0 10px ${t.color}` }}
+                    <span
+                      className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full"
+                      style={{ background: t.color, boxShadow: `0 0 8px ${t.color}` }}
                     />
                   )}
-                  <div className="mb-3 flex w-full shrink-0 items-center justify-center">
+                  <span className="shrink-0 flex w-9 h-9 items-center justify-center [&_svg]:max-h-9 [&_svg]:max-w-[36px]">
                     <Icon />
-                  </div>
-                  <div
-                    className="w-5 h-[2.5px] rounded-sm mb-[11px] shrink-0 transition-opacity duration-200"
-                    style={{ background: t.color, opacity: active ? 1 : 0.4 }}
-                  />
-                  <h3 className="text-[17px] font-normal text-navy mb-[7px] tracking-[-0.15px] w-full">
-                    {t.label}
-                  </h3>
-                  <p className="text-[12.5px] text-body leading-[1.68] font-light w-full">{t.desc}</p>
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: active ? 1 : 0 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute bottom-3.5 left-1/2 -translate-x-1/2 inline-flex items-center gap-[5px] text-[11px] font-semibold pointer-events-none"
-                    style={{ color: t.color }}
-                  >
-                    <span
-                      className="w-1.5 h-1.5 rounded-full inline-block"
-                      style={{ background: t.color }}
-                    />
-                    Selected
-                  </motion.div>
-                </motion.div>
+                  </span>
+                  <span className="leading-snug pr-1">{t.label}</span>
+                </button>
               );
             })}
           </div>
@@ -447,7 +328,7 @@ export const StudyToolsSection = ({ sectionRef }: StudyToolsSectionProps) => {
             className="min-w-0 w-[220px] sm:w-[260px] flex flex-col justify-center items-start text-left"
           >
             <span className="block text-[11px] font-normal opacity-70 tracking-[0.5px] uppercase mb-[3px]">
-              {chosen ? "Ready" : "Select a tool above"}
+              {chosen ? "Ready" : "Select a tool"}
             </span>
             <span className="truncate w-full">{chosen ? tool?.cta : "Start Learning Smarter"}</span>
           </motion.div>

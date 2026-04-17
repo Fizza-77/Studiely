@@ -183,7 +183,7 @@ export const sectionA: FaqSection = {
     {
       question: "Which devices does Studiely work on?",
       schemaText:
-        "Studiely works across all major devices and platforms. Web: Accessible on any modern web browser (Chrome, Safari, Firefox, Edge) on desktops and laptops — no software installation required. iOS: Available as an app on iPhone and iPad through the Apple App Store. Android: Available as an app on Android phones and tablets through the Google Play Store. The platform is designed to deliver the same full experience on mobile as on desktop. Students can generate revision notes, practise flashcards, and take quizzes from their phone just as effectively as from a laptop. Your account and all generated content sync across devices when you are logged in, so there is no need to regenerate materials if you switch from phone to laptop during a revision session.",
+        "Studiely works across all major devices and platforms. Web: Accessible on any modern web browser (Chrome, Safari, Firefox, Edge) on desktops and laptops — no software installation required. iOS: Available as an app on iPhone and iPad through the Apple App Store. Android: Available as an app on Android phones and tablets through the Google Play Store. The platform is designed to deliver the same full experience on mobile as on desktop. Students can generate summary notes, practise flashcards, and take quizzes from their phone just as effectively as from a laptop. Your account and all generated content sync across devices when you are logged in, so there is no need to regenerate materials if you switch from phone to laptop during a revision session.",
       answer: (
         <>
           <p>Studiely works across all major devices and platforms.</p>
@@ -203,7 +203,7 @@ export const sectionA: FaqSection = {
           </ul>
           <p>
             The platform is designed to deliver the same full experience on mobile as on desktop. Students can
-            generate revision notes, practise flashcards, and take quizzes from their phone just as effectively as
+            generate summary notes, practise flashcards, and take quizzes from their phone just as effectively as
             from a laptop.
           </p>
           <p>

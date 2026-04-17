@@ -21,7 +21,7 @@ export default function FeaturesPage() {
           __html: JSON.stringify(breadcrumbSchema),
         }}
       />
-      <HomePageContent scrollToFeaturesOnMount />
+      <HomePageContent scrollToHeroOnMount />
     </>
   );
 }

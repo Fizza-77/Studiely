@@ -31,7 +31,7 @@ export const WritingSection = ({ sectionRef }: WritingSectionProps) => {
   return (
     <section
       id="writing-practice"
-      aria-label="AI exam writing practice with timer and feedback"
+      aria-label="AI exam practice mode with timer and feedback"
       ref={sectionRef}
       className="py-14 sm:py-16 md:py-20 bg-bg-base relative overflow-hidden"
     >
@@ -148,9 +148,13 @@ export const WritingSection = ({ sectionRef }: WritingSectionProps) => {
                   </div>
 
                   <textarea
+                    id="writing-practice-demo-answer"
+                    name="writing_practice_demo_answer"
                     value={answer}
                     onChange={(e) => setAnswer(e.target.value)}
                     placeholder="Type your answer here…"
+                    autoComplete="off"
+                    aria-label="Your answer to the demo exam question"
                     className="w-full border border-border-default rounded-lg px-[13px] py-[11px] text-[13px] text-body leading-[1.75] resize-y min-h-[120px] outline-none font-sans font-light transition-colors duration-150 focus:border-amber"
                   />
 
@@ -181,7 +185,7 @@ export const WritingSection = ({ sectionRef }: WritingSectionProps) => {
   <div className="mt-12 sm:mt-14 md:mt-16 flex justify-center">
     <motion.a
       href={STUDIELY_APP.examPractice}
-      aria-label="Start AI exam writing practice"
+      aria-label="Start AI exam practice mode"
       whileHover={{
         scale: 1.025,
         boxShadow: "0 16px 48px rgba(217,123,42,.35)",

@@ -32,12 +32,12 @@ export const metadata: Metadata = {
     template: "%s | Studiely",
   },
   description:
-    "Generate revision notes, flashcards, quizzes and exam practice " +
+    "Generate summary notes, flashcards, quizzes and exam practice " +
     "aligned to your exact curriculum and exam board. " +
     "GCSE, IB, A-Level, SAT, HSC and more. Free to start.",
   keywords: [
     "AI study app",
-    "revision notes",
+    "summary notes",
     "flashcards",
     "exam practice",
     "GCSE revision",
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     siteName: "Studiely",
     title: "Studiely — AI Study App for GCSE, IB, SAT & All Curricula",
     description:
-      "Generate revision notes, flashcards, quizzes and exam practice " +
+      "Generate summary notes, flashcards, quizzes and exam practice " +
       "aligned to your exact curriculum and exam board. Free to start.",
     url: SITE_URL,
     images: [
@@ -80,7 +80,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Studiely — AI Study App for GCSE, IB, SAT & All Curricula",
     description:
-      "Revision notes, flashcards, quizzes and exam practice " +
+      "Summary notes, flashcards, quizzes and exam practice " +
       "for every curriculum. Free to start.",
     images: [DEFAULT_OG_IMAGE_PATH],
   },
@@ -132,18 +132,7 @@ export default function RootLayout({
           strategy="lazyOnload"
           src="https://www.googletagmanager.com/gtag/js?id=G-NXQX4TMW7X"
         />
-        <Script
-          id="google-analytics"
-          strategy="lazyOnload"
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-NXQX4TMW7X');
-            `,
-          }}
-        />
+        <Script id="google-analytics-init" strategy="lazyOnload" src="/gtag-init.js" />
       </head>
       <body className="antialiased font-sans bg-bg-base text-body">
         <script

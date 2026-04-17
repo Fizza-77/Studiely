@@ -114,7 +114,12 @@ export const NylaSection = ({ sectionRef }: NylaSectionProps) => {
 
                 <div className="px-[14px] py-[10px] border-t border-border-default flex gap-2 bg-white">
                   <input
+                    id="nyla-preview-message"
+                    name="nyla_preview_message"
+                    type="text"
                     placeholder="Ask Nyla anything…"
+                    autoComplete="off"
+                    aria-label="Message to Nyla (preview)"
                     className="flex-1 border border-border-default rounded-[7px] px-[13px] py-[9px] text-[13px] text-body outline-none min-w-0 font-sans transition-colors duration-150 focus:border-indigo"
                   />
                   <Link href={STUDIELY_APP.nyla} className="shrink-0">

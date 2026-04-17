@@ -9,7 +9,7 @@ export const sectionC: FaqSection = {
     {
       question: "What is the Summary Notes tool?",
       schemaText:
-        "Summary Notes is Studiely's flagship study tool. It generates structured, curriculum-aligned revision notes for any topic within the student's chosen subject and exam board. Rather than producing a broad explanation that could come from any textbook, Summary Notes is generated specifically for the student's academic route. Notes are concept-first — they explain the topic clearly before introducing exam-relevant framing. They are structured for readability with clear organisation, key definitions highlighted, and logical flow. Premium users can export Summary Notes as PDF or Word documents for offline revision. Notes can also be regenerated to get a different angle or greater depth on a topic.",
+        "Summary Notes is Studiely's flagship study tool. It generates structured, curriculum-aligned summary notes for any topic within the student's chosen subject and exam board. Rather than producing a broad explanation that could come from any textbook, Summary Notes is generated specifically for the student's academic route. Notes are concept-first — they explain the topic clearly before introducing exam-relevant framing. They are structured for readability with clear organisation, key definitions highlighted, and logical flow. Premium users can export Summary Notes as PDF or Word documents for offline revision. Notes can also be regenerated to get a different angle or greater depth on a topic.",
       answer: (
         <>
           <p>
