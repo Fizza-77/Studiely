@@ -43,6 +43,10 @@ export const Footer = () => (
           <Link href="/blog" className="text-body hover:text-navy">
             Blog
           </Link>
+          
+          <Link href="/faqs" className="text-body hover:text-navy">
+            FAQs
+          </Link>
        
           <Link href="/privacy-policy" className="text-body hover:text-navy">
             Privacy Policy
