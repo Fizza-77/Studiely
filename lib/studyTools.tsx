@@ -25,10 +25,19 @@ export function getGlowColor(sel: string) {
   }
 }
 
+/** App-style hero cards (matches `public/studiely_homepage_cards (1).html` app view). */
+export type HeroCardTheme = "teal" | "indigo" | "amber" | "coral" | "rose";
+
 export const TOOLS = [
   {
     id: "notes",
     label: "Summary Notes",
+    /** Short label + line for app-style hero cards */
+    heroLabel: "Summary notes",
+    heroShortDesc: "Matched to your curriculum, grade and exam board.",
+    heroTheme: "teal" as HeroCardTheme,
+    /** Shorter CTA line for compact app-style hero buttons */
+    heroCta: "Generate Summary/Revision Notes",
     cta: "Generate Summary Notes",
     color: "#00b09b",
     lt: "#dff6f2",
@@ -45,6 +54,10 @@ export const TOOLS = [
   {
     id: "flashcards",
     label: "Flashcard Generator",
+    heroLabel: "Flashcards",
+    heroShortDesc: "Up to 30 spaced-repetition cards. Automatic.",
+    heroTheme: "indigo" as HeroCardTheme,
+    heroCta: "Generate Flashcards",
     cta: "Create Flashcards",
     color: "#2563eb",
     lt: "#eff6ff",
@@ -60,6 +73,10 @@ export const TOOLS = [
   {
     id: "quiz",
     label: "Quiz Generator",
+    heroLabel: "Quiz",
+    heroShortDesc: "Multiple-choice questions. Instant feedback.",
+    heroTheme: "amber" as HeroCardTheme,
+    heroCta: "Start A Quiz",
     cta: "Generate Quiz",
     color: "#d97b2a",
     lt: "#fff1e4",
@@ -75,6 +92,10 @@ export const TOOLS = [
   {
     id: "exam-writing-mode",
     label: "Exam Practice Mode",
+    heroLabel: "Exam practice",
+    heroShortDesc: "Timed. AI-marked. 3 free trials per account.",
+    heroTheme: "rose" as HeroCardTheme,
+    heroCta: "Start Exam Practice",
     cta: "Start Exam Practice Mode",
     color: "#c94a72",
     lt: "#ffedf3",
@@ -90,6 +111,11 @@ export const TOOLS = [
   {
     id: "common-mistakes",
     label: "Common Mistakes Students Make",
+    heroLabel: "Exam focus",
+    heroShortDesc:
+      "How this topic appears in your exam. Tick Common Mistakes to see what trips students up.",
+    heroTheme: "coral" as HeroCardTheme,
+    heroCta: "Get Exam Focus",
     cta: "Explore common mistakes",
     color: "#7c3aed",
     lt: "#f5f3ff",
@@ -102,6 +128,7 @@ export const TOOLS = [
     /** Former section left this tool without a launch URL (disabled CTA). */
     appHref: null,
   },
-] as const;
+];
 
 export type StudyToolId = (typeof TOOLS)[number]["id"];
+export type StudyTool = (typeof TOOLS)[number];

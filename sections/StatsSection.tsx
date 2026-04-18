@@ -12,29 +12,26 @@ export const STATS_ITEMS = [
 
 /** Trust indicators only — lives inside the hero (first screen). */
 export const StatsBar = () => (
-  <div className="w-full max-w-[min(100%,1240px)] mx-auto border border-border-default bg-white rounded-lg sm:rounded-xl overflow-hidden shadow-[0_2px_14px_rgba(0,0,0,0.04)]">
-    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 border-l border-border-default">
+  <div className="w-full max-w-[min(100%,1320px)] mx-auto border border-border-default bg-white rounded-md sm:rounded-lg overflow-hidden shadow-[0_1px_10px_rgba(0,0,0,0.04)]">
+    <div className="grid grid-cols-2 border-l border-border-default lg:grid-cols-4">
       {STATS_ITEMS.map((s, i) => (
         <Reveal
           key={i}
           delay={i * 0.06}
-          className="bg-white text-center py-3.5 sm:py-4 md:py-[1.125rem] px-3 sm:px-4 border-r border-b border-border-default h-full min-h-[5.25rem] sm:min-h-[5.5rem]"
+          className="bg-white text-center py-2 sm:py-2.5 md:py-3 px-2 sm:px-2.5 border-r border-b border-border-default h-full min-h-0"
         >
           <div
-            className="text-[clamp(17px,3.4vw,24px)] font-medium mb-1 tracking-[-0.35px] leading-none"
+            className="text-[clamp(13px,2.6vw,18px)] font-medium mb-0.5 tracking-[-0.3px] leading-none"
             style={{ color: s.col }}
           >
             <AnimNum target={s.n} pre={s.pre} suf={s.suf} />
           </div>
 
-          <div className="text-[10px] sm:text-[10.5px] text-body leading-[1.3] max-w-[160px] mx-auto line-clamp-2">
+          <div className="text-[8.5px] sm:text-[9px] text-body leading-[1.25] max-w-[120px] sm:max-w-[130px] mx-auto line-clamp-2">
             {s.label}
           </div>
         </Reveal>
       ))}
-
-      <div className="hidden md:block lg:hidden border-r border-b border-border-default bg-white" />
-      <div className="hidden md:block lg:hidden border-r border-b border-border-default bg-white" />
     </div>
   </div>
 );
