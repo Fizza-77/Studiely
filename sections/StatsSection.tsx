@@ -10,31 +10,57 @@ export const STATS_ITEMS = [
   { n: "4.8", pre: "★ ", suf: "", label: "Average Student Rating", col: "var(--color-amber)" },
 ] as const;
 
-/** Trust indicators only — lives inside the hero (first screen). */
-export const StatsBar = () => (
-  <div className="w-full max-w-[min(100%,1320px)] mx-auto border border-border-default bg-white rounded-md sm:rounded-lg overflow-hidden shadow-[0_1px_10px_rgba(0,0,0,0.04)]">
-    <div className="grid grid-cols-2 border-l border-border-default lg:grid-cols-4">
-      {STATS_ITEMS.map((s, i) => (
-        <Reveal
-          key={i}
-          delay={i * 0.06}
-          className="bg-white text-center py-2 sm:py-2.5 md:py-3 px-2 sm:px-2.5 border-r border-b border-border-default h-full min-h-0"
-        >
-          <div
-            className="text-[clamp(13px,2.6vw,18px)] font-medium mb-0.5 tracking-[-0.3px] leading-none"
-            style={{ color: s.col }}
-          >
-            <AnimNum target={s.n} pre={s.pre} suf={s.suf} />
-          </div>
+type StatsBarProps = {
+  /** Tighter padding when used in a contained card-style strip. */
+  compact?: boolean;
+  /** Full viewport width — e.g. below hero tool cards. */
+  fullBleed?: boolean;
+};
 
-          <div className="text-[8.5px] sm:text-[9px] text-body leading-[1.25] max-w-[120px] sm:max-w-[130px] mx-auto line-clamp-2">
-            {s.label}
-          </div>
-        </Reveal>
-      ))}
+/** Trust indicators (numbers + labels). */
+export const StatsBar = ({ compact, fullBleed }: StatsBarProps) => {
+  const outer = fullBleed
+    ? "w-full min-w-full max-w-none overflow-hidden border-y border-border-default bg-white"
+    : "mx-auto w-full max-w-[min(100%,1320px)] overflow-hidden rounded-md border border-border-default bg-white shadow-[0_1px_10px_rgba(0,0,0,0.04)] sm:rounded-lg";
+
+  const cell = fullBleed
+    ? "px-2 py-2.5 sm:px-3 sm:py-3 md:px-4 md:py-3.5"
+    : compact
+      ? "px-1.5 py-1.5 sm:px-2 sm:py-2"
+      : "px-2 py-2 sm:px-2.5 sm:py-2.5 md:py-3";
+
+  const num = fullBleed
+    ? "mb-0.5 text-[clamp(16px,3.8vw,28px)] sm:mb-1"
+    : compact
+      ? "mb-0 text-[clamp(12px,2.4vw,16px)]"
+      : "mb-0.5 text-[clamp(13px,2.6vw,18px)]";
+
+  const label = fullBleed
+    ? "mx-auto max-w-[min(100%,200px)] px-0.5 text-[9px] font-medium leading-snug text-body sm:max-w-[min(100%,240px)] sm:text-[10px] md:text-[11px] md:leading-tight"
+    : compact
+      ? "mx-auto max-w-[110px] text-[8px] leading-[1.25] text-body sm:max-w-[120px] sm:text-[8.5px]"
+      : "mx-auto max-w-[120px] text-[8.5px] leading-[1.25] text-body sm:max-w-[130px] sm:text-[9px]";
+
+  return (
+    <div className={outer}>
+      <div className="grid grid-cols-2 border-border-default border-l lg:grid-cols-4">
+        {STATS_ITEMS.map((s, i) => (
+          <Reveal
+            key={i}
+            delay={i * 0.06}
+            className={`h-full min-h-0 border-b border-r border-border-default bg-white text-center ${cell}`}
+          >
+            <div className={`font-semibold tracking-[-0.4px] leading-none ${num}`} style={{ color: s.col }}>
+              <AnimNum target={s.n} pre={s.pre} suf={s.suf} />
+            </div>
+
+            <div className={`line-clamp-2 ${label}`}>{s.label}</div>
+          </Reveal>
+        ))}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 /**
  * Explanatory copy only (no stat numbers) — first content below the hero fold.

@@ -112,7 +112,37 @@
   }
 }
 
+/* Use margin-top, not transform — an ancestor `transform` flattens 3D and breaks `backface-visibility` on flip cards. */
+@keyframes heroCardFloat {
+  0%,
+  100% {
+    margin-top: 0;
+  }
+  50% {
+    margin-top: var(--hero-float-y, -7px);
+  }
+}
+
 @layer utilities {
+  .hero-card-float {
+    --hero-float-y: -7px;
+    --hero-float-dur: 5s;
+    --hero-float-delay: 0s;
+    animation-name: heroCardFloat;
+    animation-duration: var(--hero-float-dur);
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-delay: var(--hero-float-delay);
+    will-change: margin-top;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-card-float {
+      animation: none;
+      will-change: auto;
+    }
+  }
+
   .wrap {
     @apply max-w-[1140px] mx-auto w-full px-4 sm:px-6 md:px-8 lg:px-12;
   }

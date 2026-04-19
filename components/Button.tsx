@@ -25,8 +25,14 @@ export const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, Bu
     const merged = cn(baseClasses, sizeClasses, variantClasses[variant], className);
 
     if (href) {
+      const isExternal = /^https?:\/\//i.test(href);
       return (
-        <a href={href} ref={ref as React.Ref<HTMLAnchorElement>} className={merged}>
+        <a
+          href={href}
+          ref={ref as React.Ref<HTMLAnchorElement>}
+          className={merged}
+          {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+        >
           {children}
         </a>
       );

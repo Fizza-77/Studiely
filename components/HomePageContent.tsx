@@ -7,6 +7,7 @@ import { STUDIELY_APP } from "@/lib/appUrls";
 import { Footer } from "@/components/Footer";
 import { NylaAvatar } from "@/components/Icons";
 import { HeroSection } from "@/sections/HeroSection";
+import { HeroMarketingSection } from "@/sections/HeroMarketingSection";
 import { StatsSection } from "@/sections/StatsSection";
 import { HowItWorksSection } from "@/sections/HowItWorksSection";
 import { SupportedCountriesSection } from "@/sections/SupportedCountriesSection";
@@ -98,6 +99,7 @@ export function HomePageContent({ scrollToHeroOnMount = false }: HomePageContent
     <>
       <main role="main">
         <HeroSection />
+        <HeroMarketingSection />
         <StatsSection />
         <HowItWorksSection />
         <NylaSection sectionRef={nylaRef} />
