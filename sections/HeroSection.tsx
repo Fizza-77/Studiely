@@ -48,6 +48,29 @@ const WEB_CARD_TITLE: Record<StudyToolId, string> = {
   "exam-writing-mode": "Write under timed, exam conditions",
 };
 
+/** Front-face short subheading copy from the provided card screenshot. */
+const WEB_CARD_SUBHEADING: Record<StudyToolId, string> = {
+  notes: "Matched to your curriculum, grade and exam board.",
+  flashcards: "Up to 30 spaced-repetition cards. Automatic.",
+  quiz: "Multiple-choice questions. Instant feedback.",
+  "common-mistakes": "How this topic appears in your exam. Tick Common Mistakes to see what trips students up.",
+  "exam-writing-mode": "Timed. AI-marked. 3 free trials per account.",
+};
+
+/** `.card-desc` copy from Web view HTML (production tool order). */
+const WEB_CARD_DESC: Record<StudyToolId, string> = {
+  notes:
+    "AI generates fully structured notes for any topic. Depth and length are matched to your curriculum, grade and exam board — not a generic summary. No uploads. No prep. Type your topic and generate.",
+  flashcards:
+    "Spaced-repetition decks built automatically from any topic — up to 30 cards per set. Spaced repetition is the most evidence-backed method for long-term memory retention.",
+  quiz:
+    "Multiple-choice questions at beginner, intermediate or advanced difficulty. Instant feedback after every question. Syllabus content only — nothing off-topic.",
+  "common-mistakes":
+    "See how this topic is examined — the question styles, command words, and mark-scheme expectations specific to your board. Tick Common Mistakes to also surface the errors students most often make on this topic, so you can avoid them before exam day.",
+  "exam-writing-mode":
+    "Write under timed conditions in the app. Live countdown, word count tracker and AI feedback assessed against your exam board's command words and structure.",
+};
+
 const HERO_TOOL_IDS: StudyToolId[] = [
   "notes",
   "flashcards",
@@ -162,15 +185,16 @@ const heroBadgeCapsule = (wrap: string) =>
   `inline-flex w-fit max-w-full shrink-0 items-center gap-1 rounded-full py-0.5 pl-2 pr-2.5 text-[9px] font-semibold tracking-[0.02em] sm:gap-1.5 sm:py-1 sm:pl-2.5 sm:pr-3 sm:text-[10px] ${wrap}`;
 
 /** Web HTML `.card-desc` — same strings as `public/studiely_homepage_cards (1).html`; bold phrase matches `<strong>Common Mistakes</strong>`. */
-function renderWebCardDesc(t: StudyTool): ReactNode {
+function renderWebCardDesc(id: StudyToolId): ReactNode {
+  const text = WEB_CARD_DESC[id];
   const term = "Common Mistakes";
-  const i = t.desc.indexOf(term);
-  if (i === -1) return t.desc;
+  const i = text.indexOf(term);
+  if (i === -1) return text;
   return (
     <>
-      {t.desc.slice(0, i)}
+      {text.slice(0, i)}
       <strong className="font-semibold text-[#0F1C35]">{term}</strong>
-      {t.desc.slice(i + term.length)}
+      {text.slice(i + term.length)}
     </>
   );
 }
@@ -219,6 +243,7 @@ export const HeroSection = () => (
           const { Icon, appHref } = t;
           const badge = HERO_WEB_BADGE[theme];
           const cardTitle = WEB_CARD_TITLE[id];
+          const cardSubheading = WEB_CARD_SUBHEADING[id];
           const isExamCard = t.id === "exam-writing-mode";
 
           const iconEl = (
@@ -285,21 +310,18 @@ export const HeroSection = () => (
                                 {t.heroLabel}
                               </span>
                               <p
-                                className={`font-semibold leading-snug tracking-[-0.2px] text-[#0F1C35] sm:text-[12px] ${isExamCard ? "line-clamp-3 text-[12px] lg:text-[13px]" : "line-clamp-2 text-[11px]"}`}
+                                className={`hero-flip-trigger font-semibold leading-snug tracking-[-0.2px] text-[#0F1C35] sm:text-[12px] ${isExamCard ? "line-clamp-3 text-[12px] lg:text-[13px]" : "line-clamp-2 text-[11px]"}`}
                               >
                                 {cardTitle}
+                              </p>
+                              <p
+                                className={`hero-flip-trigger mt-0.5 text-pretty font-light leading-[1.45] text-[#667793] sm:leading-[1.5] ${isExamCard ? "line-clamp-2 text-[10px] sm:text-[11px]" : "line-clamp-2 text-[9px] sm:text-[10px]"}`}
+                              >
+                                {cardSubheading}
                               </p>
                             </div>
                           </div>
 
-                          <p
-                            className={`mt-1 text-pretty font-light leading-[1.45] text-[#3D4E6B] motion-reduce:hidden sm:leading-[1.5] ${isExamCard ? "line-clamp-3 text-[10px] sm:text-[11px]" : "line-clamp-2 text-[9px] sm:text-[10px]"}`}
-                          >
-                            {t.heroShortDesc}
-                          </p>
-                        <p className="mt-1 hidden text-pretty text-[11px] font-light leading-[1.45] text-[#3D4E6B] motion-reduce:block sm:text-[12px] sm:leading-[1.5] lg:text-[13px] lg:leading-[1.55]">
-                          {renderWebCardDesc(t)}
-                        </p>
                         </div>
 
                         <div className="mt-auto flex w-full shrink-0 flex-col gap-1.5">
@@ -311,19 +333,25 @@ export const HeroSection = () => (
                     </div>
 
                     <div
-                      aria-hidden
                       className={`${wcardFaceShell} ${HERO_WEB_HOVER_BEFORE[theme]} motion-reduce:hidden [transform:rotateY(180deg)_translateZ(2px)]`}
                     >
                       <div className={`${wcardFaceBody}${isExamCard ? " lg:gap-1.5 lg:px-3.5 lg:pb-[10px] lg:pt-2.5" : ""}`}>
-                      <div className="relative flex h-full min-h-0 flex-1 flex-col overflow-hidden bg-white">
+                      <div className="hero-flip-keep relative flex h-full min-h-0 flex-1 flex-col overflow-hidden bg-white">
                         <div className="relative z-[1] flex min-h-0 flex-1 flex-col gap-2">
                           <p
-                            className={`shrink-0 font-semibold leading-snug tracking-[-0.2px] text-[#0F1C35] ${isExamCard ? "line-clamp-3 text-[11px] sm:text-[12px]" : "line-clamp-2 text-[10px] sm:text-[11px]"}`}
+                            className={`hero-flip-trigger shrink-0 font-semibold leading-snug tracking-[-0.2px] text-[#0F1C35] ${isExamCard ? "line-clamp-3 text-[11px] sm:text-[12px]" : "line-clamp-2 text-[10px] sm:text-[11px]"}`}
                           >
                             {cardTitle}
                           </p>
-                          <div className="min-h-0 flex-1 overflow-y-auto text-pretty text-[11px] font-light leading-[1.5] text-[#3D4E6B] sm:text-[12px] sm:leading-[1.55] lg:text-[13px]">
-                            {renderWebCardDesc(t)}
+                          <p
+                            className={`hero-flip-trigger min-h-0 flex-1 text-pretty font-light leading-[1.5] text-[#3D4E6B] sm:leading-[1.55] lg:leading-[1.55] ${isExamCard ? "line-clamp-3 text-[10px] sm:text-[11px] lg:text-[12px]" : "line-clamp-2 text-[9px] sm:text-[10px] lg:text-[11px]"}`}
+                          >
+                            {renderWebCardDesc(id)}
+                          </p>
+
+                          <div className="mt-auto flex w-full shrink-0 flex-col gap-1.5">
+                            {renderExamNote()}
+                            {renderCta()}
                           </div>
                         </div>
                       </div>
