@@ -1,6 +1,7 @@
 "use client";
 
-import type { CSSProperties, ReactNode } from "react";
+import { useState } from "react";
+import type { CSSProperties, MouseEvent, ReactNode } from "react";
 import { TOOLS, type HeroCardTheme, type StudyTool, type StudyToolId } from "@/lib/studyTools";
 
 /** `.cta-*` / `--*-btn` from `public/studiely_homepage_cards (1).html` */
@@ -203,7 +204,19 @@ function renderWebCardDesc(id: StudyToolId): ReactNode {
 const ctaBase =
   "relative z-[1] flex w-full min-h-[42px] items-center justify-center gap-2 overflow-hidden rounded-[8px] border-0 px-3 py-2.5 text-[13px] font-bold leading-tight tracking-[0.02em] text-white shadow-[0_2px_5px_rgba(0,0,0,0.14),0_0_0_1px_rgba(0,0,0,0.05)] ring-1 ring-white/12 transition-[transform,box-shadow,filter] duration-200 ease-out after:pointer-events-none after:absolute after:inset-0 after:bg-transparent after:transition-colors hover:-translate-y-px hover:shadow-[0_4px_14px_rgba(0,0,0,0.18)] hover:brightness-[1.03] hover:after:bg-white/[0.09] motion-safe:hover:scale-[1.015] active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-dk/35 sm:min-h-[44px] sm:gap-2 sm:px-3.5 sm:py-3 sm:text-[14px] lg:min-h-[44px] lg:py-3 lg:text-[15px]";
 
-export const HeroSection = () => (
+export const HeroSection = () => {
+  const [mobileFlippedCards, setMobileFlippedCards] = useState<Partial<Record<StudyToolId, boolean>>>({});
+
+  const handleCardClick = (cardId: StudyToolId, event: MouseEvent<HTMLDivElement>) => {
+    const target = event.target as HTMLElement;
+
+    if (target.closest("[data-hero-cta='true']")) return;
+    if (typeof window !== "undefined" && !window.matchMedia("(hover: none), (pointer: coarse)").matches) return;
+
+    setMobileFlippedCards((prev) => ({ ...prev, [cardId]: !prev[cardId] }));
+  };
+
+  return (
   <section
     id="hero"
     className="relative flex min-h-[calc(100dvh-66px)] flex-col overflow-x-hidden overflow-y-visible bg-bg-base border-t border-border-default"
@@ -273,12 +286,15 @@ export const HeroSection = () => (
                 href={appHref}
                 target="_blank"
                 rel="noopener noreferrer"
+                data-hero-cta="true"
                 className={`${ctaClass} shrink-0`}
               >
                 {ctaInner}
               </a>
             ) : (
-              <span className={`${ctaClass} shrink-0 cursor-not-allowed opacity-50`}>{ctaInner}</span>
+              <span data-hero-cta="true" className={`${ctaClass} shrink-0 cursor-not-allowed opacity-50`}>
+                {ctaInner}
+              </span>
             );
 
           const renderExamNote = () =>
@@ -294,8 +310,13 @@ export const HeroSection = () => (
               className={`hero-card-float flex min-h-0 w-full ${HERO_HUB_CARD[cardIndex] ?? "col-span-full"}`}
               style={heroCardFloatStyle(cardIndex)}
             >
-              <div className={`${heroFlipWrap} flex w-full flex-col`}>
-                <div className={isExamCard ? heroFlipInnerExam : heroFlipInnerDefault}>
+              <div
+                className={`${heroFlipWrap} flex w-full flex-col`}
+                onClick={(event) => handleCardClick(id, event)}
+              >
+                <div
+                  className={`${isExamCard ? heroFlipInnerExam : heroFlipInnerDefault}${mobileFlippedCards[id] ? " [transform:rotateY(180deg)]" : ""}`}
+                >
                     <div
                       className={`${wcardFaceShell} ${HERO_WEB_HOVER_BEFORE[theme]} [transform:rotateY(0deg)_translateZ(2px)]`}
                     >
@@ -365,4 +386,5 @@ export const HeroSection = () => (
       </div>
     </div>
   </section>
-);
+  );
+};
