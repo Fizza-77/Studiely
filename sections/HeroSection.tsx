@@ -359,7 +359,7 @@ export const HeroSection = () => {
                                 {t.heroLabel}
                               </span>
                               <p
-                                className={`hero-flip-trigger font-semibold leading-[1.08] tracking-[-0.03em] text-[#0F1C35] ${isExamCard ? "line-clamp-3 text-[clamp(13px,0.45vw+10px,16px)]" : "line-clamp-2 text-[clamp(12px,0.38vw+9px,15px)]"}`}
+                                className={`hero-flip-trigger mt-2.5 sm:mt-3 md:mt-3.5 font-semibold leading-[1.08] tracking-[-0.03em] text-[#0F1C35] ${isExamCard ? "line-clamp-3 text-[clamp(13px,0.45vw+10px,16px)]" : "line-clamp-2 text-[clamp(12px,0.38vw+9px,15px)]"}`}
                               >
                                 {cardTitle}
                               </p>
@@ -383,7 +383,7 @@ export const HeroSection = () => {
                       <div className="hero-flip-keep relative flex h-full min-h-0 flex-1 flex-col overflow-hidden bg-white">
                         <div className="relative z-[1] flex min-h-0 flex-1 flex-col gap-2">
                           <p
-                            className={`hero-flip-trigger shrink-0 font-semibold leading-[1.08] tracking-[-0.03em] text-[#0F1C35] ${isExamCard ? "line-clamp-3 text-[clamp(12px,0.34vw+9px,14px)]" : "line-clamp-2 text-[clamp(11px,0.3vw+8px,13px)]"}`}
+                            className={`hero-flip-trigger mt-2.5 sm:mt-3 md:mt-3.5 shrink-0 font-semibold leading-[1.08] tracking-[-0.03em] text-[#0F1C35] ${isExamCard ? "line-clamp-3 text-[clamp(12px,0.34vw+9px,14px)]" : "line-clamp-2 text-[clamp(11px,0.3vw+8px,13px)]"}`}
                           >
                             {cardTitle}
                           </p>
