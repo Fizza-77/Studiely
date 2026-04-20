@@ -51,7 +51,7 @@ export const SectionHeader = ({
     `opacity 0.65s ease ${delay + d}s, transform 0.65s cubic-bezier(0.22,1,0.36,1) ${delay + d}s`;
 
   return (
-    <div ref={ref} className={cn("text-center mb-[52px]", className)}>
+    <div ref={ref} className={cn("mb-[clamp(2rem,3.1vw,3.25rem)] text-center", className)}>
       <span
         style={{
           color: labelColor,
@@ -59,7 +59,7 @@ export const SectionHeader = ({
           transform: vis ? "translateY(0)" : "translateY(12px)",
           transition: getTransition(0),
         }}
-        className="block text-[10px] font-semibold tracking-[1.5px] uppercase mb-3.5"
+        className="fluid-eyebrow mb-[clamp(0.55rem,1vw,0.9rem)] block font-semibold uppercase"
       >
         {label}
       </span>
@@ -70,7 +70,7 @@ export const SectionHeader = ({
           transform: vis ? "translateY(0)" : "translateY(16px)",
           transition: getTransition(0.08),
         }}
-        className="font-serif text-[clamp(26px,3vw,42px)] font-normal leading-[1.16] tracking-[-0.4px]"
+        className="font-serif text-[clamp(1.6rem,1.15rem+1.95vw,2.7rem)] font-normal leading-[1.13] tracking-[-0.02em]"
       >
         {title}
       </h2>
@@ -82,10 +82,11 @@ export const SectionHeader = ({
             transform: vis ? "translateY(0)" : "translateY(12px)",
             transition: getTransition(0.16),
           }}
-className={cn(
-  "text-base leading-[1.75] font-light max-w-[540px] mx-auto mt-3",
-  subClassName
-)}        >
+          className={cn(
+            "mx-auto mt-[clamp(0.65rem,1.1vw,0.95rem)] max-w-[560px] text-[clamp(0.94rem,0.4vw+0.82rem,1.08rem)] font-light leading-[1.72]",
+            subClassName
+          )}
+        >
           {sub}
         </p>
       )}

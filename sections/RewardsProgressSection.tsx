@@ -33,33 +33,33 @@ interface RewardsProgressSectionProps {
 
 export const RewardsProgressSection = ({ sectionRef }: RewardsProgressSectionProps) => {
   return (
-    <section ref={sectionRef} className="py-10 sm:py-12 md:py-14 bg-white border-t border-border-default">
+    <section ref={sectionRef} className="section-y border-t border-border-default bg-white">
       <div className="wrap">
         <Reveal>
-          <div className="text-center mb-8 sm:mb-10">
-            <p className="text-[11px] uppercase tracking-[1.4px] font-semibold text-teal mb-1.5">
+          <div className="mb-[clamp(1.6rem,2.9vw,2.5rem)] text-center">
+            <p className="fluid-eyebrow mb-1.5 font-semibold uppercase text-teal">
               Rewards & Progress
             </p>
-            <h2 className="font-serif text-[clamp(26px,3.2vw,36px)] text-navy mb-3">
+            <h2 className="fluid-h2 mb-[clamp(0.6rem,1.15vw,0.95rem)] font-serif text-navy">
               Study Daily. Earn Rewards. Track Your Progress.
             </h2>
           </div>
         </Reveal>
 
         <Reveal delay={0.05}>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
+          <div className="responsive-card-grid [--card-min:240px]">
             {REWARDS.map((item) => {
               const { Icon } = item;
               return (
                 <div
                   key={item.heading}
-                  className="rounded-xl border border-border-default bg-[#fafaf8] px-5 py-5 sm:py-6 flex flex-col items-center text-center"
+                  className="responsive-card flex flex-col items-center border border-border-default bg-[#fafaf8] text-center"
                 >
-                  <div className="mb-3 flex justify-center">
+                  <div className="mb-[clamp(0.65rem,1.1vw,0.95rem)] flex justify-center">
                     <Icon />
                   </div>
-                  <h3 className="text-[20px] text-navy mb-2.5">{item.heading}</h3>
-                  <p className="text-[13px] text-body leading-[1.7]">{item.body}</p>
+                  <h3 className="mb-[clamp(0.55rem,1vw,0.8rem)] text-[clamp(1.18rem,0.68vw+1rem,1.45rem)] text-navy">{item.heading}</h3>
+                  <p className="text-[clamp(0.86rem,0.3vw+0.77rem,0.98rem)] leading-[1.7] text-body">{item.body}</p>
                 </div>
               );
             })}

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   CurriculumNavIcon,
@@ -31,12 +32,19 @@ interface NavbarProps {
 export const Navbar = ({ visibleSections = [] }: NavbarProps) => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [activeLink, setActiveLink] = useState<string | null>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 24);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const isLinkActive = (href: string) => {
+    const path = href.startsWith("http") ? href : href.split("?")[0].split("#")[0];
+    return pathname === path || activeLink === href;
+  };
 
   const links = [
     ["Home", "/"],
@@ -56,7 +64,8 @@ export const Navbar = ({ visibleSections = [] }: NavbarProps) => {
             : "bg-bg-base border-b border-transparent shadow-none"
         }`}
       >
-<div className="wrap h-[66px] w-full grid grid-cols-[auto_1fr_auto] md:grid-cols-[1fr_auto_1fr] items-center gap-6 px-4 md:px-0">          {/* Logo + Pills */}
+<div className="wrap h-[66px] grid grid-cols-[auto_1fr_auto] items-center gap-6 md:grid-cols-[1fr_auto_1fr]">
+          {/* Logo + Pills */}
   <div className="flex items-center gap-2 md:gap-3 min-w-0">
             <Link href="/" className="flex items-center gap-2 md:gap-3 font-serif text-[21px] text-navy shrink-0">
               <Image src="/logo.jpeg" alt="Studiely logo" width={30} height={30} priority className="shrink-0 rounded-md" />
@@ -90,7 +99,11 @@ export const Navbar = ({ visibleSections = [] }: NavbarProps) => {
               <Link
                 key={l}
                 href={h}
-                className="text-[13.5px] text-muted transition-colors duration-150 font-normal whitespace-nowrap hover:text-navy"
+                aria-current={isLinkActive(h) ? "page" : undefined}
+                onClick={() => setActiveLink(h)}
+                className={`rounded-full px-3 py-1.5 text-[13.5px] text-black transition-all duration-150 font-normal whitespace-nowrap hover:bg-white hover:text-navy hover:shadow-[0_1px_8px_rgba(0,0,0,0.08)] ${
+                  isLinkActive(h) ? "bg-white text-navy shadow-[0_1px_8px_rgba(0,0,0,0.08)] ring-1 ring-border-default" : ""
+                }`}
               >
                 {l}
               </Link>
@@ -143,8 +156,11 @@ className="flex md:hidden flex-col gap-[5px] bg-transparent border-none p-1"
               <Link
                 key={l}
                 href={h}
+                aria-current={isLinkActive(h) ? "page" : undefined}
                 onClick={() => setOpen(false)}
-                className="block text-base text-body py-3 border-b border-border-lt last:border-b-0"
+                className={`block rounded-lg px-3 py-3 text-base text-black transition-all duration-150 border-b border-border-lt last:border-b-0 ${
+                  isLinkActive(h) ? "bg-bg-base text-navy font-medium" : ""
+                }`}
               >
                 {l}
               </Link>

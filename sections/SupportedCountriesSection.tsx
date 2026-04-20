@@ -45,40 +45,41 @@ interface SupportedCountriesSectionProps {
 
 export const SupportedCountriesSection = ({ sectionRef }: SupportedCountriesSectionProps) => {
   return (
-    <section ref={sectionRef} className="py-10 sm:py-12 md:py-14 bg-white border-t border-border-default">
+    <section ref={sectionRef} className="section-y border-t border-border-default bg-white">
       <div className="wrap">
         <Reveal>
-          <div className="text-center mb-8 sm:mb-10">
-            <p className="text-[11px] uppercase tracking-[1.4px] font-semibold text-teal mb-1.5">
+          <div className="mb-[clamp(1.6rem,2.9vw,2.5rem)] text-center">
+            <p className="fluid-eyebrow mb-1.5 font-semibold uppercase text-teal">
               Supported Countries & Curricula
             </p>
-            <h2 className="font-serif text-[clamp(26px,3.2vw,36px)] text-navy mb-3">
+            <h2 className="fluid-h2 mb-[clamp(0.6rem,1.15vw,0.95rem)] font-serif text-navy">
               Built for Students Across the UK, US, IB, Australia & Canada
             </h2>
-            <p className="text-[15px] sm:text-[16px] leading-[1.75] text-body font-light max-w-[760px] mx-auto">
+            <p className="fluid-body mx-auto max-w-[760px] font-light text-body">
               Every tool calibrated to your specific exam board - not a generic curriculum. Choose your country and Studiely knows exactly what your examiner expects.
             </p>
           </div>
         </Reveal>
 
         <Reveal delay={0.05}>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-5">
+          <div className="responsive-card-grid [--card-min:210px] xl:[--card-min:200px]">
             {COUNTRIES.map((country) => (
               <div
                 key={country.key}
-                className="rounded-xl border border-border-default bg-[#fafaf8] px-5 py-5 sm:py-6 flex flex-col"
+                className="responsive-card flex flex-col border border-border-default bg-[#fafaf8]"
               >
-                <div className="flex flex-col items-center text-center gap-2 mb-2.5">
+                <div className="mb-[clamp(0.55rem,1vw,0.8rem)] flex flex-col items-center gap-2 text-center">
                   <Image
                     src={country.flag}
                     alt={country.label}
                     width={28}
                     height={20}
-                    className="w-7 h-5 object-contain"
+                    sizes="(max-width: 640px) 28px, (max-width: 1280px) 32px, 34px"
+                    className="h-[clamp(20px,2vw,24px)] w-[clamp(28px,2.7vw,34px)] object-contain"
                   />
-                  <p className="text-[16px] text-navy font-semibold">{country.label}</p>
+                  <p className="text-[clamp(1rem,0.48vw+0.88rem,1.15rem)] font-semibold text-navy">{country.label}</p>
                 </div>
-                <p className="text-[13px] text-body leading-[1.65] whitespace-pre-line">{country.body}</p>
+                <p className="text-[clamp(0.84rem,0.28vw+0.76rem,0.96rem)] leading-[1.68] text-body whitespace-pre-line">{country.body}</p>
               </div>
             ))}
           </div>

@@ -24,19 +24,25 @@ export const StatsBar = ({ compact, fullBleed }: StatsBarProps) => {
     : "mx-auto w-full max-w-[min(100%,1320px)] overflow-hidden rounded-md border border-border-default bg-white shadow-[0_1px_10px_rgba(0,0,0,0.04)] sm:rounded-lg";
 
   const cell = fullBleed
-    ? "px-2 py-2.5 sm:px-3 sm:py-3 md:px-4 md:py-3.5"
+    ? compact
+      ? "px-1.5 py-1.5 sm:px-2 sm:py-2 md:px-3 md:py-2.5"
+      : "px-2 py-2.5 sm:px-3 sm:py-3 md:px-4 md:py-3.5"
     : compact
       ? "px-1.5 py-1.5 sm:px-2 sm:py-2"
       : "px-2 py-2 sm:px-2.5 sm:py-2.5 md:py-3";
 
   const num = fullBleed
-    ? "mb-0.5 text-[clamp(16px,3.8vw,28px)] sm:mb-1"
+    ? compact
+      ? "mb-0.25 text-[clamp(13px,3.1vw,22px)] sm:mb-0.5"
+      : "mb-0.5 text-[clamp(16px,3.8vw,28px)] sm:mb-1"
     : compact
       ? "mb-0 text-[clamp(12px,2.4vw,16px)]"
       : "mb-0.5 text-[clamp(13px,2.6vw,18px)]";
 
   const label = fullBleed
-    ? "mx-auto max-w-[min(100%,200px)] px-0.5 text-[9px] font-medium leading-snug text-body sm:max-w-[min(100%,240px)] sm:text-[10px] md:text-[11px] md:leading-tight"
+    ? compact
+      ? "mx-auto max-w-[min(100%,180px)] px-0.5 text-[8px] font-medium leading-snug text-body sm:max-w-[min(100%,210px)] sm:text-[9px] md:text-[10px] md:leading-tight"
+      : "mx-auto max-w-[min(100%,200px)] px-0.5 text-[9px] font-medium leading-snug text-body sm:max-w-[min(100%,240px)] sm:text-[10px] md:text-[11px] md:leading-tight"
     : compact
       ? "mx-auto max-w-[110px] text-[8px] leading-[1.25] text-body sm:max-w-[120px] sm:text-[8.5px]"
       : "mx-auto max-w-[120px] text-[8.5px] leading-[1.25] text-body sm:max-w-[130px] sm:text-[9px]";
@@ -70,12 +76,12 @@ export const StatsSection = () => (
   <div id="stats-trust-copy" className="scroll-mt-[calc(66px+12px)] w-full bg-bg-base">
     <div className="w-full border-y border-border-default bg-white shadow-[inset_0_1px_0_rgba(255,255,255,0.6)]">
       <div
-        className="grid w-full max-w-[min(100%,1320px)] grid-cols-1 items-start gap-6 px-[clamp(12px,4.2vw,48px)] py-8 sm:gap-8 sm:py-10 md:grid-cols-2 md:gap-12 lg:gap-16 lg:py-12 xl:gap-20 mx-auto"
+        className="mx-auto flex w-full max-w-[min(100%,1320px)] flex-col items-center gap-[clamp(0.85rem,1.6vw,1.4rem)] px-[clamp(12px,4.2vw,48px)] py-[clamp(1rem,2vw,1.65rem)] text-center sm:gap-[clamp(1rem,1.8vw,1.5rem)] sm:py-[clamp(1.15rem,2.2vw,1.8rem)] md:py-[clamp(1.3rem,2.4vw,2rem)]"
       >
-        <p className="m-0 max-md:text-center text-left text-[13px] leading-[1.65] text-body sm:text-[14px] md:text-[15px]">
+        <p className="m-0 max-w-[720px] text-center text-[13px] leading-[1.65] text-body sm:text-[14px] md:text-[15px]">
           Built to support major curricula and exam boards across the UK, US, Australia, and Canada.
         </p>
-        <p className="m-0 max-md:text-center text-left text-[11.5px] font-light italic leading-[1.7] text-body/85 sm:text-[12.5px] md:text-[13px]">
+        <p className="m-0 max-w-[820px] text-center text-[11.5px] font-light italic leading-[1.7] text-body/85 sm:text-[12.5px] md:text-[13px]">
           These numbers are live, real, and updated every week. We&apos;re a new platform — we&apos;d rather show you
           where we actually are than pretend to be somewhere we&apos;re not. Join us early and help us build something
           genuine.

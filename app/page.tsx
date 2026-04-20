@@ -49,9 +49,6 @@ const homeDescription =
 export const metadata: Metadata = {
   title: homeTitle,
   description: homeDescription,
-  alternates: {
-    canonical: SITE_URL,
-  },
   openGraph: {
     title: homeTitle,
     description: homeDescription,

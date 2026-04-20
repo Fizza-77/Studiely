@@ -9,7 +9,7 @@ export const HowItWorksSection = ({ sectionRef }: HowItWorksSectionProps) => (
   <section
     id="how-it-works"
     ref={sectionRef}
-    className="py-14 sm:py-16 md:py-20 bg-[#f9f9fb] border-t "
+    className="section-y border-t bg-[#f9f9fb]"
     style={{ borderColor: "#e2e2e8" }}
   >
     <div className="wrap">
@@ -19,7 +19,7 @@ export const HowItWorksSection = ({ sectionRef }: HowItWorksSectionProps) => (
         sub="No uploads. No setup. No textbook hunting. Just pick your curriculum, type your topic and generate."
       />
       <Reveal>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-[1px] bg-border-default border border-border-default rounded-xl overflow-hidden max-w-[900px] mx-auto">
+        <div className="responsive-card-grid max-w-[980px] [--card-min:250px] rounded-xl border border-border-default bg-border-default p-[1px] mx-auto">
           {[
             [
               "01",
@@ -42,15 +42,15 @@ export const HowItWorksSection = ({ sectionRef }: HowItWorksSectionProps) => (
           ].map(([n, t, d, styles]) => (
             <div
               key={n}
-              className={`bg-white px-5 sm:px-6 lg:px-8 py-8 sm:py-9 lg:py-10 transition-colors duration-180 border-l-[3px] h-full ${styles}`}
+              className={`responsive-card h-full border-l-[3px] bg-white transition-colors duration-180 ${styles}`}
             >
-              <span className="text-[11px] italic mb-4 block leading-none">
+              <span className="fluid-eyebrow mb-[clamp(0.75rem,1.2vw,1rem)] block italic leading-none">
                 Step {n}
               </span>
-              <h3 className="text-[20px] font-normal text-navy mb-2.5">
+              <h3 className="mb-[clamp(0.55rem,1vw,0.8rem)] text-[clamp(1.2rem,0.7vw+1rem,1.5rem)] font-normal text-navy">
                 {t}
               </h3>
-              <p className="text-[13.5px] text-body leading-[1.72] font-light">
+              <p className="text-[clamp(0.9rem,0.38vw+0.8rem,1rem)] font-light leading-[1.7] text-body">
                 {d}
               </p>
             </div>

@@ -37,8 +37,8 @@ export const TOOLS = [
     heroShortDesc: "Matched to your curriculum, grade and exam board.",
     heroTheme: "teal" as HeroCardTheme,
     /** Shorter CTA line for compact app-style hero buttons */
-    heroCta: "Generate Summary Notes",
-    cta: "Generate Summary Notes",
+    heroCta: "Generate Summary/Revision Notes",
+    cta: "Generate Summary/Revision Notes",
     color: "#00b09b",
     lt: "#dff6f2",
     glow: "rgba(0,176,155,.14)",

@@ -99,8 +99,8 @@ export function HomePageContent({ scrollToHeroOnMount = false }: HomePageContent
     <>
       <main role="main">
         <HeroSection />
-        <HeroMarketingSection />
         <StatsSection />
+        <HeroMarketingSection />
         <HowItWorksSection />
         <NylaSection sectionRef={nylaRef} />
         <SupportedCountriesSection sectionRef={curriculumRef} />
@@ -112,39 +112,39 @@ export function HomePageContent({ scrollToHeroOnMount = false }: HomePageContent
           aria-labelledby="homepage-pricing-heading"
           className="bg-white border-t border-border-default"
         >
-          <div className="wrap py-10 sm:py-12 md:py-14">
-            <div className="mb-7 sm:mb-8 text-center">
-              <p className="text-[11px] uppercase tracking-[1.4px] font-semibold text-teal mb-1.5">
+          <div className="wrap section-y">
+            <div className="mb-[clamp(1.6rem,2.9vw,2.5rem)] text-center">
+              <p className="fluid-eyebrow mb-1.5 font-semibold uppercase text-teal">
                 Pricing
               </p>
               <h2
                 id="homepage-pricing-heading"
-                className="font-serif text-[clamp(26px,3vw,32px)] text-navy mb-3"
+                className="fluid-h2 mb-[clamp(0.6rem,1.15vw,0.95rem)] font-serif text-navy"
               >
                 Choose a Plan That Works for You
               </h2>
-              <p className="text-[14px] text-gray-600 max-w-[460px] mx-auto mb-4">
+              <p className="fluid-body mx-auto mb-[clamp(0.9rem,1.4vw,1.3rem)] max-w-[460px] text-gray-600">
                 Free to start. No hidden fees. Cancel anytime.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
-              <article className="rounded-xl border border-border-default bg-[#fafaf8] p-5 sm:p-6 text-center">
-                <p className="text-[11px] uppercase tracking-[1.3px] font-semibold text-teal mb-1.5">Free</p>
-                <h3 className="text-[22px] text-navy mb-1">Free</h3>
-                <p className="text-[13px] text-body mb-3.5">Get started today</p>
-                <ul className="text-[13px] text-body leading-[1.7] text-left space-y-1.5 m-0 pl-0">
+            <div className="responsive-card-grid [--card-min:250px]">
+              <article className="responsive-card border border-border-default bg-[#fafaf8] text-center">
+                <p className="fluid-eyebrow mb-1.5 font-semibold uppercase text-teal">Free</p>
+                <h3 className="mb-1 text-[clamp(1.35rem,0.95vw+1.05rem,1.75rem)] text-navy">Free</h3>
+                <p className="mb-[clamp(0.7rem,1.1vw,1rem)] text-[clamp(0.86rem,0.28vw+0.78rem,0.97rem)] text-body">Get started today</p>
+                <ul className="m-0 space-y-[clamp(0.3rem,0.55vw,0.5rem)] pl-0 text-left text-[clamp(0.84rem,0.28vw+0.76rem,0.95rem)] leading-[1.68] text-body">
                   <li className="flex items-start gap-2"><span className="text-teal font-bold">✓</span> 5 one-time credits to try every study tool.</li>
                   <li className="flex items-start gap-2"><span className="text-teal font-bold">✓</span> 3 one-time Exam Practice trials.</li>
                   <li className="flex items-start gap-2"><span className="text-teal font-bold">✓</span> Per email account - not monthly.</li>
                 </ul>
               </article>
 
-              <article className="rounded-xl border border-border-default bg-[#fafaf8] p-5 sm:p-6 text-center">
-                <p className="text-[11px] uppercase tracking-[1.3px] font-semibold text-indigo mb-1.5">Premium</p>
-                <h3 className="text-[22px] text-navy mb-1">Premium</h3>
-                <p className="text-[13px] text-body mb-3.5">For serious exam preparation</p>
-                <ul className="text-[13px] text-body leading-[1.7] text-left space-y-1.5 m-0 pl-0">
+              <article className="responsive-card border border-border-default bg-[#fafaf8] text-center">
+                <p className="fluid-eyebrow mb-1.5 font-semibold uppercase text-indigo">Premium</p>
+                <h3 className="mb-1 text-[clamp(1.35rem,0.95vw+1.05rem,1.75rem)] text-navy">Premium</h3>
+                <p className="mb-[clamp(0.7rem,1.1vw,1rem)] text-[clamp(0.86rem,0.28vw+0.78rem,0.97rem)] text-body">For serious exam preparation</p>
+                <ul className="m-0 space-y-[clamp(0.3rem,0.55vw,0.5rem)] pl-0 text-left text-[clamp(0.84rem,0.28vw+0.76rem,0.95rem)] leading-[1.68] text-body">
                   <li className="flex items-start gap-2"><span className="text-indigo font-bold">✓</span> Unlimited AI study generations (fair usage).</li>
                   <li className="flex items-start gap-2"><span className="text-indigo font-bold">✓</span> PDF export</li>
                   <li className="flex items-start gap-2"><span className="text-indigo font-bold">✓</span> Offline access.</li>
@@ -155,11 +155,11 @@ export function HomePageContent({ scrollToHeroOnMount = false }: HomePageContent
                 </ul>
               </article>
 
-              <article className="rounded-xl border border-border-default bg-[#fafaf8] p-5 sm:p-6 text-center">
-                <p className="text-[11px] uppercase tracking-[1.3px] font-semibold text-amber mb-1.5">Exam Practice</p>
-                <h3 className="text-[22px] text-navy mb-1">Exam Practice</h3>
-                <p className="text-[13px] text-body mb-3.5">Available separately</p>
-                <ul className="text-[13px] text-body leading-[1.7] text-left space-y-1.5 m-0 pl-0">
+              <article className="responsive-card border border-border-default bg-[#fafaf8] text-center">
+                <p className="fluid-eyebrow mb-1.5 font-semibold uppercase text-amber">Exam Practice</p>
+                <h3 className="mb-1 text-[clamp(1.35rem,0.95vw+1.05rem,1.75rem)] text-navy">Exam Practice</h3>
+                <p className="mb-[clamp(0.7rem,1.1vw,1rem)] text-[clamp(0.86rem,0.28vw+0.78rem,0.97rem)] text-body">Available separately</p>
+                <ul className="m-0 space-y-[clamp(0.3rem,0.55vw,0.5rem)] pl-0 text-left text-[clamp(0.84rem,0.28vw+0.76rem,0.95rem)] leading-[1.68] text-body">
                   <li className="flex items-start gap-2"><span className="text-amber font-bold">✓</span> Dedicated exam-style practice with three modes - Untimed, Timed and Exam Simulation.</li>
                   <li className="flex items-start gap-2"><span className="text-amber font-bold">✓</span> Includes OCR handwriting upload and Report Card.</li>
                   <li className="flex items-start gap-2"><span className="text-amber font-bold">✓</span> 3 one-time free trials included with every account.</li>
@@ -167,13 +167,13 @@ export function HomePageContent({ scrollToHeroOnMount = false }: HomePageContent
               </article>
             </div>
 
-            <div className="mt-6 sm:mt-7 flex md:justify-end">
+            <div className="mt-[clamp(1.1rem,2vw,1.8rem)] flex md:justify-end">
               <Link
                 href={STUDIELY_APP.pricing}
-                className="inline-flex w-full sm:w-auto items-center justify-center px-6 sm:px-8 py-3 rounded-lg bg-navy text-white text-[14px] font-medium shadow-[0_10px_30px_rgba(0,0,0,0.16)] hover:bg-navy/90 hover:shadow-[0_16px_40px_rgba(0,0,0,0.18)] transition-all duration-200"
+                className="inline-flex w-full items-center justify-center rounded-lg bg-navy px-[clamp(1.35rem,2vw,2rem)] py-[clamp(0.72rem,0.95vw,0.9rem)] text-[clamp(0.9rem,0.25vw+0.82rem,1rem)] font-medium text-white shadow-[0_10px_30px_rgba(0,0,0,0.16)] transition-all duration-200 hover:bg-navy/90 hover:shadow-[0_16px_40px_rgba(0,0,0,0.18)] sm:w-auto"
               >
                 View Pricing
-                <span className="ml-2 text-[15px]">→</span>
+                <span className="ml-2 text-[clamp(0.92rem,0.34vw+0.82rem,1.06rem)]">→</span>
               </Link>
             </div>
           </div>

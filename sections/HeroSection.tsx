@@ -1,8 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import type { CSSProperties, MouseEvent, ReactNode } from "react";
 import { TOOLS, type HeroCardTheme, type StudyTool, type StudyToolId } from "@/lib/studyTools";
+import { StatsBar } from "@/sections/StatsSection";
 
 /** `.cta-*` / `--*-btn` from `public/studiely_homepage_cards (1).html` */
 const HERO_CTA_BTN: Record<HeroCardTheme, string> = {
@@ -10,7 +12,7 @@ const HERO_CTA_BTN: Record<HeroCardTheme, string> = {
   indigo: "bg-[#4840A8]",
   amber: "bg-[#B47318]",
   coral: "bg-[#C85228]",
-  rose: "bg-[#C44B74]",
+  rose: "bg-[#C9352F]",
 };
 
 /** `.icon-*` — solid pastel icon wells (Web view `.card-icon`) */
@@ -19,7 +21,7 @@ const HERO_WEB_ICON_WELL: Record<HeroCardTheme, string> = {
   indigo: "bg-[#EEEDFE]",
   amber: "bg-[#FEF3DC]",
   coral: "bg-[#FAECE7]",
-  rose: "bg-[#FBEAF0]",
+  rose: "bg-[#FDEBEB]",
 };
 
 /** `.wcard:hover::before` tints — Web view */
@@ -28,7 +30,7 @@ const HERO_WEB_HOVER_BEFORE: Record<HeroCardTheme, string> = {
   indigo: "before:bg-[linear-gradient(135deg,rgba(83,74,183,0.04)_0%,transparent_60%)]",
   amber: "before:bg-[linear-gradient(135deg,rgba(186,117,23,0.04)_0%,transparent_60%)]",
   coral: "before:bg-[linear-gradient(135deg,rgba(216,90,48,0.04)_0%,transparent_60%)]",
-  rose: "before:bg-[linear-gradient(135deg,rgba(212,83,126,0.04)_0%,transparent_60%)]",
+  rose: "before:bg-[linear-gradient(135deg,rgba(201,53,47,0.06)_0%,transparent_60%)]",
 };
 
 /** `.badge-*` + `.badge-dot.*` — Web view */
@@ -37,25 +39,16 @@ const HERO_WEB_BADGE: Record<HeroCardTheme, { wrap: string; dot: string }> = {
   indigo: { wrap: "bg-[#EEEDFE] text-[#3C3489]", dot: "bg-[#534AB7]" },
   amber: { wrap: "bg-[#FEF3DC] text-[#854F0B]", dot: "bg-[#C07D1A]" },
   coral: { wrap: "bg-[#FAECE7] text-[#993C1D]", dot: "bg-[#D85A30]" },
-  rose: { wrap: "bg-[#FBEAF0] text-[#993556]", dot: "bg-[#D4537E]" },
+  rose: { wrap: "bg-[#FDEBEB] text-[#8F1D1A]", dot: "bg-[#C9352F]" },
 };
 
 /** `.card-title` copy from Web view HTML (production tool order). */
 const WEB_CARD_TITLE: Record<StudyToolId, string> = {
   notes: "Get structured notes on any topic",
-  flashcards: "Build your recall deck in seconds",
+  flashcards: "Build your recall deck in just seconds",
   quiz: "Test yourself before the exam does",
   "common-mistakes": "Know exactly how your topic appears in the exam",
   "exam-writing-mode": "Write under timed, exam conditions",
-};
-
-/** Front-face short subheading copy from the provided card screenshot. */
-const WEB_CARD_SUBHEADING: Record<StudyToolId, string> = {
-  notes: "Matched to your curriculum, grade and exam board.",
-  flashcards: "Up to 30 spaced-repetition cards. Automatic.",
-  quiz: "Multiple-choice questions. Instant feedback.",
-  "common-mistakes": "How this topic appears in your exam. Tick Common Mistakes to see what trips students up.",
-  "exam-writing-mode": "Timed. AI-marked. 3 free trials per account.",
 };
 
 /** `.card-desc` copy from Web view HTML (production tool order). */
@@ -70,6 +63,22 @@ const WEB_CARD_DESC: Record<StudyToolId, string> = {
     "See how this topic is examined — the question styles, command words, and mark-scheme expectations specific to your board. Tick Common Mistakes to also surface the errors students most often make on this topic, so you can avoid them before exam day.",
   "exam-writing-mode":
     "Write under timed conditions in the app. Live countdown, word count tracker and AI feedback assessed against your exam board's command words and structure.",
+};
+
+const HERO_CARD_RIGHT_ICON: Record<StudyToolId, string> = {
+  notes: "/icons/sticky-note.png",
+  flashcards: "/icons/flashcard.png",
+  quiz: "/icons/target.png",
+  "common-mistakes": "/icons/magnifier.png",
+  "exam-writing-mode": "/icons/creative-writing.png",
+};
+
+const HERO_CARD_RIGHT_TONE: Record<HeroCardTheme, string> = {
+  teal: "bg-[#F3FBF7]",
+  indigo: "bg-[#F6F5FF]",
+  amber: "bg-[#FFFAEF]",
+  coral: "bg-[#FFF6F2]",
+  rose: "bg-[#FFF0EF]",
 };
 
 const HERO_TOOL_IDS: StudyToolId[] = [
@@ -96,14 +105,14 @@ function heroCardFloatStyle(cardIndex: number): CSSProperties {
 
 /** Desktop hub: row1 notes | heading | flashcards; row2 quiz | exam practice | common mistakes. */
 const HERO_HUB_HEADING =
-  "col-span-full flex flex-col items-center justify-center px-1 text-center sm:px-2 lg:col-span-1 lg:col-start-2 lg:row-start-1 lg:row-span-1 lg:z-[1] lg:max-w-[min(100%,460px)] lg:justify-self-center lg:px-2 lg:py-1";
+  "col-span-full flex flex-col items-center justify-center px-1 text-center sm:px-2 md:col-span-2 md:row-start-1 lg:col-span-1 lg:col-start-2 lg:row-start-1 lg:row-span-1 lg:z-[1] lg:max-w-[min(100%,460px)] lg:justify-self-center lg:px-2 lg:py-1";
 
 const HERO_HUB_CARD: string[] = [
-  "col-span-full flex min-h-0 min-w-0 lg:col-span-1 lg:col-start-1 lg:row-start-1 lg:self-start",
-  "col-span-full flex min-h-0 min-w-0 lg:col-span-1 lg:col-start-3 lg:row-start-1 lg:self-start",
-  "col-span-full flex min-h-0 min-w-0 max-lg:-mt-2 lg:col-span-1 lg:col-start-1 lg:row-start-2 lg:-mt-3 lg:self-start",
-  "col-span-full flex min-h-0 min-w-0 max-lg:-mt-2 lg:col-span-1 lg:col-start-3 lg:row-start-2 lg:-mt-3 lg:self-start",
-  "col-span-full flex min-h-0 min-w-0 max-lg:-mt-2 sm:col-span-2 sm:mx-auto sm:max-w-xl md:max-w-2xl lg:col-span-1 lg:col-start-2 lg:row-start-2 lg:-mt-3 lg:w-full lg:max-w-full lg:justify-self-center lg:self-start",
+  "col-span-full flex min-h-0 min-w-0 md:col-span-1 md:col-start-1 md:row-start-2 md:self-start lg:col-span-1 lg:col-start-1 lg:row-start-1 lg:self-start",
+  "col-span-full flex min-h-0 min-w-0 md:col-span-1 md:col-start-2 md:row-start-2 md:self-start lg:col-span-1 lg:col-start-3 lg:row-start-1 lg:self-start",
+  "col-span-full flex min-h-0 min-w-0 max-md:-mt-3 md:col-span-1 md:col-start-1 md:row-start-3 md:-mt-0 md:self-start lg:col-span-1 lg:col-start-1 lg:row-start-2 lg:-mt-4 lg:self-start",
+  "col-span-full flex min-h-0 min-w-0 max-md:-mt-3 md:col-span-1 md:col-start-2 md:row-start-3 md:-mt-0 md:self-start lg:col-span-1 lg:col-start-3 lg:row-start-2 lg:-mt-4 lg:self-start",
+  "col-span-full flex min-h-0 min-w-0 max-md:-mt-3 md:col-span-2 md:col-start-1 md:row-start-4 md:mx-auto md:max-w-2xl md:self-start lg:col-span-1 lg:col-start-2 lg:row-start-2 lg:-mt-4 lg:w-full lg:max-w-full lg:justify-self-center lg:self-start",
 ];
 
 function CtaSvgNotes() {
@@ -177,13 +186,13 @@ const heroFlipWrap =
 const heroFlipInnerCore =
   "relative w-full [transform-style:preserve-3d] [-webkit-transform-style:preserve-3d] transition-transform duration-[620ms] ease-[cubic-bezier(0.34,0.7,0.2,1)] motion-reduce:transition-none group-hover/flip:[transform:rotateY(180deg)] motion-reduce:group-hover/flip:[transform:none]";
 
-const heroFlipInnerDefault = `${heroFlipInnerCore} min-h-[154px] sm:min-h-[158px] lg:min-h-[162px]`;
+const heroFlipInnerDefault = `${heroFlipInnerCore} min-h-[clamp(136px,14.6vw,178px)]`;
 
-const heroFlipInnerExam = `${heroFlipInnerCore} min-h-[168px] sm:min-h-[172px] lg:min-h-[180px]`;
+const heroFlipInnerExam = `${heroFlipInnerCore} min-h-[clamp(150px,15.8vw,196px)]`;
 
 /** Hero tool badge */
 const heroBadgeCapsule = (wrap: string) =>
-  `inline-flex w-fit max-w-full shrink-0 items-center gap-1 rounded-full py-0.5 pl-2 pr-2.5 text-[9px] font-semibold tracking-[0.02em] sm:gap-1.5 sm:py-1 sm:pl-2.5 sm:pr-3 sm:text-[10px] ${wrap}`;
+  `inline-flex w-fit max-w-full shrink-0 items-center gap-1 rounded-full py-[clamp(3px,0.55vw,5px)] pl-[clamp(10px,1.1vw,13px)] pr-[clamp(12px,1.2vw,15px)] text-[clamp(10px,0.6vw+8px,13px)] font-semibold tracking-[0.02em] ${wrap}`;
 
 /** Web HTML `.card-desc` — same strings as `public/studiely_homepage_cards (1).html`; bold phrase matches `<strong>Common Mistakes</strong>`. */
 function renderWebCardDesc(id: StudyToolId): ReactNode {
@@ -202,7 +211,7 @@ function renderWebCardDesc(id: StudyToolId): ReactNode {
 
 /** Hero CTA — same palette as `HERO_CTA_BTN`; padding/min-height unchanged from compact layout, larger label type only. */
 const ctaBase =
-  "relative z-[1] flex w-full min-h-[42px] items-center justify-center gap-2 overflow-hidden rounded-[8px] border-0 px-3 py-2.5 text-[13px] font-bold leading-tight tracking-[0.02em] text-white shadow-[0_2px_5px_rgba(0,0,0,0.14),0_0_0_1px_rgba(0,0,0,0.05)] ring-1 ring-white/12 transition-[transform,box-shadow,filter] duration-200 ease-out after:pointer-events-none after:absolute after:inset-0 after:bg-transparent after:transition-colors hover:-translate-y-px hover:shadow-[0_4px_14px_rgba(0,0,0,0.18)] hover:brightness-[1.03] hover:after:bg-white/[0.09] motion-safe:hover:scale-[1.015] active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-dk/35 sm:min-h-[44px] sm:gap-2 sm:px-3.5 sm:py-3 sm:text-[14px] lg:min-h-[44px] lg:py-3 lg:text-[15px]";
+  "relative z-[1] flex w-full min-h-[clamp(46px,5.6vw,56px)] items-center justify-center gap-2 overflow-hidden rounded-[10px] border-0 px-[clamp(12px,1.3vw,16px)] py-[clamp(10px,1.1vw,13px)] text-[clamp(13px,0.35vw+12px,15px)] font-bold leading-tight tracking-[0.02em] text-white shadow-[0_2px_5px_rgba(0,0,0,0.14),0_0_0_1px_rgba(0,0,0,0.05)] ring-1 ring-white/12 transition-[transform,box-shadow,filter] duration-200 ease-out after:pointer-events-none after:absolute after:inset-0 after:bg-transparent after:transition-colors hover:-translate-y-px hover:shadow-[0_4px_14px_rgba(0,0,0,0.18)] hover:brightness-[1.03] hover:after:bg-white/[0.09] motion-safe:hover:scale-[1.015] active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-dk/35";
 
 export const HeroSection = () => {
   const [mobileFlippedCards, setMobileFlippedCards] = useState<Partial<Record<StudyToolId, boolean>>>({});
@@ -219,7 +228,7 @@ export const HeroSection = () => {
   return (
   <section
     id="hero"
-    className="relative flex min-h-[calc(100dvh-66px)] flex-col overflow-x-hidden overflow-y-visible bg-bg-base border-t border-border-default"
+    className="relative flex min-h-0 flex-col overflow-x-hidden overflow-y-visible border-t border-border-default bg-bg-base"
   >
     <div
       className="pointer-events-none absolute inset-0 opacity-[0.45]"
@@ -229,20 +238,21 @@ export const HeroSection = () => {
           "radial-gradient(ellipse 80% 55% at 70% 20%, rgba(0, 176, 155, 0.09), transparent 55%), radial-gradient(ellipse 60% 45% at 15% 75%, rgba(84, 72, 200, 0.06), transparent 50%)",
       }}
     />
-    <div className="relative mx-auto flex min-h-0 w-full max-w-[min(100%,1320px)] flex-1 flex-col gap-6 px-[clamp(12px,4.2vw,48px)] pt-6 pb-10 sm:gap-8 sm:pt-8 sm:pb-12 md:pt-10 md:pb-14 lg:gap-8 lg:pt-10 lg:pb-16">
-      <div className="flex w-full shrink-0 flex-col items-center gap-4 text-center sm:gap-5">
-        <div className="-mt-1.5 mx-auto flex w-full max-w-full flex-wrap items-center justify-center gap-2 text-[10px] font-semibold uppercase tracking-[1.15px] text-teal-dk sm:-mt-2 sm:text-[11px] md:-mt-2.5">
+
+    <div className="wrap relative flex min-h-0 flex-col gap-[clamp(1rem,1.9vw,1.6rem)] pt-[clamp(1rem,3vw,2.2rem)] pb-[clamp(2rem,3.8vw,4.2rem)]">
+      <div className="flex w-full shrink-0 flex-col items-center gap-[clamp(0.9rem,1.6vw,1.25rem)] text-center">
+        <div className="fluid-eyebrow -mt-1.5 mx-auto flex w-full max-w-full flex-wrap items-center justify-center gap-2 font-semibold uppercase text-teal-dk sm:-mt-2 md:-mt-2.5">
           <span className="h-[1.5px] w-4 shrink-0 bg-teal-dk" />
           AI-Powered Study Tool for Students
         </div>
       </div>
 
-      <div className="mx-auto grid min-h-0 w-full max-w-[min(100%,1200px)] flex-1 grid-cols-1 content-start gap-2.5 sm:grid-cols-2 sm:gap-3 md:grid-cols-2 md:gap-3 lg:grid-cols-3 lg:grid-rows-2 lg:items-start lg:gap-x-4 lg:gap-y-3 xl:max-w-[1180px] xl:gap-x-4">
+      <div className="mx-auto grid min-h-0 w-full max-w-[min(100%,1320px)] grid-cols-1 content-start gap-[clamp(0.6rem,1vw,0.85rem)] sm:grid-cols-2 lg:grid-cols-3 lg:auto-rows-min lg:items-start lg:gap-x-[clamp(0.75rem,1.25vw,1.15rem)] lg:gap-y-[clamp(0.45rem,0.8vw,0.75rem)]">
         <div className={HERO_HUB_HEADING}>
-          <h2 className="max-[380px]:text-[19px] font-serif text-[clamp(20px,3.2vw,30px)] font-normal leading-[1.12] tracking-[-0.5px] text-[#0F1C35] sm:text-[clamp(24px,3.9vw,40px)] md:whitespace-nowrap lg:whitespace-normal lg:text-[clamp(26px,3.1vw,44px)]">
+          <h2 className="max-[380px]:text-[19px] font-serif text-[clamp(1.4rem,1.1rem+1.8vw,2.75rem)] font-normal leading-[1.1] tracking-[-0.025em] text-[#0F1C35] md:whitespace-nowrap lg:whitespace-normal">
             What do you want to <em className="italic text-[#0F6E56]">work on today?</em>
           </h2>
-          <p className="mx-auto mt-3 max-w-[min(100%,520px)] text-[11px] font-light leading-[1.5] text-body/85 sm:mt-4 sm:text-[12px] md:mt-4 md:text-[13px] lg:mt-3 lg:max-w-none lg:text-[12px] lg:leading-snug">
+          <p className="mx-auto mt-[clamp(0.65rem,1.2vw,0.95rem)] max-w-[min(100%,540px)] text-[clamp(0.75rem,0.4vw+0.64rem,0.95rem)] font-light leading-[1.52] text-body/85 lg:mt-3 lg:max-w-none">
             Pick a tool below, type your topic and generate. Everything is matched to your curriculum, grade and exam
             board.
           </p>
@@ -256,7 +266,7 @@ export const HeroSection = () => {
           const { Icon, appHref } = t;
           const badge = HERO_WEB_BADGE[theme];
           const cardTitle = WEB_CARD_TITLE[id];
-          const cardSubheading = WEB_CARD_SUBHEADING[id];
+          const cardRightIcon = HERO_CARD_RIGHT_ICON[id];
           const isExamCard = t.id === "exam-writing-mode";
 
           const iconEl = (
@@ -278,7 +288,7 @@ export const HeroSection = () => {
             </>
           );
 
-          const ctaClass = `${ctaBtn} ${ctaBase}${isExamCard ? " lg:text-[16px]" : ""}`;
+          const ctaClass = `${ctaBtn} ${ctaBase}${isExamCard ? " lg:text-[clamp(15px,0.4vw+13px,16px)]" : ""}`;
 
           const renderCta = () =>
             appHref ? (
@@ -304,6 +314,23 @@ export const HeroSection = () => {
               </p>
             ) : null;
 
+          const renderRightIcon = () => (
+            <div
+              aria-hidden
+              className={`pointer-events-none absolute right-0 top-0 bottom-[clamp(58px,6.4vw,74px)] z-[1] flex w-[30%] items-center justify-center border-l border-border-default/70 ${HERO_CARD_RIGHT_TONE[theme]}`}
+            >
+              <div className="relative h-[clamp(34px,4.6vw,56px)] w-[clamp(34px,4.6vw,56px)] opacity-95">
+                <Image
+                  src={cardRightIcon}
+                  alt=""
+                  fill
+                  sizes="(min-width: 1024px) 92px, 72px"
+                  className="object-contain drop-shadow-[0_3px_6px_rgba(0,0,0,0.14)]"
+                />
+              </div>
+            </div>
+          );
+
           return (
             <div
               key={t.id}
@@ -320,10 +347,11 @@ export const HeroSection = () => {
                     <div
                       className={`${wcardFaceShell} ${HERO_WEB_HOVER_BEFORE[theme]} [transform:rotateY(0deg)_translateZ(2px)]`}
                     >
-                      <div className={`${wcardFaceBody}${isExamCard ? " lg:gap-1.5 lg:px-3.5 lg:pb-[10px] lg:pt-2.5" : ""}`}>
+                      <div className={`${wcardFaceBody}${isExamCard ? " lg:gap-1.5 lg:px-[clamp(12px,1.15vw,15px)] lg:pb-[clamp(10px,0.95vw,13px)] lg:pt-[clamp(9px,0.9vw,12px)]" : ""}`}>
                       <div className="relative z-[1] flex min-h-0 flex-1 flex-col bg-white">
-                        <div className="flex min-h-0 shrink-0 flex-col">
-                          <div className="flex min-h-0 items-start gap-1.5 sm:gap-2">
+                        {renderRightIcon()}
+                        <div className="flex min-h-0 shrink-0 flex-col pr-[31%]">
+                          <div className="flex min-h-0 items-start gap-[clamp(0.4rem,0.65vw,0.6rem)]">
                             {iconEl}
                             <div className="flex min-w-0 flex-1 flex-col gap-0.5">
                               <span className={heroBadgeCapsule(badge.wrap)}>
@@ -331,14 +359,9 @@ export const HeroSection = () => {
                                 {t.heroLabel}
                               </span>
                               <p
-                                className={`hero-flip-trigger font-semibold leading-snug tracking-[-0.2px] text-[#0F1C35] sm:text-[12px] ${isExamCard ? "line-clamp-3 text-[12px] lg:text-[13px]" : "line-clamp-2 text-[11px]"}`}
+                                className={`hero-flip-trigger font-semibold leading-[1.08] tracking-[-0.03em] text-[#0F1C35] ${isExamCard ? "line-clamp-3 text-[clamp(13px,0.45vw+10px,16px)]" : "line-clamp-2 text-[clamp(12px,0.38vw+9px,15px)]"}`}
                               >
                                 {cardTitle}
-                              </p>
-                              <p
-                                className={`hero-flip-trigger mt-0.5 text-pretty font-light leading-[1.45] text-[#667793] sm:leading-[1.5] ${isExamCard ? "line-clamp-2 text-[10px] sm:text-[11px]" : "line-clamp-2 text-[9px] sm:text-[10px]"}`}
-                              >
-                                {cardSubheading}
                               </p>
                             </div>
                           </div>
@@ -356,16 +379,16 @@ export const HeroSection = () => {
                     <div
                       className={`${wcardFaceShell} ${HERO_WEB_HOVER_BEFORE[theme]} motion-reduce:hidden [transform:rotateY(180deg)_translateZ(2px)]`}
                     >
-                      <div className={`${wcardFaceBody}${isExamCard ? " lg:gap-1.5 lg:px-3.5 lg:pb-[10px] lg:pt-2.5" : ""}`}>
+                      <div className={`${wcardFaceBody}${isExamCard ? " lg:gap-1.5 lg:px-[clamp(12px,1.15vw,15px)] lg:pb-[clamp(10px,0.95vw,13px)] lg:pt-[clamp(9px,0.9vw,12px)]" : ""}`}>
                       <div className="hero-flip-keep relative flex h-full min-h-0 flex-1 flex-col overflow-hidden bg-white">
                         <div className="relative z-[1] flex min-h-0 flex-1 flex-col gap-2">
                           <p
-                            className={`hero-flip-trigger shrink-0 font-semibold leading-snug tracking-[-0.2px] text-[#0F1C35] ${isExamCard ? "line-clamp-3 text-[11px] sm:text-[12px]" : "line-clamp-2 text-[10px] sm:text-[11px]"}`}
+                            className={`hero-flip-trigger shrink-0 font-semibold leading-[1.08] tracking-[-0.03em] text-[#0F1C35] ${isExamCard ? "line-clamp-3 text-[clamp(12px,0.34vw+9px,14px)]" : "line-clamp-2 text-[clamp(11px,0.3vw+8px,13px)]"}`}
                           >
                             {cardTitle}
                           </p>
                           <p
-                            className={`hero-flip-trigger min-h-0 flex-1 text-pretty font-light leading-[1.5] text-[#3D4E6B] sm:leading-[1.55] lg:leading-[1.55] ${isExamCard ? "line-clamp-3 text-[10px] sm:text-[11px] lg:text-[12px]" : "line-clamp-2 text-[9px] sm:text-[10px] lg:text-[11px]"}`}
+                            className={`hero-flip-trigger min-h-0 flex-1 text-pretty font-light leading-[1.53] text-[#3D4E6B] ${isExamCard ? "line-clamp-3 text-[clamp(10px,0.3vw+8px,12px)]" : "line-clamp-2 text-[clamp(9px,0.28vw+7px,11px)]"}`}
                           >
                             {renderWebCardDesc(id)}
                           </p>
@@ -384,6 +407,8 @@ export const HeroSection = () => {
           );
         })}
       </div>
+
+      <StatsBar fullBleed compact />
     </div>
   </section>
   );
