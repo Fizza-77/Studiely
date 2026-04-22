@@ -14,6 +14,11 @@ export const STUDIELY_APP = {
   /** Canonical Flutter route is `/exampractice` (hyphenated URL redirects in-app). */
   examPractice: `${STUDIELY_APP_ORIGIN}/app/exampractice`,
   notes: `${STUDIELY_APP_ORIGIN}/app/notes`,
+  /** Marketing hero deep links (fixed domain per campaign URLs). */
+  summaryNotes: "https://studiely.app/app/summary-notes",
+  flashcards: "https://studiely.app/app/flashcards",
+  quiz: "https://studiely.app/app/quiz",
+  examFocus: "https://studiely.app/app/exam-focus",
   nyla: `${STUDIELY_APP_ORIGIN}/app/nyla`,
   pricing: `${STUDIELY_APP_ORIGIN}/app/pricing`,
 } as const;

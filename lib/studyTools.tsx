@@ -48,8 +48,7 @@ export const TOOLS = [
     preview:
       "Photosynthesis is the process by which plants convert light energy into chemical energy stored in glucose.\n\n• Light-dependent reactions occur in the thylakoid membrane\n• Carbon fixation occurs via the Calvin cycle in the stroma\n• Net equation: 6CO₂ + 6H₂O + light → C₆H₁₂O₆ + 6O₂\n• Chlorophyll is the primary photosynthetic pigment",
     Icon: NotesCardIcon,
-    /** Same destination as the former AI Study Tools CTA (`STUDIELY_APP.notes`). */
-    appHref: STUDIELY_APP.notes,
+    appHref: STUDIELY_APP.summaryNotes,
   },
   {
     id: "flashcards",
@@ -68,7 +67,7 @@ export const TOOLS = [
     preview:
       "FRONT: What is the net equation for photosynthesis?\n────────────────────────────────\nBACK: 6CO₂ + 6H₂O + light energy → C₆H₁₂O₆ + 6O₂\n\n── Card 1 of 12 · Deck: Photosynthesis ──",
     Icon: FlashcardsCardIcon,
-    appHref: STUDIELY_APP.notes,
+    appHref: STUDIELY_APP.flashcards,
   },
   {
     id: "quiz",
@@ -87,7 +86,7 @@ export const TOOLS = [
     preview:
       "Q1. What is the primary pigment in photosynthesis?\n  ○ Carotene\n  ● Chlorophyll ✓\n  ○ Xanthophyll\n  ○ Phycocyanin\n\nQ2. Where does the Calvin cycle occur?\n  ● Stroma of the chloroplast ✓\n  ○ Thylakoid membrane\n  ○ Cytoplasm",
     Icon: QuizCardIcon,
-    appHref: STUDIELY_APP.notes,
+    appHref: STUDIELY_APP.quiz,
   },
   {
     id: "exam-writing-mode",
@@ -125,8 +124,7 @@ export const TOOLS = [
     previewLabel: "Common mistakes",
     preview: "",
     Icon: CommonMistakesCardIcon,
-    /** No direct app route — CTA is disabled on the marketing hero. */
-    appHref: null,
+    appHref: STUDIELY_APP.examFocus,
   },
 ];
 
