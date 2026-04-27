@@ -128,6 +128,10 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        <meta
+          name="facebook-domain-verification"
+          content="ixoxjly0raima1favd2auxjangpbg5"
+        />
         <Script
           strategy="lazyOnload"
           src="https://www.googletagmanager.com/gtag/js?id=G-NXQX4TMW7X"
