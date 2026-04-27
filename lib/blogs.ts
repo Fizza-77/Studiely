@@ -2,6 +2,7 @@ import { supabase } from "@/lib/supabaseClient";
 import { cache } from "react";
 
 const STUDIELY_SITE_KEY = (process.env.SITE_KEY || "studiely").trim();
+const STUDIELY_SITE_ID_OVERRIDE = process.env.SITE_ID?.trim() || "";
 
 const SUPABASE_QUERY_RETRIES = Math.max(
   1,
@@ -154,6 +155,8 @@ function toSeo(site: SiteBlogPageRow | null): BlogIndexSeo {
 
 /** Resolve Studiely's site id from site_key. Returns null when not found. */
 export const getSiteIdForStudiely = cache(async (): Promise<string | null> => {
+  if (STUDIELY_SITE_ID_OVERRIDE) return STUDIELY_SITE_ID_OVERRIDE;
+
   const client = supabase;
   if (!client) return null;
 
@@ -260,6 +263,7 @@ export async function getBlogIndexDataForStudiely(): Promise<BlogIndexDataForStu
           `id, ${BLOG_SEO_FIELDS}, category:blog_categories(id, name, slug)`
         )
         .eq("site_id", siteId)
+        .eq("status", "published")
         .order("display_date", { ascending: false })
     ),
   ]);
@@ -308,6 +312,7 @@ export async function getBlogBySlugForStudiely(
         `id, content, ${BLOG_SEO_FIELDS}, category:blog_categories(id, name, slug)`
       )
       .eq("site_id", siteId)
+      .eq("status", "published")
       .eq("slug", slug)
       .maybeSingle()
   );
@@ -363,7 +368,11 @@ export async function getBlogSlugsForConfiguredSite(): Promise<
 
   try {
     const data = await execPostgrestWithRetries("fetch blog slugs", () =>
-      client.from("blogs").select("slug, display_date").eq("site_id", siteId)
+      client
+        .from("blogs")
+        .select("slug, display_date")
+        .eq("site_id", siteId)
+        .eq("status", "published")
     );
     return (data ?? []) as { slug: string; display_date: string | null }[];
   } catch (e) {
