@@ -147,18 +147,18 @@ export const HeroSection = () => {
 
     <div className="wrap relative flex min-h-0 flex-col gap-[clamp(0.55rem,1vw,0.85rem)] pt-[clamp(0.55rem,1.2vw,0.9rem)] pb-[clamp(0.9rem,1.5vw,1.35rem)]">
       <div className="flex w-full shrink-0 flex-col items-center gap-[clamp(0.45rem,0.8vw,0.7rem)] text-center">
-        <div className="fluid-eyebrow -mt-1.5 mx-auto flex w-full max-w-full flex-wrap items-center justify-center gap-2 font-semibold uppercase text-teal-dk sm:-mt-2 md:-mt-2.5">
+        <div className="fluid-eyebrow -mt-1.5 mx-auto flex w-full max-w-full flex-wrap items-center justify-center gap-2 text-[clamp(9px,0.45vw,11px)] font-semibold uppercase text-teal-dk sm:-mt-2 md:-mt-2.5">
           <span className="h-[1.5px] w-4 shrink-0 bg-teal-dk" />
           AI-Powered Study Tool for Students
         </div>
       </div>
 
-      <div className="mx-auto grid min-h-0 w-full max-w-[min(100%,1320px)] grid-cols-1 content-start gap-[clamp(0.4rem,0.7vw,0.6rem)] md:grid-cols-2 lg:auto-rows-min lg:items-start lg:gap-x-[clamp(0.55rem,0.9vw,0.85rem)] lg:gap-y-[clamp(0.35rem,0.55vw,0.5rem)]">
+      <div className="mx-auto grid min-h-0 w-full max-w-[min(100%,1320px)] grid-cols-1 content-start gap-[clamp(0.42rem,0.72vw,0.65rem)] md:grid-cols-2 lg:auto-rows-min lg:items-start lg:gap-x-[clamp(0.55rem,0.9vw,0.85rem)] lg:gap-y-[clamp(0.35rem,0.55vw,0.5rem)]">
         <div className={HERO_HUB_HEADING}>
-          <h2 className="max-[380px]:text-[19px] font-serif text-[clamp(1.22rem,0.96rem+1.25vw,2.1rem)] font-normal leading-[1.1] tracking-[-0.025em] text-[#0F1C35] lg:whitespace-nowrap">
+          <h2 className="max-[380px]:text-[19px] font-serif text-[clamp(1.18rem,0.9rem+1.3vw,2.1rem)] font-normal leading-[1.1] tracking-[-0.025em] text-[#0F1C35] lg:whitespace-nowrap">
             What do you want to <em className="italic text-[#0F6E56]">work on today?</em>
           </h2>
-          <p className="mx-auto mt-[clamp(0.3rem,0.55vw,0.5rem)] max-w-[min(100%,860px)] text-[clamp(0.67rem,0.25vw+0.6rem,0.82rem)] font-light leading-[1.4] text-body/85 lg:whitespace-nowrap lg:mt-1.5">
+          <p className="mx-auto mt-[clamp(0.3rem,0.55vw,0.5rem)] max-w-[min(100%,860px)] text-[clamp(0.66rem,0.3vw+0.58rem,0.82rem)] font-light leading-[1.42] text-body/85 lg:whitespace-nowrap lg:mt-1.5">
             Pick a tool below, type your topic and generate. Everything is matched to your curriculum, grade and exam
             board.
           </p>
@@ -219,16 +219,18 @@ export const HeroSection = () => {
                       event.stopPropagation();
                       setActiveTooltip((prev) => (prev === id ? null : id));
                     }}
-                    className="relative z-10 inline-flex h-5 w-5 sm:h-6 sm:w-6 items-center justify-center rounded-full border border-white/45 bg-black/20 text-[11px] font-semibold text-white/95 transition-colors hover:bg-black/30"
+                    className="relative z-10 inline-flex h-5 w-5 sm:h-6 sm:w-6 items-center justify-center rounded-full border border-white/45 bg-black/20 text-[10px] sm:text-[11px] font-semibold text-white/95 transition-colors hover:bg-black/30"
                   >
                     i
                   </button>
                 </div>
 
-                <div className="mb-0.5 flex min-h-[46px] items-stretch gap-1">
+                <div className="relative mb-0.5 flex flex-1 min-h-[46px] items-center justify-center">
                   <div
-                    className={`relative shrink-0 ${
-                      isExamCard ? "w-[64px] sm:w-[72px] md:w-[76px]" : "w-[48px] sm:w-[52px] md:w-[56px]"
+                    className={`pointer-events-none absolute left-2 sm:left-3 md:left-5 top-1/2 -translate-y-1/2 shrink-0 ${
+                      isExamCard
+                        ? "h-[46px] w-[46px] sm:h-[54px] sm:w-[54px] md:h-[62px] md:w-[62px]"
+                        : "h-[32px] w-[32px] sm:h-[40px] sm:w-[40px] md:h-[46px] md:w-[46px]"
                     }`}
                   >
                     <Image
@@ -237,14 +239,14 @@ export const HeroSection = () => {
                       fill
                       sizes={
                         isExamCard
-                          ? "(max-width: 640px) 64px, (max-width: 768px) 72px, 76px"
-                          : "(max-width: 640px) 48px, (max-width: 768px) 52px, 56px"
+                          ? "(max-width: 640px) 46px, (max-width: 768px) 54px, 62px"
+                          : "(max-width: 640px) 32px, (max-width: 768px) 40px, 46px"
                       }
                       className="object-contain drop-shadow-[0_3px_6px_rgba(0,0,0,0.14)]"
                     />
                   </div>
-                  <p className="flex flex-1 items-center justify-center pt-0.5 text-center text-[clamp(17px,1.7vw,19px)] font-semibold leading-[1.12] text-white">
-                    {cardTitle}
+                  <p className="mx-auto w-full px-[52px] sm:px-[68px] md:px-[88px] text-center text-[clamp(15px,1.6vw,23px)] font-semibold leading-[1.12] text-white">
+                    {ctaText}
                   </p>
                 </div>
 
@@ -252,7 +254,7 @@ export const HeroSection = () => {
                   {renderExamNote()}
                   <span className={`${heroCtaBtn} ${appHref ? "" : "cursor-not-allowed opacity-60"}`}>
                     <span className="h-px w-[65%] bg-white/55" aria-hidden />
-                    <span>{ctaText}</span>
+                    <span className="w-full text-center text-[clamp(9.5px,0.7vw,12px)] leading-[1.2]">{cardTitle}</span>
                   </span>
                 </div>
 
