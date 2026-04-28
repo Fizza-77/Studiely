@@ -243,7 +243,7 @@ export const HeroSection = () => {
                       className="object-contain drop-shadow-[0_3px_6px_rgba(0,0,0,0.14)]"
                     />
                   </div>
-                  <p className="flex flex-1 items-center justify-center pt-0.5 text-center text-[clamp(15px,1.4vw,17px)] font-semibold leading-[1.14] text-white">
+                  <p className="flex flex-1 items-center justify-center pt-0.5 text-center text-[clamp(17px,1.7vw,19px)] font-semibold leading-[1.12] text-white">
                     {cardTitle}
                   </p>
                 </div>
