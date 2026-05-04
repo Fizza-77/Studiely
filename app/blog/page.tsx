@@ -111,59 +111,59 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
               </p>
             ) : (
               visiblePosts.map((post) => (
-                <article
+                <Link
                   key={post.slug}
-                  className="bg-white border border-border-default rounded-xl p-6 flex flex-col justify-between hover:shadow-[0_10px_28px_rgba(0,0,0,0.06)] transition-shadow duration-200"
+                  href={`/blog/${post.slug}`}
+                  className="group block h-full rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
+                  aria-label={`Read more about ${post.title}`}
                 >
-                  {post.cover_image_url && (
-                    <div className="mb-4 rounded-xl overflow-hidden">
-                      <img
-                        src={post.cover_image_url}
-                        alt={post.title}
-                        className="w-full h-40 object-cover rounded-xl"
-                      />
-                    </div>
-                  )}
-                  <div>
-                    {post.category && (
-                      <p className="inline-flex items-center rounded-full border border-border-default px-2.5 py-1 text-[11px] text-muted mb-3">
-                        {post.category.name}
-                      </p>
+                  <article className="bg-white border border-border-default rounded-xl p-6 flex h-full flex-col justify-between hover:shadow-[0_10px_28px_rgba(0,0,0,0.06)] transition-shadow duration-200 group-hover:border-teal/40">
+                    {post.cover_image_url && (
+                      <div className="mb-4 rounded-xl overflow-hidden">
+                        <img
+                          src={post.cover_image_url}
+                          alt={post.title}
+                          className="w-full h-40 object-cover rounded-xl"
+                        />
+                      </div>
                     )}
-                    <h2 className="font-serif text-[18px] text-navy mb-2">{post.title}</h2>
-                    <p className="text-[13px] text-muted leading-[1.7] mb-4">
-                      {post.description || "Read the full article to learn more."}
-                    </p>
-                    <div
-                      className="flex flex-wrap gap-2 mb-4"
-                      aria-label={`Reactions summary for ${post.title}`}
-                    >
-                      <span className="text-[11px] text-muted border border-border-default rounded-full px-2 py-1">
-                        ❤️ {reactionCountsByBlog[post.id]?.love ?? 0}
-                      </span>
-                      <span className="text-[11px] text-muted border border-border-default rounded-full px-2 py-1">
-                        👍 {reactionCountsByBlog[post.id]?.thumbs_up ?? 0}
-                      </span>
-                      <span className="text-[11px] text-muted border border-border-default rounded-full px-2 py-1">
-                        👎 {reactionCountsByBlog[post.id]?.thumbs_down ?? 0}
-                      </span>
-                      <span className="text-[11px] text-muted border border-border-default rounded-full px-2 py-1">
-                        🎉 {reactionCountsByBlog[post.id]?.celebrationpop ?? 0}
-                      </span>
-                      <span className="text-[11px] text-muted border border-border-default rounded-full px-2 py-1">
-                        👏 {reactionCountsByBlog[post.id]?.clap ?? 0}
-                      </span>
+                    <div>
+                      {post.category && (
+                        <p className="inline-flex items-center rounded-full border border-border-default px-2.5 py-1 text-[11px] text-muted mb-3">
+                          {post.category.name}
+                        </p>
+                      )}
+                      <h2 className="font-serif text-[18px] text-navy mb-2">{post.title}</h2>
+                      <p className="text-[13px] text-muted leading-[1.7] mb-4">
+                        {post.description || "Read the full article to learn more."}
+                      </p>
+                      <div
+                        className="flex flex-wrap gap-2 mb-4"
+                        aria-label={`Reactions summary for ${post.title}`}
+                      >
+                        <span className="text-[11px] text-muted border border-border-default rounded-full px-2 py-1">
+                          ❤️ {reactionCountsByBlog[post.id]?.love ?? 0}
+                        </span>
+                        <span className="text-[11px] text-muted border border-border-default rounded-full px-2 py-1">
+                          👍 {reactionCountsByBlog[post.id]?.thumbs_up ?? 0}
+                        </span>
+                        <span className="text-[11px] text-muted border border-border-default rounded-full px-2 py-1">
+                          👎 {reactionCountsByBlog[post.id]?.thumbs_down ?? 0}
+                        </span>
+                        <span className="text-[11px] text-muted border border-border-default rounded-full px-2 py-1">
+                          🎉 {reactionCountsByBlog[post.id]?.celebrationpop ?? 0}
+                        </span>
+                        <span className="text-[11px] text-muted border border-border-default rounded-full px-2 py-1">
+                          👏 {reactionCountsByBlog[post.id]?.clap ?? 0}
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                  <Link
-                    href={`/blog/${post.slug}`}
-                    className="inline-flex items-center text-[13px] font-medium text-teal hover:text-teal-dk transition-colors duration-150"
-                    aria-label={`Read more about ${post.title}`}
-                  >
-                    Read more
-                    <span className="ml-1 text-[14px]">→</span>
-                  </Link>
-                </article>
+                    <span className="inline-flex items-center text-[13px] font-medium text-teal transition-colors duration-150 group-hover:text-teal-dk">
+                      Read more
+                      <span className="ml-1 text-[14px]">→</span>
+                    </span>
+                  </article>
+                </Link>
               ))
             )}
           </section>

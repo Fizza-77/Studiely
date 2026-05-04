@@ -99,7 +99,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         />
         <main className="bg-bg-base min-h-screen pt-[32px] pb-[40px]">
           <div className="wrap max-w-[760px] mx-auto px-4">
-            <article className="bg-white border border-border-default rounded-xl p-6 md:p-8 text-[14px] text-body leading-[1.8] prose prose-sm max-w-none">
+            <article className="bg-white border border-border-default rounded-xl p-6 md:p-8 text-[16px] text-body leading-[1.8] prose prose-sm max-w-none">
               <p>We’re working on new content. Check back soon.</p>
               <p>
                 <Link href="/blog" className="text-teal hover:text-teal-dk font-medium">
@@ -143,7 +143,7 @@ export default async function BlogPostPage({ params }: PageProps) {
       />
       <main className="bg-bg-base min-h-screen pt-[32px] pb-[40px]">
         <div className="wrap max-w-[760px] mx-auto px-4">
-          <article className="bg-white border border-border-default rounded-xl p-6 md:p-8 text-[14px] text-body leading-[1.8] prose prose-sm max-w-none">
+          <article className="bg-white border border-border-default rounded-xl p-6 md:p-8 text-[16px] text-body leading-[1.8] prose prose-sm max-w-none">
             {blog.cover_image_url && (
               <div className="mb-6">
                 <img
