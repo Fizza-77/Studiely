@@ -39,7 +39,7 @@ export const HeroSection = () => {
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_420px] lg:gap-16">
           
           {/* Left Column: Messaging & Proof */}
-          <div className="flex flex-col justify-center">
+          <div className="flex flex-col items-center justify-center text-center lg:items-start lg:text-left">
             <div className="mb-6 inline-flex w-fit items-center gap-1.5 rounded-full border border-[#b8dfc8] bg-[#e8f5ee] px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#1a6e3c]">
               <span className="text-[12px]">✦</span> AI-powered · Free to start
             </div>
@@ -52,7 +52,7 @@ export const HeroSection = () => {
               Notes, flashcards, quizzes, and practice papers — all matched to your curriculum, grade, and exam board automatically.
             </p>
             
-            <div className="mb-10 flex flex-wrap gap-3">
+            <div className="mb-10 flex flex-wrap justify-center gap-3 lg:justify-start">
               <button 
                 onClick={() => window.open(STUDIELY_APP.signUp, "_blank")}
                 className="rounded-xl bg-navy px-6 py-3.5 text-[15px] font-semibold text-white transition-all hover:bg-navy/90 active:scale-[0.98]"
@@ -67,7 +67,7 @@ export const HeroSection = () => {
               </button>
             </div>
             
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-3 text-left">
               <div className="flex items-center gap-3 text-[14px] text-gray-600">
                 <CheckIcon /> UK, US, Australia and Canada curricula
               </div>
