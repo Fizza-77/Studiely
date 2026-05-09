@@ -100,7 +100,6 @@ export function HomePageContent({ scrollToHeroOnMount = false }: HomePageContent
       <main role="main">
         <HeroSection />
         <StatsSection />
-        <HeroMarketingSection />
         <HowItWorksSection />
         <NylaSection sectionRef={nylaRef} />
         <SupportedCountriesSection sectionRef={curriculumRef} />

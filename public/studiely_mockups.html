@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studiely — UI Redesign Mockups</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --green: #2E8B57;
+  --green-dark: #1f6b40;
+  --green-light: #e8f5ee;
+  --green-mid: #4db87a;
+  --purple: #5347C8;
+  --amber: #C68A15;
+  --blush: #C48B7A;
+  --red: #D94F4F;
+  --font-body: 'DM Sans', sans-serif;
+  --font-display: 'DM Serif Display', serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: #f4f4f0;
+  color: #1a1a1a;
+}
+
+/* ===== NAV ===== */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #1a1a1a;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  height: 56px;
+  border-bottom: 1px solid #2a2a2a;
+}
+.site-nav a {
+  color: #888;
+  text-decoration: none;
+  font-size: 13px;
+  padding: 0 16px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+.site-nav a:hover { color: #fff; }
+.site-nav a.active { color: #fff; border-bottom-color: var(--green); }
+.site-nav .logo-area {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  margin-right: 32px;
+  padding: 0;
+  height: 56px;
+  border: none;
+}
+.site-nav .logo-mark {
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  background: var(--green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+}
+.site-nav .section-divider {
+  height: 1px;
+  width: 1px;
+  background: #333;
+  margin: 0 8px;
+}
+.site-nav .tab-group {
+  display: flex;
+  flex: 1;
+}
+.site-nav .type-badge {
+  margin-left: auto;
+  font-size: 11px;
+  background: #2a2a2a;
+  color: #666;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+/* ===== SECTION HEADERS ===== */
+.section-header {
+  padding: 48px 40px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.section-header .option-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 8px;
+}
+.section-header h2 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  color: #111;
+  margin-bottom: 8px;
+}
+.section-header p {
+  font-size: 14px;
+  color: #666;
+  max-width: 600px;
+  line-height: 1.6;
+}
+.section-header .tags {
+  display: flex;
+  gap: 6px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+.section-header .tag {
+  font-size: 11px;
+  padding: 3px 9px;
+  border-radius: 5px;
+  font-weight: 500;
+}
+.tag-green { background: #e8f5ee; color: #1a6e3c; }
+.tag-blue { background: #e6f0fb; color: #1a4e8c; }
+.tag-amber { background: #fef3dc; color: #7a4f00; }
+.tag-red { background: #fdecea; color: #8c1a1a; }
+
+/* ===== MOCKUP WRAPPER ===== */
+.mockup-frame {
+  max-width: 1200px;
+  margin: 0 auto 20px;
+  padding: 0 40px 40px;
+}
+.mockup-browser {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #d8d8d4;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.12);
+}
+.browser-bar {
+  background: #f0efed;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid #ddd;
+}
+.browser-dots { display: flex; gap: 5px; }
+.browser-dots span { width: 10px; height: 10px; border-radius: 50%; }
+.dot-r { background: #ff5f57; }
+.dot-y { background: #febc2e; }
+.dot-g { background: #28c840; }
+.browser-url {
+  flex: 1;
+  background: #fff;
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 12px;
+  color: #666;
+  border: 1px solid #e0e0e0;
+  font-family: var(--font-body);
+}
+
+/* ===== DIVIDER ===== */
+.section-divider-line {
+  border: none;
+  border-top: 1px solid #e0dfd8;
+  margin: 0 40px;
+}
+
+/* ===== MOBILE SECTION ===== */
+.mobile-section {
+  background: #1a1a1a;
+  padding: 48px 40px 60px;
+}
+.mobile-section-header {
+  max-width: 1200px;
+  margin: 0 auto 32px;
+}
+.mobile-section-header .option-label {
+  color: var(--green-mid);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.mobile-section-header h2 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  color: #fff;
+  margin-bottom: 8px;
+}
+.mobile-section-header p {
+  font-size: 14px;
+  color: #888;
+  max-width: 600px;
+  line-height: 1.6;
+}
+.phones-row {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.phone-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.phone-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #555;
+  text-align: center;
+}
+.phone-frame {
+  background: #111;
+  border-radius: 40px;
+  padding: 12px;
+  border: 2px solid #2a2a2a;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+  position: relative;
+}
+.phone-notch {
+  width: 80px;
+  height: 22px;
+  background: #000;
+  border-radius: 0 0 14px 14px;
+  margin: 0 auto 4px;
+  position: relative;
+  z-index: 2;
+}
+.phone-screen {
+  background: #fff;
+  border-radius: 30px;
+  overflow: hidden;
+  min-height: 580px;
+}
+
+/* ========================================
+   OPTION 1: CLEAN HERO
+======================================== */
+.o1 { font-family: var(--font-body); }
+.o1-nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 40px; background: #fff; border-bottom: 0.5px solid #eee;
+}
+.o1-logo { display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 600; color: #111; }
+.o1-logo-mark { width: 28px; height: 28px; border-radius: 7px; background: var(--green); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 13px; }
+.o1-nav ul { display: flex; gap: 20px; list-style: none; }
+.o1-nav ul li a { font-size: 13px; color: #555; text-decoration: none; }
+.o1-nav-actions { display: flex; gap: 10px; align-items: center; }
+.o1-btn-login { background: none; border: 1px solid #ddd; color: #333; padding: 7px 14px; border-radius: 8px; font-size: 13px; cursor: pointer; font-family: var(--font-body); }
+.o1-btn-start { background: #111; color: #fff; padding: 7px 16px; border-radius: 8px; font-size: 13px; font-weight: 500; border: none; cursor: pointer; font-family: var(--font-body); }
+.o1-hero { background: #f7f8f5; padding: 80px 40px 60px; text-align: center; }
+.o1-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--green-light); color: #1a6e3c; font-size: 12px; padding: 5px 12px; border-radius: 20px; margin-bottom: 20px; font-weight: 500; }
+.o1 h1 { font-family: var(--font-display); font-size: 58px; color: #111; line-height: 1.1; margin-bottom: 18px; }
+.o1 h1 em { color: var(--green); font-style: italic; }
+.o1-sub { font-size: 17px; color: #666; line-height: 1.65; max-width: 520px; margin: 0 auto 32px; }
+.o1-btns { display: flex; gap: 12px; justify-content: center; margin-bottom: 36px; }
+.o1-cta { background: var(--green); color: #fff; padding: 13px 28px; border-radius: 10px; font-size: 15px; font-weight: 500; border: none; cursor: pointer; font-family: var(--font-body); }
+.o1-sec { background: #fff; color: #333; padding: 13px 24px; border-radius: 10px; font-size: 15px; border: 1.5px solid #ddd; cursor: pointer; font-family: var(--font-body); }
+.o1-trust { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
+.o1-trust-item { font-size: 13px; color: #777; display: flex; align-items: center; gap: 5px; }
+.o1-trust-div { color: #ddd; }
+.o1-tools { max-width: 900px; margin: 0 auto; padding: 40px 40px 60px; }
+.o1-tools-label { text-align: center; font-size: 12px; font-weight: 600; color: #aaa; letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 20px; }
+.o1-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+.o1-card { border-radius: 16px; padding: 28px 24px; position: relative; }
+.o1-card-info { position: absolute; top: 14px; right: 14px; width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.4); display: flex; align-items: center; justify-content: center; font-size: 10px; color: rgba(255,255,255,0.6); }
+.o1-card-tag { display: inline-block; background: rgba(255,255,255,0.18); color: rgba(255,255,255,0.9); font-size: 10px; padding: 2px 7px; border-radius: 5px; margin-top: 12px; font-weight: 500; }
+.o1-card h3 { font-size: 18px; font-weight: 600; color: #fff; margin: 14px 0 6px; }
+.o1-card p { font-size: 13px; color: rgba(255,255,255,0.8); line-height: 1.5; }
+.o1-card-icon { font-size: 26px; }
+.o1-wide { border-radius: 16px; background: var(--red); padding: 26px 32px; display: flex; align-items: center; justify-content: space-between; position: relative; }
+.o1-wide h3 { font-size: 20px; font-weight: 600; color: #fff; margin-bottom: 4px; }
+.o1-wide p { font-size: 14px; color: rgba(255,255,255,0.8); }
+.o1-wide-btn { background: rgba(255,255,255,0.22); color: #fff; padding: 10px 20px; border-radius: 9px; font-size: 13px; font-weight: 500; border: none; cursor: pointer; white-space: nowrap; font-family: var(--font-body); }
+.o1-stats { display: grid; grid-template-columns: repeat(4, 1fr); background: #111; padding: 24px 40px; text-align: center; }
+.o1-sv { font-size: 22px; font-weight: 600; color: #fff; }
+.o1-sv em { color: var(--green-mid); font-style: normal; }
+.o1-sl { font-size: 11px; color: #666; margin-top: 3px; }
+
+/* ========================================
+   OPTION 2: SPLIT LAYOUT
+======================================== */
+.o2 { font-family: var(--font-body); }
+.o2-nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 40px; background: #fff; border-bottom: 0.5px solid #eee;
+}
+.o2-logo { display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 600; color: #111; }
+.o2-logo-mark { width: 28px; height: 28px; border-radius: 7px; background: var(--green); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 13px; }
+.o2-nav ul { display: flex; gap: 20px; list-style: none; }
+.o2-nav ul li a { font-size: 13px; color: #555; text-decoration: none; }
+.o2-split { display: grid; grid-template-columns: 1fr 420px; }
+.o2-left { padding: 60px 40px; border-right: 0.5px solid #eee; display: flex; flex-direction: column; justify-content: center; }
+.o2-pill { display: inline-flex; align-items: center; gap: 5px; background: var(--green-light); border: 1px solid #b8dfc8; color: #1a6e3c; font-size: 11px; padding: 4px 10px; border-radius: 20px; margin-bottom: 20px; font-weight: 500; width: fit-content; }
+.o2 h1 { font-family: var(--font-display); font-size: 40px; color: #111; line-height: 1.15; margin-bottom: 16px; }
+.o2 h1 strong { color: var(--green); font-weight: 400; font-style: italic; }
+.o2-desc { font-size: 15px; color: #666; line-height: 1.7; margin-bottom: 28px; }
+.o2-ctas { display: flex; gap: 10px; margin-bottom: 28px; }
+.o2-main-cta { background: #111; color: #fff; padding: 12px 22px; border-radius: 10px; font-size: 14px; font-weight: 500; border: none; cursor: pointer; font-family: var(--font-body); }
+.o2-sec-cta { background: none; color: #333; padding: 12px 18px; border-radius: 10px; font-size: 14px; border: 1px solid #ddd; cursor: pointer; font-family: var(--font-body); }
+.o2-proof { display: flex; flex-direction: column; gap: 8px; }
+.o2-proof-row { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #555; }
+.o2-proof-check { width: 18px; height: 18px; border-radius: 4px; background: var(--green-light); display: flex; align-items: center; justify-content: center; color: var(--green); font-size: 11px; flex-shrink: 0; }
+.o2-right { background: #f8f9fa; padding: 28px 24px; display: flex; flex-direction: column; gap: 10px; justify-content: center; }
+.o2-right-label { font-size: 11px; font-weight: 600; color: #aaa; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 4px; }
+.o2-tool-row { display: flex; align-items: center; gap: 12px; padding: 13px 14px; background: #fff; border-radius: 12px; border: 0.5px solid #eee; cursor: pointer; }
+.o2-tool-row:hover { border-color: #bbb; }
+.o2-tool-dot { width: 34px; height: 34px; border-radius: 9px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 15px; }
+.o2-tool-info h4 { font-size: 14px; font-weight: 500; color: #111; margin-bottom: 2px; }
+.o2-tool-info p { font-size: 12px; color: #999; }
+.o2-tool-arrow { margin-left: auto; color: #ccc; font-size: 13px; }
+.o2-stats { display: grid; grid-template-columns: repeat(4, 1fr); padding: 20px 40px; border-top: 0.5px solid #eee; text-align: center; background: #fff; }
+.o2-sv { font-size: 20px; font-weight: 600; color: #111; }
+.o2-sv em { color: var(--green); font-style: normal; }
+.o2-sl { font-size: 11px; color: #aaa; margin-top: 2px; }
+.o2-boards { background: #f8f9fa; padding: 14px 40px; text-align: center; font-size: 12px; color: #aaa; border-top: 0.5px solid #eee; }
+
+/* ========================================
+   OPTION 3: DARK HERO
+======================================== */
+.o3 { font-family: var(--font-body); }
+.o3-nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 40px; background: #0e0e0e; }
+.o3-logo { display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 600; color: #fff; }
+.o3-nav ul { display: flex; gap: 20px; list-style: none; }
+.o3-nav ul li a { font-size: 13px; color: #777; text-decoration: none; }
+.o3-nav-cta { background: var(--green); color: #fff; padding: 8px 18px; border-radius: 8px; font-size: 13px; font-weight: 500; border: none; cursor: pointer; font-family: var(--font-body); }
+.o3-hero { background: #0e0e0e; padding: 80px 40px; text-align: center; }
+.o3-eyebrow { display: inline-flex; align-items: center; gap: 6px; border: 1px solid #2a2a2a; color: #888; font-size: 11px; padding: 5px 12px; border-radius: 20px; margin-bottom: 24px; }
+.o3 h1 { font-family: var(--font-display); font-size: 56px; color: #fff; line-height: 1.1; margin-bottom: 18px; max-width: 700px; margin-left: auto; margin-right: auto; }
+.o3 h1 em { color: var(--green-mid); font-style: italic; }
+.o3-sub { font-size: 16px; color: #777; line-height: 1.7; max-width: 500px; margin: 0 auto 36px; }
+.o3-hero-ctas { display: flex; gap: 12px; justify-content: center; margin-bottom: 40px; }
+.o3-main { background: var(--green); color: #fff; padding: 13px 28px; border-radius: 10px; font-size: 15px; font-weight: 500; border: none; cursor: pointer; font-family: var(--font-body); }
+.o3-ghost { background: rgba(255,255,255,0.06); color: #bbb; padding: 13px 22px; border-radius: 10px; font-size: 15px; border: 1px solid #2a2a2a; cursor: pointer; font-family: var(--font-body); }
+.o3-pills { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.o3-pill { background: rgba(255,255,255,0.05); border: 1px solid #222; color: #777; font-size: 12px; padding: 5px 13px; border-radius: 20px; }
+.o3-tools-wrap { padding: 52px 40px 60px; background: #f7f8f5; }
+.o3-tw-title { text-align: center; font-size: 12px; font-weight: 600; color: #aaa; letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 28px; }
+.o3-tools-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; max-width: 820px; margin: 0 auto; }
+.o3-card { border-radius: 16px; padding: 26px 22px; position: relative; }
+.o3-card-label { display: inline-block; background: rgba(255,255,255,0.16); color: rgba(255,255,255,0.85); font-size: 10px; padding: 2px 7px; border-radius: 5px; margin-bottom: 12px; font-weight: 600; letter-spacing: 0.05em; }
+.o3-card h3 { font-size: 18px; font-weight: 600; color: #fff; margin-bottom: 6px; }
+.o3-card p { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.5; }
+.o3-card-info { position: absolute; top: 14px; right: 14px; width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.25); display: flex; align-items: center; justify-content: center; font-size: 10px; color: rgba(255,255,255,0.4); }
+.o3-wide { grid-column: span 2; display: flex; align-items: center; justify-content: space-between; border-radius: 16px; background: var(--red); padding: 24px 28px; }
+.o3-wide-btn { background: rgba(255,255,255,0.2); color: #fff; padding: 9px 18px; border-radius: 8px; font-size: 13px; font-weight: 500; border: none; cursor: pointer; flex-shrink: 0; font-family: var(--font-body); }
+.o3-stats { display: grid; grid-template-columns: repeat(4, 1fr); padding: 24px 40px; border-top: 0.5px solid #eee; text-align: center; background: #fff; }
+.o3-sv { font-size: 22px; font-weight: 600; color: #111; }
+.o3-sv b { color: var(--green); font-weight: 600; }
+.o3-sl { font-size: 11px; color: #aaa; margin-top: 2px; }
+
+/* ========================================
+   OPTION 4: OUTCOME-FIRST + SOCIAL PROOF
+======================================== */
+.o4 { font-family: var(--font-body); }
+.o4-nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 40px; background: #fff; border-bottom: 0.5px solid #eee; }
+.o4-logo { display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 600; color: #111; }
+.o4-logo-mark { width: 28px; height: 28px; border-radius: 7px; background: var(--green); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 13px; }
+.o4-nav ul { display: flex; gap: 20px; list-style: none; }
+.o4-nav ul li a { font-size: 13px; color: #555; text-decoration: none; }
+.o4-outcomes-bar { background: var(--green-light); border-bottom: 0.5px solid #b8dfc8; padding: 10px 40px; display: flex; align-items: center; justify-content: center; gap: 28px; flex-wrap: wrap; }
+.o4-ob { display: flex; align-items: center; gap: 5px; font-size: 12px; color: #1a6e3c; font-weight: 500; }
+.o4-hero { display: grid; grid-template-columns: 1fr 400px; }
+.o4-left { padding: 60px 40px; display: flex; flex-direction: column; justify-content: center; }
+.o4 h1 { font-family: var(--font-display); font-size: 44px; color: #111; line-height: 1.15; margin-bottom: 18px; }
+.o4 h1 span { color: var(--green); font-style: italic; }
+.o4-desc { font-size: 15px; color: #666; line-height: 1.7; margin-bottom: 28px; max-width: 420px; }
+.o4-cta-group { display: flex; flex-direction: column; gap: 10px; }
+.o4-cta-main { background: var(--green); color: #fff; padding: 14px 26px; border-radius: 10px; font-size: 15px; font-weight: 500; border: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; max-width: 300px; font-family: var(--font-body); }
+.o4-cta-note { font-size: 12px; color: #aaa; }
+.o4-right { background: #f8f9fa; border-left: 0.5px solid #eee; padding: 28px 24px; display: flex; flex-direction: column; justify-content: center; }
+.o4-right-head { font-size: 11px; font-weight: 600; color: #aaa; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 14px; }
+.o4-quotes { display: flex; flex-direction: column; gap: 10px; }
+.o4-qc { background: #fff; border-radius: 12px; padding: 14px 16px; border: 0.5px solid #e8e8e8; }
+.o4-stars { color: #f5a623; font-size: 11px; margin-bottom: 6px; }
+.o4-qtext { font-size: 12px; color: #444; line-height: 1.5; margin-bottom: 8px; font-style: italic; }
+.o4-qauthor { display: flex; align-items: center; gap: 6px; }
+.o4-qav { width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 600; color: #fff; flex-shrink: 0; }
+.o4-qname { font-size: 11px; color: #999; }
+.o4-tools-sect { padding: 40px 40px 48px; background: #fff; border-top: 0.5px solid #eee; }
+.o4-ts-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+.o4-ts-head h2 { font-size: 17px; font-weight: 600; color: #111; }
+.o4-ts-head a { font-size: 13px; color: var(--green); text-decoration: none; }
+.o4-tools-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+.o4-card { border-radius: 14px; padding: 20px 16px; text-align: center; cursor: pointer; }
+.o4-card-icon-wrap { width: 36px; height: 36px; border-radius: 9px; background: rgba(255,255,255,0.2); margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+.o4-card h4 { font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 4px; }
+.o4-card p { font-size: 11px; color: rgba(255,255,255,0.72); line-height: 1.4; }
+.o4-stats { display: grid; grid-template-columns: repeat(4, 1fr); background: #111; padding: 24px 40px; text-align: center; }
+.o4-sv { font-size: 22px; font-weight: 600; color: #fff; }
+.o4-sv em { color: var(--green-mid); font-style: normal; }
+.o4-sl { font-size: 11px; color: #666; margin-top: 2px; }
+
+/* ========================================
+   OPTION 5: MINIMAL INTERACTIVE
+======================================== */
+.o5 { font-family: var(--font-body); }
+.o5-nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 40px; background: #fff; border-bottom: 0.5px solid #eee; }
+.o5-logo { display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 600; color: #111; }
+.o5-logo-mark { width: 28px; height: 28px; border-radius: 7px; background: var(--green); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 13px; }
+.o5-nav ul { display: flex; gap: 20px; list-style: none; }
+.o5-nav ul li a { font-size: 13px; color: #555; text-decoration: none; }
+.o5-hero { padding: 80px 40px 60px; text-align: center; max-width: 700px; margin: 0 auto; }
+.o5-badge { display: inline-flex; align-items: center; gap: 5px; background: var(--green-light); border: 1px solid #b8dfc8; color: #1a6e3c; font-size: 11px; padding: 4px 10px; border-radius: 20px; margin-bottom: 22px; font-weight: 500; }
+.o5 h1 { font-family: var(--font-display); font-size: 52px; color: #111; line-height: 1.1; margin-bottom: 14px; }
+.o5 h1 em { color: var(--green); font-style: italic; }
+.o5-sub { font-size: 16px; color: #666; line-height: 1.65; margin-bottom: 36px; }
+.o5-search-box { background: #f8f9fa; border: 1.5px solid #e0e0e0; border-radius: 14px; padding: 14px 16px; display: flex; align-items: center; gap: 12px; max-width: 580px; margin: 0 auto 14px; cursor: text; }
+.o5-sb-icon { color: #bbb; font-size: 17px; flex-shrink: 0; }
+.o5-sb-text { font-size: 14px; color: #bbb; flex: 1; text-align: left; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.o5-sb-btn { background: var(--green); color: #fff; padding: 8px 18px; border-radius: 9px; font-size: 13px; font-weight: 500; border: none; cursor: pointer; flex-shrink: 0; font-family: var(--font-body); }
+.o5-hints { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 36px; }
+.o5-hint { background: #f1f1f1; color: #555; font-size: 12px; padding: 5px 12px; border-radius: 8px; cursor: pointer; border: 1px solid transparent; }
+.o5-hint:hover { border-color: var(--green); color: var(--green); background: var(--green-light); }
+.o5-trust-row { display: flex; gap: 16px; justify-content: center; align-items: center; flex-wrap: wrap; }
+.o5-tr { font-size: 12px; color: #aaa; display: flex; align-items: center; gap: 4px; }
+.o5-tools-section { padding: 0 40px 60px; }
+.o5-sep { height: 0.5px; background: #eee; margin-bottom: 36px; }
+.o5-tl { text-align: center; font-size: 12px; font-weight: 600; color: #aaa; letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 20px; }
+.o5-t5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+.o5-card { border-radius: 14px; padding: 22px 16px; cursor: pointer; }
+.o5-card-icon-wrap { width: 34px; height: 34px; border-radius: 9px; background: rgba(255,255,255,0.2); margin-bottom: 12px; display: flex; align-items: center; justify-content: center; font-size: 15px; }
+.o5-card h4 { font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 4px; }
+.o5-card p { font-size: 11px; color: rgba(255,255,255,0.72); line-height: 1.4; }
+.o5-stats { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 0.5px solid #eee; padding: 20px 40px; text-align: center; background: #fff; }
+.o5-sv { font-size: 20px; font-weight: 600; color: #111; }
+.o5-sv b { color: var(--green); font-weight: 600; }
+.o5-sl { font-size: 11px; color: #aaa; margin-top: 2px; }
+.o5-boards { border-top: 0.5px solid #eee; padding: 18px 40px; text-align: center; font-size: 12px; color: #bbb; background: #fff; }
+
+/* ========================================
+   MOBILE SCREENS
+======================================== */
+
+/* Mobile A: Clean & Minimal */
+.mob-a { font-family: var(--font-body); background: #f7f8f5; min-height: 580px; }
+.mob-a-status { background: #f7f8f5; padding: 10px 16px 0; display: flex; justify-content: space-between; align-items: center; font-size: 12px; font-weight: 600; color: #111; }
+.mob-a-status-icons { display: flex; gap: 4px; align-items: center; font-size: 10px; color: #555; }
+.mob-a-header { padding: 12px 16px 0; display: flex; align-items: center; justify-content: space-between; }
+.mob-a-logo { display: flex; align-items: center; gap: 6px; font-size: 15px; font-weight: 600; color: #111; }
+.mob-a-logo-mark { width: 24px; height: 24px; border-radius: 6px; background: var(--green); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 11px; }
+.mob-a-icons { display: flex; gap: 6px; }
+.mob-a-icon-btn { width: 30px; height: 30px; border-radius: 50%; background: #e8e8e8; display: flex; align-items: center; justify-content: center; font-size: 12px; }
+.mob-a-greeting { padding: 16px 16px 0; }
+.mob-a-greeting h2 { font-size: 24px; font-weight: 600; color: #111; margin-bottom: 4px; }
+.mob-a-greeting p { font-size: 12px; color: #888; line-height: 1.5; }
+.mob-a-search { margin: 14px 16px 0; background: #fff; border-radius: 12px; padding: 10px 14px; display: flex; align-items: center; gap: 8px; border: 1px solid #e8e8e8; }
+.mob-a-search-icon { color: #bbb; font-size: 14px; }
+.mob-a-search-text { font-size: 13px; color: #ccc; }
+.mob-a-tools-label { padding: 16px 16px 8px; font-size: 11px; font-weight: 600; color: #aaa; letter-spacing: 0.06em; text-transform: uppercase; }
+.mob-a-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 0 16px; }
+.mob-a-card { border-radius: 14px; padding: 16px 14px; }
+.mob-a-card h4 { font-size: 14px; font-weight: 600; color: #fff; margin: 10px 0 4px; }
+.mob-a-card p { font-size: 11px; color: rgba(255,255,255,0.78); line-height: 1.4; }
+.mob-a-card-icon { font-size: 20px; }
+.mob-a-wide { margin: 8px 16px 0; border-radius: 14px; background: var(--red); padding: 16px 18px; display: flex; align-items: center; justify-content: space-between; }
+.mob-a-wide h4 { font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 2px; }
+.mob-a-wide p { font-size: 11px; color: rgba(255,255,255,0.78); }
+.mob-a-wide-arrow { width: 28px; height: 28px; border-radius: 8px; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 14px; flex-shrink: 0; }
+.mob-a-bottom { margin-top: auto; padding-top: 12px; background: #fff; display: flex; border-top: 0.5px solid #eee; }
+.mob-a-tab { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 10px 0; font-size: 10px; color: #aaa; }
+.mob-a-tab.active { color: var(--green); }
+.mob-a-tab-icon { font-size: 18px; }
+
+/* Mobile B: Dark Mode */
+.mob-b { font-family: var(--font-body); background: #0e0e0e; min-height: 580px; }
+.mob-b-status { background: #0e0e0e; padding: 10px 16px 0; display: flex; justify-content: space-between; align-items: center; font-size: 12px; font-weight: 600; color: #fff; }
+.mob-b-header { padding: 12px 16px 0; display: flex; align-items: center; justify-content: space-between; }
+.mob-b-logo { display: flex; align-items: center; gap: 6px; font-size: 15px; font-weight: 600; color: #fff; }
+.mob-b-logo-mark { width: 24px; height: 24px; border-radius: 6px; background: var(--green); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 11px; }
+.mob-b-icons { display: flex; gap: 6px; }
+.mob-b-icon-btn { width: 30px; height: 30px; border-radius: 50%; background: #1e1e1e; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #888; }
+.mob-b-greeting { padding: 16px 16px 0; }
+.mob-b-greeting .good { font-size: 11px; color: var(--green-mid); font-weight: 500; margin-bottom: 4px; }
+.mob-b-greeting h2 { font-size: 22px; font-weight: 600; color: #fff; margin-bottom: 4px; }
+.mob-b-greeting p { font-size: 12px; color: #555; line-height: 1.5; }
+.mob-b-streak { margin: 12px 16px 0; background: #1a1a1a; border-radius: 12px; padding: 10px 14px; display: flex; align-items: center; justify-content: space-between; }
+.mob-b-streak-left { display: flex; align-items: center; gap: 8px; }
+.mob-b-streak-icon { font-size: 18px; }
+.mob-b-streak-text { font-size: 12px; color: #888; }
+.mob-b-streak-text strong { display: block; font-size: 13px; color: #fff; }
+.mob-b-streak-badge { background: var(--amber); color: #fff; font-size: 10px; padding: 2px 7px; border-radius: 5px; font-weight: 600; }
+.mob-b-tools-label { padding: 16px 16px 8px; font-size: 11px; font-weight: 600; color: #444; letter-spacing: 0.06em; text-transform: uppercase; }
+.mob-b-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 0 16px; }
+.mob-b-card { border-radius: 14px; padding: 16px 14px; }
+.mob-b-card h4 { font-size: 14px; font-weight: 600; color: #fff; margin: 10px 0 4px; }
+.mob-b-card p { font-size: 11px; color: rgba(255,255,255,0.7); line-height: 1.4; }
+.mob-b-card-icon { font-size: 20px; }
+.mob-b-wide { margin: 8px 16px 0; border-radius: 14px; background: var(--red); padding: 16px 18px; display: flex; align-items: center; justify-content: space-between; }
+.mob-b-wide h4 { font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 2px; }
+.mob-b-wide p { font-size: 11px; color: rgba(255,255,255,0.78); }
+.mob-b-wide-btn { background: rgba(255,255,255,0.18); color: #fff; font-size: 11px; padding: 5px 10px; border-radius: 7px; font-weight: 500; flex-shrink: 0; border: none; font-family: var(--font-body); }
+.mob-b-bottom { margin-top: auto; padding-top: 12px; background: #111; display: flex; border-top: 0.5px solid #1e1e1e; }
+.mob-b-tab { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 10px 0; font-size: 10px; color: #444; }
+.mob-b-tab.active { color: var(--green-mid); }
+.mob-b-tab-icon { font-size: 18px; }
+
+/* Mobile C: Minimal Search-First */
+.mob-c { font-family: var(--font-body); background: #fff; min-height: 580px; }
+.mob-c-status { background: #fff; padding: 10px 16px 0; display: flex; justify-content: space-between; align-items: center; font-size: 12px; font-weight: 600; color: #111; }
+.mob-c-header { padding: 12px 16px 0; display: flex; align-items: center; justify-content: space-between; }
+.mob-c-logo { display: flex; align-items: center; gap: 6px; font-size: 15px; font-weight: 600; color: #111; }
+.mob-c-logo-mark { width: 24px; height: 24px; border-radius: 6px; background: var(--green); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 11px; }
+.mob-c-avatar { width: 30px; height: 30px; border-radius: 50%; background: var(--purple); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 12px; font-weight: 600; }
+.mob-c-hero { padding: 24px 16px 16px; text-align: center; }
+.mob-c-hero h2 { font-family: var(--font-display); font-size: 26px; color: #111; line-height: 1.2; margin-bottom: 6px; }
+.mob-c-hero h2 em { color: var(--green); font-style: italic; }
+.mob-c-hero p { font-size: 12px; color: #999; line-height: 1.5; }
+.mob-c-search { margin: 14px 16px 0; background: #f4f4f1; border-radius: 14px; padding: 12px 14px; display: flex; align-items: center; gap: 8px; }
+.mob-c-search-icon { color: #bbb; font-size: 15px; flex-shrink: 0; }
+.mob-c-search-text { font-size: 13px; color: #bbb; flex: 1; }
+.mob-c-search-btn { background: var(--green); color: #fff; width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; border: none; font-family: var(--font-body); }
+.mob-c-quick-picks { padding: 10px 16px 0; display: flex; gap: 6px; overflow-x: auto; }
+.mob-c-pick { background: #f4f4f1; color: #555; font-size: 11px; padding: 5px 10px; border-radius: 7px; white-space: nowrap; flex-shrink: 0; }
+.mob-c-section-label { padding: 16px 16px 8px; font-size: 11px; font-weight: 600; color: #aaa; letter-spacing: 0.06em; text-transform: uppercase; }
+.mob-c-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 0 16px; }
+.mob-c-card { border-radius: 14px; padding: 16px 14px; position: relative; }
+.mob-c-card h4 { font-size: 14px; font-weight: 600; color: #fff; margin: 10px 0 4px; }
+.mob-c-card p { font-size: 11px; color: rgba(255,255,255,0.78); line-height: 1.4; }
+.mob-c-card-icon { font-size: 20px; }
+.mob-c-wide { margin: 8px 16px 0; border-radius: 14px; background: var(--red); padding: 14px 16px; display: flex; align-items: center; gap: 12px; }
+.mob-c-wide-icon { font-size: 22px; flex-shrink: 0; }
+.mob-c-wide h4 { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 2px; }
+.mob-c-wide p { font-size: 11px; color: rgba(255,255,255,0.78); }
+.mob-c-bottom { margin-top: auto; padding-top: 12px; background: #fff; display: flex; border-top: 0.5px solid #f0f0f0; }
+.mob-c-tab { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 10px 0; font-size: 10px; color: #bbb; }
+.mob-c-tab.active { color: var(--green); }
+.mob-c-tab-icon { font-size: 18px; }
+
+/* Shared card colors */
+.bg-green { background: var(--green); }
+.bg-purple { background: var(--purple); }
+.bg-amber { background: var(--amber); }
+.bg-blush { background: var(--blush); }
+.bg-red { background: var(--red); }
+
+/* Annotations */
+.annotation-row {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.annotation {
+  background: #fff;
+  border-radius: 10px;
+  padding: 14px 16px;
+  border: 0.5px solid #e8e8e4;
+}
+.annotation .ann-label { font-size: 10px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--green); margin-bottom: 5px; }
+.annotation p { font-size: 13px; color: #555; line-height: 1.5; }
+
+/* Footer */
+.file-footer {
+  background: #111;
+  padding: 24px 40px;
+  text-align: center;
+}
+.file-footer p { font-size: 12px; color: #555; }
+.file-footer strong { color: #888; }
+</style>
+</head>
+<body>
+
+<!-- STICKY NAV -->
+<nav class="site-nav">
+  <div class="logo-area">
+    <div class="logo-mark">🎓</div>
+    Studiely Redesigns
+  </div>
+  <div class="tab-group">
+    <a href="#opt1" class="active">Option 1 · Clean Hero</a>
+    <a href="#opt2">Option 2 · Split Layout</a>
+    <a href="#opt3">Option 3 · Dark Hero</a>
+    <a href="#opt4">Option 4 · Outcome-First</a>
+    <a href="#opt5">Option 5 · Minimal</a>
+    <a href="#mobile">📱 Mobile</a>
+  </div>
+  <span class="type-badge">5 Web · 3 Mobile</span>
+</nav>
+
+<!-- ========================
+     OPTION 1
+========================= -->
+<div id="opt1">
+<div class="section-header">
+  <div class="option-label">⬤ Option 1</div>
+  <h2>Clean Hero with Trust Signals</h2>
+  <p>The hero sells first, tools reveal below. Trust signals (rating, student count, curricula) appear right under the CTA — before the user scrolls anywhere. Best for audiences that need reassurance before acting.</p>
+  <div class="tags">
+    <span class="tag tag-green">Best for: broad audiences</span>
+    <span class="tag tag-blue">CTA above fold</span>
+    <span class="tag tag-amber">Trust-led</span>
+  </div>
+</div>
+<div class="mockup-frame">
+  <div class="mockup-browser">
+    <div class="browser-bar">
+      <div class="browser-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+      <div class="browser-url">https://studiely.com</div>
+    </div>
+    <div class="o1">
+      <nav class="o1-nav">
+        <div class="o1-logo"><div class="o1-logo-mark">🎓</div>Studiely</div>
+        <ul><li><a href="#">Pricing</a></li><li><a href="#">FAQs</a></li><li><a href="#">Blogs</a></li><li><a href="#">Nyla AI</a></li></ul>
+        <div class="o1-nav-actions">
+          <button class="o1-btn-login">Login</button>
+          <button class="o1-btn-start">Get started free</button>
+        </div>
+      </nav>
+      <div class="o1-hero">
+        <div class="o1-badge">✦ AI-powered study tool for students</div>
+        <h1>Study smarter.<br><em>Score higher.</em></h1>
+        <p class="o1-sub">Pick a tool, type your topic, and get revision materials matched to your curriculum, grade, and exam board — in seconds.</p>
+        <div class="o1-btns">
+          <button class="o1-cta">Get started free →</button>
+          <button class="o1-sec">See how it works</button>
+        </div>
+        <div class="o1-trust">
+          <div class="o1-trust-item">★★★★★ 4.8 rating</div>
+          <span class="o1-trust-div">·</span>
+          <div class="o1-trust-item">400+ students</div>
+          <span class="o1-trust-div">·</span>
+          <div class="o1-trust-item">UK · US · AU · CA</div>
+          <span class="o1-trust-div">·</span>
+          <div class="o1-trust-item">No credit card needed</div>
+        </div>
+      </div>
+      <div class="o1-tools">
+        <p class="o1-tools-label">Choose your study tool</p>
+        <div class="o1-grid">
+          <div class="o1-card bg-green">
+            <div class="o1-card-info">i</div>
+            <div class="o1-card-icon">📝</div>
+            <h3>Generate notes</h3>
+            <p>Get structured revision notes on any topic instantly</p>
+            <span class="o1-card-tag">Most popular</span>
+          </div>
+          <div class="o1-card bg-purple">
+            <div class="o1-card-info">i</div>
+            <div class="o1-card-icon">🃏</div>
+            <h3>Generate flashcards</h3>
+            <p>Build your recall deck in seconds</p>
+            <span class="o1-card-tag">Great for retention</span>
+          </div>
+          <div class="o1-card bg-amber">
+            <div class="o1-card-info">i</div>
+            <div class="o1-card-icon">🎯</div>
+            <h3>Start a quiz</h3>
+            <p>Test yourself before the exam does</p>
+            <span class="o1-card-tag">Builds confidence</span>
+          </div>
+          <div class="o1-card bg-blush">
+            <div class="o1-card-info">i</div>
+            <div class="o1-card-icon">🔍</div>
+            <h3>Get exam focus</h3>
+            <p>See exactly where marks are lost before you lose them</p>
+            <span class="o1-card-tag">High impact</span>
+          </div>
+        </div>
+        <div class="o1-wide">
+          <div><h3>Start exam practice</h3><p>Write under timed, real exam conditions — 3 free trials per account</p></div>
+          <button class="o1-wide-btn">Try free →</button>
+        </div>
+      </div>
+      <div class="o1-stats">
+        <div><div class="o1-sv">400<em>+</em></div><div class="o1-sl">Students trust Studiely</div></div>
+        <div><div class="o1-sv">75<em>%</em></div><div class="o1-sl">Study time saved</div></div>
+        <div><div class="o1-sv">3<em>x</em></div><div class="o1-sl">Faster exam prep</div></div>
+        <div><div class="o1-sv">4.8<em>★</em></div><div class="o1-sl">Average student rating</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<hr class="section-divider-line">
+
+<!-- ========================
+     OPTION 2
+========================= -->
+<div id="opt2">
+<div class="section-header">
+  <div class="option-label">⬤ Option 2</div>
+  <h2>Split Layout — Sell Left, Act Right</h2>
+  <p>Messaging on the left, immediate tool actions on the right. Users can start using a tool without scrolling at all. The exam practice card is highlighted to differentiate the premium action. Best for high-intent visitors.</p>
+  <div class="tags">
+    <span class="tag tag-green">Best for: high-intent users</span>
+    <span class="tag tag-blue">Zero-scroll to action</span>
+    <span class="tag tag-amber">Premium differentiation</span>
+  </div>
+</div>
+<div class="mockup-frame">
+  <div class="mockup-browser">
+    <div class="browser-bar">
+      <div class="browser-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+      <div class="browser-url">https://studiely.com</div>
+    </div>
+    <div class="o2">
+      <nav class="o2-nav">
+        <div class="o2-logo"><div class="o2-logo-mark">🎓</div>Studiely</div>
+        <ul><li><a href="#">Pricing</a></li><li><a href="#">FAQs</a></li><li><a href="#">Blogs</a></li><li><a href="#">Nyla AI</a></li><li><a href="#">Contact</a></li></ul>
+        <div style="display:flex;gap:10px;align-items:center">
+          <button style="background:none;border:1px solid #ddd;color:#333;padding:7px 14px;border-radius:8px;font-size:13px;cursor:pointer;font-family:var(--font-body)">Login</button>
+          <button style="background:var(--green);color:#fff;padding:7px 16px;border-radius:8px;font-size:13px;font-weight:500;border:none;cursor:pointer;font-family:var(--font-body)">Get started free</button>
+        </div>
+      </nav>
+      <div class="o2-split">
+        <div class="o2-left">
+          <div class="o2-pill">✦ AI-powered · Free to start</div>
+          <h1>The AI study tool that <strong>knows your exam</strong></h1>
+          <p class="o2-desc">Notes, flashcards, quizzes, and practice papers — all matched to your curriculum, grade, and exam board automatically.</p>
+          <div class="o2-ctas">
+            <button class="o2-main-cta">Start studying free →</button>
+            <button class="o2-sec-cta">Watch demo</button>
+          </div>
+          <div class="o2-proof">
+            <div class="o2-proof-row"><div class="o2-proof-check">✓</div> UK, US, Australia and Canada curricula</div>
+            <div class="o2-proof-row"><div class="o2-proof-check">✓</div> ★★★★★ 4.8 average student rating</div>
+            <div class="o2-proof-row"><div class="o2-proof-check">✓</div> 400+ students saving 75% of their study time</div>
+            <div class="o2-proof-row"><div class="o2-proof-check">✓</div> No credit card required to start</div>
+          </div>
+        </div>
+        <div class="o2-right">
+          <p class="o2-right-label">Choose a tool to get started</p>
+          <div class="o2-tool-row">
+            <div class="o2-tool-dot" style="background:var(--green)">📝</div>
+            <div class="o2-tool-info"><h4>Generate notes</h4><p>Structured revision notes on any topic</p></div>
+            <span class="o2-tool-arrow">›</span>
+          </div>
+          <div class="o2-tool-row">
+            <div class="o2-tool-dot" style="background:var(--purple)">🃏</div>
+            <div class="o2-tool-info"><h4>Generate flashcards</h4><p>Build your recall deck in seconds</p></div>
+            <span class="o2-tool-arrow">›</span>
+          </div>
+          <div class="o2-tool-row">
+            <div class="o2-tool-dot" style="background:var(--amber)">🎯</div>
+            <div class="o2-tool-info"><h4>Start a quiz</h4><p>Test yourself before the exam does</p></div>
+            <span class="o2-tool-arrow">›</span>
+          </div>
+          <div class="o2-tool-row">
+            <div class="o2-tool-dot" style="background:var(--blush)">🔍</div>
+            <div class="o2-tool-info"><h4>Get exam focus</h4><p>Know exactly where marks are at risk</p></div>
+            <span class="o2-tool-arrow">›</span>
+          </div>
+          <div class="o2-tool-row" style="border-color:var(--red);background:#fff8f8">
+            <div class="o2-tool-dot" style="background:var(--red)">✍️</div>
+            <div class="o2-tool-info"><h4>Start exam practice</h4><p>Timed · real conditions · 3 free trials</p></div>
+            <span class="o2-tool-arrow" style="color:var(--red)">›</span>
+          </div>
+        </div>
+      </div>
+      <div class="o2-stats">
+        <div><div class="o2-sv">400<em>+</em></div><div class="o2-sl">Students trust Studiely</div></div>
+        <div><div class="o2-sv">75<em>%</em></div><div class="o2-sl">Study time saved</div></div>
+        <div><div class="o2-sv">3<em>x</em></div><div class="o2-sl">Faster exam prep</div></div>
+        <div><div class="o2-sv">4.8<em>★</em></div><div class="o2-sl">Average student rating</div></div>
+      </div>
+      <div class="o2-boards">Built to support major curricula and exam boards across the UK, US, Australia, and Canada</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<hr class="section-divider-line">
+
+<!-- ========================
+     OPTION 3
+========================= -->
+<div id="opt3">
+<div class="section-header">
+  <div class="option-label">⬤ Option 3</div>
+  <h2>Dark Hero, Light Tools Section</h2>
+  <p>A premium dark hero creates visual impact and makes the green accent pop. The tool section sits in a contrasting light area below, giving the cards breathing room. Feels credible and modern. Best for standing out in a crowded edtech space.</p>
+  <div class="tags">
+    <span class="tag tag-green">Best for: premium positioning</span>
+    <span class="tag tag-blue">High visual impact</span>
+    <span class="tag tag-red">Stands out from competitors</span>
+  </div>
+</div>
+<div class="mockup-frame">
+  <div class="mockup-browser">
+    <div class="browser-bar">
+      <div class="browser-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+      <div class="browser-url">https://studiely.com</div>
+    </div>
+    <div class="o3">
+      <nav class="o3-nav">
+        <div class="o3-logo">🎓 Studiely</div>
+        <ul><li><a href="#">Pricing</a></li><li><a href="#">FAQs</a></li><li><a href="#">Nyla AI</a></li><li><a href="#">Contact</a></li></ul>
+        <div style="display:flex;gap:10px;align-items:center">
+          <button style="background:none;border:none;color:#777;font-size:13px;cursor:pointer;font-family:var(--font-body)">Login</button>
+          <button class="o3-nav-cta">Get started free</button>
+        </div>
+      </nav>
+      <div class="o3-hero">
+        <div class="o3-eyebrow">✦ AI-powered · matched to your exam board</div>
+        <h1>The study tool that <em>already knows</em> your exam</h1>
+        <p class="o3-sub">Notes, flashcards, quizzes and practice papers — generated in seconds, matched to your curriculum.</p>
+        <div class="o3-hero-ctas">
+          <button class="o3-main">Start studying free →</button>
+          <button class="o3-ghost">Watch 60s demo</button>
+        </div>
+        <div class="o3-pills">
+          <span class="o3-pill">★★★★★ 4.8 rating</span>
+          <span class="o3-pill">400+ active students</span>
+          <span class="o3-pill">UK · US · AU · CA</span>
+          <span class="o3-pill">75% study time saved</span>
+          <span class="o3-pill">No credit card needed</span>
+        </div>
+      </div>
+      <div class="o3-tools-wrap">
+        <p class="o3-tw-title">Five tools. One platform.</p>
+        <div class="o3-tools-grid">
+          <div class="o3-card bg-green">
+            <span class="o3-card-label">NOTES</span>
+            <div class="o3-card-info">i</div>
+            <h3>Generate notes</h3>
+            <p>Structured revision notes on any topic, instantly</p>
+          </div>
+          <div class="o3-card bg-purple">
+            <span class="o3-card-label">FLASHCARDS</span>
+            <div class="o3-card-info">i</div>
+            <h3>Generate flashcards</h3>
+            <p>Build your recall deck in seconds</p>
+          </div>
+          <div class="o3-card bg-amber">
+            <span class="o3-card-label">QUIZ</span>
+            <div class="o3-card-info">i</div>
+            <h3>Start a quiz</h3>
+            <p>Test yourself before the exam does</p>
+          </div>
+          <div class="o3-card bg-blush">
+            <span class="o3-card-label">FOCUS</span>
+            <div class="o3-card-info">i</div>
+            <h3>Get exam focus</h3>
+            <p>See exactly where marks are at risk</p>
+          </div>
+          <div class="o3-wide">
+            <div><span class="o3-card-label">EXAM PRACTICE</span><h3>Start exam practice</h3><p>Write under timed, real exam conditions</p></div>
+            <button class="o3-wide-btn">Try free →</button>
+          </div>
+        </div>
+      </div>
+      <div class="o3-stats">
+        <div><div class="o3-sv">400<b>+</b></div><div class="o3-sl">Students trust Studiely</div></div>
+        <div><div class="o3-sv">75<b>%</b></div><div class="o3-sl">Study time saved</div></div>
+        <div><div class="o3-sv">3<b>x</b></div><div class="o3-sl">Faster exam prep</div></div>
+        <div><div class="o3-sv">4.8<b>★</b></div><div class="o3-sl">Average student rating</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<hr class="section-divider-line">
+
+<!-- ========================
+     OPTION 4
+========================= -->
+<div id="opt4">
+<div class="section-header">
+  <div class="option-label">⬤ Option 4</div>
+  <h2>Outcome-First + Real Social Proof</h2>
+  <p>The outcomes bar makes the value proposition visible before the user reads a word. Real testimonials appear next to the CTA — this is the highest-converting position on any landing page. The headline focuses on the key differentiator: exam-board specificity.</p>
+  <div class="tags">
+    <span class="tag tag-green">Recommended for highest conversion</span>
+    <span class="tag tag-blue">Social proof at CTA</span>
+    <span class="tag tag-amber">Differentiator-led headline</span>
+  </div>
+</div>
+<div class="mockup-frame">
+  <div class="mockup-browser">
+    <div class="browser-bar">
+      <div class="browser-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+      <div class="browser-url">https://studiely.com</div>
+    </div>
+    <div class="o4">
+      <nav class="o4-nav">
+        <div class="o4-logo"><div class="o4-logo-mark">🎓</div>Studiely</div>
+        <ul><li><a href="#">Pricing</a></li><li><a href="#">FAQs</a></li><li><a href="#">Blogs</a></li><li><a href="#">Nyla AI</a></li></ul>
+        <div style="display:flex;gap:10px;align-items:center">
+          <button style="background:none;border:1px solid #e0e0e0;color:#333;padding:7px 14px;border-radius:8px;font-size:13px;cursor:pointer;font-family:var(--font-body)">Login</button>
+          <button style="background:var(--green);color:#fff;padding:7px 14px;border-radius:8px;font-size:13px;font-weight:500;border:none;cursor:pointer;font-family:var(--font-body)">Get started free</button>
+        </div>
+      </nav>
+      <div class="o4-outcomes-bar">
+        <div class="o4-ob">✓ 75% study time saved</div>
+        <div class="o4-ob">✓ 3x faster exam prep</div>
+        <div class="o4-ob">✓ 4.8 ★ student rating</div>
+        <div class="o4-ob">✓ UK · US · AU · CA curricula</div>
+        <div class="o4-ob">✓ No credit card needed</div>
+      </div>
+      <div class="o4-hero">
+        <div class="o4-left">
+          <h1>Revision tools that <span>match your exam.</span> Not just your topic.</h1>
+          <p class="o4-desc">Studiely generates notes, flashcards, quizzes and practice papers matched to your exact curriculum, grade, and exam board — not generic content.</p>
+          <div class="o4-cta-group">
+            <button class="o4-cta-main">Get started free <span>→</span></button>
+            <span class="o4-cta-note">Free plan available · No credit card · Cancel anytime</span>
+          </div>
+        </div>
+        <div class="o4-right">
+          <p class="o4-right-head">What students say</p>
+          <div class="o4-quotes">
+            <div class="o4-qc">
+              <div class="o4-stars">★★★★★</div>
+              <div class="o4-qtext">"Saved me hours before my A-levels. The notes matched my AQA syllabus perfectly."</div>
+              <div class="o4-qauthor"><div class="o4-qav" style="background:var(--green)">S</div><span class="o4-qname">Sara M. · A-level student, UK</span></div>
+            </div>
+            <div class="o4-qc">
+              <div class="o4-stars">★★★★★</div>
+              <div class="o4-qtext">"The quiz feature actually knows what's in my GCSE paper. Nothing else does that."</div>
+              <div class="o4-qauthor"><div class="o4-qav" style="background:var(--purple)">J</div><span class="o4-qname">James K. · GCSE student, UK</span></div>
+            </div>
+            <div class="o4-qc">
+              <div class="o4-stars">★★★★★</div>
+              <div class="o4-qtext">"Better than any flashcard app I've tried. It understands my actual syllabus."</div>
+              <div class="o4-qauthor"><div class="o4-qav" style="background:var(--amber)">A</div><span class="o4-qname">Aisha R. · AP student, US</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="o4-tools-sect">
+        <div class="o4-ts-head"><h2>Five tools to get exam-ready</h2><a href="#">See all features →</a></div>
+        <div class="o4-tools-row">
+          <div class="o4-card bg-green"><div class="o4-card-icon-wrap">📝</div><h4>Generate notes</h4><p>Structured, syllabus-matched</p></div>
+          <div class="o4-card bg-purple"><div class="o4-card-icon-wrap">🃏</div><h4>Flashcards</h4><p>Recall deck in seconds</p></div>
+          <div class="o4-card bg-amber"><div class="o4-card-icon-wrap">🎯</div><h4>Start a quiz</h4><p>Exam-style questions</p></div>
+          <div class="o4-card bg-blush"><div class="o4-card-icon-wrap">🔍</div><h4>Exam focus</h4><p>Where marks are lost</p></div>
+          <div class="o4-card bg-red"><div class="o4-card-icon-wrap">✍️</div><h4>Exam practice</h4><p>Timed · real conditions</p></div>
+        </div>
+      </div>
+      <div class="o4-stats">
+        <div><div class="o4-sv">400<em>+</em></div><div class="o4-sl">Students trust Studiely</div></div>
+        <div><div class="o4-sv">75<em>%</em></div><div class="o4-sl">Study time saved</div></div>
+        <div><div class="o4-sv">3<em>x</em></div><div class="o4-sl">Faster exam prep</div></div>
+        <div><div class="o4-sv">4.8<em>★</em></div><div class="o4-sl">Average student rating</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<hr class="section-divider-line">
+
+<!-- ========================
+     OPTION 5
+========================= -->
+<div id="opt5">
+<div class="section-header">
+  <div class="option-label">⬤ Option 5</div>
+  <h2>Minimal — Product-First with Animated Search</h2>
+  <p>The most conversion-focused layout. A prominent search box shows the product working rather than describing it. The animated placeholder rotates through real exam-board examples, demonstrating curriculum specificity — your biggest differentiator — without a word of copy.</p>
+  <div class="tags">
+    <span class="tag tag-green">Top pick for conversion</span>
+    <span class="tag tag-blue">Shows product immediately</span>
+    <span class="tag tag-amber">Differentiator via placeholder</span>
+    <span class="tag tag-red">Cleanest hierarchy</span>
+  </div>
+</div>
+<div class="mockup-frame">
+  <div class="mockup-browser">
+    <div class="browser-bar">
+      <div class="browser-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+      <div class="browser-url">https://studiely.com</div>
+    </div>
+    <div class="o5">
+      <nav class="o5-nav">
+        <div class="o5-logo"><div class="o5-logo-mark">🎓</div>Studiely</div>
+        <ul><li><a href="#">Pricing</a></li><li><a href="#">FAQs</a></li><li><a href="#">Blogs</a></li><li><a href="#">Nyla AI</a></li></ul>
+        <div style="display:flex;gap:10px;align-items:center">
+          <button style="background:none;border:none;font-size:13px;color:#555;cursor:pointer;font-family:var(--font-body)">Login</button>
+          <button style="background:var(--green);color:#fff;padding:7px 16px;border-radius:8px;font-size:13px;font-weight:500;border:none;cursor:pointer;font-family:var(--font-body)">Get started free</button>
+        </div>
+      </nav>
+      <div class="o5-hero">
+        <div class="o5-badge">✦ AI-powered · matched to your exam board</div>
+        <h1>Study smarter.<br><em>Start right now.</em></h1>
+        <p class="o5-sub">Type any topic — get structured notes, flashcards, quizzes or exam practice in seconds, matched to your exact syllabus.</p>
+        <div class="o5-search-box">
+          <span class="o5-sb-icon">🔍</span>
+          <span class="o5-sb-text" id="search-placeholder">Try "Photosynthesis — AQA GCSE Biology"…</span>
+          <button class="o5-sb-btn">Generate →</button>
+        </div>
+        <div class="o5-hints">
+          <span class="o5-hint">📝 Generate notes</span>
+          <span class="o5-hint">🃏 Flashcards</span>
+          <span class="o5-hint">🎯 Start a quiz</span>
+          <span class="o5-hint">🔍 Exam focus</span>
+          <span class="o5-hint">✍️ Exam practice</span>
+        </div>
+        <div class="o5-trust-row">
+          <span class="o5-tr">★★★★★ 4.8 rating</span>
+          <span style="color:#ddd">·</span>
+          <span class="o5-tr">400+ students</span>
+          <span style="color:#ddd">·</span>
+          <span class="o5-tr">UK · US · AU · CA</span>
+          <span style="color:#ddd">·</span>
+          <span class="o5-tr">No credit card needed</span>
+        </div>
+      </div>
+      <div class="o5-tools-section">
+        <div class="o5-sep"></div>
+        <p class="o5-tl">Five tools · one platform</p>
+        <div class="o5-t5">
+          <div class="o5-card bg-green"><div class="o5-card-icon-wrap">📝</div><h4>Generate notes</h4><p>Structured, syllabus-matched</p></div>
+          <div class="o5-card bg-purple"><div class="o5-card-icon-wrap">🃏</div><h4>Flashcards</h4><p>Recall deck in seconds</p></div>
+          <div class="o5-card bg-amber"><div class="o5-card-icon-wrap">🎯</div><h4>Start a quiz</h4><p>Exam-style questions</p></div>
+          <div class="o5-card bg-blush"><div class="o5-card-icon-wrap">🔍</div><h4>Exam focus</h4><p>Where marks are lost</p></div>
+          <div class="o5-card bg-red"><div class="o5-card-icon-wrap">✍️</div><h4>Exam practice</h4><p>Timed · real conditions</p></div>
+        </div>
+      </div>
+      <div class="o5-stats">
+        <div><div class="o5-sv">400<b>+</b></div><div class="o5-sl">Students trust Studiely</div></div>
+        <div><div class="o5-sv">75<b>%</b></div><div class="o5-sl">Study time saved</div></div>
+        <div><div class="o5-sv">3<b>x</b></div><div class="o5-sl">Faster exam prep</div></div>
+        <div><div class="o5-sv">4.8<b>★</b></div><div class="o5-sl">Average student rating</div></div>
+      </div>
+      <div class="o5-boards">Built to support major curricula across UK, US, Australia, and Canada · Numbers are live and updated weekly</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ========================
+     MOBILE SCREENS
+========================= -->
+<div id="mobile" class="mobile-section">
+  <div class="mobile-section-header">
+    <div class="option-label">📱 Mobile App</div>
+    <h2>Three Mobile Home Screen Directions</h2>
+    <p>Three distinct approaches for the app's home screen. Each maintains your brand colors while fixing the original's core mobile problems: no greeting context, no search, and equal visual weight on all cards.</p>
+  </div>
+
+  <div class="phones-row">
+
+    <!-- MOBILE A: Clean Light -->
+    <div class="phone-wrap">
+      <div class="phone-label">A · Clean Light</div>
+      <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="mob-a">
+            <div class="mob-a-status">
+              <span>9:41</span>
+              <div class="mob-a-status-icons">▪▪▪ ▸ ▮▮</div>
+            </div>
+            <div class="mob-a-header">
+              <div class="mob-a-logo"><div class="mob-a-logo-mark">🎓</div>Studiely</div>
+              <div class="mob-a-icons">
+                <div class="mob-a-icon-btn">🏆</div>
+                <div class="mob-a-icon-btn">J</div>
+              </div>
+            </div>
+            <div class="mob-a-greeting">
+              <h2>Hi, John 👋</h2>
+              <p>Pick a tool, type your topic, and generate. Everything matched to your syllabus.</p>
+            </div>
+            <div class="mob-a-search">
+              <span class="mob-a-search-icon">🔍</span>
+              <span class="mob-a-search-text">Search any topic…</span>
+            </div>
+            <div class="mob-a-tools-label">Study tools</div>
+            <div class="mob-a-grid">
+              <div class="mob-a-card bg-green">
+                <div class="mob-a-card-icon">📝</div>
+                <h4>Generate notes</h4>
+                <p>Structured notes on any topic</p>
+              </div>
+              <div class="mob-a-card bg-purple">
+                <div class="mob-a-card-icon">🃏</div>
+                <h4>Flashcards</h4>
+                <p>Build recall decks fast</p>
+              </div>
+              <div class="mob-a-card bg-amber">
+                <div class="mob-a-card-icon">🎯</div>
+                <h4>Start a quiz</h4>
+                <p>Test before exam day</p>
+              </div>
+              <div class="mob-a-card bg-blush">
+                <div class="mob-a-card-icon">🔍</div>
+                <h4>Exam focus</h4>
+                <p>Find mark-winning areas</p>
+              </div>
+            </div>
+            <div class="mob-a-wide">
+              <div>
+                <h4>Start exam practice</h4>
+                <p>Timed · real conditions</p>
+              </div>
+              <div class="mob-a-wide-arrow">→</div>
+            </div>
+            <div style="height:8px"></div>
+            <div class="mob-a-bottom">
+              <div class="mob-a-tab active"><div class="mob-a-tab-icon">🏠</div>Home</div>
+              <div class="mob-a-tab"><div class="mob-a-tab-icon">📚</div>Library</div>
+              <div class="mob-a-tab"><div class="mob-a-tab-icon">👤</div>Profile</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MOBILE B: Dark Mode -->
+    <div class="phone-wrap">
+      <div class="phone-label">B · Dark Mode</div>
+      <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="mob-b">
+            <div class="mob-b-status">
+              <span>9:41</span>
+              <div style="display:flex;gap:4px;align-items:center;font-size:10px;color:#555">▪▪▪ ▸ ▮▮</div>
+            </div>
+            <div class="mob-b-header">
+              <div class="mob-b-logo"><div class="mob-b-logo-mark">🎓</div>Studiely</div>
+              <div class="mob-b-icons">
+                <div class="mob-b-icon-btn">🏆</div>
+                <div class="mob-b-icon-btn">J</div>
+              </div>
+            </div>
+            <div class="mob-b-greeting">
+              <div class="good">Good afternoon ☀️</div>
+              <h2>Ready to study, John?</h2>
+              <p>All tools matched to your AQA syllabus.</p>
+            </div>
+            <div class="mob-b-streak">
+              <div class="mob-b-streak-left">
+                <div class="mob-b-streak-icon">🔥</div>
+                <div class="mob-b-streak-text">
+                  <strong>7-day streak</strong>
+                  Study every day this week
+                </div>
+              </div>
+              <div class="mob-b-streak-badge">Keep going!</div>
+            </div>
+            <div class="mob-b-tools-label">Study tools</div>
+            <div class="mob-b-grid">
+              <div class="mob-b-card bg-green">
+                <div class="mob-b-card-icon">📝</div>
+                <h4>Generate notes</h4>
+                <p>Structured, syllabus-matched</p>
+              </div>
+              <div class="mob-b-card bg-purple">
+                <div class="mob-b-card-icon">🃏</div>
+                <h4>Flashcards</h4>
+                <p>Build recall decks fast</p>
+              </div>
+              <div class="mob-b-card bg-amber">
+                <div class="mob-b-card-icon">🎯</div>
+                <h4>Start a quiz</h4>
+                <p>Test before exam day</p>
+              </div>
+              <div class="mob-b-card bg-blush">
+                <div class="mob-b-card-icon">🔍</div>
+                <h4>Exam focus</h4>
+                <p>Find mark-winning areas</p>
+              </div>
+            </div>
+            <div class="mob-b-wide">
+              <div>
+                <h4>Start exam practice</h4>
+                <p>3 free trials · timed conditions</p>
+              </div>
+              <button class="mob-b-wide-btn">Try free</button>
+            </div>
+            <div style="height:8px"></div>
+            <div class="mob-b-bottom">
+              <div class="mob-b-tab active"><div class="mob-b-tab-icon">🏠</div>Home</div>
+              <div class="mob-b-tab"><div class="mob-b-tab-icon">📚</div>Library</div>
+              <div class="mob-b-tab"><div class="mob-b-tab-icon">👤</div>Profile</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MOBILE C: Search-First Minimal -->
+    <div class="phone-wrap">
+      <div class="phone-label">C · Search-First</div>
+      <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="mob-c">
+            <div class="mob-c-status">
+              <span>9:41</span>
+              <div style="display:flex;gap:4px;align-items:center;font-size:10px;color:#aaa">▪▪▪ ▸ ▮▮</div>
+            </div>
+            <div class="mob-c-header">
+              <div class="mob-c-logo"><div class="mob-c-logo-mark">🎓</div>Studiely</div>
+              <div class="mob-c-avatar">J</div>
+            </div>
+            <div class="mob-c-hero">
+              <h2>What do you want to <em>study today?</em></h2>
+              <p>Type a topic and choose your tool below.</p>
+            </div>
+            <div class="mob-c-search">
+              <span class="mob-c-search-icon">🔍</span>
+              <span class="mob-c-search-text">E.g. "Photosynthesis — AQA GCSE"</span>
+              <button class="mob-c-search-btn">→</button>
+            </div>
+            <div class="mob-c-quick-picks">
+              <span class="mob-c-pick">📝 Notes</span>
+              <span class="mob-c-pick">🃏 Flashcards</span>
+              <span class="mob-c-pick">🎯 Quiz</span>
+              <span class="mob-c-pick">🔍 Focus</span>
+            </div>
+            <div class="mob-c-section-label">Or choose a tool</div>
+            <div class="mob-c-grid">
+              <div class="mob-c-card bg-green">
+                <div class="mob-c-card-icon">📝</div>
+                <h4>Generate notes</h4>
+                <p>Structured, syllabus-matched</p>
+              </div>
+              <div class="mob-c-card bg-purple">
+                <div class="mob-c-card-icon">🃏</div>
+                <h4>Flashcards</h4>
+                <p>Build recall decks fast</p>
+              </div>
+              <div class="mob-c-card bg-amber">
+                <div class="mob-c-card-icon">🎯</div>
+                <h4>Start a quiz</h4>
+                <p>Test before exam day</p>
+              </div>
+              <div class="mob-c-card bg-blush">
+                <div class="mob-c-card-icon">🔍</div>
+                <h4>Exam focus</h4>
+                <p>Find mark-winning areas</p>
+              </div>
+            </div>
+            <div class="mob-c-wide">
+              <div class="mob-c-wide-icon">✍️</div>
+              <div>
+                <h4>Start exam practice</h4>
+                <p>Timed · real conditions · 3 free</p>
+              </div>
+            </div>
+            <div style="height:8px"></div>
+            <div class="mob-c-bottom">
+              <div class="mob-c-tab active"><div class="mob-c-tab-icon">🏠</div>Home</div>
+              <div class="mob-c-tab"><div class="mob-c-tab-icon">📚</div>Library</div>
+              <div class="mob-c-tab"><div class="mob-c-tab-icon">👤</div>Profile</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /phones-row -->
+
+  <!-- Mobile annotations -->
+  <div style="max-width:1200px;margin:32px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+    <div style="background:#1e1e1e;border-radius:12px;padding:16px;border:0.5px solid #2a2a2a">
+      <div style="font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--green-mid);margin-bottom:6px">Mobile A · Best for</div>
+      <p style="font-size:13px;color:#888;line-height:1.5">First-time users who need orientation. Clean, trustworthy, easy to scan. Best for your current audience demographic.</p>
+    </div>
+    <div style="background:#1e1e1e;border-radius:12px;padding:16px;border:0.5px solid #2a2a2a">
+      <div style="font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--green-mid);margin-bottom:6px">Mobile B · Best for</div>
+      <p style="font-size:13px;color:#888;line-height:1.5">Returning users. The streak widget drives retention and daily habits. Dark mode is preferred by students studying at night.</p>
+    </div>
+    <div style="background:#1e1e1e;border-radius:12px;padding:16px;border:0.5px solid #2a2a2a">
+      <div style="font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--green-mid);margin-bottom:6px">Mobile C · Best for</div>
+      <p style="font-size:13px;color:#888;line-height:1.5">Power users who know what they want. Search-first removes friction. The quick-pick chips let users jump straight to a tool.</p>
+    </div>
+  </div>
+
+</div><!-- /mobile-section -->
+
+<!-- FOOTER -->
+<div class="file-footer">
+  <p><strong>Studiely Redesign Mockups</strong> · 5 Web Options · 3 Mobile Screens · For design & dev review</p>
+  <p style="margin-top:6px">Brand colors preserved: Green #2E8B57 · Purple #5347C8 · Amber #C68A15 · Blush #C48B7A · Red #D94F4F</p>
+</div>
+
+<script>
+// Animated search placeholder for Option 5
+const phrases = [
+  'Try "Photosynthesis — AQA GCSE Biology"…',
+  'Try "The Cold War — Edexcel A-Level History"…',
+  'Try "Quadratic equations — SAT Math"…',
+  'Try "Macbeth themes — OCR GCSE English"…',
+  'Try "Organic chemistry — VCE Unit 3"…',
+  'Try "Newton\'s laws — WJEC A-Level Physics"…',
+];
+let i = 0;
+const el = document.getElementById('search-placeholder');
+if (el) {
+  el.style.transition = 'opacity 0.35s';
+  setInterval(() => {
+    i = (i + 1) % phrases.length;
+    el.style.opacity = 0;
+    setTimeout(() => { el.textContent = phrases[i]; el.style.opacity = 1; }, 350);
+  }, 3000);
+}
+
+// Sticky nav active state on scroll
+const sections = ['opt1','opt2','opt3','opt4','opt5','mobile'];
+const navLinks = document.querySelectorAll('.site-nav a:not(.logo-area)');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && window.scrollY >= el.offsetTop - 80) current = id;
+  });
+  navLinks.forEach(link => {
+    link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+  });
+});
+</script>
+</body>
+</html>
