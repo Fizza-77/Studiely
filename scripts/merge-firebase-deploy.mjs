@@ -29,7 +29,7 @@ if (existsSync(flutterDir)) {
   );
 } else {
   console.warn(
-    "[merge-firebase-deploy] No local Flutter build; syncing /app from FLUTTER_APP_BASE_URL (default https://www.studiely.com/app/)."
+    "[merge-firebase-deploy] No local Flutter build; syncing /app from FLUTTER_APP_BASE_URL (default https://www.studiely.app/app/)."
   );
   await syncFlutterAppFromLive(join(deploy, "app"));
 }

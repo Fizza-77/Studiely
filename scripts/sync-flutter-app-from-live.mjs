@@ -6,7 +6,8 @@ import { dirname, join } from "node:path";
  * by parsing RESOURCES from flutter_service_worker.js (same file list the PWA precaches).
  */
 export async function syncFlutterAppFromLive(appDir) {
-  const baseUrl = process.env.FLUTTER_APP_BASE_URL || "https://www.studiely.com/app/";
+  const baseUrl =
+    process.env.FLUTTER_APP_BASE_URL || "https://www.studiely.app/app/";
   const swUrl =
     process.env.FLUTTER_SERVICE_WORKER_URL ||
     new URL("flutter_service_worker.js", baseUrl).href;
@@ -19,7 +20,7 @@ export async function syncFlutterAppFromLive(appDir) {
 
   if (/^\s*</.test(swText) || swText.includes("<!DOCTYPE")) {
     throw new Error(
-      `${swUrl} returned HTML, not JS. Set FLUTTER_APP_BASE_URL (e.g. https://www.studiely.com/app/) or use FLUTTER_WEB_BUILD.`
+      `${swUrl} returned HTML, not JS. Set FLUTTER_APP_BASE_URL (e.g. https://www.studiely.app/app/) or use FLUTTER_WEB_BUILD.`
     );
   }
 
