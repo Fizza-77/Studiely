@@ -14,11 +14,69 @@ const pricingLink = (
   </a>
 );
 
+const PREMIUM_PLANS = [
+  { plan: "Monthly", original: "$14.99", offer: "$9.99" },
+  { plan: "3 Months", original: "$44.97", offer: "$29.97" },
+  { plan: "6 Months", original: "$89.94", offer: "$59.94" },
+  { plan: "1 Year", original: "$179.88", offer: "$119.88" },
+] as const;
+
+const OFFER_DISCOUNT = "33.36% Off";
+
+function PremiumPricingTable() {
+  return (
+    <>
+      <div className="faq-pricing-table-wrap overflow-x-auto my-3">
+        <table className="faq-pricing-table w-full min-w-[min(100%,520px)] text-[13px] border-collapse">
+          <thead>
+            <tr className="border-b border-border-default bg-bg-base/80">
+              <th className="py-2.5 pr-3 pl-2 font-semibold text-navy text-left">Plan</th>
+              <th className="py-2.5 pr-3 font-semibold text-navy text-left">Original Price (USD)</th>
+              <th className="py-2.5 pr-3 font-semibold text-navy text-left">Offer Price (USD)</th>
+              <th className="py-2.5 pr-2 font-semibold text-navy text-left">Discount</th>
+            </tr>
+          </thead>
+          <tbody>
+            {PREMIUM_PLANS.map((row) => (
+              <tr key={row.plan} className="border-b border-border-lt last:border-b-0">
+                <td className="py-2.5 pr-3 pl-2 text-body font-medium">{row.plan}</td>
+                <td className="py-2.5 pr-3 text-muted line-through">{row.original}</td>
+                <td className="py-2.5 pr-3 text-navy font-semibold">{row.offer}</td>
+                <td className="py-2.5 pr-2 text-teal-dk font-medium">{OFFER_DISCOUNT}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p className="text-[12px] text-muted">
+        Offer pricing reflects a {OFFER_DISCOUNT} discount compared to the original list price. Geo-based pricing may
+        vary by region — see the {pricingLink} for your location.
+      </p>
+    </>
+  );
+}
+
 export const sectionF: FaqSection = {
   id: "faq-pricing",
   title: "F. Pricing, Plans & Subscriptions",
-  intro: "Costs, geo-based pricing, discounts, cancellation, renewals, refunds, and Exam Practice.",
+  intro:
+    "Premium plan pricing (USD), discounts, cancellation, renewals, refunds, and Exam Practice.",
   items: [
+    {
+      question: "What are Studiely's Premium plan prices?",
+      schemaText:
+        "Studiely Premium plans (USD reference pricing): Monthly original $14.99, offer $9.99; 3 Months original $44.97, offer $29.97; 6 Months original $89.94, offer $59.94; 1 Year original $179.88, offer $119.88. Offer prices reflect a 33.36% discount versus original list price.",
+      answer: (
+        <>
+          <p>
+            The table below shows Studiely Premium subscription plans with original and current offer prices in
+            USD. All offer prices reflect a <strong className="text-navy font-semibold">{OFFER_DISCOUNT}</strong>{" "}
+            discount compared to the original list price.
+          </p>
+          <PremiumPricingTable />
+        </>
+      ),
+    },
     {
       question: "How much does Studiely cost?",
       schemaText:
@@ -34,13 +92,12 @@ export const sectionF: FaqSection = {
             students genuine access to the platform before committing to a subscription.
           </p>
           <p>
-            Premium plans are available on monthly, three-month, six-month, and annual billing cycles. Because Studiely
-            applies geo-based pricing, the exact cost you see will reflect your location — the platform is designed to
-            be accessible to students across different countries and economies, not just those in the highest-income
-            markets.
+            Premium plans are available on monthly, three-month, six-month, and annual billing cycles. Reference USD
+            pricing and current offer discounts are listed in the pricing table in this section.
           </p>
           <p>
-            To see current pricing, please visit the {pricingLink} at studiely.com.
+            Because Studiely applies geo-based pricing, the exact cost you see may reflect your location. To see
+            current pricing in your region, visit the {pricingLink} at studiely.com.
           </p>
           <p>
             The Exam Practice add-on is also available as a separate purchase, providing 50 dedicated exam simulation
@@ -50,50 +107,20 @@ export const sectionF: FaqSection = {
       ),
     },
     {
-      question: "Why does Studiely use geo-based pricing?",
-      schemaText:
-        "Studiely applies geo-based pricing because we believe quality AI-powered revision support should be accessible to students around the world — not just those in high-income markets. Geo-based pricing means that the cost you see when you visit studiely.com reflects purchasing power in your region. To see the pricing available in your location, visit studiely.com/pricing.",
-      answer: (
-        <>
-          <p>
-            Studiely applies geo-based pricing because we believe quality AI-powered revision support should be
-            accessible to students around the world — not just those in high-income markets.
-          </p>
-          <p>
-            A student in the UK, the US, or Australia faces different economic circumstances from a student in
-            Southeast Asia, the Middle East, or Latin America. Charging a single global price would make Studiely
-            unaffordable for many of the students who need it most.
-          </p>
-          <p>
-            Geo-based pricing means that the cost you see when you visit studiely.com reflects purchasing power in
-            your region. This approach is how Studiely stays true to its mission: to give every student access to
-            curriculum-specific, high-quality revision support, regardless of background.
-          </p>
-          <p>
-            To see the pricing available in your location, visit{" "}
-            <a
-              href={STUDIELY_APP.pricing}
-              className="text-teal hover:text-teal-dk underline underline-offset-2"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              studiely.com/pricing
-            </a>
-            .
-          </p>
-        </>
-      ),
-    },
-    {
       question: "Is there a discount for longer subscription plans?",
       schemaText:
-        "Yes. Studiely's three-month, six-month, and annual plans offer a lower effective monthly cost compared to the monthly plan. The annual plan typically provides the best value per month for students who plan to use Studiely consistently across the academic year. Current pricing and plan comparisons are shown on the Pricing page at studiely.com.",
+        "Yes. All Premium plans currently include a 33.36% discount off the original list price. Monthly offer $9.99 (was $14.99); 3 months $29.97 (was $44.97); 6 months $59.94 (was $89.94); 1 year $119.88 (was $179.88). Longer plans also offer a lower effective monthly cost than paying month-to-month.",
       answer: (
         <>
           <p>
-            Yes. Studiely&apos;s three-month, six-month, and annual plans offer a lower effective monthly cost
-            compared to the monthly plan. The annual plan typically provides the best value per month for students who
-            plan to use Studiely consistently across the academic year.
+            Yes. All Premium plans currently include a <strong className="text-navy font-semibold">33.36% off</strong>{" "}
+            discount compared to the original list price. See the pricing table above for original and offer prices in
+            USD.
+          </p>
+          <p>
+            Three-month, six-month, and annual plans also offer a lower effective monthly cost than paying month-to-month.
+            The annual plan typically provides the best value per month for students who plan to use Studiely
+            consistently across the academic year.
           </p>
           <p>
             Current pricing and plan comparisons are shown on the {pricingLink}, where you can see all available

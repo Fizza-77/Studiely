@@ -5,3 +5,23 @@
 :global(.faq-item > summary::-webkit-details-marker) {
   display: none;
 }
+
+:global(.faq-pricing-table-wrap) {
+  border: 1px solid var(--border-default, #e2e8f0);
+  border-radius: 0.5rem;
+  background: #fff;
+}
+
+:global(.faq-pricing-table th),
+:global(.faq-pricing-table td) {
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  :global(.faq-pricing-table th),
+  :global(.faq-pricing-table td) {
+    font-size: 12px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+}
