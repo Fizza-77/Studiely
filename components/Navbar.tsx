@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
 import {
   CurriculumNavIcon,
   NylaAvatar,
@@ -38,8 +37,18 @@ export const Navbar = ({ visibleSections = [] }: NavbarProps) => {
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 24);
     window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (!open) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [open]);
 
   const isLinkActive = (href: string) => {
     const path = href.startsWith("http") ? href : href.split("?")[0].split("#")[0];
@@ -58,50 +67,42 @@ export const Navbar = ({ visibleSections = [] }: NavbarProps) => {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-[400] transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-[400] transition-[background-color,box-shadow,border-color] duration-300 ${
           scrolled
             ? "bg-bg-base/96 md:backdrop-blur-[12px] border-b border-border-default shadow-[0_1px_18px_rgba(0,0,0,0.06)]"
             : "bg-bg-base border-b border-transparent shadow-none"
         }`}
       >
-<div className="wrap h-[66px] grid grid-cols-[auto_1fr_auto] items-center gap-6 md:grid-cols-[1fr_auto_1fr]">
-          {/* Logo + Pills */}
-  <div className="flex items-center gap-2 md:gap-3 min-w-0">
+        <div className="wrap h-[66px] grid grid-cols-[auto_1fr_auto] items-center gap-6 md:grid-cols-[1fr_auto_1fr]">
+          <div className="flex items-center gap-2 md:gap-3 min-w-0">
             <Link href="/" className="flex items-center gap-2 md:gap-3 font-serif text-[21px] text-navy shrink-0">
               <Image src="/logo.jpeg" alt="Studiely logo" width={30} height={30} priority className="shrink-0 rounded-md" />
               Studiely
             </Link>
 
-            {/* Pills for larger screens */}
             <div className="hidden md:flex items-center gap-1 overflow-x-auto">
-              {NAV_PILLS.map(({ id, label, Icon }) => (
-                <AnimatePresence key={id}>
-                  {visibleSections.includes(id) && (
-                    <motion.div
-                      initial={{ opacity: 0, x: -16, scale: 0.8 }}
-                      animate={{ opacity: 1, x: 0, scale: 1 }}
-                      exit={{ opacity: 0, x: -10, scale: 0.85 }}
-                      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                      className="flex items-center gap-[5px] p-[3px_8px_3px_3px] rounded-full bg-white border border-border-default shadow-[0_1px_6px_rgba(0,0,0,0.05)] shrink-0 whitespace-nowrap"
-                    >
-                      <Icon sz={20} />
-                      <span className="text-[11px] font-medium text-muted tracking-[-0.01em]">{label}</span>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              ))}
+              {NAV_PILLS.map(({ id, label, Icon }) =>
+                visibleSections.includes(id) ? (
+                  <div
+                    key={id}
+                    className="nav-pill-enter flex items-center gap-[5px] p-[3px_8px_3px_3px] rounded-full bg-white border border-border-default shadow-[0_1px_6px_rgba(0,0,0,0.05)] shrink-0 whitespace-nowrap"
+                  >
+                    <Icon sz={20} />
+                    <span className="text-[11px] font-medium text-muted tracking-[-0.01em]">{label}</span>
+                  </div>
+                ) : null
+              )}
             </div>
           </div>
 
-          {/* Desktop nav links */}
-  <nav className="hidden md:flex items-center gap-7 justify-center" aria-label="Main">
+          <nav className="hidden md:flex items-center gap-7 justify-center" aria-label="Main">
             {links.map(([l, h]) => (
               <Link
                 key={l}
                 href={h}
                 aria-current={isLinkActive(h) ? "page" : undefined}
                 onClick={() => setActiveLink(h)}
-                className={`rounded-full px-3 py-1.5 text-[13.5px] text-black transition-all duration-150 font-normal whitespace-nowrap hover:bg-white hover:text-navy hover:shadow-[0_1px_8px_rgba(0,0,0,0.08)] ${
+                className={`rounded-full px-3 py-1.5 text-[13.5px] text-black transition-colors duration-150 font-normal whitespace-nowrap hover:bg-white hover:text-navy hover:shadow-[0_1px_8px_rgba(0,0,0,0.08)] ${
                   isLinkActive(h) ? "bg-white text-navy shadow-[0_1px_8px_rgba(0,0,0,0.08)] ring-1 ring-border-default" : ""
                 }`}
               >
@@ -110,72 +111,66 @@ export const Navbar = ({ visibleSections = [] }: NavbarProps) => {
             ))}
           </nav>
 
-<div className="flex items-center justify-end gap-2 w-full">
-  {/* Desktop CTAs: visible only on md+ */}
-  <div className="hidden md:flex gap-2">
-    <Button href={STUDIELY_APP.login} variant="outline" className="py-2 px-4 text-[13px]">
-      Login
-    </Button>
-    <Button href={STUDIELY_APP.home} variant="solid" className="py-2 px-4 text-[13px]">
-      Get Started Free
-    </Button>
-  </div>
-
-  {/* Hamburger: visible only below md */}
-  <button
-className="flex md:hidden flex-col gap-[5px] bg-transparent border-none p-1"
-    onClick={() => setOpen((o) => !o)}
-    aria-label="Toggle menu"
-  >
-    {[0, 1, 2].map((i) => (
-      <span
-        key={i}
-        className={`block w-5 h-[1.5px] bg-navy transition-all duration-250 ${
-          open && i === 0 ? "translate-y-[6.5px] rotate-45" : ""
-        } ${open && i === 2 ? "-translate-y-[6.5px] -rotate-45" : ""} ${
-          open && i === 1 ? "opacity-0" : "opacity-100"
-        }`}
-      />
-    ))}
-  </button>
-</div>
-</div>
-      </header>
-
-      {/* Mobile menu */}
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.2 }}
-            className="fixed top-[66px] left-0 right-0 z-[399] bg-white border-b border-border-default p-4 sm:p-6 md:hidden shadow-lg"
-          >
-            {links.map(([l, h]) => (
-              <Link
-                key={l}
-                href={h}
-                aria-current={isLinkActive(h) ? "page" : undefined}
-                onClick={() => setOpen(false)}
-                className={`block rounded-lg px-3 py-3 text-base text-black transition-all duration-150 border-b border-border-lt last:border-b-0 ${
-                  isLinkActive(h) ? "bg-bg-base text-navy font-medium" : ""
-                }`}
-              >
-                {l}
-              </Link>
-            ))}
-            <div className="flex flex-col sm:flex-row gap-2 mt-4">
-              <Button href={STUDIELY_APP.login} variant="outline" className="w-full flex-1">
+          <div className="flex items-center justify-end gap-2 w-full">
+            <div className="hidden md:flex gap-2">
+              <Button href={STUDIELY_APP.login} variant="outline" className="py-2 px-4 text-[13px]">
                 Login
               </Button>
-              <Button href={STUDIELY_APP.home} variant="solid" className="w-full flex-1">
+              <Button href={STUDIELY_APP.home} variant="solid" className="py-2 px-4 text-[13px]">
                 Get Started Free
               </Button>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+
+            <button
+              className="flex md:hidden flex-col gap-[5px] bg-transparent border-none p-1"
+              onClick={() => setOpen((o) => !o)}
+              aria-expanded={open}
+              aria-label="Toggle menu"
+            >
+              {[0, 1, 2].map((i) => (
+                <span
+                  key={i}
+                  className={`block w-5 h-[1.5px] bg-navy transition-transform duration-250 ${
+                    open && i === 0 ? "translate-y-[6.5px] rotate-45" : ""
+                  } ${open && i === 2 ? "-translate-y-[6.5px] -rotate-45" : ""} ${
+                    open && i === 1 ? "opacity-0" : "opacity-100"
+                  }`}
+                />
+              ))}
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {open ? (
+        <div
+          className="nav-menu-enter fixed top-[66px] left-0 right-0 z-[399] bg-white border-b border-border-default p-4 sm:p-6 md:hidden shadow-lg"
+          role="dialog"
+          aria-label="Mobile navigation"
+        >
+          {links.map(([l, h]) => (
+            <Link
+              key={l}
+              href={h}
+              aria-current={isLinkActive(h) ? "page" : undefined}
+              onClick={() => setOpen(false)}
+              className={`block rounded-lg px-3 py-3 text-base text-black transition-colors duration-150 border-b border-border-lt last:border-b-0 ${
+                isLinkActive(h) ? "bg-bg-base text-navy font-medium" : ""
+              }`}
+            >
+              {l}
+            </Link>
+          ))}
+          <div className="flex flex-col sm:flex-row gap-2 mt-4">
+            <Button href={STUDIELY_APP.login} variant="outline" className="w-full flex-1">
+              Login
+            </Button>
+            <Button href={STUDIELY_APP.home} variant="solid" className="w-full flex-1">
+              Get Started Free
+            </Button>
+          </div>
+        </div>
+      ) : null}
     </>
   );
 };

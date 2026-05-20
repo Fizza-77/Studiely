@@ -56,7 +56,7 @@ export const SectionHeader = ({
         style={{
           color: labelColor,
           opacity: vis ? 1 : 0,
-          transform: vis ? "translateY(0)" : "translateY(12px)",
+          transform: vis ? "translate3d(0,0,0)" : "translate3d(0,12px,0)",
           transition: getTransition(0),
         }}
         className="fluid-eyebrow mb-[clamp(0.55rem,1vw,0.9rem)] block font-semibold uppercase"
@@ -67,7 +67,7 @@ export const SectionHeader = ({
         style={{
           color: titleColor,
           opacity: vis ? 1 : 0,
-          transform: vis ? "translateY(0)" : "translateY(16px)",
+          transform: vis ? "translate3d(0,0,0)" : "translate3d(0,16px,0)",
           transition: getTransition(0.08),
         }}
         className="font-serif text-[clamp(1.6rem,1.15rem+1.95vw,2.7rem)] font-normal leading-[1.13] tracking-[-0.02em]"
@@ -79,7 +79,7 @@ export const SectionHeader = ({
           style={{
             color: subColor,
             opacity: vis ? 1 : 0,
-            transform: vis ? "translateY(0)" : "translateY(12px)",
+            transform: vis ? "translate3d(0,0,0)" : "translate3d(0,12px,0)",
             transition: getTransition(0.16),
           }}
           className={cn(

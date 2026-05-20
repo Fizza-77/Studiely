@@ -2,8 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { DM_Sans, DM_Serif_Display } from "next/font/google";
 import "./globals.css";
 import { DEFAULT_OG_IMAGE_PATH, SITE_URL } from "@/lib/site";
-import Script from "next/script";
 import { CookieConsentBannerClient } from "@/components/CookieConsentBannerClient";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { Navbar } from "@/components/Navbar";
 
 const dmSans = DM_Sans({
@@ -132,13 +132,9 @@ export default function RootLayout({
           name="facebook-domain-verification"
           content="ixoxjly0raima1favd2auxjangpbg5"
         />
-        <Script
-          strategy="lazyOnload"
-          src="https://www.googletagmanager.com/gtag/js?id=G-NXQX4TMW7X"
-        />
-        <Script id="google-analytics-init" strategy="lazyOnload" src="/gtag-init.js" />
       </head>
       <body className="antialiased font-sans bg-bg-base text-body">
+        <GoogleAnalytics />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

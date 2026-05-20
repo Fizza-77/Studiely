@@ -194,3 +194,40 @@
     padding: clamp(1rem, 0.8rem + 0.95vw, 1.55rem);
   }
 }
+
+@keyframes navPillEnter {
+  from {
+    opacity: 0;
+    transform: translate3d(-16px, 0, 0) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes navMenuEnter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -8px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.nav-pill-enter {
+  animation: navPillEnter 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.nav-menu-enter {
+  animation: navMenuEnter 0.2s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-pill-enter,
+  .nav-menu-enter {
+    animation: none;
+  }
+}

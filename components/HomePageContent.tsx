@@ -2,24 +2,35 @@
 
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import { useState, useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { STUDIELY_APP } from "@/lib/appUrls";
 import { Footer } from "@/components/Footer";
 import { NylaAvatar } from "@/components/Icons";
 import { HeroSection } from "@/sections/HeroSection";
-import { HeroMarketingSection } from "@/sections/HeroMarketingSection";
 import { StatsSection } from "@/sections/StatsSection";
-import { HowItWorksSection } from "@/sections/HowItWorksSection";
-import { SupportedCountriesSection } from "@/sections/SupportedCountriesSection";
-import { RewardsProgressSection } from "@/sections/RewardsProgressSection";
-import { NylaSection } from "@/sections/NylaSection";
-import { CTASection } from "@/sections/CTASection";
 
-// Defer below-the-fold sections to reduce initial JS/CSS bundle
+const HowItWorksSection = dynamic(
+  () => import("@/sections/HowItWorksSection").then((m) => m.HowItWorksSection),
+  { ssr: true }
+);
+const NylaSection = dynamic(() => import("@/sections/NylaSection").then((m) => m.NylaSection), {
+  ssr: true,
+});
+const SupportedCountriesSection = dynamic(
+  () => import("@/sections/SupportedCountriesSection").then((m) => m.SupportedCountriesSection),
+  { ssr: true }
+);
+const RewardsProgressSection = dynamic(
+  () => import("@/sections/RewardsProgressSection").then((m) => m.RewardsProgressSection),
+  { ssr: true }
+);
 const ReviewsSection = dynamic(() => import("@/sections/ReviewsSection").then((m) => m.ReviewsSection), {
   ssr: true,
 });
 const SisterSection = dynamic(() => import("@/sections/SisterSection").then((m) => m.SisterSection), {
+  ssr: true,
+});
+const CTASection = dynamic(() => import("@/sections/CTASection").then((m) => m.CTASection), {
   ssr: true,
 });
 
@@ -30,61 +41,12 @@ type HomePageContentProps = {
 
 export function HomePageContent({ scrollToHeroOnMount = false }: HomePageContentProps) {
   const nylaHref = "/nyla";
-  const [visibleSections, setVisibleSections] = useState<string[]>([]);
-  const curriculumRef = useRef<HTMLElement>(null);
   const nylaRef = useRef<HTMLElement>(null);
+  const curriculumRef = useRef<HTMLElement>(null);
   const rewardsRef = useRef<HTMLElement>(null);
   const reviewsRef = useRef<HTMLElement>(null);
   const pricingRef = useRef<HTMLElement>(null);
   const sisterRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const ORDER = ["curriculum", "nyla", "rewards", "reviews", "pricing", "sister"];
-    const sections = [
-      { id: "curriculum", ref: curriculumRef },
-      { id: "nyla", ref: nylaRef },
-      { id: "rewards", ref: rewardsRef },
-      { id: "reviews", ref: reviewsRef },
-      { id: "pricing", ref: pricingRef },
-      { id: "sister", ref: sisterRef },
-    ];
-
-    const visibilityMap = new Map<string, boolean>();
-    let debounceTimer: NodeJS.Timeout;
-
-    const commitVisibilityChanges = () => {
-      setVisibleSections((prev) => {
-        const updated = new Set(prev);
-        visibilityMap.forEach((isVisible, id) => {
-          if (isVisible) {
-            updated.add(id);
-          } else {
-            updated.delete(id);
-          }
-        });
-        return ORDER.filter((s) => updated.has(s));
-      });
-      visibilityMap.clear();
-    };
-
-    const observers = sections.map(({ id, ref }) => {
-      const o = new IntersectionObserver(
-        ([entry]) => {
-          visibilityMap.set(id, entry.isIntersecting);
-          clearTimeout(debounceTimer);
-          debounceTimer = setTimeout(commitVisibilityChanges, 50);
-        },
-        { threshold: 0.18, rootMargin: "-66px 0px 0px 0px" }
-      );
-      if (ref.current) o.observe(ref.current);
-      return o;
-    });
-
-    return () => {
-      clearTimeout(debounceTimer);
-      observers.forEach((o) => o.disconnect());
-    };
-  }, []);
 
   useEffect(() => {
     if (!scrollToHeroOnMount) return;

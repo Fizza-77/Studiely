@@ -38,8 +38,9 @@ export const Reveal = ({ children, delay = 0, y = 22, style: sx, className }: Re
       ref={ref}
       style={{
         opacity: vis ? 1 : 0,
-        transform: vis ? "translateY(0)" : `translateY(${y}px)`,
+        transform: vis ? "translate3d(0,0,0)" : `translate3d(0,${y}px,0)`,
         transition: `opacity .7s cubic-bezier(.22,1,.36,1) ${delay}s, transform .7s cubic-bezier(.22,1,.36,1) ${delay}s`,
+        willChange: vis ? "auto" : "opacity, transform",
         ...sx,
       }}
       className={cn(className)}

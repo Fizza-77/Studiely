@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
+import { loadGoogleAnalytics } from "@/lib/gtag";
 
 const STORAGE_KEY = "studiely_policies_consent_v2";
 
@@ -75,18 +76,21 @@ export function CookieConsentBanner() {
     [agree]
   );
 
-  const persistAndClose = () => {
+  const persistAndClose = (opts?: { enableAnalytics?: boolean }) => {
     try {
       localStorage.setItem(STORAGE_KEY, "1");
     } catch {
       /* ignore */
+    }
+    if (opts?.enableAnalytics ?? agree.cookie) {
+      loadGoogleAnalytics();
     }
     setShow(false);
   };
 
   const acceptAll = () => {
     setAgree({ aup: true, cookie: true, disclaimer: true });
-    persistAndClose();
+    persistAndClose({ enableAnalytics: true });
   };
 
   const toggle = (id: Key) => {
