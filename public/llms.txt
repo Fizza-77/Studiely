@@ -1,0 +1,67 @@
+# Studiely
+
+> Studiely is an AI-powered study platform for school students. It provides curriculum-aligned summary notes, flashcards, quizzes, exam practice, and Nyla (AI tutor) for IGCSE, GCSE, IB, A-Level, SAT, HSC, and more. Free to start on web, iOS, and Android.
+
+## About
+
+- Brand: Studiely
+- Website: https://studiely.com
+- App: https://www.studiely.app
+- Company: Skyen Solutions (trade name of Qismat Ventures W.L.L.), Bahrain
+- Sister platforms: Make My Lesson (https://makemylesson.ai), Linguatude (https://linguatude.com)
+- Support: support@studiely.com
+
+Studiely is not affiliated with, endorsed by, or an official product of Cambridge Assessment International Education, Pearson Edexcel, AQA, OCR, the IB Organisation, or any other examination board.
+
+## Main Pages
+
+- Home: https://studiely.com/
+- Features: https://studiely.com/features
+- Nyla AI Tutor: https://studiely.com/nyla
+- Blog: https://studiely.com/blog
+- FAQs: https://studiely.com/faqs
+- Contact: https://studiely.com/contact
+- Pricing: https://www.studiely.app/app/pricing
+- Login: https://www.studiely.app/app/login
+- Sign up: https://www.studiely.app/app/sign-up
+- Sitemap: https://studiely.com/sitemap.xml
+
+## Study Tools
+
+- Summary Notes: https://studiely.app/app/summary-notes
+- Flashcards: https://studiely.app/app/flashcards
+- Quiz: https://studiely.app/app/quiz
+- Exam Practice: https://www.studiely.app/app/exampractice
+- Exam Focus: https://studiely.app/app/exam-focus
+- Nyla AI Tutor: https://www.studiely.app/app/nyla
+- Library: https://www.studiely.app/app/library
+- Mnemonics generator (in-app)
+
+## Exams & Curricula
+
+Supported curriculum systems:
+- British: IGCSE, GCSE, A-Level
+- International Baccalaureate (IB): PYP, MYP, Diploma Programme
+- US: AP courses, Common Core-aligned content
+- Canadian: province-aligned content (Grade 1–12)
+- Australian: NAPLAN, HSC, VCE, QCE, WACE, SACE, TCE, ACT SSC, NTCET, ATAR
+
+Exam boards referenced (content aligned, not officially affiliated):
+- Cambridge Assessment International Education
+- Pearson Edexcel
+- AQA
+- OCR
+- IB Organisation
+
+## Legal
+
+- Legal hub: https://studiely.com/legal
+- Privacy Policy: https://studiely.com/privacy-policy
+- Terms of Service: https://studiely.com/terms-of-service
+- Acceptable Use Policy: https://studiely.com/acceptable-use
+- Cookie Policy: https://studiely.com/cookie-policy
+- Disclaimer: https://studiely.com/disclaimer
+- Delete account & data: https://studiely.com/legal/delete-account-and-data
+- Apple Privacy Policy: https://studiely.com/legal/privacy-policy-apple
+- Web Privacy Policy: https://studiely.com/legal/web/privacy-policy
+- Refund Policy: https://studiely.com/legal/web/refund-policy
