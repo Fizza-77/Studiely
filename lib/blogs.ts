@@ -62,7 +62,7 @@ async function execPostgrestWithRetries<T>(
 
 /** Columns shared by list and detail (SEO + structured data fields). */
 const BLOG_SEO_FIELDS =
-  "slug, title, description, meta_title, meta_description, cover_image_url, display_date, author_name, keywords, article_section";
+  "slug, title, description, meta_title, meta_description, cover_image_url, date_published, date_modified, main_entity_of_page, author_name, keywords, article_section";
 
 export type BlogListRow = {
   id: string;
@@ -72,7 +72,9 @@ export type BlogListRow = {
   meta_title: string | null;
   meta_description: string | null;
   cover_image_url: string | null;
-  display_date: string | null;
+  date_published: string | null;
+  date_modified: string | null;
+  main_entity_of_page: string | null;
   author_name: string | null;
   keywords: string | null;
   article_section: string | null;
@@ -264,7 +266,7 @@ export async function getBlogIndexDataForStudiely(): Promise<BlogIndexDataForStu
         )
         .eq("site_id", siteId)
         .eq("status", "published")
-        .order("display_date", { ascending: false })
+        .order("date_published", { ascending: false })
     ),
   ]);
 
@@ -358,7 +360,7 @@ export async function getBlogBySlugForConfiguredSite(
  * Get all blog slugs (for static generation, etc.)
  */
 export async function getBlogSlugsForConfiguredSite(): Promise<
-  { slug: string; display_date: string | null }[]
+  { slug: string; date_published: string | null; date_modified: string | null }[]
 > {
   const siteId = await getSiteIdForStudiely();
   if (!siteId) return [];
@@ -370,11 +372,11 @@ export async function getBlogSlugsForConfiguredSite(): Promise<
     const data = await execPostgrestWithRetries("fetch blog slugs", () =>
       client
         .from("blogs")
-        .select("slug, display_date")
+        .select("slug, date_published, date_modified")
         .eq("site_id", siteId)
         .eq("status", "published")
     );
-    return (data ?? []) as { slug: string; display_date: string | null }[];
+    return (data ?? []) as { slug: string; date_published: string | null; date_modified: string | null }[];
   } catch (e) {
     if (process.env.BUILD_SKIP_BLOGS_ON_SUPABASE_ERROR === "1") {
       console.warn(

@@ -8,15 +8,47 @@ export type BlogPostForJsonLd = {
   meta_title: string | null;
   meta_description: string | null;
   cover_image_url: string | null;
-  display_date: string | null;
+  date_published: string | null;
+  date_modified: string | null;
+  main_entity_of_page: string | null;
   author_name: string | null;
   keywords: string | null;
   article_section: string | null;
 };
 
+function toIsoDate(value: string | null | undefined): string | undefined {
+  if (!value?.trim()) return undefined;
+  return new Date(value).toISOString();
+}
+
+function buildMainEntityOfPage(
+  blog: Pick<BlogPostForJsonLd, "slug" | "main_entity_of_page">
+): Record<string, unknown> | string {
+  const fromDb = blog.main_entity_of_page?.trim();
+  if (fromDb) {
+    if (fromDb.startsWith("{")) {
+      try {
+        return JSON.parse(fromDb) as Record<string, unknown>;
+      } catch {
+        // fall through to WebPage wrapper
+      }
+    }
+    return {
+      "@type": "WebPage",
+      "@id": fromDb,
+    };
+  }
+
+  const url = `${SITE_URL}/blog/${blog.slug}`;
+  return {
+    "@type": "WebPage",
+    "@id": url,
+  };
+}
+
 /**
  * Builds a BlogPosting object for JSON-LD (headline, description, author,
- * datePublished, image, keywords, articleSection).
+ * datePublished, dateModified, mainEntityOfPage, image, keywords, articleSection).
  */
 export function buildBlogPostingJsonLd(blog: BlogPostForJsonLd): Record<string, unknown> {
   const url = `${SITE_URL}/blog/${blog.slug}`;
@@ -34,17 +66,16 @@ export function buildBlogPostingJsonLd(blog: BlogPostForJsonLd): Record<string, 
     "@type": "BlogPosting",
     headline,
     url,
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": url,
-    },
+    mainEntityOfPage: buildMainEntityOfPage(blog),
   };
 
   if (description) jsonLd.description = description;
 
-  if (blog.display_date) {
-    jsonLd.datePublished = new Date(blog.display_date).toISOString();
-  }
+  const datePublished = toIsoDate(blog.date_published);
+  if (datePublished) jsonLd.datePublished = datePublished;
+
+  const dateModified = toIsoDate(blog.date_modified);
+  if (dateModified) jsonLd.dateModified = dateModified;
 
   if (image) jsonLd.image = image;
 

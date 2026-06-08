@@ -59,8 +59,11 @@ export async function generateMetadata({
       url: canonical,
       siteName: "Studiely",
       locale: "en_US",
-      publishedTime: blog.display_date
-        ? new Date(blog.display_date).toISOString()
+      publishedTime: blog.date_published
+        ? new Date(blog.date_published).toISOString()
+        : undefined,
+      modifiedTime: blog.date_modified
+        ? new Date(blog.date_modified).toISOString()
         : undefined,
       images: ogImage,
     },
