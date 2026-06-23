@@ -146,14 +146,14 @@ export function HomePageContent({ scrollToHeroOnMount = false }: HomePageContent
 
       <Link
         href={nylaHref}
-        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[450] flex h-20 w-20 sm:h-[5.5rem] sm:w-[5.5rem] shrink-0 overflow-hidden rounded-full shadow-[0_8px_22px_rgba(0,0,0,0.28),0_3px_10px_rgba(0,0,0,0.16)] animate-fab-float motion-reduce:animate-none transition-shadow duration-200 hover:shadow-[0_12px_28px_rgba(0,0,0,0.34),0_5px_14px_rgba(0,0,0,0.2)] active:scale-95"
+        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[450] flex h-[4.5rem] w-[4.5rem] sm:h-20 sm:w-20 shrink-0 overflow-hidden rounded-full shadow-[0_8px_22px_rgba(0,0,0,0.28),0_3px_10px_rgba(0,0,0,0.16)] animate-fab-float motion-reduce:animate-none transition-shadow duration-200 hover:shadow-[0_12px_28px_rgba(0,0,0,0.34),0_5px_14px_rgba(0,0,0,0.2)] active:scale-95"
         aria-label="Go to Nyla"
       >
         <Image
           src="/nyla-avatar.png"
           alt="Nyla"
-          width={88}
-          height={88}
+          width={80}
+          height={80}
           priority
           className="h-full w-full object-cover"
         />
