@@ -1,11 +1,11 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import dynamic from "next/dynamic";
 import { useRef, useEffect } from "react";
 import { STUDIELY_APP } from "@/lib/appUrls";
 import { Footer } from "@/components/Footer";
-import { NylaAvatar } from "@/components/Icons";
 import { HeroSection } from "@/sections/HeroSection";
 import { StatsSection } from "@/sections/StatsSection";
 
@@ -146,10 +146,17 @@ export function HomePageContent({ scrollToHeroOnMount = false }: HomePageContent
 
       <Link
         href={nylaHref}
-        className="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 z-50 inline-flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-full bg-[#6d4ede] shadow-[0_10px_25px_rgba(0,0,0,0.26)] transition-transform duration-200 hover:-translate-y-1 active:scale-95"
+        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[450] flex h-20 w-20 sm:h-[5.5rem] sm:w-[5.5rem] shrink-0 overflow-hidden rounded-full shadow-[0_8px_22px_rgba(0,0,0,0.28),0_3px_10px_rgba(0,0,0,0.16)] animate-fab-float motion-reduce:animate-none transition-shadow duration-200 hover:shadow-[0_12px_28px_rgba(0,0,0,0.34),0_5px_14px_rgba(0,0,0,0.2)] active:scale-95"
         aria-label="Go to Nyla"
       >
-        <NylaAvatar size={42} noBackground />
+        <Image
+          src="/nyla-avatar.png"
+          alt="Nyla"
+          width={88}
+          height={88}
+          priority
+          className="h-full w-full object-cover"
+        />
       </Link>
     </>
   );

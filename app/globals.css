@@ -29,6 +29,7 @@
   --animate-hr-hand-spin: hrHandSpin 48s linear infinite;
 --animate-price-float: priceFloat 6s ease-in-out infinite;
 --animate-price-in: priceIn 0.7s cubic-bezier(.22,1,.36,1) both;
+--animate-fab-float: fabFloat 3s ease-in-out infinite;
 
 @keyframes priceIn {
   0% {
@@ -47,6 +48,16 @@
   }
   50% {
     transform: translateY(-6px);
+  }
+}
+
+@keyframes fabFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
   }
 }
 

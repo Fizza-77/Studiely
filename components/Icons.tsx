@@ -1,33 +1,20 @@
-export const NylaAvatar = ({ size = 44, noBackground = false }: { size?: number; noBackground?: boolean }) => (
-  <svg width={size} height={size} viewBox="0 0 80 80" fill="none" className="shrink-0 block">
-    {!noBackground && <circle cx="40" cy="40" r="40" fill="#5448c8" />}
-    <rect x="21" y="19" width="38" height="31" rx="11" fill="white" fillOpacity=".96" />
-    <circle cx="31.5" cy="32" r="5" fill="#5448c8" />
-    <circle cx="33" cy="30.5" r="1.8" fill="white" />
-    <circle cx="31.5" cy="32" r="1.5" fill="#3a2ab0" />
-    <circle cx="48.5" cy="32" r="5" fill="#5448c8" />
-    <circle cx="50" cy="30.5" r="1.8" fill="white" />
-    <circle cx="48.5" cy="32" r="1.5" fill="#3a2ab0" />
-    <path
-      d="M33 41 Q40 48 47 41"
-      stroke="#5448c8"
-      strokeWidth="2.2"
-      strokeLinecap="round"
-      fill="none"
+import Image from "next/image";
+
+const NYLA_AVATAR_SRC = "/nyla-avatar.png";
+
+export const NylaAvatar = ({ size = 44 }: { size?: number; noBackground?: boolean }) => (
+  <span
+    className="inline-flex shrink-0 overflow-hidden rounded-full"
+    style={{ width: size, height: size }}
+  >
+    <Image
+      src={NYLA_AVATAR_SRC}
+      alt="Nyla"
+      width={size}
+      height={size}
+      className="h-full w-full object-cover"
     />
-    <ellipse cx="26" cy="38" rx="4" ry="2.5" fill="#d97b2a" fillOpacity=".32" />
-    <ellipse cx="54" cy="38" rx="4" ry="2.5" fill="#d97b2a" fillOpacity=".32" />
-    <line x1="40" y1="19" x2="40" y2="11" stroke="white" strokeWidth="2.5" strokeLinecap="round" />
-    <circle cx="40" cy="9" r="3.5" fill="#00b09b" />
-    <circle cx="40" cy="9" r="1.5" fill="white" />
-    <rect x="12" y="26" width="9" height="14" rx="4.5" fill="#d97b2a" />
-    <rect x="12" y="29" width="5" height="8" rx="2.5" fill="#ffb07a" />
-    <rect x="59" y="26" width="9" height="14" rx="4.5" fill="#d97b2a" />
-    <rect x="64" y="29" width="5" height="8" rx="2.5" fill="#ffb07a" />
-    <rect x="27" y="51" width="26" height="16" rx="7" fill="white" fillOpacity=".18" />
-    <circle cx="36" cy="59" r="2.5" fill="#00b09b" />
-    <circle cx="44" cy="59" r="2.5" fill="#d97b2a" />
-  </svg>
+  </span>
 );
 
 export const StudyToolsNavIcon = ({ size = 20 }: { size?: number }) => (
