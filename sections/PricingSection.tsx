@@ -67,7 +67,7 @@ export const PricingSection = ({ compact = false }) => {
                   >
                     {plan.name}
                   </h2>
-                  {plan.orig && (
+                  {"orig" in plan && plan.orig && (
                     <div
                       className={`text-[12px] line-through mb-0.5 ${
                         plan.featured ? "text-white/30" : "text-[#c0c0c8]"
