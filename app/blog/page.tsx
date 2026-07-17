@@ -1,11 +1,10 @@
-// app/blog/page.tsx
 import type { Metadata } from "next";
-import Link from "next/link";
-import { Footer } from "@/components/Footer";
-import { PageHeader } from "@/components/PageHeader";
-import { getBlogIndexPageDataWithReactions } from "@/lib/blogReactions";
+import { BlogPageContent } from "@/components/BlogPageContent";
+import { ContactFooter } from "@/components/ContactFooter";
+import { getBlogIndexDataForStudiely } from "@/lib/blogs";
 import { DEFAULT_OG_IMAGE_PATH, SITE_URL } from "@/lib/site";
 import { buildBreadcrumbSchema } from "@/lib/seo";
+import { BlogHeroSection } from "@/sections/BlogHeroSection";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -44,8 +43,8 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function BlogPage({ searchParams }: BlogPageProps) {
-  const indexData = await getBlogIndexPageDataWithReactions();
-  const { posts, categories, seo, reactionCountsByBlog } = indexData;
+  const indexData = await getBlogIndexDataForStudiely();
+  const { posts, categories, seo } = indexData;
   const breadcrumbSchema = buildBreadcrumbSchema("Blog", "/blog");
   const resolvedSearchParams = await searchParams;
 
@@ -63,113 +62,19 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
           __html: JSON.stringify(breadcrumbSchema),
         }}
       />
-      <PageHeader
-        label="Resources"
-        title={seo.headline}
-        sub={seo.subheadline}
-        variant="compact"
-      />
-      <main className="bg-bg-base min-h-screen pt-[32px] pb-[40px]">
-        <div className="wrap max-w-[1120px] mx-auto px-4">
-          {categories.length > 0 && (
-            <nav
-              aria-label="Filter posts by category"
-              className="flex flex-wrap items-center gap-2 mb-6"
-            >
-              <Link
-                href="/blog"
-                className={`px-3 py-1.5 rounded-full border text-[12px] transition-colors ${
-                  !hasActiveCategory
-                    ? "border-teal text-teal"
-                    : "border-border-default text-muted hover:text-body"
-                }`}
-              >
-                All
-              </Link>
-              {categories.map((category) => (
-                <Link
-                  key={category.id}
-                  href={`/blog?category=${encodeURIComponent(category.slug)}`}
-                  className={`px-3 py-1.5 rounded-full border text-[12px] transition-colors ${
-                    activeCategory === category.slug
-                      ? "border-teal text-teal"
-                      : "border-border-default text-muted hover:text-body"
-                  }`}
-                >
-                  {category.name}
-                </Link>
-              ))}
-            </nav>
-          )}
-          <section
-            aria-label="Blog articles"
-            className="grid grid-cols-1 md:grid-cols-3 gap-6"
-          >
-            {visiblePosts.length === 0 ? (
-              <p className="text-muted text-[13px]">
-                {seo.empty_state_message}
-              </p>
-            ) : (
-              visiblePosts.map((post) => (
-                <Link
-                  key={post.slug}
-                  href={`/blog/${post.slug}`}
-                  className="group block h-full rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
-                  aria-label={`Read more about ${post.title}`}
-                >
-                  <article className="bg-white border border-border-default rounded-xl p-6 flex h-full flex-col justify-between hover:shadow-[0_10px_28px_rgba(0,0,0,0.06)] transition-shadow duration-200 group-hover:border-teal/40">
-                    {post.cover_image_url && (
-                      <div className="mb-4 rounded-xl overflow-hidden">
-                        <img
-                          src={post.cover_image_url}
-                          alt={post.title}
-                          className="w-full h-40 object-cover rounded-xl"
-                        />
-                      </div>
-                    )}
-                    <div>
-                      {post.category && (
-                        <p className="inline-flex items-center rounded-full border border-border-default px-2.5 py-1 text-[11px] text-muted mb-3">
-                          {post.category.name}
-                        </p>
-                      )}
-                      <h2 className="font-serif text-[18px] text-navy mb-2">{post.title}</h2>
-                      <p className="text-[13px] text-muted leading-[1.7] mb-4">
-                        {post.description || "Read the full article to learn more."}
-                      </p>
-                      <div
-                        className="flex flex-wrap gap-2 mb-4"
-                        aria-label={`Reactions summary for ${post.title}`}
-                      >
-                        <span className="text-[11px] text-muted border border-border-default rounded-full px-2 py-1">
-                          ❤️ {reactionCountsByBlog[post.id]?.love ?? 0}
-                        </span>
-                        <span className="text-[11px] text-muted border border-border-default rounded-full px-2 py-1">
-                          👍 {reactionCountsByBlog[post.id]?.thumbs_up ?? 0}
-                        </span>
-                        <span className="text-[11px] text-muted border border-border-default rounded-full px-2 py-1">
-                          👎 {reactionCountsByBlog[post.id]?.thumbs_down ?? 0}
-                        </span>
-                        <span className="text-[11px] text-muted border border-border-default rounded-full px-2 py-1">
-                          🎉 {reactionCountsByBlog[post.id]?.celebrationpop ?? 0}
-                        </span>
-                        <span className="text-[11px] text-muted border border-border-default rounded-full px-2 py-1">
-                          👏 {reactionCountsByBlog[post.id]?.clap ?? 0}
-                        </span>
-                      </div>
-                    </div>
-                    <span className="inline-flex items-center text-[13px] font-medium text-teal transition-colors duration-150 group-hover:text-teal-dk">
-                      Read more
-                      <span className="ml-1 text-[14px]">→</span>
-                    </span>
-                  </article>
-                </Link>
-              ))
-            )}
-          </section>
-        </div>
-      </main>
-      <Footer />
+      <div className="font-jakarta">
+        <BlogHeroSection headline={seo.headline} subheadline={seo.subheadline} />
+        <main className="min-h-screen overflow-x-clip bg-bg-base">
+          <BlogPageContent
+            posts={visiblePosts}
+            categories={categories}
+            activeCategory={activeCategory}
+            hasActiveCategory={hasActiveCategory}
+            emptyMessage={seo.empty_state_message}
+          />
+        </main>
+        <ContactFooter />
+      </div>
     </>
   );
 }

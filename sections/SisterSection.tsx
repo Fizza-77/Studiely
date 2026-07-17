@@ -1,110 +1,150 @@
 "use client";
 
-import { Reveal } from "@/components/Reveal";
+const BLUE = "#4F35F2";
+const LIME = "#E8FF2F";
+const PINK = "#FF36C6";
+
+const ExternalArrow = () => (
+  <svg
+    viewBox="0 0 24 24"
+    className="h-6 w-6 shrink-0 text-[#C8C8D4] sm:h-7 sm:w-7"
+    fill="none"
+    aria-hidden
+  >
+    <path
+      d="M7 17 17 7M17 7H9M17 7v8"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+const ExternalLinkIcon = () => (
+  <svg viewBox="0 0 16 16" className="h-4 w-4" fill="none" aria-hidden>
+    <path
+      d="M6 3h7v7M13 3 6 10M9 3H3v10h10V9"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+const ECOSYSTEM_CARDS = [
+  {
+    name: "Make My Lesson",
+    subtitle: "— For Teachers",
+    badge: "AI-POWERED LESSON PLANNING",
+    badgeBg: LIME,
+    badgeColor: BLUE,
+    edgeColor: LIME,
+    href: "https://makemylesson.ai",
+    linkLabel: "Visit Make My Lesson",
+    paragraphs: [
+      "Generates complete, curriculum-aligned teaching materials from a single topic lesson plans, presentations, activities and assessments.",
+      "Make My Lesson is our sister platform built for teachers. Where Studiely supports the student preparing for the exam, Make My Lesson supports the teacher preparing the lesson.",
+    ],
+  },
+  {
+    name: "Linguatude",
+    subtitle: "— For English Test Preparation",
+    badge: "IELTS, TOEFL, PTE AND CAMBRIDGE",
+    badgeBg: PINK,
+    badgeColor: "#FFFFFF",
+    edgeColor: PINK,
+    href: "https://linguatude.com",
+    linkLabel: "Visit Linguatude",
+    paragraphs: [
+      "Built for learners whose next university place, immigration step or career opportunity depends on achieving a target English score.",
+      "Linguatude is built for learners whose next university place, immigration step or career opportunity depends on achieving a target English score. Where Studiely supports curriculum study, Linguatude supports the test that opens the next door.",
+    ],
+  },
+] as const;
 
 interface SisterSectionProps {
   sectionRef?: React.Ref<HTMLElement>;
 }
 
 export const SisterSection = ({ sectionRef }: SisterSectionProps) => (
-<section ref={sectionRef} className="bg-gradient-to-b from-white to-teal-50/40 py-14 sm:py-16 md:py-20 lg:py-[90px] relative border-t border-gray-200/60">
+  <section ref={sectionRef} className="bg-bg-base pt-[clamp(1.5rem,3vw,2.5rem)]">
+    <div
+      className="px-4 py-10 text-center sm:px-6 sm:py-12"
+      style={{ backgroundColor: LIME }}
+    >
+      <h2
+        className="mx-auto mb-3 max-w-[900px] font-heading text-[clamp(1.5rem,3vw,2.25rem)] font-extrabold leading-[1.15] tracking-[-0.02em]"
+        style={{ color: BLUE }}
+      >
+        Part of a Wider EdTech Family
+      </h2>
+      <p
+        className="mx-auto max-w-[760px] font-sans text-[clamp(0.95rem,1.1vw,1.1rem)] leading-relaxed"
+        style={{ color: BLUE }}
+      >
+        Studiely is one of three platforms built by Skyen Solutions to support
+        learning at every stage.
+      </p>
+    </div>
 
-   <div className="wrap">
-
-   {/* Full-Width Teal Band */}
-<div className="relative mb-10 sm:mb-12 md:mb-16 left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen">
-
-{/* Background */}
-<div className="absolute inset-0 bg-gradient-to-r from-teal-600 to-cyan-500" />
-
-{/* Optional Glow */}
-<div className="absolute inset-0 pointer-events-none">
-  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.15),transparent_70%)]" />
-</div>
-
-{/* Content (kept aligned with rest of page) */}
-<div className="relative max-w-[1100px] mx-auto text-center py-10 sm:py-11 md:py-12 px-4 sm:px-6">
-  <h2 className="text-2xl sm:text-3xl md:text-5xl font-semibold tracking-tight text-white mb-3">
-    Part of a Wider EdTech Family
-  </h2>
-  <p className="text-white/90 text-base sm:text-lg max-w-[700px] mx-auto">
-    Studiely is one of three platforms built by Skyen Solutions to support learning at every stage.
-  </p>
-</div>
-
-</div>
-
-
-      {/* Cards */}
-      <div className="mt-10 sm:mt-12 md:mt-16 grid md:grid-cols-2 gap-6 sm:gap-8 max-w-[1100px] mx-auto">
-
-        {/* MAKE MY LESSON */}
-        <Reveal delay={0.1}>
-          <div className="relative group rounded-2xl p-[1px] bg-gradient-to-br from-teal-400/60 via-cyan-400/40 to-transparent transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(0,176,155,0.25)]">
-            
-            <div className="h-full rounded-2xl bg-white p-6 md:p-7">
-
-            <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-1 text-gray-900">
-  Make My Lesson — For Teachers
-</h3>
-
-<p className="text-teal-600 font-semibold text-sm md:text-base mb-4">
-  AI-powered lesson planning
-</p>
-              <p className="text-base font-medium text-gray-800 mb-3">
-                Generates complete, curriculum-aligned teaching materials from a single topic — lesson plans, presentations, activities and assessments.
-              </p>
-
-              <p className="text-gray-600 text-sm leading-relaxed">
-                <a
-                  href="https://makemylesson.ai"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-teal-600 font-semibold hover:underline"
-                >
-                  Make My Lesson
-                </a>{" "}
-                is our sister platform built for teachers. Where Studiely supports the student preparing for the exam, Make My Lesson supports the teacher preparing the lesson.
-              </p>
-
+    <div className="wrap py-[clamp(2rem,4vw,3rem)]">
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6">
+        {ECOSYSTEM_CARDS.map((card) => (
+          <article
+            key={card.name}
+            className="flex flex-col rounded-[28px] border-b-[5px] bg-white px-7 py-8 shadow-[0_14px_32px_rgba(30,27,75,0.1)] sm:px-8 sm:py-9"
+            style={{ borderColor: card.edgeColor }}
+          >
+            <div className="mb-5 flex items-start justify-between gap-4">
+              <span
+                className="font-heading text-[10px] font-bold uppercase tracking-[0.14em]"
+                style={{ color: BLUE }}
+              >
+                Ecosystem
+              </span>
+              <ExternalArrow />
             </div>
-          </div>
-        </Reveal>
 
-        {/* LINGUATUDE */}
-        <Reveal delay={0.2}>
-          <div className="relative group rounded-2xl p-[1px] bg-gradient-to-br from-teal-400/60 via-cyan-400/40 to-transparent transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(0,176,155,0.25)]">
-            
-            <div className="h-full rounded-2xl bg-white p-6 md:p-7">
+            <h3 className="mb-4 flex flex-wrap items-baseline gap-x-2 font-jakarta font-extrabold leading-tight text-[#1E1B4B]">
+              <span className="text-[clamp(1.35rem,2vw,1.65rem)]">
+                {card.name}
+              </span>
+              <span className="text-[clamp(1rem,1.35vw,1.15rem)] font-bold text-[#3D3D4A]">
+                {card.subtitle}
+              </span>
+            </h3>
 
-            <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-1 text-gray-900">
-  Linguatude — For English Test Preparation
-</h3>
+            <span
+              className="mb-5 inline-flex w-fit rounded-full px-3.5 py-1.5 font-heading text-[9px] font-extrabold uppercase tracking-[0.1em] sm:text-[10px]"
+              style={{ backgroundColor: card.badgeBg, color: card.badgeColor }}
+            >
+              {card.badge}
+            </span>
 
-<p className="text-teal-600 font-semibold text-sm md:text-base mb-4">
-  IELTS, TOEFL, PTE and Cambridge
-</p>
-
-              <p className="text-base font-medium text-gray-800 mb-3">
-                Built for learners whose next university place, immigration step or career opportunity depends on achieving a target English score.
-              </p>
-
-              <p className="text-gray-600 text-sm leading-relaxed">
-                <a
-                  href="https://linguatude.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-teal-600 font-semibold hover:underline"
+            <div className="mb-8 flex flex-col gap-4">
+              {card.paragraphs.map((paragraph) => (
+                <p
+                  key={paragraph}
+                  className="m-0 font-sans text-[14px] leading-relaxed text-[#5B5A6A] sm:text-[15px]"
                 >
-                  Linguatude
-                </a>{" "}
-                is built for learners whose next university place, immigration step or career opportunity depends on achieving a target English score. Where Studiely supports curriculum study, Linguatude supports the test that opens the next door.
-              </p>
-
+                  {paragraph}
+                </p>
+              ))}
             </div>
-          </div>
-        </Reveal>
 
+            <a
+              href={card.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-auto inline-flex items-center gap-2 font-sans text-[15px] font-semibold text-[#2563EB] transition-opacity hover:opacity-80"
+            >
+              {card.linkLabel}
+              <ExternalLinkIcon />
+            </a>
+          </article>
+        ))}
       </div>
     </div>
   </section>

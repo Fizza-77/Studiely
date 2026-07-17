@@ -1,170 +1,217 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { STUDIELY_APP } from "@/lib/appUrls";
-import { SectionHeader } from "@/components/SectionHeader";
-import { Reveal } from "@/components/Reveal";
-import { Button } from "@/components/Button";
-import { NylaAvatar } from "@/components/Icons";
+
+const BLUE = "#4F35F2";
+const LIME = "#E8FF2F";
 
 interface NylaSectionProps {
   sectionRef?: React.Ref<HTMLElement>;
 }
 
+const ClockIcon = () => (
+  <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" aria-hidden>
+    <circle cx="12" cy="12" r="9" fill={BLUE} />
+    <path
+      d="M12 7.5V12l3 2"
+      stroke="white"
+      strokeWidth="2.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+type Feature =
+  | {
+      title: string;
+      desc: string;
+      iconSrc: string;
+    }
+  | {
+      title: string;
+      desc: string;
+      Icon: () => React.JSX.Element;
+    };
+
+const FEATURES: Feature[] = [
+  {
+    title: "Expert explanations",
+    desc: "Complex topics broken down into simple, easy-to-digest concepts.",
+    iconSrc: "/tick.png",
+  },
+  {
+    title: "Available 24/7",
+    desc: "Late night study sessions or early morning exam prep, Nyla is always ready.",
+    Icon: ClockIcon,
+  },
+];
+
 export const NylaSection = ({ sectionRef }: NylaSectionProps) => {
-  const msgs = [
-    { from: "u", text: "Can you explain photosynthesis for IGCSE?" },
-    {
-      from: "n",
-      text: "Of course! 🌿 For IGCSE Biology:\n\n6CO₂ + 6H₂O + light → C₆H₁₂O₆ + 6O₂\n\nPlants convert light energy into glucose stored in chemical bonds. Want me to generate a flashcard deck on this?",
-    },
-    { from: "u", text: "Yes! And can you make an exam question too?" },
-    {
-      from: "n",
-      text: "Done! ✨ Added 12 flashcards to your deck and queued an IGCSE-style exam question under Exam Practice.",
-    },
-  ];
-
   return (
-    <section ref={sectionRef} className="pt-6 md:pt-8 pb-14 sm:pb-16 md:pb-20 lg:pb-24 bg-white relative overflow-hidden">
-      {/* subtle background */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage: "radial-gradient(circle at 28% 50%, rgba(84,72,200,.05) 0%, transparent 55%)",
-        }}
-      />
+    <section
+      id="nyla"
+      ref={sectionRef}
+      aria-labelledby="nyla-heading"
+      className="bg-bg-base pb-[clamp(2.5rem,5vw,4rem)] pt-[clamp(0.5rem,1.5vw,1rem)]"
+    >
+      <div className="wrap">
+        <div className="relative overflow-hidden rounded-[28px] md:rounded-[40px]">
+          <div className="grid lg:grid-cols-2">
+            {/* Left panel */}
+            <div
+              className="relative px-[clamp(1.25rem,4vw,3.25rem)] py-[clamp(2rem,4.5vw,3.5rem)]"
+              style={{
+                background:
+                  "linear-gradient(145deg, #4F35F2 0%, #4A30E8 55%, #4530E0 100%)",
+              }}
+            >
+              <h2
+                id="nyla-heading"
+                className="mb-4 max-w-[16ch] font-heading text-[clamp(1.85rem,4vw,3rem)] font-extrabold leading-[1.12] tracking-[-0.02em] text-white"
+              >
+                Meet <span style={{ color: LIME }}>Nyla</span>, Your personal AI Tutor
+              </h2>
+              <p className="mb-8 max-w-[34rem] font-sans text-[clamp(0.95rem,1.05vw,1.1rem)] leading-relaxed text-white/85">
+                Nyla understands your curriculum and knows exactly where you are in your study
+                journey.
+              </p>
 
-      <div className="wrap relative">
-        <SectionHeader
-          label="Nyla - AI Study Tutor"
-          title="Meet Nyla. Your AI Tutor, Always On."
-          sub=""
-        />
-
-        <Reveal delay={0.03}>
-          <p className="text-center text-[15px] sm:text-[16px] leading-[1.75] text-body font-light max-w-[860px] mx-auto mb-10 sm:mb-12">
-            Most AI assistants give generic answers. Nyla doesn&apos;t. She knows your curriculum,
-            your exam board and your grade level before you ask your first question. Ask her to
-            explain a concept, walk through a topic, generate a practice question or clarify what
-            your mark scheme actually wants - and every answer is grounded in your syllabus.
-            Available 24/7. No booking. No waiting for a reply.
-          </p>
-        </Reveal>
-
-
-        <div className="two-col grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-14 lg:gap-[72px] items-center">
-          <div>
-            <Reveal delay={0.05}>
-              <div className="border border-[#dddaf8] rounded-[14px] overflow-hidden shadow-[0_8px_40px_rgba(84,72,200,0.1)]">
-                <div className="bg-indigo-lt border-b border-[#dddaf8] px-[18px] py-[14px] flex items-center gap-3">
-                  <NylaAvatar size={46} />
-                  <div>
-                    <div className="text-[15px] font-semibold text-navy">Nyla</div>
-                    <div className="text-[11px] text-teal flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-teal inline-block" />
-                      Online — AI Study Assistant
-                    </div>
-                  </div>
-                  <div className="ml-auto">
-                    <span className="text-[10px] px-[9px] py-[3px] bg-indigo text-white rounded-full font-medium">
-                      IGCSE Biology
-                    </span>
-                  </div>
-                </div>
-
-                <div className="p-4 flex flex-col gap-3 max-h-[310px] overflow-y-auto bg-[#f8f8fc]">
-                  {msgs.map((m, i) => (
-                    <Reveal key={i} delay={i * 0.1}>
-                      <div
-                        className={`flex items-end gap-2 ${
-                          m.from === "u" ? "justify-end" : "justify-start"
-                        }`}
-                      >
-                        {m.from === "n" && (
-                          <div className="shrink-0 mb-[2px]">
-                            <NylaAvatar size={28} />
-                          </div>
-                        )}
-                        <div
-                          className={`max-w-[80%] px-[14px] py-[10px] text-[13px] leading-[1.65] font-light whitespace-pre-wrap ${
-                            m.from === "u"
-                              ? "bg-navy text-white rounded-[14px_14px_4px_14px] border-none"
-                              : "bg-white text-body rounded-[14px_14px_14px_4px] border border-border-default shadow-[0_1px_8px_rgba(0,0,0,0.05)]"
-                          }`}
-                        >
-                          {m.text}
-                        </div>
-                      </div>
-                    </Reveal>
-                  ))}
-                  <div className="flex items-center gap-2 mt-1">
-                    <NylaAvatar size={26} />
-                    <div className="flex gap-[5px] px-[14px] py-[10px] bg-white border border-border-default rounded-[14px_14px_14px_4px] w-fit">
-                      {[0, 1, 2].map((d) => (
-                        <div
-                          key={d}
-                          className="w-1.5 h-1.5 rounded-full bg-indigo animate-db"
-                          style={{ animationDelay: `${d * 0.16}s` }}
+              <ul className="m-0 flex list-none flex-col gap-5 p-0">
+                {FEATURES.map((feature) => (
+                  <li key={feature.title} className="flex gap-3.5">
+                    <span
+                      className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full"
+                      style={{ backgroundColor: LIME }}
+                    >
+                      {"iconSrc" in feature ? (
+                        <Image
+                          src={feature.iconSrc}
+                          alt=""
+                          width={22}
+                          height={22}
+                          unoptimized
+                          className="h-[22px] w-[22px] object-contain"
+                          aria-hidden
                         />
-                      ))}
+                      ) : (
+                        <feature.Icon />
+                      )}
+                    </span>
+                    <div>
+                      <p className="mb-1 font-heading text-[1rem] font-bold text-white">
+                        {feature.title}
+                      </p>
+                      <p className="m-0 font-sans text-[14px] leading-relaxed text-white/75">
+                        {feature.desc}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Right panel — 10% less opaque */}
+            <div
+              className="relative isolate overflow-hidden px-[clamp(1.25rem,3.5vw,2.75rem)] py-[clamp(2rem,4.5vw,3.5rem)]"
+              style={{
+                background:
+                  "linear-gradient(145deg, rgba(79,53,242,0.9) 0%, rgba(74,48,232,0.9) 55%, rgba(61,40,212,0.9) 100%)",
+              }}
+            >
+              {/* Rectangle swirl glow — top right */}
+              <Image
+                src="/Rectangle.svg"
+                alt=""
+                width={452}
+                height={452}
+                unoptimized
+                priority
+                aria-hidden
+                className="pointer-events-none absolute -right-8 -top-10 z-[1] h-[260px] w-[260px] select-none object-contain sm:-right-6 sm:-top-8 sm:h-[320px] sm:w-[320px] md:h-[380px] md:w-[380px]"
+              />
+
+              <div className="relative z-[2] mx-auto flex w-full max-w-[340px] items-center justify-center py-8 sm:max-w-[360px]">
+                {/* Gray ring behind chat */}
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute left-1/2 top-1/2 z-0 aspect-square w-[128%] max-w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full border-[18px] border-white/25"
+                />
+
+                {/* Chat preview — matches design */}
+                <div className="relative z-[1] w-full overflow-hidden rounded-[20px] bg-white shadow-[0_18px_48px_rgba(0,0,0,0.3)]">
+                  <div
+                    className="flex items-center gap-3 px-4 py-3.5"
+                    style={{ backgroundColor: BLUE }}
+                  >
+                    <span
+                      className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full"
+                      style={{ backgroundColor: LIME }}
+                    >
+                      <Image
+                        src="/Nyla.png"
+                        alt=""
+                        width={20}
+                        height={18}
+                        unoptimized
+                        className="h-[18px] w-auto object-contain"
+                        aria-hidden
+                      />
+                    </span>
+                    <div className="min-w-0">
+                      <p className="font-heading text-[15px] font-bold leading-none text-white">
+                        Nyla AI Tutor
+                      </p>
+                      <p className="mt-1.5 flex items-center gap-1.5 font-hanken text-[10px] font-medium uppercase tracking-[0.12em] text-white">
+                        <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#7CFF8A]" />
+                        Online
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col gap-3 bg-white px-3.5 py-4">
+                    <div className="max-w-[88%] rounded-[14px] rounded-tl-sm bg-[#ECEEF6] px-3.5 py-2.5 font-sans text-[12.5px] leading-[1.55] text-[#2A2B36]">
+                      Hi! I&apos;m Nyla. Need help understanding Mitosis?
+                    </div>
+                    <div
+                      className="ml-auto max-w-[88%] rounded-[14px] rounded-tr-sm px-3.5 py-2.5 font-sans text-[12.5px] font-medium leading-[1.55]"
+                      style={{ backgroundColor: LIME, color: BLUE }}
+                    >
+                      Yes please! Can you summarize the Prophase?
+                    </div>
+                    <div className="max-w-[92%] rounded-[14px] rounded-tl-sm bg-[#ECEEF6] px-3.5 py-2.5 font-sans text-[12.5px] leading-[1.55] text-[#2A2B36]">
+                      Absolutely. In Prophase, chromosomes condense and become visible…
+                    </div>
+                  </div>
+
+                  <div className="bg-white px-3.5 pb-3.5 pt-0">
+                    <div className="flex items-center gap-2 rounded-full bg-[#ECEEF6] px-2 py-1.5 pl-4">
+                      <span className="flex-1 font-sans text-[12.5px] text-[#8B8D9A]">
+                        Type your question…
+                      </span>
+                      <Link
+                        href={STUDIELY_APP.nyla}
+                        className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-white transition-opacity hover:opacity-90"
+                        style={{ backgroundColor: BLUE }}
+                        aria-label="Open Nyla chat"
+                      >
+                        <svg viewBox="0 0 20 20" className="h-3.5 w-3.5" fill="none" aria-hidden>
+                          <path
+                            d="M4 10h10.5M10.5 5.5 15 10l-4.5 4.5"
+                            stroke="currentColor"
+                            strokeWidth="2.2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </Link>
                     </div>
                   </div>
                 </div>
-
-                <div className="px-[14px] py-[10px] border-t border-border-default flex gap-2 bg-white">
-                  <input
-                    id="nyla-preview-message"
-                    name="nyla_preview_message"
-                    type="text"
-                    placeholder="Ask Nyla anything…"
-                    autoComplete="off"
-                    aria-label="Message to Nyla (preview)"
-                    className="flex-1 border border-border-default rounded-[7px] px-[13px] py-[9px] text-[13px] text-body outline-none min-w-0 font-sans transition-colors duration-150 focus:border-indigo"
-                  />
-                  <Link href={STUDIELY_APP.nyla} className="shrink-0">
-                    <button className="bg-indigo text-white px-4 py-[9px] rounded-[7px] border-none text-[15px] font-medium shrink-0 outline-none hover:bg-indigo/90">
-                      →
-                    </button>
-                  </Link>
-                </div>
               </div>
-            </Reveal>
-          </div>
-
-          <div>
-            <ul className="flex flex-col gap-3.5 list-none p-0 m-0">
-              {[
-                ["Ask anything about your syllabus - get instant, relevant answers", "var(--color-teal)"],
-                ["Knows your curriculum, exam board and grade level automatically", "var(--color-indigo)"],
-                ["Available on every page, across every tool", "var(--color-amber)"],
-                ["Answers calibrated to your exact grade - no irrelevant detail", "var(--color-teal)"],
-                ["Priority responses for Premium subscribers", "var(--color-indigo)"],
-              ].map(([b, col], i) => (
-                <li key={b} className="text-[14.5px] text-body font-light leading-[1.62]">
-                  <Reveal delay={i * 0.07} className="flex gap-[11px] items-start">
-                    <span className="mt-[2px] shrink-0 font-bold text-[12px]" style={{ color: col }}>
-                      ✦
-                    </span>
-                    <span>{b}</span>
-                  </Reveal>
-                </li>
-              ))}
-            </ul>
-            <Reveal delay={0.3}>
-              <div className="mt-7 flex flex-col sm:flex-row gap-2.5 items-center justify-center w-full lg:items-start lg:justify-start">
-                <Link href={STUDIELY_APP.nyla} className="inline-flex shrink-0">
-                  <Button variant="solid" lg className="bg-indigo border-indigo hover:opacity-90">
-                    Chat with Nyla →
-                  </Button>
-                </Link>
-           {/* <Link href="/app-nyla-learn-more">
-                  <Button variant="outline" lg>
-                    Learn More
-                  </Button>
-                </Link> */}
-              </div>
-            </Reveal>
+            </div>
           </div>
         </div>
       </div>

@@ -65,7 +65,7 @@ export const PageHeader = ({
           )}
 
           <h1
-            className={`font-serif leading-[1.08] ${
+            className={`font-heading leading-[1.08] ${
               isCompact
                 ? "text-[clamp(24px,3.2vw,32px)] mb-2"
                 : "text-[clamp(30px,4.6vw,44px)] mb-3"

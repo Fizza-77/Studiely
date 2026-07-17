@@ -1,15 +1,11 @@
-import fs from 'fs';
-import path from 'path';
+import { ThemedLegalDocument } from "@/components/ThemedLegalDocument";
+import { loadLegalHtmlFromRoot } from "@/lib/legal/loadLegalHtmlFromRoot";
 import { buildBreadcrumbSchema } from "@/lib/seo";
 
 const breadcrumbSchema = buildBreadcrumbSchema("Acceptable Use Policy", "/acceptable-use");
 
 export default function AcceptableUsePolicy() {
-  const filePath = path.join(
-    process.cwd(),
-    'legal/studiely-acceptable-use-policy.html'
-  );
-  const html = fs.readFileSync(filePath, 'utf-8');
+  const html = loadLegalHtmlFromRoot("studiely-acceptable-use-policy.html");
 
   return (
     <>
@@ -19,7 +15,7 @@ export default function AcceptableUsePolicy() {
           __html: JSON.stringify(breadcrumbSchema),
         }}
       />
-      <div dangerouslySetInnerHTML={{ __html: html }} />
+      <ThemedLegalDocument html={html} badge="Legal & Policies" />
     </>
   );
 }

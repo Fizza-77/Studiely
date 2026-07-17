@@ -11,7 +11,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 export const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
   ({ children, variant = "solid", lg, className, href, type = "button", ...rest }, ref) => {
     const baseClasses =
-      "inline-flex items-center justify-center gap-1.5 font-medium rounded-lg border-[1.5px] border-transparent whitespace-nowrap transition-all duration-200 outline-none";
+      "funky-button inline-flex items-center justify-center gap-1.5 font-medium rounded-lg border-[1.5px] border-transparent whitespace-nowrap transition-all duration-200 outline-none disabled:pointer-events-none disabled:opacity-50";
     const sizeClasses = lg ? "py-[14px] px-7 text-[15px]" : "py-[9px] px-5 text-[13px]";
 
     const variantClasses = {

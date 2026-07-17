@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import fs from 'fs';
-import path from 'path';
 import { notFound } from "next/navigation";
+import { ThemedLegalDocument } from "@/components/ThemedLegalDocument";
+import { loadLegalHtmlFromRoot } from "@/lib/legal/loadLegalHtmlFromRoot";
 import { SITE_URL } from "@/lib/site";
 import { buildBreadcrumbSchema } from "@/lib/seo";
 
@@ -9,22 +9,27 @@ const LEGAL_DOCS = {
   "privacy-policy": {
     file: "studiely-privacy-policy.html",
     title: "Privacy Policy",
+    badge: "Legal & Privacy",
   },
   "terms-of-service": {
     file: "V1.4_Terms_of_Service_Studiely.html",
     title: "Terms of Service",
+    badge: "Legal & Terms",
   },
   disclaimer: {
     file: "studiely-disclaimer.html",
     title: "Disclaimer",
+    badge: "Legal & Disclaimer",
   },
   "cookie-policy": {
     file: "studiely-cookie-policy.html",
     title: "Cookie Policy",
+    badge: "Legal & Cookies",
   },
   "acceptable-use": {
     file: "studiely-acceptable-use-policy.html",
     title: "Acceptable Use Policy",
+    badge: "Legal & Policies",
   },
 } as const;
 
@@ -61,8 +66,8 @@ export default function LegalDocPage({ params }: PageProps) {
 
   const canonicalPath = `/${slug}`;
   const breadcrumbSchema = buildBreadcrumbSchema(entry.title, canonicalPath);
-  const filePath = path.join(process.cwd(), 'legal', entry.file);
-  const html = fs.readFileSync(filePath, 'utf-8');
+  const html = loadLegalHtmlFromRoot(entry.file);
+
   return (
     <>
       <script
@@ -71,7 +76,7 @@ export default function LegalDocPage({ params }: PageProps) {
           __html: JSON.stringify(breadcrumbSchema),
         }}
       />
-      <div dangerouslySetInnerHTML={{ __html: html }} />
+      <ThemedLegalDocument html={html} badge={entry.badge} />
     </>
   );
 }

@@ -227,10 +227,10 @@ export function BlogReactionButtons({
               type="button"
               disabled={!canSubmit || isSubmitting || !turnstileReady}
               onClick={() => void handleReact(reaction.key)}
-              className={`text-[12px] border rounded-full px-2.5 py-1 transition-colors ${
+              className={`funky-button rounded-full border px-3 py-1.5 font-jakarta text-[12px] transition-colors ${
                 isActive
-                  ? "border-teal text-teal bg-teal-lt"
-                  : "border-border-default text-muted hover:text-body"
+                  ? "border-[#4F35F2] bg-[#ECEAFF] font-bold text-[#4F35F2]"
+                  : "border-[#E2E2E8] bg-white text-[#5B5A6A] hover:border-[#4F35F2]/40 hover:text-[#4F35F2]"
               } disabled:opacity-60 disabled:cursor-not-allowed`}
               aria-label={`${reaction.label}: ${counts[reaction.key]}`}
             >

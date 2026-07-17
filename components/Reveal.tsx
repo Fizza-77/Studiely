@@ -19,6 +19,11 @@ export const Reveal = ({ children, delay = 0, y = 22, style: sx, className }: Re
     const el = ref.current;
     if (!el) return;
 
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setVis(true);
+      return;
+    }
+
     const o = new IntersectionObserver(
       ([e]) => {
         if (e.isIntersecting) {

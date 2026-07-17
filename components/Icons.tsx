@@ -34,7 +34,7 @@ export const StudyToolsNavIcon = ({ size = 20 }: { size?: number }) => (
       rx="2"
       ry="2"
       fill="#eceaff"
-      stroke="#5448c8"
+      stroke="#4F35F2"
       strokeWidth="1.5"
     />
     {/* Book spine */}
@@ -43,7 +43,7 @@ export const StudyToolsNavIcon = ({ size = 20 }: { size?: number }) => (
       y="6"
       width="4"
       height="24"
-      fill="#5448c8"
+      fill="#4F35F2"
       opacity="0.85"
     />
     {/* Book pages lines */}
@@ -52,7 +52,7 @@ export const StudyToolsNavIcon = ({ size = 20 }: { size?: number }) => (
       y1="10"
       x2="26"
       y2="10"
-      stroke="#5448c8"
+      stroke="#4F35F2"
       strokeWidth="1"
       opacity="0.5"
       strokeLinecap="round"
@@ -62,7 +62,7 @@ export const StudyToolsNavIcon = ({ size = 20 }: { size?: number }) => (
       y1="14"
       x2="26"
       y2="14"
-      stroke="#5448c8"
+      stroke="#4F35F2"
       strokeWidth="1"
       opacity="0.5"
       strokeLinecap="round"
@@ -72,7 +72,7 @@ export const StudyToolsNavIcon = ({ size = 20 }: { size?: number }) => (
       y1="18"
       x2="26"
       y2="18"
-      stroke="#5448c8"
+      stroke="#4F35F2"
       strokeWidth="1"
       opacity="0.5"
       strokeLinecap="round"
@@ -82,7 +82,7 @@ export const StudyToolsNavIcon = ({ size = 20 }: { size?: number }) => (
       y1="22"
       x2="26"
       y2="22"
-      stroke="#5448c8"
+      stroke="#4F35F2"
       strokeWidth="1"
       opacity="0.5"
       strokeLinecap="round"

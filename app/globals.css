@@ -1,15 +1,20 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "DM Sans", system-ui, sans-serif;
-  --font-serif: "DM Serif Display", ui-serif, Georgia, serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+  --font-hanken: var(--font-hanken-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-jakarta: var(--font-plus-jakarta-sans), ui-sans-serif, system-ui, sans-serif;
 
   --color-navy: #181926;
   --color-teal: #00b09b;
   --color-teal-dk: #008a78;
   --color-teal-lt: #dff6f2;
-  --color-indigo: #5448c8;
+  --color-indigo: #4F35F2;
   --color-indigo-lt: #eceaff;
+  --color-lime: #E8FF2F;
+  --color-brand-purple: #4F35F2;
   --color-amber: #d97b2a;
   --color-amber-lt: #fff1e4;
   --color-rose: #c94a72;
@@ -19,7 +24,7 @@
   --color-muted: #78788a;
   --color-border-default: #e2e2e8;
   --color-border-lt: #ededf2;
-  --color-bg-base: #f8f8f6;
+  --color-bg-base: #FFFBEF;
   
   --animate-mql: mql 48s linear infinite;
   --animate-mqr: mqr 48s linear infinite;
@@ -112,6 +117,10 @@
     width: 100%;
     max-width: 100vw;
     overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
   }
 
   button, input, select, textarea {
@@ -240,5 +249,184 @@
   .nav-pill-enter,
   .nav-menu-enter {
     animation: none;
+  }
+}
+
+/* Site-wide playful interaction language */
+@keyframes funkySheen {
+  0% {
+    transform: translateX(-140%) skewX(-18deg);
+  }
+  100% {
+    transform: translateX(260%) skewX(-18deg);
+  }
+}
+
+@keyframes funkySpark {
+  0% {
+    opacity: 1;
+    scale: 0.25;
+    translate: -50% -50%;
+  }
+  70% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    scale: 1;
+    translate: calc(-50% + var(--spark-x)) calc(-50% + var(--spark-y));
+  }
+}
+
+@keyframes funkyIconWiggle {
+  0%,
+  100% {
+    rotate: 0deg;
+  }
+  35% {
+    rotate: -7deg;
+  }
+  70% {
+    rotate: 5deg;
+  }
+}
+
+.site-funky {
+  --funky-purple: #4f35f2;
+  --funky-pink: #ff36c6;
+  --funky-lime: #e8ff2f;
+  --funky-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.site-funky :is(a, button, summary, input, select, textarea):focus-visible {
+  outline: 3px solid var(--funky-pink);
+  outline-offset: 3px;
+}
+
+.funky-button,
+.funky-button:hover,
+.funky-button:active {
+  position: relative;
+  isolation: isolate;
+  transition:
+    translate 220ms var(--funky-ease),
+    scale 220ms var(--funky-ease),
+    filter 220ms ease,
+    box-shadow 220ms var(--funky-ease);
+}
+
+.funky-button {
+  overflow: hidden;
+}
+
+.funky-button::after {
+  position: absolute;
+  inset: -40% auto -40% -35%;
+  z-index: -1;
+  width: 28%;
+  content: "";
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 45%), transparent);
+  pointer-events: none;
+  transform: translateX(-140%) skewX(-18deg);
+}
+
+.funky-link {
+  position: relative;
+}
+
+.funky-link::after {
+  position: absolute;
+  right: 12%;
+  bottom: 1px;
+  left: 12%;
+  height: 2px;
+  border-radius: 999px;
+  content: "";
+  background: currentColor;
+  opacity: 0.75;
+  scale: 0 1;
+  transform-origin: right;
+  transition: scale 240ms var(--funky-ease);
+}
+
+.funky-link-active::after {
+  scale: 1 1;
+}
+
+.funky-card,
+.site-funky article[class*="rounded"] {
+  transition:
+    translate 300ms var(--funky-ease),
+    rotate 300ms var(--funky-ease),
+    filter 300ms ease,
+    box-shadow 300ms var(--funky-ease);
+}
+
+.funky-icon {
+  transform-origin: 50% 70%;
+}
+
+.funky-spark {
+  position: fixed;
+  z-index: 9999;
+  width: 9px;
+  height: 9px;
+  border: 2px solid var(--spark-color);
+  border-radius: 3px 999px 999px;
+  pointer-events: none;
+  animation: funkySpark 560ms var(--funky-ease) forwards;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .funky-button:hover:not(:disabled) {
+    translate: 0 -3px;
+    scale: 1.025;
+    filter: saturate(1.08);
+    box-shadow: 0 10px 24px rgb(79 53 242 / 18%);
+  }
+
+  .funky-button:hover:not(:disabled)::after {
+    animation: funkySheen 620ms ease-out;
+  }
+
+  .funky-button:active:not(:disabled) {
+    translate: 0 1px;
+    scale: 0.975;
+  }
+
+  .funky-link:hover::after {
+    scale: 1 1;
+    transform-origin: left;
+  }
+
+  .funky-card:hover,
+  .site-funky article[class*="rounded"]:hover {
+    translate: 0 -6px;
+    rotate: 0.2deg;
+    filter: saturate(1.07) brightness(1.01);
+    box-shadow: 0 20px 42px rgb(30 27 75 / 14%);
+  }
+
+  :is(.funky-card, .site-funky article[class*="rounded"]):hover .funky-icon {
+    animation: funkyIconWiggle 520ms var(--funky-ease);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .site-funky *,
+  .site-funky *::before,
+  .site-funky *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .funky-spark {
+    display: none;
   }
 }

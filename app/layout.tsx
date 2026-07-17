@@ -1,28 +1,40 @@
 import type { Metadata, Viewport } from "next";
-import { DM_Sans, DM_Serif_Display } from "next/font/google";
+import { Hanken_Grotesk, Inter, Montserrat, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { DEFAULT_OG_IMAGE_PATH, SITE_URL } from "@/lib/site";
 import { CookieConsentBannerClient } from "@/components/CookieConsentBannerClient";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { Navbar } from "@/components/Navbar";
+import { SiteInteractions } from "@/components/SiteInteractions";
 
-const dmSans = DM_Sans({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-inter",
   display: "swap",
 });
 
-const dmSerifDisplay = DM_Serif_Display({
-  weight: "400",
+const montserrat = Montserrat({
   subsets: ["latin"],
-  variable: "--font-serif",
+  variable: "--font-montserrat",
+  display: "swap",
+});
+
+const hankenGrotesk = Hanken_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-hanken-grotesk",
+  display: "swap",
+});
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-plus-jakarta-sans",
   display: "swap",
 });
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#f8f8f6",
+  themeColor: "#FFFBEF",
 };
 
 export const metadata: Metadata = {
@@ -55,8 +67,8 @@ export const metadata: Metadata = {
   creator: "Studiely",
   publisher: "Studiely",
   icons: {
-    icon: "/logo.jpeg",
-    shortcut: "/logo.jpeg",
+    icon: [{ url: "/studiely-logo.svg", type: "image/svg+xml" }],
+    shortcut: "/studiely-logo.svg",
     apple: "/logo.jpeg",
   },
   openGraph: {
@@ -124,7 +136,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${dmSans.variable} ${dmSerifDisplay.variable}`}
+      className={`${inter.variable} ${montserrat.variable} ${hankenGrotesk.variable} ${plusJakartaSans.variable}`}
       suppressHydrationWarning
     >
       <head>
@@ -133,8 +145,9 @@ export default function RootLayout({
           content="ixoxjly0raima1favd2auxjangpbg5"
         />
       </head>
-      <body className="antialiased font-sans bg-bg-base text-body">
+      <body className="site-funky antialiased font-sans bg-bg-base text-body">
         <GoogleAnalytics />
+        <SiteInteractions />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -142,7 +155,7 @@ export default function RootLayout({
           }}
         />
         <Navbar />
-        <div className="pt-[66px]">{children}</div>
+        <div>{children}</div>
         <CookieConsentBannerClient />
       </body>
     </html>

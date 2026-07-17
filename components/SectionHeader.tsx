@@ -33,6 +33,11 @@ export const SectionHeader = ({
     const el = ref.current;
     if (!el) return;
 
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setVis(true);
+      return;
+    }
+
     const o = new IntersectionObserver(
       ([e]) => {
         if (e.isIntersecting) {
@@ -70,7 +75,7 @@ export const SectionHeader = ({
           transform: vis ? "translate3d(0,0,0)" : "translate3d(0,16px,0)",
           transition: getTransition(0.08),
         }}
-        className="font-serif text-[clamp(1.6rem,1.15rem+1.95vw,2.7rem)] font-normal leading-[1.13] tracking-[-0.02em]"
+        className="font-heading text-[clamp(1.6rem,1.15rem+1.95vw,2.7rem)] font-normal leading-[1.13] tracking-[-0.02em]"
       >
         {title}
       </h2>

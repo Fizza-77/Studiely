@@ -281,7 +281,7 @@ export const StudyToolsSection = ({ sectionRef }: StudyToolsSectionProps) => {
     {(() => {
       const ctaStyle: CSSProperties = {
         background: `linear-gradient(135deg, ${
-          chosen && tool?.color ? tool.color : "#5448c8"
+          chosen && tool?.color ? tool.color : "#4F35F2"
         } 0%, ${chosen && tool?.color ? tool.color : "#4338b8"}dd 100%)`,
         boxShadow: `0 8px 28px ${sel ? getGlowColor(sel) : "rgba(26,35,126,0.35)"}`,
       };
