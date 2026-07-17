@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { Reveal } from "@/components/Reveal";
 import { STUDIELY_APP } from "@/lib/appUrls";
 
 const BLUE = "#4F35F2";
@@ -91,18 +92,16 @@ export const NylaMeetSection = () => {
     >
       <div className="wrap">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-14 xl:gap-16">
-          <div className="relative mx-auto w-full max-w-[420px] lg:max-w-none">
+          <Reveal className="relative mx-auto w-full max-w-[420px] lg:max-w-none" y={30}>
             <div
               aria-hidden
-              className="absolute inset-6 rounded-[32px] bg-[#E8FF2F]/55 sm:inset-4"
-              style={{ transform: "rotate(-7deg)" }}
+              className="absolute inset-5 -rotate-3 rounded-[24px] bg-[#E8FF2F]/55 sm:inset-4 sm:-rotate-[7deg] sm:rounded-[32px]"
             />
 
             <div
-              className="relative z-[1] overflow-hidden rounded-[24px] bg-white shadow-[0_20px_50px_rgba(30,27,75,0.14)] sm:rounded-[28px]"
-              style={{ transform: "rotate(4deg)" }}
+              className="relative z-[1] rotate-1 overflow-hidden rounded-[20px] bg-white shadow-[0_20px_50px_rgba(30,27,75,0.14)] sm:rotate-[4deg] sm:rounded-[28px]"
             >
-              <div className="flex items-start justify-between gap-3 border-b border-[#F0F0F4] px-4 py-4 sm:px-5">
+              <div className="flex flex-wrap items-start justify-between gap-3 border-b border-[#F0F0F4] px-3 py-4 sm:flex-nowrap sm:px-5">
                 <div className="flex min-w-0 items-center gap-3">
                   <span
                     className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full"
@@ -128,14 +127,14 @@ export const NylaMeetSection = () => {
                   </div>
                 </div>
                 <span
-                  className="shrink-0 rounded-full px-3 py-1 font-heading text-[9px] font-bold uppercase tracking-[0.1em] text-[#1E1B4B]"
+                  className="ml-auto shrink-0 rounded-full px-3 py-1 font-heading text-[9px] font-bold uppercase tracking-[0.1em] text-[#1E1B4B]"
                   style={{ backgroundColor: "#ECEAFF" }}
                 >
                   IGCSE Biology
                 </span>
               </div>
 
-              <div className="space-y-3 bg-white px-4 py-4 sm:px-5">
+              <div className="space-y-3 bg-white px-3 py-4 sm:px-5">
                 <div
                   className="ml-auto max-w-[88%] rounded-[16px] rounded-tr-sm px-4 py-3 font-sans text-[12.5px] leading-[1.55] text-white sm:text-[13px]"
                   style={{ backgroundColor: BLUE }}
@@ -159,7 +158,7 @@ export const NylaMeetSection = () => {
                 </div>
               </div>
 
-              <div className="border-t border-[#F0F0F4] bg-white px-4 py-4 sm:px-5">
+              <div className="border-t border-[#F0F0F4] bg-white px-3 py-4 sm:px-5">
                 <div className="flex items-center gap-2 rounded-full bg-[#F3F3F7] px-2 py-1.5 pl-4">
                   <span className="flex-1 font-sans text-[12.5px] text-[#8B8D9A]">
                     Ask Nyla anything...
@@ -182,9 +181,9 @@ export const NylaMeetSection = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </Reveal>
 
-          <div>
+          <Reveal delay={0.1} y={30}>
             <span
               className="mb-5 inline-flex rounded-full px-4 py-1.5 font-heading text-[10px] font-bold uppercase tracking-[0.12em] text-white"
               style={{ backgroundColor: PINK }}
@@ -208,14 +207,14 @@ export const NylaMeetSection = () => {
 
             <ul className="m-0 mb-10 flex list-none flex-col gap-5 p-0 sm:gap-6">
               {FEATURES.map(({ title, desc, bg, glow, Icon }) => (
-                <li key={title} className="flex gap-4 sm:gap-5">
+                <li key={title} className="flex items-start gap-3 sm:gap-5">
                   <span
                     className="funky-icon mt-0.5 flex h-16 w-16 shrink-0 items-center justify-center rounded-[22px] sm:h-[72px] sm:w-[72px] sm:rounded-[24px]"
                     style={{ backgroundColor: bg, boxShadow: `0 10px 28px ${glow}` }}
                   >
                     <Icon />
                   </span>
-                  <div>
+                  <div className="min-w-0">
                     <p className="mb-1 font-heading text-[15px] font-bold text-[#1E1B4B] sm:text-[16px]">
                       {title}
                     </p>
@@ -231,7 +230,7 @@ export const NylaMeetSection = () => {
               href={STUDIELY_APP.nyla}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-[15px] font-bold text-white shadow-[0_10px_28px_rgba(79,53,242,0.35)] transition-transform hover:scale-[1.02] active:scale-[0.98]"
+              className="funky-button inline-flex w-full items-center justify-center gap-2 rounded-full px-7 py-3.5 text-[15px] font-bold text-white shadow-[0_10px_28px_rgba(79,53,242,0.35)] min-[430px]:w-auto"
               style={{ backgroundColor: BLUE }}
             >
               Chat with Nyla
@@ -245,7 +244,7 @@ export const NylaMeetSection = () => {
                 aria-hidden
               />
             </Link>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

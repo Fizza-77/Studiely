@@ -412,6 +412,17 @@
   }
 }
 
+@media (hover: none), (pointer: coarse) {
+  .funky-button:not(:disabled):active {
+    scale: 0.97;
+    filter: saturate(1.08);
+  }
+
+  .site-funky article[class*="rounded"]:active {
+    scale: 0.99;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

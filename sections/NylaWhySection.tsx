@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Reveal } from "@/components/Reveal";
 import { STUDIELY_APP } from "@/lib/appUrls";
 
 const BLUE = "#4F35F2";
@@ -13,12 +14,13 @@ export const NylaWhySection = () => {
       className="bg-bg-base pb-[clamp(2.5rem,6vw,4rem)]"
     >
       <div className="wrap">
-        <article className="overflow-hidden rounded-[32px] border-b-[4px] bg-white px-6 py-8 shadow-[0_14px_40px_rgba(30,27,75,0.08)] sm:rounded-[40px] sm:px-10 sm:py-10 md:px-12 md:py-12 lg:px-14 lg:py-14" style={{ borderColor: LIME }}>
+        <Reveal y={28}>
+        <article className="overflow-hidden rounded-[24px] border-b-[4px] bg-white px-5 py-7 shadow-[0_14px_40px_rgba(30,27,75,0.08)] sm:rounded-[40px] sm:px-10 sm:py-10 md:px-12 md:py-12 lg:px-14 lg:py-14" style={{ borderColor: LIME }}>
           <h2
             id="nyla-why-heading"
-            className="mb-8 font-heading text-[clamp(1.75rem,3.5vw,2.75rem)] font-extrabold leading-[1.12] tracking-[-0.02em] text-[#1E1B4B] sm:mb-10"
+            className="mb-8 break-words font-heading text-[clamp(1.55rem,7vw,2.75rem)] font-extrabold leading-[1.12] tracking-[-0.02em] text-[#1E1B4B] sm:mb-10"
           >
-            <span className="whitespace-nowrap">Why students use Nyla for</span>
+            <span className="sm:whitespace-nowrap">Why students use Nyla for</span>
             <br />
             <span
               className="box-decoration-clone px-1 py-0.5"
@@ -85,6 +87,7 @@ export const NylaWhySection = () => {
             </div>
           </div>
         </article>
+        </Reveal>
       </div>
     </section>
   );

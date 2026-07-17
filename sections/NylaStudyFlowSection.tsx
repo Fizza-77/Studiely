@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Reveal } from "@/components/Reveal";
 
 const BLUE = "#4F35F2";
 const LIME = "#E8FF2F";
@@ -48,14 +49,14 @@ export const NylaStudyFlowSection = () => {
       className="bg-bg-base pb-[clamp(2.5rem,6vw,4rem)]"
     >
       <div className="wrap">
-        <div className="relative mb-[clamp(2rem,4vw,3rem)]">
+        <Reveal className="relative mb-[clamp(2rem,4vw,3rem)]" y={28}>
           <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-10">
             <div className="max-w-[42rem]">
               <h2
                 id="nyla-study-flow-heading"
-                className="mb-4 font-heading text-[clamp(1.85rem,3.8vw,2.75rem)] font-extrabold leading-[1.1] tracking-[-0.02em] text-[#1E1B4B] sm:mb-5"
+                className="mb-4 break-words font-heading text-[clamp(1.55rem,7vw,2.75rem)] font-extrabold leading-[1.1] tracking-[-0.02em] text-[#1E1B4B] sm:mb-5"
               >
-                <span className="whitespace-nowrap">How Nyla fits into your</span>
+                <span className="sm:whitespace-nowrap">How Nyla fits into your</span>
                 <br />
                 <span style={{ color: BLUE }}>study flow</span>
               </h2>
@@ -93,16 +94,16 @@ export const NylaStudyFlowSection = () => {
             />
             <DownArrow />
           </div>
-        </div>
+        </Reveal>
 
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6 lg:gap-8">
-          {STEPS.map(({ step, badgeBg, title, desc, progress, edgeColor }) => (
+          {STEPS.map(({ step, badgeBg, title, desc, progress, edgeColor }, index) => (
+            <Reveal key={step} className="h-full" delay={index * 0.1} y={30}>
             <article
-              key={step}
-              className="relative flex min-h-[280px] flex-col overflow-hidden rounded-[28px] bg-white shadow-[0_16px_44px_rgba(30,27,75,0.1)] sm:min-h-[300px] sm:rounded-[32px]"
+              className="relative flex h-full min-h-[260px] flex-col overflow-hidden rounded-[24px] bg-white shadow-[0_16px_44px_rgba(30,27,75,0.1)] sm:min-h-[300px] sm:rounded-[32px]"
               style={{ borderBottom: `5px solid ${edgeColor}` }}
             >
-              <div className="flex flex-1 flex-col px-6 py-7 sm:px-8 sm:py-8 md:px-9 md:py-9">
+              <div className="flex flex-1 flex-col px-5 py-6 sm:px-8 sm:py-8 md:px-9 md:py-9">
                 <span
                   className="mb-5 inline-flex w-fit rounded-full px-3.5 py-1.5 font-heading text-[10px] font-bold uppercase tracking-[0.1em] text-white sm:mb-6"
                   style={{ backgroundColor: badgeBg }}
@@ -134,6 +135,7 @@ export const NylaStudyFlowSection = () => {
                 )}
               </div>
             </article>
+            </Reveal>
           ))}
         </div>
       </div>

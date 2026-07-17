@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { Reveal } from "@/components/Reveal";
 import { STUDIELY_APP } from "@/lib/appUrls";
 
 const BLUE = "#4F35F2";
@@ -11,7 +12,7 @@ export const NylaHeroSection = () => {
     <section className="relative bg-bg-base pb-[clamp(2.5rem,6vw,4rem)] pt-[clamp(1rem,3vw,2rem)]">
       <div className="wrap">
         <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-12 xl:gap-16">
-          <div className="flex flex-col items-start text-left">
+          <Reveal className="flex flex-col items-start text-left" y={22}>
             <span
               className="mb-5 inline-flex items-center gap-2 rounded-full px-4 py-2 font-heading text-[11px] font-bold uppercase tracking-[0.12em]"
               style={{ backgroundColor: "#ECEAFF", color: BLUE }}
@@ -36,12 +37,12 @@ export const NylaHeroSection = () => {
               and personalized quizzes.
             </p>
 
-            <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+            <div className="flex w-full flex-col gap-3 min-[430px]:w-auto min-[430px]:flex-row min-[430px]:flex-wrap min-[430px]:items-center sm:gap-4">
               <a
                 href={STUDIELY_APP.nyla}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="funky-button inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-[15px] font-bold text-white shadow-[0_10px_28px_rgba(79,53,242,0.35)] sm:px-7"
+                className="funky-button inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3.5 text-[15px] font-bold text-white shadow-[0_10px_28px_rgba(79,53,242,0.35)] min-[430px]:w-auto sm:px-7"
                 style={{ backgroundColor: BLUE }}
               >
                 Chat with Nyla Now
@@ -49,15 +50,19 @@ export const NylaHeroSection = () => {
               </a>
               <Link
                 href="/#how-it-works"
-                className="funky-button inline-flex items-center justify-center rounded-full border-2 bg-transparent px-6 py-3.5 text-[15px] font-semibold transition-colors hover:bg-[#4F35F2]/5 sm:px-7"
+                className="funky-button inline-flex w-full items-center justify-center rounded-full border-2 bg-transparent px-6 py-3.5 text-[15px] font-semibold transition-colors hover:bg-[#4F35F2]/5 min-[430px]:w-auto sm:px-7"
                 style={{ borderColor: BLUE, color: BLUE }}
               >
                 How it works
               </Link>
             </div>
-          </div>
+          </Reveal>
 
-          <div className="hero-card-float relative mx-auto w-full max-w-[min(100%,441px)] lg:justify-self-end">
+          <Reveal
+            className="hero-card-float relative mx-auto w-full max-w-[min(100%,441px)] lg:justify-self-end"
+            delay={0.12}
+            y={28}
+          >
             <span
               aria-hidden
               className="pointer-events-none absolute -right-2 top-4 z-[2] text-[28px] text-[#7DD3FC] drop-shadow-[0_0_10px_rgba(125,211,252,0.85)] sm:right-0 sm:top-2 sm:text-[32px]"
@@ -87,7 +92,7 @@ export const NylaHeroSection = () => {
                 draggable={false}
               />
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>
