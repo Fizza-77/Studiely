@@ -11,6 +11,7 @@ const REWARDS = [
     body: "Stay motivated and earn exclusive digital badges for consistent daily learning.",
     bg: BLUE,
     icon: "/streak.png",
+    featured: false,
   },
   {
     title: "Subject Mastery Certificates",
@@ -24,6 +25,7 @@ const REWARDS = [
     body: "Invite friends and unlock premium features together for a whole month.",
     bg: BLUE,
     icon: "/refer.png",
+    featured: false,
   },
 ] as const;
 
