@@ -78,9 +78,12 @@ export const HomePricingSection = ({ sectionRef }: HomePricingSectionProps) => {
           Pricing
         </h2>
 
-        <div className="mx-auto grid max-w-[920px] grid-cols-1 items-end gap-8 md:grid-cols-2 md:gap-10">
-          {/* Base Camp */}
-          <article className="flex h-full flex-col rounded-[36px] border border-[#ECECF2] bg-white px-8 py-9 shadow-[0_16px_36px_rgba(30,27,75,0.14)] sm:px-10 sm:py-10">
+        <div className="mx-auto grid max-w-[920px] grid-cols-1 items-stretch gap-8 md:grid-cols-2 md:gap-10">
+          {/* Base Camp — tilts left on hover (div avoids site-funky article rotate override) */}
+          <div
+            role="article"
+            className="flex h-full origin-bottom flex-col rounded-[36px] border border-[#ECECF2] bg-white px-8 py-9 shadow-[0_16px_36px_rgba(30,27,75,0.14)] transition-[translate,rotate,scale] duration-600 ease-[cubic-bezier(0.22,1.15,0.36,1)] will-change-[translate,rotate,scale] hover:z-10 hover:-translate-y-2 hover:-rotate-[5deg] hover:scale-[1.07] motion-reduce:transition-none motion-reduce:hover:translate-none motion-reduce:hover:rotate-none motion-reduce:hover:scale-100 sm:px-10 sm:py-10"
+          >
             <h3 className="mb-4 font-jakarta text-[1.5rem] font-extrabold text-[#1E1B4B] sm:text-[1.65rem]">
               Base Camp
             </h3>
@@ -120,58 +123,57 @@ export const HomePricingSection = ({ sectionRef }: HomePricingSectionProps) => {
             >
               Get Started
             </Link>
-          </article>
+          </div>
 
-          {/* Scholar Pro */}
-          <div className="origin-center md:rotate-[4deg] md:scale-[1.06]">
-            <article
-              className="relative flex h-full flex-col rounded-[36px] px-9 py-10 shadow-[0_20px_44px_rgba(30,27,75,0.28)] sm:px-11 sm:py-11"
-              style={{ backgroundColor: BLUE }}
+          {/* Scholar Pro — tilts right on hover */}
+          <div
+            role="article"
+            className="relative flex h-full origin-bottom flex-col rounded-[36px] px-8 py-9 shadow-[0_20px_44px_rgba(30,27,75,0.28)] transition-[translate,rotate,scale] duration-600 ease-[cubic-bezier(0.22,1.15,0.36,1)] will-change-[translate,rotate,scale] hover:z-10 hover:-translate-y-2 hover:rotate-[5deg] hover:scale-[1.07] motion-reduce:transition-none motion-reduce:hover:translate-none motion-reduce:hover:rotate-none motion-reduce:hover:scale-100 sm:px-10 sm:py-10"
+            style={{ backgroundColor: BLUE }}
+          >
+            <span
+              className="absolute -right-2 -top-3 rounded-full px-4 py-1.5 font-heading text-[10px] font-extrabold uppercase tracking-[0.12em] shadow-[0_4px_12px_rgba(30,27,75,0.15)] sm:right-2"
+              style={{ backgroundColor: LIME, color: BLUE }}
             >
+              Most Popular
+            </span>
+
+            <h3 className="mb-4 font-jakarta text-[1.5rem] font-extrabold text-white sm:text-[1.65rem]">
+              Scholar Pro
+            </h3>
+
+            <div className="mb-8 flex items-end gap-1">
               <span
-                className="absolute -right-2 -top-3 rounded-full px-4 py-1.5 font-heading text-[10px] font-extrabold uppercase tracking-[0.12em] shadow-[0_4px_12px_rgba(30,27,75,0.15)] sm:right-2"
-                style={{ backgroundColor: LIME, color: BLUE }}
+                className="font-hanken text-[clamp(2.75rem,5vw,3.5rem)] font-extrabold leading-none tracking-[-0.03em]"
+                style={{ color: LIME }}
               >
-                Most Popular
+                $12
               </span>
+              <span className="mb-1.5 font-sans text-[15px] text-white/70">/mo</span>
+            </div>
 
-              <h3 className="mb-4 font-jakarta text-[1.5rem] font-extrabold text-white sm:text-[1.65rem]">
-                Scholar Pro
-              </h3>
+            <ul className="m-0 mb-10 flex list-none flex-col gap-4 p-0">
+              {[
+                "Unlimited Study sets",
+                "Advanced AI Tutor features",
+                "Offline study mode",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <LimeCheck />
+                  <span className="font-sans text-[15px] leading-snug text-white">
+                    {item}
+                  </span>
+                </li>
+              ))}
+            </ul>
 
-              <div className="mb-8 flex items-end gap-1">
-                <span
-                  className="font-hanken text-[clamp(2.75rem,5vw,3.5rem)] font-extrabold leading-none tracking-[-0.03em]"
-                  style={{ color: LIME }}
-                >
-                  $12
-                </span>
-                <span className="mb-1.5 font-sans text-[15px] text-white/70">/mo</span>
-              </div>
-
-              <ul className="m-0 mb-10 flex list-none flex-col gap-4 p-0">
-                {[
-                  "Unlimited Study sets",
-                  "Advanced AI Tutor features",
-                  "Offline study mode",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <LimeCheck />
-                    <span className="font-sans text-[15px] leading-snug text-white">
-                      {item}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-
-              <Link
-                href={STUDIELY_APP.pricing}
-                className="mt-auto inline-flex w-full items-center justify-center rounded-full px-6 py-3.5 text-[15px] font-bold text-[#1E1B4B] transition-opacity hover:opacity-90"
-                style={{ backgroundColor: LIME }}
-              >
-                Go Pro Now
-              </Link>
-            </article>
+            <Link
+              href={STUDIELY_APP.pricing}
+              className="mt-auto inline-flex w-full items-center justify-center rounded-full px-6 py-3.5 text-[15px] font-bold text-[#1E1B4B] transition-opacity hover:opacity-90"
+              style={{ backgroundColor: LIME }}
+            >
+              Go Pro Now
+            </Link>
           </div>
         </div>
       </div>

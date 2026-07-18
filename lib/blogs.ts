@@ -44,6 +44,16 @@ async function execPostgrestWithRetries<T>(
     if (!error) return data as T;
 
     lastMsg = error.message || error.code || "unknown error";
+    const cause =
+      error &&
+      typeof error === "object" &&
+      "cause" in error &&
+      error.cause instanceof Error
+        ? error.cause.message
+        : "";
+    if (cause && !lastMsg.includes(cause)) {
+      lastMsg = `${lastMsg} (${cause})`;
+    }
 
     if (!isTransientSupabaseFailure(lastMsg)) {
       throw new Error(`${label}: ${truncateForError(lastMsg)}`);
@@ -223,11 +233,20 @@ async function loadStudielyBlogPageSeo(siteId: string): Promise<SiteBlogPageRow 
   }
 }
 
+function warnBlogFetchFailure(label: string, error: unknown) {
+  const message = error instanceof Error ? error.message : String(error);
+  console.warn(`[blogs] ${label}; serving empty/fallback data. ${truncateForError(message)}`);
+}
+
 /**
  * Fetch Studiely blog index payload: site SEO fields, site categories and posts.
+ * Network / Supabase outages degrade to empty lists instead of crashing the page.
  */
 export async function getBlogIndexDataForStudiely(): Promise<BlogIndexDataForStudiely> {
-  const siteId = await getSiteIdForStudiely();
+  const siteId = await getSiteIdForStudiely().catch((error) => {
+    warnBlogFetchFailure("resolve studiely site_id failed", error);
+    return null;
+  });
 
   if (!siteId) {
     return {
@@ -249,7 +268,10 @@ export async function getBlogIndexDataForStudiely(): Promise<BlogIndexDataForStu
   }
 
   const [siteRow, categoriesData, postsData] = await Promise.all([
-    loadStudielyBlogPageSeo(siteId),
+    loadStudielyBlogPageSeo(siteId).catch((error) => {
+      warnBlogFetchFailure("load studiely blog page seo failed", error);
+      return null;
+    }),
     execPostgrestWithRetries("load studiely blog categories", () =>
       client
         .from("blog_categories")
@@ -257,7 +279,15 @@ export async function getBlogIndexDataForStudiely(): Promise<BlogIndexDataForStu
         .eq("site_id", siteId)
         .order("sort_order", { ascending: true })
         .order("name", { ascending: true })
-    ),
+    ).catch((error) => {
+      warnBlogFetchFailure("load studiely blog categories failed", error);
+      return [] as Array<{
+        id: string;
+        name: string;
+        slug: string;
+        sort_order: number | null;
+      }>;
+    }),
     execPostgrestWithRetries("load studiely blogs", () =>
       client
         .from("blogs")
@@ -267,7 +297,10 @@ export async function getBlogIndexDataForStudiely(): Promise<BlogIndexDataForStu
         .eq("site_id", siteId)
         .eq("status", "published")
         .order("date_published", { ascending: false })
-    ),
+    ).catch((error) => {
+      warnBlogFetchFailure("load studiely blogs failed", error);
+      return [] as Array<Omit<BlogListRow, "category"> & { category: unknown }>;
+    }),
   ]);
 
   const categories = ((categoriesData ?? []) as Array<{
@@ -301,31 +334,40 @@ export async function getBlogIndexDataForStudiely(): Promise<BlogIndexDataForStu
 export async function getBlogBySlugForStudiely(
   slug: string
 ): Promise<BlogPostRow | null> {
-  const siteId = await getSiteIdForStudiely();
-  if (!siteId) return null;
+  try {
+    const siteId = await getSiteIdForStudiely();
+    if (!siteId) return null;
 
-  const client = supabase;
-  if (!client) return null;
+    const client = supabase;
+    if (!client) return null;
 
-  const row = await execPostgrestWithRetries(`fetch studiely blog "${slug}"`, () =>
-    client
-      .from("blogs")
-      .select(
-        `id, content, ${BLOG_SEO_FIELDS}, category:blog_categories(id, name, slug)`
-      )
-      .eq("site_id", siteId)
-      .eq("status", "published")
-      .eq("slug", slug)
-      .maybeSingle()
-  );
+    const row = await execPostgrestWithRetries(
+      `fetch studiely blog "${slug}"`,
+      () =>
+        client
+          .from("blogs")
+          .select(
+            `id, content, ${BLOG_SEO_FIELDS}, category:blog_categories(id, name, slug)`
+          )
+          .eq("site_id", siteId)
+          .eq("status", "published")
+          .eq("slug", slug)
+          .maybeSingle()
+    );
 
-  if (!row) return null;
+    if (!row) return null;
 
-  const typedRow = row as Omit<BlogPostRow, "category"> & { category: unknown };
-  return {
-    ...typedRow,
-    category: normalizeCategory(typedRow.category),
-  };
+    const typedRow = row as Omit<BlogPostRow, "category"> & {
+      category: unknown;
+    };
+    return {
+      ...typedRow,
+      category: normalizeCategory(typedRow.category),
+    };
+  } catch (error) {
+    warnBlogFetchFailure(`fetch studiely blog "${slug}" failed`, error);
+    return null;
+  }
 }
 
 

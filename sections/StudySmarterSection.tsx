@@ -14,7 +14,6 @@ const FEATURES = [
     icon: "/notes.png",
     iconW: 60,
     iconH: 68,
-    featured: false,
   },
   {
     title: "Flashcards",
@@ -23,7 +22,6 @@ const FEATURES = [
     icon: "/flashcards.png",
     iconW: 67,
     iconH: 64,
-    featured: false,
   },
   {
     title: "Quiz",
@@ -32,7 +30,6 @@ const FEATURES = [
     icon: "/quizz.png",
     iconW: 60,
     iconH: 58,
-    featured: true,
   },
   {
     title: "Exam Focus",
@@ -41,7 +38,6 @@ const FEATURES = [
     icon: "/focus.png",
     iconW: 57,
     iconH: 58,
-    featured: false,
   },
 ] as const;
 
@@ -64,33 +60,25 @@ export const StudySmarterSection = () => {
         </h2>
 
         <div className="relative mx-auto mb-[clamp(1.75rem,4vw,3rem)] grid max-w-[1000px] grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-7 lg:grid-cols-4 lg:gap-8 xl:max-w-[1040px] xl:gap-9">
-          {FEATURES.map(({ title, desc, href, icon, iconW, iconH, featured }) => (
+          {FEATURES.map(({ title, desc, href, icon, iconW, iconH }) => (
             <a
               key={title}
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className={`group relative z-[1] block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4F35F2] focus-visible:ring-offset-2 ${
-                featured ? "z-10 mt-3 lg:mt-4" : ""
-              }`}
+              className="group relative z-[1] block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4F35F2] focus-visible:ring-offset-2 hover:z-10"
             >
-              {featured ? (
-                <span
-                  aria-hidden
-                  className="absolute inset-x-[2%] -top-[18%] bottom-[12%] -rotate-[10deg] rounded-[28px] shadow-[0_10px_28px_rgba(79,53,242,0.14)] transition-transform duration-300 group-hover:-top-[20%] group-hover:-rotate-[12deg] motion-reduce:rotate-0 sm:rounded-[32px]"
-                  style={{
-                    background:
-                      "radial-gradient(circle at 50% 45%, #B8FF3A 0%, #E8FF2F 42%, #9AE82A 100%)",
-                  }}
-                />
-              ) : null}
+              <span
+                aria-hidden
+                className="pointer-events-none absolute inset-0 origin-bottom rotate-0 rounded-[28px] shadow-[0_10px_28px_rgba(79,53,242,0.12)] transition-transform duration-500 ease-out will-change-transform group-hover:-rotate-[10deg] motion-reduce:rotate-0 motion-reduce:transition-none sm:rounded-[32px]"
+                style={{
+                  background:
+                    "radial-gradient(circle at 50% 45%, #B8FF3A 0%, #E8FF2F 42%, #9AE82A 100%)",
+                }}
+              />
 
               <div
-                className={`relative flex h-full min-h-[220px] flex-col items-center justify-center rounded-[28px] border-b-[5px] border-[#3A24C4] px-5 py-7 text-center shadow-[0_14px_28px_rgba(79,53,242,0.28),0_6px_12px_rgba(79,53,242,0.16)] transition-transform duration-300 sm:min-h-[240px] sm:rounded-[32px] sm:px-6 sm:py-8 lg:aspect-square lg:min-h-0 ${
-                  featured
-                    ? "rotate-[6deg] group-hover:rotate-[4deg] motion-reduce:rotate-0"
-                    : "group-hover:-translate-y-1 motion-reduce:transform-none"
-                }`}
+                className="relative flex h-full min-h-[220px] flex-col items-center justify-center rounded-[28px] border-b-[5px] border-[#3A24C4] px-5 py-7 text-center shadow-[0_14px_28px_rgba(79,53,242,0.28),0_6px_12px_rgba(79,53,242,0.16)] transition-transform duration-500 ease-out origin-bottom group-hover:rotate-[10deg] motion-reduce:transform-none motion-reduce:transition-none sm:min-h-[240px] sm:rounded-[32px] sm:px-6 sm:py-8 lg:aspect-square lg:min-h-0"
                 style={{ backgroundColor: PURPLE }}
               >
                 <div className="mb-5 flex h-14 w-14 items-center justify-center">
