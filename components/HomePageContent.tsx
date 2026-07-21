@@ -31,9 +31,6 @@ const HomePricingSection = dynamic(
 const SisterSection = dynamic(() => import("@/sections/SisterSection").then((m) => m.SisterSection), {
   ssr: true,
 });
-const CTASection = dynamic(() => import("@/sections/CTASection").then((m) => m.CTASection), {
-  ssr: true,
-});
 
 type HomePageContentProps = {
   /** When true (e.g. `/features` route), scroll to the hero after mount. */
@@ -72,13 +69,14 @@ export function HomePageContent({ scrollToHeroOnMount = false }: HomePageContent
         <HowItWorksSection />
         <NylaSection sectionRef={nylaRef} />
         <SupportedCountriesSection sectionRef={curriculumRef} />
-        <RewardsProgressSection sectionRef={rewardsRef} />
-        <ReviewsSection sectionRef={reviewsRef} />
+        <div className="bg-bg-base">
+          <RewardsProgressSection sectionRef={rewardsRef} />
+          <ReviewsSection sectionRef={reviewsRef} />
+        </div>
         <HomePricingSection sectionRef={pricingRef} />
         <SisterSection sectionRef={sisterRef} />
-        <CTASection />
       </main>
-      <Footer variant="marketing" />
+      <Footer />
     </>
   );
 }

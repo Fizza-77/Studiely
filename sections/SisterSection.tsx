@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 const BLUE = "#4F35F2";
 const LIME = "#E8FF2F";
 const PINK = "#FF36C6";
@@ -43,6 +45,7 @@ const ECOSYSTEM_CARDS = [
     edgeColor: LIME,
     href: "https://makemylesson.ai",
     linkLabel: "Visit Make My Lesson",
+    logo: "/logo-makemylesson.png",
     paragraphs: [
       "Generates complete, curriculum-aligned teaching materials from a single topic lesson plans, presentations, activities and assessments.",
       "Make My Lesson is our sister platform built for teachers. Where Studiely supports the student preparing for the exam, Make My Lesson supports the teacher preparing the lesson.",
@@ -57,6 +60,7 @@ const ECOSYSTEM_CARDS = [
     edgeColor: PINK,
     href: "https://linguatude.com",
     linkLabel: "Visit Linguatude",
+    logo: "/logo-linguatude.jpg",
     paragraphs: [
       "Built for learners whose next university place, immigration step or career opportunity depends on achieving a target English score.",
       "Linguatude is built for learners whose next university place, immigration step or career opportunity depends on achieving a target English score. Where Studiely supports curriculum study, Linguatude supports the test that opens the next door.",
@@ -99,10 +103,18 @@ export const SisterSection = ({ sectionRef }: SisterSectionProps) => (
           >
             <div className="mb-5 flex items-start justify-between gap-4">
               <span
-                className="font-heading text-[10px] font-bold uppercase tracking-[0.14em]"
-                style={{ color: BLUE }}
+                className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full sm:h-14 sm:w-14"
+                style={{ backgroundColor: BLUE }}
               >
-                Ecosystem
+                <Image
+                  src={card.logo}
+                  alt=""
+                  width={56}
+                  height={56}
+                  unoptimized
+                  className="h-full w-full object-cover"
+                  aria-hidden
+                />
               </span>
               <ExternalArrow />
             </div>

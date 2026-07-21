@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
 import { STUDIELY_APP } from "@/lib/appUrls";
@@ -15,10 +16,34 @@ export const NylaWhySection = () => {
     >
       <div className="wrap">
         <Reveal y={28}>
-        <article className="overflow-hidden rounded-[24px] border-b-[4px] bg-white px-5 py-7 shadow-[0_14px_40px_rgba(30,27,75,0.08)] sm:rounded-[40px] sm:px-10 sm:py-10 md:px-12 md:py-12 lg:px-14 lg:py-14" style={{ borderColor: LIME }}>
+        <article
+          className="relative overflow-visible rounded-[24px] border-b-[4px] bg-white px-5 py-7 shadow-[0_14px_40px_rgba(30,27,75,0.08)] sm:rounded-[40px] sm:px-10 sm:py-10 md:px-12 md:py-12 lg:px-14 lg:py-14"
+          style={{ borderColor: LIME }}
+        >
+          <Image
+            src="/learn-star.png"
+            alt=""
+            width={220}
+            height={220}
+            unoptimized
+            aria-hidden
+            className="pointer-events-none absolute -left-2 top-[18%] z-[2] h-auto w-[clamp(6rem,14vw,9.5rem)] max-w-none -translate-y-1/2 select-none drop-shadow-[0_6px_18px_rgba(255,54,198,0.25)] sm:left-0 sm:w-[clamp(7rem,15vw,11rem)]"
+            draggable={false}
+          />
+          <Image
+            src="/learn-flower.png"
+            alt=""
+            width={320}
+            height={320}
+            unoptimized
+            aria-hidden
+            className="pointer-events-none absolute -right-2 -top-6 z-[2] h-auto w-[clamp(5.5rem,12vw,9rem)] max-w-none select-none sm:right-0 sm:-top-7 sm:w-[clamp(6.5rem,13vw,10rem)]"
+            draggable={false}
+          />
+
           <h2
             id="nyla-why-heading"
-            className="mb-8 break-words font-heading text-[clamp(1.55rem,7vw,2.75rem)] font-extrabold leading-[1.12] tracking-[-0.02em] text-[#1E1B4B] sm:mb-10"
+            className="relative z-[1] mb-8 break-words text-center font-heading text-[clamp(1.55rem,7vw,2.75rem)] font-extrabold leading-[1.12] tracking-[-0.02em] text-[#1E1B4B] sm:mb-10"
           >
             <span className="sm:whitespace-nowrap">Why students use Nyla for</span>
             <br />

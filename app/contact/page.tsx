@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ContactFooter } from "@/components/ContactFooter";
+import { Footer } from "@/components/Footer";
 import { ContactHeroSection } from "@/sections/ContactHeroSection";
 import { ContactSupportCardsSection } from "@/sections/ContactSupportCardsSection";
 import { ContactAboutSection } from "@/sections/ContactAboutSection";
@@ -48,7 +48,7 @@ export default function ContactPage() {
         <ContactAboutSection />
         <ContactHelpTopicsSection />
       </main>
-      <ContactFooter />
+      <Footer />
     </>
   );
 }

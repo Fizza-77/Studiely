@@ -68,7 +68,7 @@ export const HomePricingSection = ({ sectionRef }: HomePricingSectionProps) => {
       id="pricing"
       ref={sectionRef}
       aria-labelledby="homepage-pricing-heading"
-      className="bg-bg-base py-[clamp(2.75rem,6vw,5rem)]"
+      className="bg-bg-base pb-[clamp(2.75rem,6vw,5rem)] pt-[clamp(0.5rem,1.5vw,1rem)]"
     >
       <div className="wrap">
         <h2

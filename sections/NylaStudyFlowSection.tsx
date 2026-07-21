@@ -25,23 +25,6 @@ const STEPS = [
   },
 ] as const;
 
-const DownArrow = () => (
-  <svg
-    viewBox="0 0 48 48"
-    className="h-10 w-10 sm:h-12 sm:w-12"
-    fill="none"
-    aria-hidden
-  >
-    <path
-      d="M8 12h22M22 12v28M22 40l-8-8M22 40l8-8"
-      stroke={LIME}
-      strokeWidth="5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-
 export const NylaStudyFlowSection = () => {
   return (
     <section
@@ -50,7 +33,7 @@ export const NylaStudyFlowSection = () => {
     >
       <div className="wrap">
         <Reveal className="relative mb-[clamp(2rem,4vw,3rem)]" y={28}>
-          <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-10">
+          <div className="grid items-center gap-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-10">
             <div className="max-w-[42rem]">
               <h2
                 id="nyla-study-flow-heading"
@@ -66,33 +49,16 @@ export const NylaStudyFlowSection = () => {
               </p>
             </div>
 
-            <div className="relative hidden shrink-0 lg:block">
-              <Image
-                src="/Nyla-flower-2.png"
-                alt=""
-                width={280}
-                height={280}
-                unoptimized
-                aria-hidden
-                className="h-[200px] w-[200px] object-contain xl:h-[240px] xl:w-[240px]"
-              />
-              <div className="absolute bottom-2 right-2 translate-x-3">
-                <DownArrow />
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-6 flex items-end justify-end gap-3 lg:hidden">
             <Image
-              src="/Nyla-flower-2.png"
+              src="/flower.png"
               alt=""
-              width={180}
-              height={180}
+              width={360}
+              height={360}
               unoptimized
               aria-hidden
-              className="h-[140px] w-[140px] object-contain sm:h-[160px] sm:w-[160px]"
+              className="pointer-events-none mx-auto h-auto w-[clamp(11rem,28vw,18rem)] max-w-none select-none justify-self-end drop-shadow-[0_8px_20px_rgba(255,54,198,0.28)] lg:mx-0"
+              draggable={false}
             />
-            <DownArrow />
           </div>
         </Reveal>
 

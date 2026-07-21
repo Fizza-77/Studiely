@@ -63,20 +63,24 @@ export const NylaHeroSection = () => {
             delay={0.12}
             y={28}
           >
-            <span
+            <Image
+              src="/hero-star.png"
+              alt=""
+              width={180}
+              height={180}
+              unoptimized
               aria-hidden
-              className="pointer-events-none absolute -right-2 top-4 z-[2] text-[28px] text-[#7DD3FC] drop-shadow-[0_0_10px_rgba(125,211,252,0.85)] sm:right-0 sm:top-2 sm:text-[32px]"
-            >
-              ✦
-            </span>
+              className="pointer-events-none absolute -right-8 -top-10 z-[2] h-auto w-[clamp(5.5rem,12vw,8.5rem)] max-w-none select-none drop-shadow-[0_0_12px_rgba(255,255,255,0.45)] sm:-right-10 sm:-top-12"
+              draggable={false}
+            />
             <Image
               src="/nyla-flower.png"
               alt=""
-              width={72}
-              height={72}
+              width={140}
+              height={140}
               unoptimized
               aria-hidden
-              className="pointer-events-none absolute -bottom-4 -left-4 z-[2] h-14 w-14 sm:-bottom-5 sm:-left-5 sm:h-16 sm:w-16"
+              className="pointer-events-none absolute -bottom-9 -left-9 z-[2] h-auto w-[clamp(5rem,12vw,8rem)] max-w-none sm:-bottom-11 sm:-left-11"
             />
 
             <div className="relative overflow-hidden rounded-[32px] shadow-[0_18px_48px_rgba(79,53,242,0.22)] sm:rounded-[40px]">

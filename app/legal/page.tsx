@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ContactFooter } from "@/components/ContactFooter";
+import { Footer } from "@/components/Footer";
 import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -76,7 +76,7 @@ export default function LegalIndexPage() {
           </div>
         </div>
       </main>
-      <ContactFooter />
+      <Footer />
     </div>
   );
 }

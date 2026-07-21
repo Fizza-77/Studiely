@@ -93,14 +93,13 @@ export const NylaMeetSection = () => {
       <div className="wrap">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-14 xl:gap-16">
           <Reveal className="relative mx-auto w-full max-w-[420px] lg:max-w-none" y={30}>
-            <div
-              aria-hidden
-              className="absolute inset-5 -rotate-3 rounded-[24px] bg-[#E8FF2F]/55 sm:inset-4 sm:-rotate-[7deg] sm:rounded-[32px]"
-            />
+            <div className="group relative">
+              <div
+                aria-hidden
+                className="absolute inset-5 rounded-[24px] bg-[#E8FF2F]/55 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform group-hover:-rotate-[7deg] motion-reduce:transition-none motion-reduce:group-hover:rotate-0 sm:inset-4 sm:rounded-[32px]"
+              />
 
-            <div
-              className="relative z-[1] rotate-1 overflow-hidden rounded-[20px] bg-white shadow-[0_20px_50px_rgba(30,27,75,0.14)] sm:rotate-[4deg] sm:rounded-[28px]"
-            >
+              <div className="relative z-[1] overflow-hidden rounded-[20px] bg-white shadow-[0_20px_50px_rgba(30,27,75,0.14)] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform group-hover:rotate-[4deg] motion-reduce:transition-none motion-reduce:group-hover:rotate-0 sm:rounded-[28px]">
               <div className="flex flex-wrap items-start justify-between gap-3 border-b border-[#F0F0F4] px-3 py-4 sm:flex-nowrap sm:px-5">
                 <div className="flex min-w-0 items-center gap-3">
                   <span
@@ -121,7 +120,8 @@ export const NylaMeetSection = () => {
                     <p className="font-heading text-[15px] font-bold leading-none text-[#1E1B4B]">
                       Nyla AI
                     </p>
-                    <p className="mt-1.5 font-sans text-[11px] font-medium" style={{ color: PINK }}>
+                    <p className="mt-1.5 flex items-center gap-1.5 font-sans text-[11px] font-medium" style={{ color: PINK }}>
+                      <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#7CFF8A]" aria-hidden />
                       Online — AI Study Tutor
                     </p>
                   </div>
@@ -180,6 +180,7 @@ export const NylaMeetSection = () => {
                   </span>
                 </div>
               </div>
+            </div>
             </div>
           </Reveal>
 

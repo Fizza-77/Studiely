@@ -133,6 +133,18 @@ export const NylaSection = ({ sectionRef }: NylaSectionProps) => {
                 className="pointer-events-none absolute -right-8 -top-10 z-[1] h-[260px] w-[260px] select-none object-contain sm:-right-6 sm:-top-8 sm:h-[320px] sm:w-[320px] md:h-[380px] md:w-[380px]"
               />
 
+              {/* Swirl — top right of blue card, outside chat preview */}
+              <Image
+                src="/swirl.svg"
+                alt=""
+                width={320}
+                height={320}
+                unoptimized
+                aria-hidden
+                className="pointer-events-none absolute -right-6 -top-8 z-[3] h-auto w-[clamp(12rem,28vw,18rem)] select-none sm:-right-8 sm:-top-10 sm:w-[clamp(13rem,30vw,20rem)]"
+                draggable={false}
+              />
+
               <div className="relative z-[2] mx-auto flex w-full max-w-[340px] items-center justify-center py-8 sm:max-w-[360px]">
                 {/* Gray ring behind chat */}
                 <div
@@ -141,7 +153,8 @@ export const NylaSection = ({ sectionRef }: NylaSectionProps) => {
                 />
 
                 {/* Chat preview — matches design */}
-                <div className="relative z-[1] w-full overflow-hidden rounded-[20px] bg-white shadow-[0_18px_48px_rgba(0,0,0,0.3)]">
+                <div className="relative z-[1] w-full">
+                  <div className="relative z-[1] w-full overflow-hidden rounded-[20px] bg-white shadow-[0_18px_48px_rgba(0,0,0,0.3)]">
                   <div
                     className="flex items-center gap-3 px-4 py-3.5"
                     style={{ backgroundColor: BLUE }}
@@ -209,6 +222,7 @@ export const NylaSection = ({ sectionRef }: NylaSectionProps) => {
                       </Link>
                     </div>
                   </div>
+                </div>
                 </div>
               </div>
             </div>

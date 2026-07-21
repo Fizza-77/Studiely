@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { cache } from "react";
-import { ContactFooter } from "@/components/ContactFooter";
+import { Footer } from "@/components/Footer";
 import { buildBlogPostingJsonLd } from "@/lib/blogSchema";
 import { getBlogBySlugForStudiely } from "@/lib/blogs";
 import { DEFAULT_OG_IMAGE_PATH, SITE_URL } from "@/lib/site";
@@ -133,7 +133,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             </article>
           </div>
         </main>
-        <ContactFooter />
+        <Footer />
       </>
     );
   }
@@ -247,7 +247,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           </article>
         </div>
       </main>
-      <ContactFooter />
+      <Footer />
     </>
   );
 }

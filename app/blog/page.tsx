@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { BlogPageContent } from "@/components/BlogPageContent";
-import { ContactFooter } from "@/components/ContactFooter";
+import { Footer } from "@/components/Footer";
 import { getBlogIndexDataForStudiely } from "@/lib/blogs";
 import { DEFAULT_OG_IMAGE_PATH, SITE_URL } from "@/lib/site";
 import { buildBreadcrumbSchema } from "@/lib/seo";
@@ -73,7 +73,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
             emptyMessage={seo.empty_state_message}
           />
         </main>
-        <ContactFooter />
+        <Footer />
       </div>
     </>
   );

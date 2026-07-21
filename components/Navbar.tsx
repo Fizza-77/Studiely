@@ -5,6 +5,7 @@ import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { STUDIELY_APP } from "@/lib/appUrls";
+import { HOME_SHELL } from "@/lib/homeShell";
 
 interface NavbarProps {
   visibleSections?: string[];
@@ -76,11 +77,11 @@ export const Navbar = ({ visibleSections: _visibleSections = [] }: NavbarProps) 
           showNavbar ? "translate-y-0" : "-translate-y-full"
         }`}
       >
-        <div className="wrap bg-bg-base/90 py-3 backdrop-blur-md md:py-4">
-          <div className="flex h-[56px] items-center justify-between gap-3 rounded-[28px] bg-[#E8FF2F] px-3 sm:h-[62px] sm:px-5 md:rounded-[40px] md:px-6 lg:px-8">
+        <div className={`${HOME_SHELL} bg-bg-base/90 pb-0 pt-1 backdrop-blur-md md:pt-1.5`}>
+          <div className="flex h-[46px] items-center justify-between gap-3 rounded-[24px] bg-[#E8FF2F] px-3 sm:h-[50px] sm:px-4 md:rounded-[32px] md:px-5 lg:px-6">
             <Link
               href="/"
-              className="flex shrink-0 items-center gap-1.5 transition-transform hover:scale-[1.03] sm:gap-2"
+              className="flex shrink-0 items-center gap-1.5 transition-opacity hover:opacity-80"
               aria-label="Studiely home"
             >
               <Image
@@ -89,7 +90,7 @@ export const Navbar = ({ visibleSections: _visibleSections = [] }: NavbarProps) 
                 width={28}
                 height={38}
                 priority
-                className="h-8 w-auto shrink-0 sm:h-9"
+                className="h-7 w-auto shrink-0 sm:h-8"
                 aria-hidden
               />
               <Image
@@ -99,7 +100,7 @@ export const Navbar = ({ visibleSections: _visibleSections = [] }: NavbarProps) 
                 height={24}
                 priority
                 unoptimized
-                className="relative top-[2px] h-[18px] w-auto shrink-0 object-contain sm:top-[3px] sm:h-[22px]"
+                className="relative top-[1px] h-[15px] w-auto shrink-0 object-contain sm:top-[2px] sm:h-[18px]"
               />
             </Link>
 
@@ -120,7 +121,7 @@ export const Navbar = ({ visibleSections: _visibleSections = [] }: NavbarProps) 
                     href={href}
                     aria-current={active ? "page" : undefined}
                     onClick={() => setActiveLink(href)}
-                    className={`funky-link whitespace-nowrap px-2.5 py-1.5 text-[13px] font-medium text-[#4F35F2] transition-opacity hover:opacity-80 xl:px-3 xl:text-[14px] ${
+                    className={`funky-link whitespace-nowrap px-2 py-1 text-[12px] font-medium text-[#4F35F2] transition-opacity hover:opacity-80 xl:px-2.5 xl:text-[13px] ${
                       active ? "funky-link-active font-semibold" : ""
                     }`}
                   >
@@ -136,7 +137,7 @@ export const Navbar = ({ visibleSections: _visibleSections = [] }: NavbarProps) 
                   href={STUDIELY_APP.login}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="funky-link text-[13px] font-semibold text-[#4F35F2] transition-opacity hover:opacity-80 xl:text-[14px]"
+                  className="funky-link text-[12px] font-semibold text-[#4F35F2] transition-opacity hover:opacity-80 xl:text-[13px]"
                 >
                   Login
                 </a>
@@ -144,7 +145,7 @@ export const Navbar = ({ visibleSections: _visibleSections = [] }: NavbarProps) 
                   href={STUDIELY_APP.signUp}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="funky-button inline-flex items-center justify-center rounded-full bg-[#4F35F2] px-4 py-2 text-[13px] font-semibold text-white transition-opacity hover:opacity-90 xl:px-5 xl:text-[14px]"
+                  className="funky-button inline-flex items-center justify-center rounded-full bg-[#4F35F2] px-3.5 py-1.5 text-[12px] font-semibold text-white transition-opacity hover:opacity-90 xl:px-4 xl:text-[13px]"
                 >
                   Start Free
                 </a>
@@ -173,13 +174,13 @@ export const Navbar = ({ visibleSections: _visibleSections = [] }: NavbarProps) 
       </header>
 
       <div
-        className="h-[calc(56px+1.5rem)] shrink-0 md:h-[calc(62px+2rem)]"
+        className="h-[calc(46px+0.25rem)] shrink-0 sm:h-[calc(50px+0.25rem)] md:h-[calc(50px+0.375rem)]"
         aria-hidden
       />
 
       {open ? (
         <div
-          className="nav-menu-enter fixed inset-x-0 top-[calc(56px+1.5rem)] z-[399] border-b border-border-default bg-white p-4 shadow-lg sm:top-[calc(62px+1.5rem)] sm:p-6 md:top-[calc(62px+2rem)] lg:hidden"
+          className="nav-menu-enter fixed inset-x-0 top-[calc(46px+0.25rem)] z-[399] border-b border-border-default bg-white p-4 shadow-lg sm:top-[calc(50px+0.25rem)] sm:p-6 md:top-[calc(50px+0.375rem)] lg:hidden"
           role="dialog"
           aria-label="Mobile navigation"
         >
