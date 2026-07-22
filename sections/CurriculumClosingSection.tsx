@@ -15,7 +15,7 @@ export const CurriculumClosingSection = () => {
       <div className="wrap">
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
           <article
-            className="relative min-h-[245px] overflow-hidden rounded-[32px] px-7 py-8 sm:min-h-[270px] sm:rounded-[40px] sm:px-9 sm:py-9"
+            className="relative min-h-[245px] overflow-visible rounded-[32px] px-7 py-8 sm:min-h-[270px] sm:rounded-[40px] sm:px-9 sm:py-9"
             style={{ backgroundColor: BLUE }}
           >
             <p className="relative z-[1] m-0 font-jakarta text-[13px] font-medium text-white/70 sm:text-[14px]">
@@ -33,13 +33,14 @@ export const CurriculumClosingSection = () => {
             </a>
 
             <Image
-              src="/explore-prep-tools.png"
+              src="/flower.png"
               alt=""
-              width={220}
-              height={220}
+              width={360}
+              height={360}
               unoptimized
               aria-hidden
-              className="pointer-events-none absolute -bottom-3 right-3 h-[150px] w-[150px] object-contain mix-blend-screen sm:-bottom-5 sm:right-5 sm:h-[190px] sm:w-[190px]"
+              className="pointer-events-none absolute -bottom-10 -right-8 z-[1] h-auto w-[clamp(12rem,26vw,18rem)] max-w-none select-none drop-shadow-[0_6px_16px_rgba(255,54,198,0.3)] sm:-bottom-12 sm:-right-10 sm:w-[clamp(14rem,28vw,20rem)]"
+              draggable={false}
             />
           </article>
 
