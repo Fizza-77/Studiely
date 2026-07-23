@@ -12,12 +12,12 @@ export const NylaWhySection = () => {
   return (
     <section
       aria-labelledby="nyla-why-heading"
-      className="bg-bg-base pb-[clamp(2.5rem,6vw,4rem)]"
+      className="bg-bg-base pb-[clamp(1.5rem,4vw,2.5rem)]"
     >
       <div className="wrap">
         <Reveal y={28}>
         <article
-          className="relative overflow-visible rounded-[24px] border-b-[4px] bg-white px-5 py-7 shadow-[0_14px_40px_rgba(30,27,75,0.08)] sm:rounded-[40px] sm:px-10 sm:py-10 md:px-12 md:py-12 lg:px-14 lg:py-14"
+          className="relative overflow-visible rounded-[24px] border-b-[4px] bg-white px-5 py-5 shadow-[0_14px_40px_rgba(30,27,75,0.08)] sm:rounded-[40px] sm:px-10 sm:py-7 md:px-12 md:py-8 lg:px-14 lg:py-9"
           style={{ borderColor: LIME }}
         >
           <Image
@@ -43,7 +43,7 @@ export const NylaWhySection = () => {
 
           <h2
             id="nyla-why-heading"
-            className="relative z-[1] mb-8 break-words text-center font-heading text-[clamp(1.55rem,7vw,2.75rem)] font-extrabold leading-[1.12] tracking-[-0.02em] text-[#1E1B4B] sm:mb-10"
+            className="relative z-[1] mb-5 break-words text-center font-heading text-[clamp(1.55rem,7vw,2.75rem)] font-extrabold leading-[1.12] tracking-[-0.02em] text-[#1E1B4B] sm:mb-6"
           >
             <span className="sm:whitespace-nowrap">Why students use Nyla for</span>
             <br />

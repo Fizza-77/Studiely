@@ -24,7 +24,7 @@ export const ContactAboutSection = () => {
   return (
     <section
       aria-labelledby="about-studiely-heading"
-      className="bg-bg-base pb-[clamp(2.5rem,5vw,3.5rem)]"
+      className="bg-bg-base pb-[clamp(1.5rem,3.5vw,2.25rem)]"
     >
       <div className="wrap">
         <div className="overflow-hidden rounded-[28px] bg-white shadow-[0_14px_40px_rgba(30,27,75,0.08)] sm:rounded-[32px]">

@@ -22,11 +22,11 @@ export const BlogHeroSection = ({ headline, subheadline }: BlogHeroSectionProps)
   return (
     <section
       aria-labelledby="blog-hero-heading"
-      className="bg-bg-base pb-[clamp(1.75rem,3.5vw,2.5rem)] pt-[clamp(0.75rem,2vw,1.25rem)]"
+      className="bg-bg-base pb-[clamp(1.15rem,2.5vw,1.75rem)] pt-[clamp(0.75rem,2vw,1.25rem)]"
     >
       <div className="wrap">
         <div
-          className="relative w-full overflow-hidden rounded-[24px] px-4 py-10 text-center sm:rounded-[32px] sm:px-8 sm:py-12 md:rounded-[40px] md:px-10 md:py-14 lg:px-14 lg:py-16"
+          className="relative w-full overflow-hidden rounded-[24px] px-4 py-7 text-center sm:rounded-[32px] sm:px-8 sm:py-9 md:rounded-[40px] md:px-10 md:py-11 lg:px-14 lg:py-12"
           style={{ backgroundColor: "#4F35F2" }}
         >
           <div
@@ -44,7 +44,7 @@ export const BlogHeroSection = ({ headline, subheadline }: BlogHeroSectionProps)
 
           <div className="relative z-[1] mx-auto max-w-[720px]">
             <span
-              className="mb-5 inline-flex rounded-full px-4 py-1.5 font-jakarta text-[10px] font-bold uppercase tracking-[0.12em] text-[#1E1B4B] sm:mb-6 sm:text-[11px]"
+              className="mb-3 inline-flex rounded-full px-4 py-1.5 font-jakarta text-[10px] font-bold uppercase tracking-[0.12em] text-[#1E1B4B] sm:mb-4 sm:text-[11px]"
               style={{ backgroundColor: LIME }}
             >
               Resources &amp; Insights
@@ -52,7 +52,7 @@ export const BlogHeroSection = ({ headline, subheadline }: BlogHeroSectionProps)
 
             <h1
               id="blog-hero-heading"
-              className="mb-4 break-words font-hanken text-[clamp(1.65rem,4.2vw,2.85rem)] font-extrabold leading-[1.1] tracking-[-0.02em] text-white sm:mb-5"
+              className="mb-3 break-words font-hanken text-[clamp(1.65rem,4.2vw,2.85rem)] font-extrabold leading-[1.1] tracking-[-0.02em] text-white sm:mb-4"
             >
               {headline}
             </h1>

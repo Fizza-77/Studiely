@@ -56,7 +56,7 @@ export const SectionHeader = ({
     `opacity 0.65s ease ${delay + d}s, transform 0.65s cubic-bezier(0.22,1,0.36,1) ${delay + d}s`;
 
   return (
-    <div ref={ref} className={cn("mb-[clamp(2rem,3.1vw,3.25rem)] text-center", className)}>
+    <div ref={ref} className={cn("mb-[clamp(1.25rem,2.25vw,1.75rem)] text-center", className)}>
       <span
         style={{
           color: labelColor,

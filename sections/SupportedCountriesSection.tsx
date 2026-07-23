@@ -180,10 +180,10 @@ export const SupportedCountriesSection = ({
       id="curriculum"
       ref={sectionRef}
       aria-labelledby="curriculum-heading"
-      className="relative overflow-x-clip overflow-y-visible bg-bg-base py-[clamp(2.75rem,6vw,5rem)]"
+      className="relative overflow-x-clip overflow-y-visible bg-bg-base pb-[clamp(1.75rem,4vw,3rem)] pt-[clamp(0.5rem,1.5vw,1rem)]"
     >
       <div className="wrap relative">
-        <div className="relative mb-[clamp(1.75rem,3.5vw,2.75rem)] text-center">
+        <div className="relative mb-[clamp(1.15rem,2.25vw,1.65rem)] text-center">
           <div
             aria-hidden
             className="pointer-events-none absolute left-1/2 top-[38%] z-0 h-28 w-44 -translate-y-1/2 translate-x-[32%] rounded-full bg-[#E8FF2F]/45 blur-[56px] sm:h-32 sm:w-52 sm:translate-x-[38%] md:h-36 md:w-60 md:translate-x-[42%]"
@@ -191,14 +191,14 @@ export const SupportedCountriesSection = ({
 
           <div className="relative z-[1]">
             <p
-              className="mb-4 font-heading text-[11px] font-bold uppercase tracking-[0.14em] sm:mb-5 sm:text-[12px]"
+              className="mb-3 font-heading text-[11px] font-bold uppercase tracking-[0.14em] sm:mb-4 sm:text-[12px]"
               style={{ color: BLUE }}
             >
               Supported Countries &amp; Curricula
             </p>
             <h2
               id="curriculum-heading"
-              className="relative mx-auto mb-5 font-heading text-[clamp(1.6rem,3.2vw,2.5rem)] leading-[1.15] tracking-[-0.02em] text-[#1E1B4B] sm:mb-6"
+              className="relative mx-auto mb-3 font-heading text-[clamp(1.6rem,3.2vw,2.5rem)] leading-[1.15] tracking-[-0.02em] text-[#1E1B4B] sm:mb-4"
             >
               <span className="block whitespace-nowrap font-semibold">
                 Built for Students Across the
@@ -212,12 +212,12 @@ export const SupportedCountriesSection = ({
                   height={800}
                   unoptimized
                   aria-hidden
-                  className="pointer-events-none absolute right-0 top-1/2 z-[2] h-auto w-[min(32vw,19rem)] max-w-none -translate-x-[22%] -translate-y-[52%] select-none mix-blend-screen sm:w-[min(28vw,21rem)] md:w-[min(25vw,24rem)]"
+                  className="pointer-events-none absolute right-0 top-1/2 z-[2] h-auto w-[min(32vw,19rem)] max-w-none -translate-x-[22%] -translate-y-[52%] select-none mix-blend-screen sm:w-[min(28vw,21rem)] md:w-[min(25vw,24rem)] md:-translate-y-[62%] lg:-translate-y-[68%]"
                   draggable={false}
                 />
               </span>
             </h2>
-            <p className="mx-auto max-w-[640px] font-sans text-[clamp(0.9rem,1vw,1.05rem)] leading-relaxed text-[#5B5A6A]">
+            <p className="mx-auto w-full max-w-[34rem] text-center font-sans text-[clamp(0.85rem,0.7rem+0.45vw,1.05rem)] leading-snug text-[#5B5A6A] sm:max-w-none sm:whitespace-nowrap sm:text-[clamp(0.9rem,0.55rem+0.9vw,1.05rem)]">
               Every tool is calibrated to your specific exam board, not a generic
               curriculum. Studiely knows exactly what your examiner expects.
             </p>

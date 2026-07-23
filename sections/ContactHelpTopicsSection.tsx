@@ -47,10 +47,10 @@ export const ContactHelpTopicsSection = () => {
   return (
     <section
       aria-labelledby="contact-help-topics-heading"
-      className="bg-bg-base pb-[clamp(2.5rem,5vw,3.5rem)]"
+      className="bg-bg-base pb-[clamp(1.5rem,3.5vw,2.25rem)]"
     >
       <div className="wrap">
-        <header className="mb-[clamp(2rem,4vw,3rem)] text-center">
+        <header className="mb-[clamp(1.25rem,2.5vw,1.75rem)] text-center">
           <h2
             id="contact-help-topics-heading"
             className="font-hanken text-[clamp(1.75rem,3.5vw,2.35rem)] font-extrabold leading-tight tracking-[-0.02em] text-[#1E1B4B]"

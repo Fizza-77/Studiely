@@ -223,7 +223,7 @@ export const ReviewsSection = ({ sectionRef }: ReviewsSectionProps) => {
     <section
       ref={sectionRef}
       aria-labelledby="reviews-heading"
-      className="relative overflow-x-clip pb-[clamp(1rem,2.5vw,1.75rem)] pt-[clamp(1rem,2.5vw,1.75rem)]"
+      className="relative overflow-x-clip pb-[clamp(0.5rem,1.5vw,1rem)] pt-[clamp(1rem,2.5vw,1.75rem)]"
     >
       <div
         aria-hidden

@@ -68,12 +68,12 @@ export const HomePricingSection = ({ sectionRef }: HomePricingSectionProps) => {
       id="pricing"
       ref={sectionRef}
       aria-labelledby="homepage-pricing-heading"
-      className="bg-bg-base pb-[clamp(2.75rem,6vw,5rem)] pt-[clamp(0.5rem,1.5vw,1rem)]"
+      className="bg-bg-base pb-[clamp(1.75rem,4vw,3rem)] pt-0"
     >
       <div className="wrap">
         <h2
           id="homepage-pricing-heading"
-          className="mb-[clamp(1.75rem,3.5vw,2.75rem)] text-center font-heading text-[clamp(2rem,3.8vw,3rem)] font-bold tracking-[-0.02em] text-[#1E1B4B]"
+          className="mb-[clamp(1.15rem,2.25vw,1.65rem)] text-center font-heading text-[clamp(2rem,3.8vw,3rem)] font-bold tracking-[-0.02em] text-[#1E1B4B]"
         >
           Pricing
         </h2>

@@ -29,15 +29,15 @@ export const NylaStudyFlowSection = () => {
   return (
     <section
       aria-labelledby="nyla-study-flow-heading"
-      className="bg-bg-base pb-[clamp(2.5rem,6vw,4rem)]"
+      className="bg-bg-base pb-[clamp(1.5rem,4vw,2.5rem)]"
     >
       <div className="wrap">
-        <Reveal className="relative mb-[clamp(2rem,4vw,3rem)]" y={28}>
+        <Reveal className="relative mb-[clamp(1.25rem,2.5vw,1.75rem)]" y={28}>
           <div className="grid items-center gap-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-10">
             <div className="max-w-[42rem]">
               <h2
                 id="nyla-study-flow-heading"
-                className="mb-4 break-words font-heading text-[clamp(1.55rem,7vw,2.75rem)] font-extrabold leading-[1.1] tracking-[-0.02em] text-[#1E1B4B] sm:mb-5"
+                className="mb-3 break-words font-heading text-[clamp(1.55rem,7vw,2.75rem)] font-extrabold leading-[1.1] tracking-[-0.02em] text-[#1E1B4B] sm:mb-4"
               >
                 <span className="sm:whitespace-nowrap">How Nyla fits into your</span>
                 <br />
@@ -71,7 +71,7 @@ export const NylaStudyFlowSection = () => {
             >
               <div className="flex flex-1 flex-col px-5 py-6 sm:px-8 sm:py-8 md:px-9 md:py-9">
                 <span
-                  className="mb-5 inline-flex w-fit rounded-full px-3.5 py-1.5 font-heading text-[10px] font-bold uppercase tracking-[0.1em] text-white sm:mb-6"
+                  className="mb-3 inline-flex w-fit rounded-full px-3.5 py-1.5 font-heading text-[10px] font-bold uppercase tracking-[0.1em] text-white sm:mb-4"
                   style={{ backgroundColor: badgeBg }}
                 >
                   {step}

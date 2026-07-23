@@ -73,9 +73,9 @@ interface SisterSectionProps {
 }
 
 export const SisterSection = ({ sectionRef }: SisterSectionProps) => (
-  <section ref={sectionRef} className="bg-bg-base pt-[clamp(1.5rem,3vw,2.5rem)]">
+  <section ref={sectionRef} className="bg-bg-base pt-[clamp(1rem,2vw,1.5rem)]">
     <div
-      className="px-4 py-10 text-center sm:px-6 sm:py-12"
+      className="px-4 py-7 text-center sm:px-6 sm:py-8"
       style={{ backgroundColor: LIME }}
     >
       <h2
@@ -85,7 +85,7 @@ export const SisterSection = ({ sectionRef }: SisterSectionProps) => (
         Part of a Wider EdTech Family
       </h2>
       <p
-        className="mx-auto max-w-[760px] font-sans text-[clamp(0.95rem,1.1vw,1.1rem)] leading-relaxed"
+        className="mx-auto w-full max-w-[22rem] text-center font-sans text-[clamp(0.8rem,0.65rem+0.5vw,1.1rem)] leading-snug sm:max-w-none sm:whitespace-nowrap"
         style={{ color: BLUE }}
       >
         Studiely is one of three platforms built by Skyen Solutions to support
@@ -93,7 +93,7 @@ export const SisterSection = ({ sectionRef }: SisterSectionProps) => (
       </p>
     </div>
 
-    <div className="wrap py-[clamp(2rem,4vw,3rem)]">
+    <div className="wrap py-[clamp(1.25rem,2.5vw,1.75rem)]">
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6">
         {ECOSYSTEM_CARDS.map((card) => (
           <article
@@ -129,7 +129,7 @@ export const SisterSection = ({ sectionRef }: SisterSectionProps) => (
             </h3>
 
             <span
-              className="mb-5 inline-flex w-fit rounded-full px-3.5 py-1.5 font-heading text-[9px] font-extrabold uppercase tracking-[0.1em] sm:text-[10px]"
+              className="mb-3 inline-flex w-fit rounded-full px-3.5 py-1.5 font-heading text-[9px] font-extrabold uppercase tracking-[0.1em] sm:text-[10px]"
               style={{ backgroundColor: card.badgeBg, color: card.badgeColor }}
             >
               {card.badge}

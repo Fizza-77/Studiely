@@ -24,7 +24,7 @@ export const ThemedLegalDocument = ({
   return (
     <div className="font-jakarta">
       <LegalHeroSection title={title} badge={badge} metaItems={metaItems} />
-      <main className="min-h-screen overflow-x-clip bg-bg-base pb-[clamp(2.5rem,5vw,4rem)]">
+      <main className="min-h-screen overflow-x-clip bg-bg-base pb-[clamp(1.5rem,3.5vw,2.5rem)]">
         <div className="wrap">
           <article className="legal-document mx-auto w-full max-w-[1280px] overflow-hidden rounded-[24px] bg-white px-4 py-6 shadow-[0_14px_40px_rgba(30,27,75,0.08)] sm:rounded-[28px] sm:px-7 sm:py-8 md:rounded-[32px] md:px-10 md:py-10 lg:px-12">
             <div dangerouslySetInnerHTML={{ __html: bodyHtml }} />

@@ -140,7 +140,7 @@ export const CurriculumPathwayBuilder = () => {
     <section
       id="pathway-builder"
       aria-label="Build your curriculum pathway"
-      className="bg-bg-base pb-[clamp(1.25rem,3vw,2rem)] pt-[clamp(1rem,3vw,2rem)]"
+      className="bg-bg-base pb-[clamp(0.5rem,1.5vw,0.85rem)] pt-0"
     >
       <div className="wrap">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">

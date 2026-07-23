@@ -21,7 +21,7 @@ export const FaqHeroSection = () => {
     >
       <div className="wrap">
         <div
-          className="relative overflow-hidden rounded-[32px] px-4 py-12 text-center sm:rounded-[40px] sm:px-10 sm:py-14 md:py-16 lg:px-14"
+          className="relative overflow-hidden rounded-[32px] px-4 py-8 text-center sm:rounded-[40px] sm:px-10 sm:py-10 md:py-12 lg:px-14"
           style={{
             background:
               "linear-gradient(135deg, #2A1F8F 0%, #4F35F2 48%, #8B3FE8 100%)",
@@ -51,7 +51,7 @@ export const FaqHeroSection = () => {
 
           <div className="relative z-[1] mx-auto max-w-[720px]">
             <span
-              className="mb-5 inline-flex rounded-full px-4 py-1.5 font-jakarta text-[10px] font-bold uppercase tracking-[0.12em] text-[#1E1B4B] sm:mb-6 sm:text-[11px]"
+              className="mb-3 inline-flex rounded-full px-4 py-1.5 font-jakarta text-[10px] font-bold uppercase tracking-[0.12em] text-[#1E1B4B] sm:mb-4 sm:text-[11px]"
               style={{ backgroundColor: LIME }}
             >
               Support &amp; Help
@@ -59,7 +59,7 @@ export const FaqHeroSection = () => {
 
             <h1
               id="faq-hero-heading"
-              className="mb-4 break-words font-jakarta text-[clamp(1.35rem,4vw,2.75rem)] font-extrabold leading-[1.15] tracking-[-0.02em] text-white sm:mb-5"
+              className="mb-3 break-words font-jakarta text-[clamp(1.35rem,4vw,2.75rem)] font-extrabold leading-[1.15] tracking-[-0.02em] text-white sm:mb-4"
             >
               Frequently Asked Questions (FAQ)
             </h1>

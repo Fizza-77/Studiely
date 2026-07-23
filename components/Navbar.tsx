@@ -81,26 +81,17 @@ export const Navbar = ({ visibleSections: _visibleSections = [] }: NavbarProps) 
           <div className="flex h-[46px] items-center justify-between gap-3 rounded-[24px] bg-[#E8FF2F] px-3 sm:h-[50px] sm:px-4 md:rounded-[32px] md:px-5 lg:px-6">
             <Link
               href="/"
-              className="flex shrink-0 items-center gap-1.5 transition-opacity hover:opacity-80"
+              className="flex shrink-0 items-center transition-opacity hover:opacity-80"
               aria-label="Studiely home"
             >
               <Image
-                src="/studiely-logo.svg"
-                alt=""
-                width={28}
-                height={38}
-                priority
-                className="h-7 w-auto shrink-0 sm:h-8"
-                aria-hidden
-              />
-              <Image
-                src="/logo vector.png"
+                src="/group-logo.png"
                 alt="Studiely"
-                width={83}
-                height={24}
+                width={140}
+                height={40}
                 priority
                 unoptimized
-                className="relative top-[1px] h-[15px] w-auto shrink-0 object-contain sm:top-[2px] sm:h-[18px]"
+                className="h-7 w-auto shrink-0 object-contain sm:h-8"
               />
             </Link>
 

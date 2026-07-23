@@ -47,7 +47,7 @@ export const StudySmarterSection = () => {
     <section
       id="study-smarter"
       aria-labelledby="study-smarter-heading"
-      className="relative z-[1] bg-transparent pb-[clamp(1.5rem,3.5vw,2.5rem)] pt-0"
+      className="relative z-[1] bg-transparent pb-[clamp(0.75rem,2vw,1.25rem)] pt-0"
     >
       <div className={`${HOME_SHELL} relative z-[1]`}>
         <h2
@@ -57,7 +57,7 @@ export const StudySmarterSection = () => {
           Choose a tool to <span style={{ color: PINK }}>get started</span>
         </h2>
 
-        <div className="relative mx-auto grid w-full max-w-full grid-cols-1 gap-2.5 sm:grid-cols-2 sm:gap-3 lg:grid-cols-4 lg:gap-3 xl:gap-3.5">
+        <div className="relative mx-auto grid w-full max-w-full grid-cols-2 gap-2.5 sm:gap-3 lg:grid-cols-4 lg:gap-3 xl:gap-3.5">
           {FEATURES.map(({ title, desc, href, icon, iconW, iconH }) => (
             <a
               key={title}
@@ -68,7 +68,7 @@ export const StudySmarterSection = () => {
             >
               <span
                 aria-hidden
-                className="pointer-events-none absolute inset-0 origin-bottom rotate-0 rounded-[28px] shadow-[0_8px_22px_rgba(79,53,242,0.12)] transition-transform duration-500 ease-out will-change-transform group-hover:-rotate-[10deg] motion-reduce:rotate-0 motion-reduce:transition-none sm:rounded-[32px]"
+                className="pointer-events-none absolute inset-0 origin-bottom rotate-0 rounded-[28px] shadow-[0_8px_22px_rgba(79,53,242,0.12)] transition-transform duration-500 ease-out will-change-transform group-hover:-rotate-[5deg] motion-reduce:rotate-0 motion-reduce:transition-none sm:rounded-[32px]"
                 style={{
                   background:
                     "radial-gradient(circle at 50% 45%, #B8FF3A 0%, #E8FF2F 42%, #9AE82A 100%)",
@@ -76,7 +76,7 @@ export const StudySmarterSection = () => {
               />
 
               <div
-                className="relative flex h-full min-h-[clamp(140px,14vw,190px)] flex-col items-center justify-center overflow-visible rounded-[28px] border-b-[4px] border-[#3A24C4] px-[clamp(0.65rem,1vw,1rem)] py-[clamp(0.75rem,1.3vw,1.25rem)] text-center shadow-[0_10px_22px_rgba(79,53,242,0.26),0_4px_10px_rgba(79,53,242,0.14)] transition-transform duration-500 ease-out origin-bottom group-hover:rotate-[10deg] motion-reduce:transform-none motion-reduce:transition-none sm:rounded-[32px]"
+                className="relative flex h-full min-h-[clamp(140px,14vw,190px)] flex-col items-center justify-center overflow-visible rounded-[28px] border-b-[4px] border-[#3A24C4] px-[clamp(0.65rem,1vw,1rem)] py-[clamp(0.75rem,1.3vw,1.25rem)] text-center shadow-[0_10px_22px_rgba(79,53,242,0.26),0_4px_10px_rgba(79,53,242,0.14)] transition-transform duration-500 ease-out origin-bottom rotate-0 group-hover:rotate-[5deg] motion-reduce:transform-none motion-reduce:transition-none sm:rounded-[32px]"
                 style={{ backgroundColor: PURPLE }}
               >
                 <Image

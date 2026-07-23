@@ -43,7 +43,7 @@ export const RewardsProgressSection = ({
       className="pb-[clamp(1.25rem,3vw,2rem)] pt-[clamp(1rem,2.5vw,1.75rem)]"
     >
       <div className="wrap">
-        <div className="mb-[clamp(1.75rem,3.5vw,2.75rem)] overflow-x-clip px-2 text-center sm:px-4">
+        <div className="mb-[clamp(1.15rem,2.25vw,1.65rem)] overflow-x-clip px-2 text-center sm:px-4">
           <h2
             id="rewards-progress-heading"
             className="mx-auto font-heading text-[clamp(1.15rem,5vw,2.65rem)] font-semibold leading-[1.18] tracking-[-0.02em]"

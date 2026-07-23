@@ -120,7 +120,7 @@ export const ContactHeroSection = () => {
             style={{ backgroundColor: BLUE }}
           >
             <span
-              className="mb-5 inline-flex rounded-full px-4 py-1.5 font-jakarta text-[10px] font-bold uppercase tracking-[0.12em] text-[#1E1B4B] sm:mb-6 sm:text-[11px]"
+              className="mb-3 inline-flex rounded-full px-4 py-1.5 font-jakarta text-[10px] font-bold uppercase tracking-[0.12em] text-[#1E1B4B] sm:mb-4 sm:text-[11px]"
               style={{ backgroundColor: LIME }}
             >
               We&apos;re here for you
@@ -128,13 +128,13 @@ export const ContactHeroSection = () => {
 
             <h1
               id="contact-hero-heading"
-              className="mb-4 font-hanken text-[clamp(2rem,4.5vw,3rem)] font-extrabold leading-[1.08] tracking-[-0.02em] text-white sm:mb-5"
+              className="mb-3 font-hanken text-[clamp(2rem,4.5vw,3rem)] font-extrabold leading-[1.08] tracking-[-0.02em] text-white sm:mb-4"
             >
               We&apos;d love to{" "}
               <span style={{ color: LIME }}>help</span>
             </h1>
 
-            <p className="mb-7 max-w-[420px] font-jakarta text-[14px] leading-[1.7] text-white/90 sm:mb-8 sm:text-[15px]">
+            <p className="mb-5 max-w-[420px] font-jakarta text-[14px] leading-[1.7] text-white/90 sm:mb-6 sm:text-[15px]">
               Have a question, feedback, or need support? Reach out to Studiely
               and we&apos;ll get back to you as soon as possible.
             </p>
@@ -184,7 +184,7 @@ export const ContactHeroSection = () => {
           <article className="relative rounded-[28px] bg-white px-6 py-8 shadow-[0_14px_40px_rgba(30,27,75,0.08)] sm:rounded-[32px] sm:px-8 sm:py-9 md:px-9 md:py-10">
             <StarBadge />
 
-            <h2 className="mb-6 pr-12 font-hanken text-[clamp(1.5rem,2.8vw,2rem)] font-extrabold leading-tight tracking-[-0.02em] text-[#1E1B4B] sm:mb-7">
+            <h2 className="mb-4 pr-12 font-hanken text-[clamp(1.5rem,2.8vw,2rem)] font-extrabold leading-tight tracking-[-0.02em] text-[#1E1B4B] sm:mb-5">
               Send us a message
             </h2>
 

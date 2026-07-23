@@ -337,7 +337,7 @@ export const FaqPageContent = ({ sections }: FaqPageContentProps) => {
   };
 
   return (
-    <div className="wrap pb-[clamp(2.5rem,5vw,3.5rem)] pt-[clamp(1rem,2vw,1.25rem)]">
+    <div className="wrap pb-[clamp(1.5rem,3.5vw,2.25rem)] pt-[clamp(1rem,2vw,1.25rem)]">
       <div
         ref={faqTrackRef}
         className="relative grid grid-cols-1 items-start gap-6 lg:grid-cols-[minmax(0,300px)_minmax(0,1fr)] lg:gap-8 xl:gap-10"
@@ -407,7 +407,7 @@ export const FaqPageContent = ({ sections }: FaqPageContentProps) => {
               }}
               aria-labelledby={`${section.id}-title`}
             >
-              <header className="mb-5 sm:mb-6">
+              <header className="mb-3 sm:mb-4">
                 <div className="mb-2 flex items-start gap-3 sm:mb-3 sm:gap-4">
                   <span
                     className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full font-jakarta text-[15px] font-bold text-white sm:h-11 sm:w-11 sm:text-[16px]"

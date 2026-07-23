@@ -58,11 +58,11 @@ export const BlogPageContent = ({
   );
 
   return (
-    <div className="wrap font-jakarta pb-[clamp(2.5rem,5vw,3.5rem)] pt-[clamp(0.5rem,2vw,1rem)]">
+    <div className="wrap font-jakarta pb-[clamp(1.5rem,3.5vw,2.25rem)] pt-[clamp(0.5rem,2vw,1rem)]">
       {categories.length > 0 && (
         <nav
           aria-label="Filter posts by category"
-          className="mb-8 flex flex-wrap items-center gap-2.5 sm:mb-10 sm:gap-3"
+          className="mb-5 flex flex-wrap items-center gap-2.5 sm:mb-6 sm:gap-3"
         >
           <Link
             href="/blog"

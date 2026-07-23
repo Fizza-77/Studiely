@@ -10,7 +10,7 @@ export const CurriculumClosingSection = () => {
   return (
     <section
       aria-label="More ways to succeed with Studiely"
-      className="bg-bg-base pb-[clamp(2.5rem,5vw,3.5rem)] pt-[clamp(1.5rem,3vw,2.25rem)]"
+      className="bg-bg-base pb-[clamp(1.5rem,3.5vw,2.25rem)] pt-0"
     >
       <div className="wrap">
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">

@@ -33,7 +33,7 @@ export const StudyToolsSection = ({ sectionRef }: StudyToolsSectionProps) => {
 
         {/* Tool chips — full cards live in the hero; this keeps the CTA flow */}
         <Reveal>
-          <div className="flex flex-wrap justify-center gap-2 sm:gap-2.5 mb-8 sm:mb-10 max-w-[920px] mx-auto">
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-2.5 mb-3 sm:mb-4 max-w-[920px] mx-auto">
             {TOOLS.map((t) => {
               const active = sel === t.id;
               const { Icon } = t;

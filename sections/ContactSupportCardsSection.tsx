@@ -43,7 +43,7 @@ export const ContactSupportCardsSection = () => {
   return (
     <section
       aria-label="Other ways to reach Studiely"
-      className="bg-bg-base pb-[clamp(1.25rem,3vw,2rem)] pt-[clamp(1.5rem,4vw,2.75rem)]"
+      className="bg-bg-base pb-[clamp(1.25rem,3vw,2rem)] pt-[clamp(1rem,2.5vw,1.75rem)]"
     >
       <div className="wrap">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-5">

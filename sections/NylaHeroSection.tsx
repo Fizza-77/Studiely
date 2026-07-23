@@ -9,12 +9,12 @@ const BLUE = "#4F35F2";
 
 export const NylaHeroSection = () => {
   return (
-    <section className="relative bg-bg-base pb-[clamp(2.5rem,6vw,4rem)] pt-[clamp(1rem,3vw,2rem)]">
+    <section className="relative bg-bg-base pb-[clamp(1.5rem,4vw,2.5rem)] pt-[clamp(0.75rem,2vw,1.25rem)]">
       <div className="wrap">
         <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-12 xl:gap-16">
           <Reveal className="flex flex-col items-start text-left" y={22}>
             <span
-              className="mb-5 inline-flex items-center gap-2 rounded-full px-4 py-2 font-heading text-[11px] font-bold uppercase tracking-[0.12em]"
+              className="mb-3 inline-flex items-center gap-2 rounded-full px-4 py-2 font-heading text-[11px] font-bold uppercase tracking-[0.12em]"
               style={{ backgroundColor: "#ECEAFF", color: BLUE }}
             >
               <span
@@ -25,13 +25,13 @@ export const NylaHeroSection = () => {
               Nyla AI
             </span>
 
-            <h1 className="mb-5 font-heading text-[clamp(2rem,4.8vw,3.5rem)] font-extrabold leading-[1.08] tracking-[-0.02em] text-[#1E1B4B] sm:mb-6">
+            <h1 className="mb-3 font-heading text-[clamp(2rem,4.8vw,3.5rem)] font-extrabold leading-[1.08] tracking-[-0.02em] text-[#1E1B4B] sm:mb-4">
               Your Personal AI
               <br />
               <span style={{ color: BLUE }}>Study Assistant</span>
             </h1>
 
-            <p className="mb-8 max-w-[34rem] font-sans text-[clamp(0.95rem,1.1vw,1.05rem)] leading-relaxed text-[#5B5A6A] sm:mb-10">
+            <p className="mb-5 max-w-[34rem] font-sans text-[clamp(0.95rem,1.1vw,1.05rem)] leading-relaxed text-[#5B5A6A] sm:mb-6">
               Nyla understands your specific curriculum and helps you master
               complex topics through smart summaries, interactive flashcards,
               and personalized quizzes.

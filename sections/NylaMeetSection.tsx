@@ -89,7 +89,7 @@ export const NylaMeetSection = () => {
   return (
     <section
       aria-labelledby="nyla-meet-heading"
-      className="bg-bg-base pb-[clamp(2.5rem,6vw,4rem)]"
+      className="bg-bg-base pb-[clamp(1.5rem,4vw,2.5rem)]"
     >
       <div className="wrap">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-14 xl:gap-16">
@@ -187,7 +187,7 @@ export const NylaMeetSection = () => {
 
           <Reveal delay={0.1} y={30}>
             <span
-              className="mb-5 inline-flex rounded-full px-4 py-1.5 font-heading text-[10px] font-bold uppercase tracking-[0.12em] text-white"
+              className="mb-3 inline-flex rounded-full px-4 py-1.5 font-heading text-[10px] font-bold uppercase tracking-[0.12em] text-white"
               style={{ backgroundColor: PINK }}
             >
               Nyla — AI Study Tutor
@@ -195,13 +195,13 @@ export const NylaMeetSection = () => {
 
             <h2
               id="nyla-meet-heading"
-              className="mb-4 font-heading text-[clamp(1.85rem,3.8vw,2.75rem)] font-extrabold leading-[1.1] tracking-[-0.02em] text-[#1E1B4B]"
+              className="mb-3 font-heading text-[clamp(1.85rem,3.8vw,2.75rem)] font-extrabold leading-[1.1] tracking-[-0.02em] text-[#1E1B4B]"
             >
               Meet Nyla. Your AI Tutor,{" "}
               <span style={{ color: BLUE }}>Always On.</span>
             </h2>
 
-            <p className="mb-8 max-w-[34rem] font-sans text-[15px] leading-relaxed text-[#5B5A6A] sm:mb-10">
+            <p className="mb-5 max-w-[34rem] font-sans text-[15px] leading-relaxed text-[#5B5A6A] sm:mb-6">
               Most AI assistants give generic answers. Nyla doesn&apos;t. She knows
               your curriculum, your exam board and your grade level before you ask
               your first question.

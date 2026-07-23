@@ -55,14 +55,14 @@ export const NylaSection = ({ sectionRef }: NylaSectionProps) => {
       id="nyla"
       ref={sectionRef}
       aria-labelledby="nyla-heading"
-      className="bg-bg-base pb-[clamp(2.5rem,5vw,4rem)] pt-[clamp(0.5rem,1.5vw,1rem)]"
+      className="bg-bg-base pb-[clamp(1.5rem,3.5vw,2.5rem)] pt-[clamp(0.5rem,1.5vw,1rem)]"
     >
       <div className="wrap">
         <div className="relative overflow-hidden rounded-[28px] md:rounded-[40px]">
           <div className="grid lg:grid-cols-2">
             {/* Left panel */}
             <div
-              className="relative px-[clamp(1.25rem,4vw,3.25rem)] py-[clamp(2rem,4.5vw,3.5rem)]"
+              className="relative px-[clamp(1.25rem,4vw,3.25rem)] py-[clamp(1.35rem,3vw,2.25rem)]"
               style={{
                 background:
                   "linear-gradient(145deg, #4F35F2 0%, #4A30E8 55%, #4530E0 100%)",
@@ -74,7 +74,7 @@ export const NylaSection = ({ sectionRef }: NylaSectionProps) => {
               >
                 Meet <span style={{ color: LIME }}>Nyla</span>, Your personal AI Tutor
               </h2>
-              <p className="mb-8 max-w-[34rem] font-sans text-[clamp(0.95rem,1.05vw,1.1rem)] leading-relaxed text-white/85">
+              <p className="mb-5 max-w-[34rem] font-sans text-[clamp(0.95rem,1.05vw,1.1rem)] leading-relaxed text-white/85">
                 Nyla understands your curriculum and knows exactly where you are in your study
                 journey.
               </p>
@@ -115,7 +115,7 @@ export const NylaSection = ({ sectionRef }: NylaSectionProps) => {
 
             {/* Right panel — 10% less opaque */}
             <div
-              className="relative isolate overflow-hidden px-[clamp(1.25rem,3.5vw,2.75rem)] py-[clamp(2rem,4.5vw,3.5rem)]"
+              className="relative isolate overflow-hidden px-[clamp(1.25rem,3.5vw,2.75rem)] py-[clamp(1.35rem,3vw,2.25rem)]"
               style={{
                 background:
                   "linear-gradient(145deg, rgba(79,53,242,0.9) 0%, rgba(74,48,232,0.9) 55%, rgba(61,40,212,0.9) 100%)",
