@@ -13,24 +13,24 @@ type Highlight =
   | {
       title: string;
       text: string;
+      kind: "icon";
       Icon: LucideIcon;
-      imageSrc?: never;
       iconBg: string;
       iconColor: string;
     }
   | {
       title: string;
       text: string;
+      kind: "image";
       imageSrc: string;
-      Icon?: never;
       iconBg: string;
-      iconColor?: never;
     };
 
 const HIGHLIGHTS: Highlight[] = [
   {
     title: "Fast support",
     text: "Our team typically replies within 24 hours.",
+    kind: "icon",
     Icon: Zap,
     iconBg: LIME,
     iconColor: "#1E1B4B",
@@ -38,6 +38,7 @@ const HIGHLIGHTS: Highlight[] = [
   {
     title: "Student-first platform",
     text: "Built to make learning simpler and smarter.",
+    kind: "icon",
     Icon: GraduationCap,
     iconBg: PINK,
     iconColor: "white",
@@ -45,6 +46,7 @@ const HIGHLIGHTS: Highlight[] = [
   {
     title: "Curriculum-aligned learning",
     text: "Trusted by students, parents and schools.",
+    kind: "image",
     imageSrc: "/curricula-aligned.png",
     iconBg: LIME,
   },
@@ -147,7 +149,7 @@ export const ContactHeroSection = () => {
                     className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-[12px]"
                     style={{ backgroundColor: item.iconBg }}
                   >
-                    {item.imageSrc ? (
+                    {item.kind === "image" ? (
                       <Image
                         src={item.imageSrc}
                         alt=""

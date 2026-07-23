@@ -10,14 +10,14 @@ const BLUE = "#4F35F2";
 const LIME = "#E8FF2F";
 
 type Feature =
-  | { label: string; Icon: LucideIcon; imageSrc?: never }
-  | { label: string; imageSrc: string; Icon?: never };
+  | { label: string; kind: "icon"; Icon: LucideIcon }
+  | { label: string; kind: "image"; imageSrc: string };
 
 const FEATURES: Feature[] = [
-  { label: "AI-powered support", Icon: Sparkles },
-  { label: "Curriculum-aligned", Icon: ListChecks },
-  { label: "All-in-one", imageSrc: "/allinone.png" },
-  { label: "Trusted by learners", Icon: ShieldCheck },
+  { label: "AI-powered support", kind: "icon", Icon: Sparkles },
+  { label: "Curriculum-aligned", kind: "icon", Icon: ListChecks },
+  { label: "All-in-one", kind: "image", imageSrc: "/allinone.png" },
+  { label: "Trusted by learners", kind: "icon", Icon: ShieldCheck },
 ];
 
 export const ContactAboutSection = () => {
@@ -87,7 +87,7 @@ export const ContactAboutSection = () => {
                     key={feature.label}
                     className="flex items-center gap-3 rounded-[18px] bg-[#FFFBEF] px-4 py-4 shadow-[0_4px_16px_rgba(30,27,75,0.04)]"
                   >
-                    {feature.imageSrc ? (
+                    {feature.kind === "image" ? (
                       <Image
                         src={feature.imageSrc}
                         alt=""
