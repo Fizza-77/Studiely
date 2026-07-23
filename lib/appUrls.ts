@@ -20,5 +20,6 @@ export const STUDIELY_APP = {
   quiz: "https://studiely.app/app/quiz",
   examFocus: "https://studiely.app/app/exam-focus",
   nyla: `${STUDIELY_APP_ORIGIN}/app/nyla`,
-  pricing: `${STUDIELY_APP_ORIGIN}/app/pricing`,
+  /** Web pricing page (not under `/app/`). */
+  pricing: `${STUDIELY_APP_ORIGIN}/pricing`,
 } as const;
