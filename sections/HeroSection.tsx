@@ -26,7 +26,7 @@ export const HeroSection = () => {
 
               <p className="mb-3 max-w-[min(36rem,100%)] font-sans text-[clamp(0.85rem,0.7rem+0.45vw,1.1rem)] leading-relaxed text-white/90 sm:mb-4 xl:max-w-[42rem]">
                 Unlock your academic potential with personalized learning paths,
-                instant notes, and adaptive quizzes designed to help you master any
+                instant notes and adaptive quizzes designed to help you master any
                 subject.
               </p>
 

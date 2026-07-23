@@ -49,15 +49,16 @@ const BookIcon = () => (
   </svg>
 );
 
-const DevicesIcon = () => (
-  <svg viewBox="0 0 64 64" className="h-10 w-10 sm:h-11 sm:w-11" fill="none" aria-hidden>
-    <rect x="8" y="17" width="38" height="27" rx="3.5" fill={LIME} />
-    <rect x="13" y="22" width="28" height="17" rx="1.5" fill={BLUE} />
-    <path d="M5.5 49h40" stroke={LIME} strokeWidth="5" strokeLinecap="round" />
-    <rect x="39" y="22" width="17" height="30" rx="4" fill={LIME} />
-    <rect x="44" y="27" width="7" height="18" rx="1.5" fill={BLUE} />
-    <circle cx="47.5" cy="48.5" r="1.5" fill={BLUE} />
-  </svg>
+const AvailableEverywhereIcon = () => (
+  <Image
+    src="/available-everywhere.png"
+    alt=""
+    width={44}
+    height={44}
+    unoptimized
+    className="h-10 w-10 object-contain sm:h-11 sm:w-11"
+    aria-hidden
+  />
 );
 
 const FEATURES = [
@@ -80,7 +81,7 @@ const FEATURES = [
     desc: "Across every tool. Whether you're in the Notes or Quiz tab, Nyla is a click away.",
     bg: BLUE,
     glow: "rgba(79,53,242,0.38)",
-    Icon: DevicesIcon,
+    Icon: AvailableEverywhereIcon,
   },
 ] as const;
 
@@ -144,7 +145,7 @@ export const NylaMeetSection = () => {
 
                 <div className="max-w-[92%] rounded-[16px] rounded-tl-sm bg-[#ECEAFF] px-4 py-3 font-sans text-[12.5px] leading-[1.55] text-[#2A2B36] sm:text-[13px]">
                   <p className="m-0 mb-2">
-                    Of course! 🌿 For <strong>IGCSE Biology</strong>: Photosynthesis
+                    <strong>Of course! 🌿 For IGCSE Biology</strong>: Photosynthesis
                     is the process by which plants manufacture carbohydrates from
                     raw materials using energy from light.
                   </p>

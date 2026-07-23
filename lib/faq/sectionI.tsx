@@ -4,7 +4,7 @@ import type { FaqSection } from "./types";
 export const sectionI: FaqSection = {
   id: "faq-technical",
   title: "I. Technical Issues & Troubleshooting",
-  intro: "Generation issues, performance, and reporting bugs.",
+  intro: "Generation issues, performance and reporting bugs.",
   items: [
     {
       question: "Content is not generating — what should I do?",

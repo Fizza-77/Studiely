@@ -337,7 +337,7 @@ export const FaqPageContent = ({ sections }: FaqPageContentProps) => {
   };
 
   return (
-    <div className="wrap pb-[clamp(2.5rem,5vw,3.5rem)] pt-[clamp(1.75rem,3.5vw,2.5rem)]">
+    <div className="wrap pb-[clamp(2.5rem,5vw,3.5rem)] pt-[clamp(1rem,2vw,1.25rem)]">
       <div
         ref={faqTrackRef}
         className="relative grid grid-cols-1 items-start gap-6 lg:grid-cols-[minmax(0,300px)_minmax(0,1fr)] lg:gap-8 xl:gap-10"

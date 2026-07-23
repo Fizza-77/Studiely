@@ -4,12 +4,12 @@ import type { FaqSection } from "./types";
 export const sectionC: FaqSection = {
   id: "faq-study-tools",
   title: "C. Study Tools — How They Work",
-  intro: "Summary Notes, Flashcards, Quiz, Exam Practice, Common Mistakes, Worked Examples, and Nyla.",
+  intro: "Summary Notes, Flashcards, Quiz, Exam Practice, Common Mistakes, Worked Examples and Nyla.",
   items: [
     {
       question: "What is the Summary Notes tool?",
       schemaText:
-        "Summary Notes is Studiely's flagship study tool. It generates structured, curriculum-aligned summary notes for any topic within the student's chosen subject and exam board. Rather than producing a broad explanation that could come from any textbook, Summary Notes is generated specifically for the student's academic route. Notes are concept-first — they explain the topic clearly before introducing exam-relevant framing. They are structured for readability with clear organisation, key definitions highlighted, and logical flow. Premium users can export Summary Notes as PDF or Word documents for offline revision. Notes can also be regenerated to get a different angle or greater depth on a topic.",
+        "Summary Notes is Studiely's flagship study tool. It generates structured, curriculum-aligned summary notes for any topic within the student's chosen subject and exam board. Rather than producing a broad explanation that could come from any textbook, Summary Notes is generated specifically for the student's academic route. Notes are concept-first — they explain the topic clearly before introducing exam-relevant framing. They are structured for readability with clear organisation, key definitions highlighted and logical flow. Premium users can export Summary Notes as PDF or Word documents for offline revision. Notes can also be regenerated to get a different angle or greater depth on a topic.",
       answer: (
         <>
           <p>
@@ -25,7 +25,7 @@ export const sectionC: FaqSection = {
           </p>
           <p>
             Notes are concept-first — they explain the topic clearly before introducing exam-relevant framing. They are
-            structured for readability with clear organisation, key definitions highlighted, and logical flow — so
+            structured for readability with clear organisation, key definitions highlighted and logical flow — so
             they serve as a genuine revision foundation rather than a wall of undifferentiated text.
           </p>
           <p>
@@ -67,27 +67,27 @@ export const sectionC: FaqSection = {
     {
       question: "How does the Quiz tool work?",
       schemaText:
-        "Studiely's Quiz tool generates exam-style questions for the student's chosen topic, curriculum, and difficulty level. Each quiz includes instant feedback and clear explanations for every answer. Quizzes are calibrated to the curriculum's assessment style. Students can select from beginner, intermediate, and advanced difficulty levels. Unlike static past-paper question banks, Studiely's AI quiz generator creates fresh questions for each request.",
+        "Studiely's Quiz tool generates exam-style questions for the student's chosen topic, curriculum and difficulty level. Each quiz includes instant feedback and clear explanations for every answer. Quizzes are calibrated to the curriculum's assessment style. Students can select from beginner, intermediate and advanced difficulty levels. Unlike static past-paper question banks, Studiely's AI quiz generator creates fresh questions for each request.",
       answer: (
         <>
           <p>
-            Studiely&apos;s Quiz tool generates exam-style questions for the student&apos;s chosen topic, curriculum,
+            Studiely&apos;s Quiz tool generates exam-style questions for the student&apos;s chosen topic, curriculum
             and difficulty level. Each quiz includes instant feedback and clear explanations for every answer —
             helping students understand not just whether they were right or wrong but why.
           </p>
           <p>
             Quizzes are calibrated to the curriculum&apos;s assessment style. For exam-based curricula like IGCSE,
-            GCSE, and IB DP, questions reflect the thinking and language used in real assessments. For conceptual
+            GCSE and IB DP, questions reflect the thinking and language used in real assessments. For conceptual
             programmes like IB PYP, quizzes focus on understanding rather than exam technique.
           </p>
           <p>
-            Students can select from beginner, intermediate, and advanced difficulty levels — building confidence
+            Students can select from beginner, intermediate and advanced difficulty levels — building confidence
             on a topic before progressing to harder questions.
           </p>
           <p>
             Unlike static past-paper question banks, Studiely&apos;s AI quiz generator creates fresh questions for
             each request. Students can practise the same topic multiple times without repetition — which is
-            particularly valuable for subjects where consistent practice, such as Mathematics, Sciences, and
+            particularly valuable for subjects where consistent practice, such as Mathematics, Sciences and
             Languages, directly drives performance improvement.
           </p>
         </>
@@ -96,7 +96,7 @@ export const sectionC: FaqSection = {
     {
       question: "What is the Exam Practice add-on?",
       schemaText:
-        "Exam Practice is a dedicated exam simulation feature available as a separate add-on for both Free and Premium Studiely users. It is purchased independently of the main subscription. The add-on provides exam-style questions structured around your specific exam board's format, AI-powered feedback on responses, and a higher-intensity preparation mode. The add-on comes as a pack of 50 Exam Practice generations. These do not expire. Exam Practice generations are completely separate from the monthly Premium allowance and do not count toward it. Exam Practice covers the full breadth of Studiely's curriculum systems. Within each curriculum, students can select by paper, component, or task type. For Cambridge A Level, Pearson Edexcel A Level, and selected IB DP Internal Assessment components, the Exam Practice feature operates in practice mode only for coursework-based tasks.",
+        "Exam Practice is a dedicated exam simulation feature available as a separate add-on for both Free and Premium Studiely users. It is purchased independently of the main subscription. The add-on provides exam-style questions structured around your specific exam board's format, AI-powered feedback on responses and a higher-intensity preparation mode. The add-on comes as a pack of 50 Exam Practice generations. These do not expire. Exam Practice generations are completely separate from the monthly Premium allowance and do not count toward it. Exam Practice covers the full breadth of Studiely's curriculum systems. Within each curriculum, students can select by paper, component, or task type. For Cambridge A Level, Pearson Edexcel A Level and selected IB DP Internal Assessment components, the Exam Practice feature operates in practice mode only for coursework-based tasks.",
       answer: (
         <>
           <p>
@@ -124,17 +124,17 @@ export const sectionC: FaqSection = {
             subjects) and Digital SAT (Reading &amp; Writing, full simulation).{" "}
             <strong className="text-navy font-semibold">Canadian</strong> — all provinces and territories: Ontario
             (OSSD), British Columbia (Dogwood Diploma), Alberta, Quebec (DES), Manitoba, Saskatchewan, Maritimes (New
-            Brunswick, Nova Scotia, PEI), and Territories (Yukon, Northwest Territories, Nunavut).{" "}
+            Brunswick, Nova Scotia, PEI) and Territories (Yukon, Northwest Territories, Nunavut).{" "}
             <strong className="text-navy font-semibold">Australian</strong> — all states and territories: NAPLAN (Years
-            3, 5, 7, 9), NSW HSC, VCE, QCE, WACE, SACE, TCE, ACT SSC, NTCET, and ATAR.
+            3, 5, 7, 9), NSW HSC, VCE, QCE, WACE, SACE, TCE, ACT SSC, NTCET and ATAR.
           </p>
           <p>
             Within each curriculum, students can select by paper, component, or task type. Exam Practice includes timed
             simulations at official exam durations, paper-specific question formats (such as structured responses,
-            data analysis, essay, and complete paper practice), and AI feedback that reflects mark scheme thinking.
+            data analysis, essay and complete paper practice) and AI feedback that reflects mark scheme thinking.
           </p>
           <p>
-            Please note that for Cambridge A Level, Pearson Edexcel A Level, and selected IB DP Internal Assessment
+            Please note that for Cambridge A Level, Pearson Edexcel A Level and selected IB DP Internal Assessment
             components, the Exam Practice feature operates in practice mode only — it does not simulate a formal exam
             environment for these coursework-based tasks. All other components are available in full exam simulation
             mode.
@@ -156,7 +156,7 @@ export const sectionC: FaqSection = {
           <p>
             For exam-based curricula, Common Mistakes is particularly valuable because many marks are lost not
             through a lack of knowledge but through predictable, recurring errors — incorrect unit usage in Science,
-            misidentified techniques in English Literature, sign errors in Mathematics, and similar slip-ups that
+            misidentified techniques in English Literature, sign errors in Mathematics and similar slip-ups that
             students repeat without realising.
           </p>
           <p>
@@ -169,7 +169,7 @@ export const sectionC: FaqSection = {
     {
       question: "What are Worked Examples?",
       schemaText:
-        "Worked Examples show students how to solve problems or answer questions using a clear, step-by-step method. Each example walks through the process from start to finish, including the reasoning behind each step — not just the final answer. For subjects where method is assessed alongside the answer — such as Mathematics, Physics, and Chemistry — Worked Examples are critical for understanding how to communicate working in a way that earns marks under exam conditions. Where exam marking is applicable, Worked Examples include guidance on how marks would be awarded at each stage.",
+        "Worked Examples show students how to solve problems or answer questions using a clear, step-by-step method. Each example walks through the process from start to finish, including the reasoning behind each step — not just the final answer. For subjects where method is assessed alongside the answer — such as Mathematics, Physics and Chemistry — Worked Examples are critical for understanding how to communicate working in a way that earns marks under exam conditions. Where exam marking is applicable, Worked Examples include guidance on how marks would be awarded at each stage.",
       answer: (
         <>
           <p>
@@ -178,7 +178,7 @@ export const sectionC: FaqSection = {
             step — not just the final answer.
           </p>
           <p>
-            For subjects where method is assessed alongside the answer — such as Mathematics, Physics, and Chemistry
+            For subjects where method is assessed alongside the answer — such as Mathematics, Physics and Chemistry
             — Worked Examples are critical for understanding how to communicate working in a way that earns marks
             under exam conditions.
           </p>
@@ -190,7 +190,7 @@ export const sectionC: FaqSection = {
       ),
     },
     {
-      question: "Who is Nyla, and what can she help with?",
+      question: "Who is Nyla and what can she help with?",
       schemaText:
         "Nyla is Studiely's built-in AI study tutor. She is available to all users and provides contextual academic support within the platform, at any time of day. Students can ask Nyla to explain a concept from their curriculum, clarify something in the revision content Studiely generated for them, help them understand how to approach a particular type of exam question, suggest a revision strategy for an upcoming assessment, or answer questions about how to use any of Studiely's study tools. Nyla stays connected to the student's chosen curriculum context. Nyla is available 24 hours a day.",
       answer: (

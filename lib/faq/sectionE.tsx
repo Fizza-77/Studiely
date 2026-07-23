@@ -3,7 +3,7 @@ import type { FaqSection } from "./types";
 export const sectionE: FaqSection = {
   id: "faq-usage",
   title: "E. Usage Limits & Fair Usage Policy",
-  intro: "What counts as a generation, monthly limits, and regenerations.",
+  intro: "What counts as a generation, monthly limits and regenerations.",
   items: [
     {
       question: "What does '100 generations per month' mean?",

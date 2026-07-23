@@ -3,12 +3,12 @@ import type { FaqSection } from "./types";
 export const sectionG: FaqSection = {
   id: "faq-rewards",
   title: "G. Rewards, Achievements & Referrals",
-  intro: "Achievements, streaks, mastery, rewards, and Refer & Earn.",
+  intro: "Achievements, streaks, mastery, rewards and Refer & Earn.",
   items: [
     {
       question: "What is the Achievements system?",
       schemaText:
-        "Studiely's Achievements system recognises and rewards consistent, structured revision habits. Achievements are tracked through Study Streaks (consecutive days using the platform, with milestones unlocking badges, frames, bonus credits, and discount coupons) and Subject Mastery (progress as you generate and work through content, with milestones unlocking certificates and additional rewards). All achievements are visible on your Dashboard under My Achievements and in Profile → Achievements.",
+        "Studiely's Achievements system recognises and rewards consistent, structured revision habits. Achievements are tracked through Study Streaks (consecutive days using the platform, with milestones unlocking badges, frames, bonus credits and discount coupons) and Subject Mastery (progress as you generate and work through content, with milestones unlocking certificates and additional rewards). All achievements are visible on your Dashboard under My Achievements and in Profile → Achievements.",
       answer: (
         <>
           <p>
@@ -21,7 +21,7 @@ export const sectionG: FaqSection = {
             <strong className="text-navy font-semibold">Study Streaks</strong>
             <br />
             Studiely tracks how many consecutive days you use the platform. Reaching streak milestones unlocks
-            tangible rewards — profile badges, exclusive frames, bonus credits, and discount coupons.
+            tangible rewards — profile badges, exclusive frames, bonus credits and discount coupons.
           </p>
           <p>
             <strong className="text-navy font-semibold">Subject Mastery</strong>
@@ -30,7 +30,7 @@ export const sectionG: FaqSection = {
             milestones (such as 70% or 90% mastery) unlocks certificates and additional rewards.
           </p>
           <p>
-            All achievements, medals, and certificates are visible on your Dashboard under &quot;My
+            All achievements, medals and certificates are visible on your Dashboard under &quot;My
             Achievements&quot; and in Profile → Achievements.
           </p>
         </>
@@ -39,7 +39,7 @@ export const sectionG: FaqSection = {
     {
       question: "What rewards can I earn?",
       schemaText:
-        "Study Streak rewards: 15-day streak: Profile badge; 30-day streak: Exclusive profile frame; 60-day streak: +5 Writing Practice credits; 90-day streak: +10 Writing Practice credits, a 20% discount coupon, and a Platinum badge. Subject Mastery rewards: 70% mastery: Topic Pro certificate and +1 Writing Practice credit; 90% mastery: Mastery Award certificate with a celebration screen and shareable achievement prompt. The Refer & Earn programme adds further opportunities to earn free Premium time.",
+        "Study Streak rewards: 15-day streak: Profile badge; 30-day streak: Exclusive profile frame; 60-day streak: +5 Writing Practice credits; 90-day streak: +10 Writing Practice credits, a 20% discount coupon and a Platinum badge. Subject Mastery rewards: 70% mastery: Topic Pro certificate and +1 Writing Practice credit; 90% mastery: Mastery Award certificate with a celebration screen and shareable achievement prompt. The Refer & Earn programme adds further opportunities to earn free Premium time.",
       answer: (
         <>
           <p>
@@ -54,7 +54,7 @@ export const sectionG: FaqSection = {
             <li>30-day streak: Exclusive profile frame</li>
             <li>60-day streak: +5 Writing Practice credits</li>
             <li>
-              90-day streak: +10 Writing Practice credits, a 20% discount coupon, and a Platinum badge
+              90-day streak: +10 Writing Practice credits, a 20% discount coupon and a Platinum badge
             </li>
           </ul>
           <p>

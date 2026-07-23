@@ -5,7 +5,7 @@ import type { FaqSection } from "./types";
 export const sectionH: FaqSection = {
   id: "faq-privacy",
   title: "H. Privacy, Security & Data",
-  intro: "How we protect data, sharing, and deletion requests.",
+  intro: "How we protect data, sharing and deletion requests.",
   items: [
     {
       question: "Is my personal data safe with Studiely?",
@@ -19,7 +19,7 @@ export const sectionH: FaqSection = {
             at rest.
           </p>
           <p>
-            Studiely does not sell personal data to third parties. Student data is treated with particular care, and the
+            Studiely does not sell personal data to third parties. Student data is treated with particular care and the
             platform is built with compliance with major data protection frameworks in mind.
           </p>
           <p>
@@ -50,7 +50,7 @@ export const sectionH: FaqSection = {
     {
       question: "Does Studiely share my data with anyone?",
       schemaText:
-        "No. Studiely does not sell or share personal data with third parties for advertising or commercial purposes. Data may be processed by trusted third-party service providers who support platform operations — such as cloud hosting, analytics, and payment processing — but only to the extent necessary to deliver the service and under strict data processing agreements. Full details are set out in Studiely's Privacy Policy at studiely.com.",
+        "No. Studiely does not sell or share personal data with third parties for advertising or commercial purposes. Data may be processed by trusted third-party service providers who support platform operations — such as cloud hosting, analytics and payment processing — but only to the extent necessary to deliver the service and under strict data processing agreements. Full details are set out in Studiely's Privacy Policy at studiely.com.",
       answer: (
         <>
           <p>
@@ -59,7 +59,7 @@ export const sectionH: FaqSection = {
           </p>
           <p>
             Data may be processed by trusted third-party service providers who support platform operations — such as
-            cloud hosting, analytics, and payment processing — but only to the extent necessary to deliver the service
+            cloud hosting, analytics and payment processing — but only to the extent necessary to deliver the service
             and under strict data processing agreements.
           </p>
           <p>

@@ -17,11 +17,11 @@ export const FaqHeroSection = () => {
   return (
     <section
       aria-labelledby="faq-hero-heading"
-      className="bg-bg-base pb-[clamp(2rem,4vw,2.75rem)] pt-[clamp(0.75rem,2vw,1.25rem)]"
+      className="bg-bg-base pb-0 pt-[clamp(0.75rem,2vw,1.25rem)]"
     >
       <div className="wrap">
         <div
-          className="relative overflow-hidden rounded-[32px] px-6 py-12 text-center sm:rounded-[40px] sm:px-10 sm:py-14 md:py-16 lg:px-14"
+          className="relative overflow-hidden rounded-[32px] px-4 py-12 text-center sm:rounded-[40px] sm:px-10 sm:py-14 md:py-16 lg:px-14"
           style={{
             background:
               "linear-gradient(135deg, #2A1F8F 0%, #4F35F2 48%, #8B3FE8 100%)",
@@ -59,7 +59,7 @@ export const FaqHeroSection = () => {
 
             <h1
               id="faq-hero-heading"
-              className="mb-4 whitespace-nowrap font-jakarta text-[clamp(1.35rem,3.8vw,2.75rem)] font-extrabold leading-[1.1] tracking-[-0.02em] text-white sm:mb-5"
+              className="mb-4 break-words font-jakarta text-[clamp(1.35rem,4vw,2.75rem)] font-extrabold leading-[1.15] tracking-[-0.02em] text-white sm:mb-5"
             >
               Frequently Asked Questions (FAQ)
             </h1>

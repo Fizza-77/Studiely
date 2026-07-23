@@ -1,14 +1,33 @@
 "use client";
 
 import { useState, FormEvent } from "react";
-import { GraduationCap, Zap, FileText } from "lucide-react";
+import Image from "next/image";
+import { GraduationCap, Zap, type LucideIcon } from "lucide-react";
 
 const BLUE = "#4F35F2";
 const LIME = "#E8FF2F";
 const PINK = "#FF36C6";
 const INPUT_BG = "#FFFBEF";
 
-const HIGHLIGHTS = [
+type Highlight =
+  | {
+      title: string;
+      text: string;
+      Icon: LucideIcon;
+      imageSrc?: never;
+      iconBg: string;
+      iconColor: string;
+    }
+  | {
+      title: string;
+      text: string;
+      imageSrc: string;
+      Icon?: never;
+      iconBg: string;
+      iconColor?: never;
+    };
+
+const HIGHLIGHTS: Highlight[] = [
   {
     title: "Fast support",
     text: "Our team typically replies within 24 hours.",
@@ -26,11 +45,10 @@ const HIGHLIGHTS = [
   {
     title: "Curriculum-aligned learning",
     text: "Trusted by students, parents and schools.",
-    Icon: FileText,
+    imageSrc: "/curricula-aligned.png",
     iconBg: LIME,
-    iconColor: "#1E1B4B",
   },
-] as const;
+];
 
 const StarBadge = () => (
   <span
@@ -120,23 +138,40 @@ export const ContactHeroSection = () => {
             </p>
 
             <div className="space-y-3 sm:space-y-3.5">
-              {HIGHLIGHTS.map(({ title, text, Icon, iconBg, iconColor }) => (
+              {HIGHLIGHTS.map((item) => (
                 <div
-                  key={title}
+                  key={item.title}
                   className="flex items-start gap-3 rounded-[18px] bg-white/10 px-4 py-3.5 sm:gap-4 sm:px-4 sm:py-4"
                 >
                   <span
                     className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-[12px]"
-                    style={{ backgroundColor: iconBg }}
+                    style={{ backgroundColor: item.iconBg }}
                   >
-                    <Icon className="h-5 w-5" style={{ color: iconColor }} strokeWidth={2.2} aria-hidden />
+                    {item.imageSrc ? (
+                      <Image
+                        src={item.imageSrc}
+                        alt=""
+                        width={20}
+                        height={20}
+                        unoptimized
+                        className="h-5 w-5 object-contain"
+                        aria-hidden
+                      />
+                    ) : (
+                      <item.Icon
+                        className="h-5 w-5"
+                        style={{ color: item.iconColor }}
+                        strokeWidth={2.2}
+                        aria-hidden
+                      />
+                    )}
                   </span>
                   <div>
                     <p className="mb-1 font-jakarta text-[14px] font-bold text-white sm:text-[15px]">
-                      {title}
+                      {item.title}
                     </p>
                     <p className="m-0 font-jakarta text-[12px] leading-relaxed text-white/75 sm:text-[13px]">
-                      {text}
+                      {item.text}
                     </p>
                   </div>
                 </div>

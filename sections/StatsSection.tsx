@@ -79,10 +79,10 @@ export const StatsSection = () => (
         className="wrap flex flex-col items-center gap-[clamp(0.85rem,1.6vw,1.4rem)] py-[clamp(1rem,2vw,1.65rem)] text-center sm:gap-[clamp(1rem,1.8vw,1.5rem)] sm:py-[clamp(1.15rem,2.2vw,1.8rem)] md:py-[clamp(1.3rem,2.4vw,2rem)]"
       >
         <p className="m-0 max-w-[720px] text-center text-[13px] leading-[1.65] text-body sm:text-[14px] md:text-[15px]">
-          Built to support major curricula and exam boards across the UK, US, Australia, and Canada.
+          Built to support major curricula and exam boards across the UK, US, Australia and Canada.
         </p>
         <p className="m-0 max-w-[820px] text-center text-[11.5px] font-light italic leading-[1.7] text-body/85 sm:text-[12.5px] md:text-[13px]">
-          These numbers are live, real, and updated every week. We&apos;re a new platform — we&apos;d rather show you
+          These numbers are live, real and updated every week. We&apos;re a new platform — we&apos;d rather show you
           where we actually are than pretend to be somewhere we&apos;re not. Join us early and help us build something
           genuine.
         </p>

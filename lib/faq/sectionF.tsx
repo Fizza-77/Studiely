@@ -60,7 +60,7 @@ export const sectionF: FaqSection = {
   id: "faq-pricing",
   title: "F. Pricing, Plans & Subscriptions",
   intro:
-    "Premium plan pricing (USD), discounts, cancellation, renewals, refunds, and Exam Practice.",
+    "Premium plan pricing (USD), discounts, cancellation, renewals, refunds and Exam Practice.",
   items: [
     {
       question: "What are Studiely's Premium plan prices?",
@@ -80,7 +80,7 @@ export const sectionF: FaqSection = {
     {
       question: "How much does Studiely cost?",
       schemaText:
-        "Studiely offers a free plan and several Premium subscription options. The free plan includes five complete generations at no cost — no credit card required. Premium plans are available on monthly, three-month, six-month, and annual billing cycles. Because Studiely applies geo-based pricing, the exact cost reflects your location. To see current pricing, visit studiely.com. The Exam Practice add-on is also available as a separate purchase, providing 50 dedicated exam simulation generations that do not expire and are independent of the monthly Premium limit.",
+        "Studiely offers a free plan and several Premium subscription options. The free plan includes five complete generations at no cost — no credit card required. Premium plans are available on monthly, three-month, six-month and annual billing cycles. Because Studiely applies geo-based pricing, the exact cost reflects your location. To see current pricing, visit studiely.com. The Exam Practice add-on is also available as a separate purchase, providing 50 dedicated exam simulation generations that do not expire and are independent of the monthly Premium limit.",
       answer: (
         <>
           <p>
@@ -92,7 +92,7 @@ export const sectionF: FaqSection = {
             students genuine access to the platform before committing to a subscription.
           </p>
           <p>
-            Premium plans are available on monthly, three-month, six-month, and annual billing cycles. Reference USD
+            Premium plans are available on monthly, three-month, six-month and annual billing cycles. Reference USD
             pricing and current offer discounts are listed in the pricing table in this section.
           </p>
           <p>
@@ -118,7 +118,7 @@ export const sectionF: FaqSection = {
             USD.
           </p>
           <p>
-            Three-month, six-month, and annual plans also offer a lower effective monthly cost than paying month-to-month.
+            Three-month, six-month and annual plans also offer a lower effective monthly cost than paying month-to-month.
             The annual plan typically provides the best value per month for students who plan to use Studiely
             consistently across the academic year.
           </p>
@@ -241,13 +241,13 @@ export const sectionF: FaqSection = {
           <p>
             The add-on covers every curriculum system Studiely supports: Cambridge (Checkpoint through A Level),
             Pearson Edexcel (GCSE through A Level), IB (MYP Year 4 and 5, Diploma Programme SL and HL), US High
-            School and Digital SAT, all Canadian provinces and territories, and all Australian states and territories.
-            Within each curriculum, students can select by specific paper, component, and task type — including timed
+            School and Digital SAT, all Canadian provinces and territories and all Australian states and territories.
+            Within each curriculum, students can select by specific paper, component and task type — including timed
             simulations at full official exam durations.
           </p>
           <p>
             Exam Practice generations are completely independent of your monthly Premium Study Tools allowance. Using
-            Exam Practice does not reduce your monthly generation count, and the monthly limit does not affect your
+            Exam Practice does not reduce your monthly generation count and the monthly limit does not affect your
             Exam Practice pack.
           </p>
           <p>

@@ -32,7 +32,7 @@ const STEPS = [
   {
     n: "3",
     title: "Generate and Study",
-    desc: "Get instant AI-powered flashcards, practice questions, and structured summary notes.",
+    desc: "Get instant AI-powered flashcards, practice questions and structured summary notes.",
     pos: "100% 50%",
     light: true,
   },
@@ -79,10 +79,10 @@ export const HowItWorksSection = ({ sectionRef }: HowItWorksSectionProps) => (
 
       <div className="mx-auto mb-[clamp(2rem,4vw,3rem)] max-w-[760px] text-center">
         <p className="mb-4 font-sans text-[clamp(0.95rem,1.1vw,1.125rem)] font-bold leading-snug text-navy">
-          Built to support major curricula and exam boards across the UK, US, Australia, and Canada.
+          Built to support major curricula and exam boards across the UK, US, Australia and Canada.
         </p>
         <p className="font-sans text-[clamp(0.82rem,0.9vw,0.95rem)] font-light leading-relaxed text-muted">
-          These numbers are live, real, and updated every week. We&apos;re a new platform we&apos;d
+          These numbers are live, real and updated every week. We&apos;re a new platform we&apos;d
           rather show you where we actually are than pretend to be somewhere we&apos;re not. Join us
           early and help us build something genuine.
         </p>

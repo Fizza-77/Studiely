@@ -1,21 +1,24 @@
 import Image from "next/image";
 import {
-  Gauge,
-  Layers,
   ListChecks,
   ShieldCheck,
   Sparkles,
+  type LucideIcon,
 } from "lucide-react";
 
 const BLUE = "#4F35F2";
 const LIME = "#E8FF2F";
 
-const FEATURES = [
+type Feature =
+  | { label: string; Icon: LucideIcon; imageSrc?: never }
+  | { label: string; imageSrc: string; Icon?: never };
+
+const FEATURES: Feature[] = [
   { label: "AI-powered support", Icon: Sparkles },
   { label: "Curriculum-aligned", Icon: ListChecks },
-  { label: "All-in-one", Icon: Layers },
+  { label: "All-in-one", imageSrc: "/allinone.png" },
   { label: "Trusted by learners", Icon: ShieldCheck },
-] as const;
+];
 
 export const ContactAboutSection = () => {
   return (
@@ -79,19 +82,31 @@ export const ContactAboutSection = () => {
 
             <div className="bg-white px-6 py-8 sm:px-8 sm:py-10 md:px-9 md:py-11">
               <div className="mb-4 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-3.5">
-                {FEATURES.map(({ label, Icon }) => (
+                {FEATURES.map((feature) => (
                   <div
-                    key={label}
+                    key={feature.label}
                     className="flex items-center gap-3 rounded-[18px] bg-[#FFFBEF] px-4 py-4 shadow-[0_4px_16px_rgba(30,27,75,0.04)]"
                   >
-                    <Icon
-                      className="h-5 w-5 shrink-0"
-                      style={{ color: BLUE }}
-                      strokeWidth={2.1}
-                      aria-hidden
-                    />
+                    {feature.imageSrc ? (
+                      <Image
+                        src={feature.imageSrc}
+                        alt=""
+                        width={20}
+                        height={20}
+                        unoptimized
+                        className="h-5 w-5 shrink-0 object-contain"
+                        aria-hidden
+                      />
+                    ) : (
+                      <feature.Icon
+                        className="h-5 w-5 shrink-0"
+                        style={{ color: BLUE }}
+                        strokeWidth={2.1}
+                        aria-hidden
+                      />
+                    )}
                     <span className="font-jakarta text-[13px] font-bold text-[#4F35F2] sm:text-[14px]">
-                      {label}
+                      {feature.label}
                     </span>
                   </div>
                 ))}
@@ -101,10 +116,13 @@ export const ContactAboutSection = () => {
                 className="flex items-center gap-3 rounded-full px-5 py-3.5 sm:px-6 sm:py-4"
                 style={{ backgroundColor: LIME }}
               >
-                <Gauge
-                  className="h-5 w-5 shrink-0"
-                  style={{ color: BLUE }}
-                  strokeWidth={2.2}
+                <Image
+                  src="/quicktime.png"
+                  alt=""
+                  width={20}
+                  height={20}
+                  unoptimized
+                  className="h-5 w-5 shrink-0 object-contain"
                   aria-hidden
                 />
                 <p className="m-0 font-jakarta text-[13px] font-bold text-[#1E1B4B] sm:text-[14px]">

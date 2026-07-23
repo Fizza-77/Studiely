@@ -27,7 +27,7 @@ export const NylaWhySection = () => {
             height={220}
             unoptimized
             aria-hidden
-            className="pointer-events-none absolute -left-2 top-[18%] z-[2] h-auto w-[clamp(6rem,14vw,9.5rem)] max-w-none -translate-y-1/2 select-none drop-shadow-[0_6px_18px_rgba(255,54,198,0.25)] sm:left-0 sm:w-[clamp(7rem,15vw,11rem)]"
+            className="pointer-events-none absolute -left-2 -top-5 z-[2] h-auto w-[clamp(6rem,14vw,9.5rem)] max-w-none select-none drop-shadow-[0_6px_18px_rgba(255,54,198,0.25)] sm:left-0 sm:-top-6 sm:w-[clamp(7rem,15vw,11rem)]"
             draggable={false}
           />
           <Image
