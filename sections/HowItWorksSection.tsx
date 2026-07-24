@@ -84,16 +84,10 @@ export const HowItWorksSection = ({ sectionRef }: HowItWorksSectionProps) => (
         </div>
 
         <div className="relative mt-2.5 w-full text-center sm:mt-3">
-          <p
-            className="mb-1 whitespace-normal break-words font-sans font-bold leading-snug text-navy sm:whitespace-nowrap sm:leading-none"
-            style={{ fontSize: "clamp(0.55rem, calc(100cqw / 72), 0.95rem)" }}
-          >
+          <p className="mx-auto mb-1 w-fit max-w-full whitespace-normal break-words text-center font-sans text-[clamp(0.68rem,2.9vw,0.82rem)] font-bold leading-snug text-navy sm:text-[clamp(0.55rem,calc(100cqw/78),0.9rem)] lg:whitespace-nowrap lg:text-[clamp(0.9rem,1.05vw,1.08rem)] lg:leading-none">
             Built to support major curricula and exam boards across the UK, US, Australia and Canada.
           </p>
-          <p
-            className="mx-auto w-full max-w-full whitespace-normal break-words px-0.5 font-sans font-light leading-snug text-navy/70 sm:whitespace-nowrap sm:px-0 sm:leading-none"
-            style={{ fontSize: "clamp(0.4rem, calc(100cqw / 155), 0.78rem)" }}
-          >
+          <p className="mx-auto w-fit max-w-full whitespace-normal break-words px-0.5 text-center font-sans text-[clamp(0.52rem,2.3vw,0.68rem)] font-light leading-snug text-navy/70 sm:px-0 sm:text-[clamp(0.42rem,calc(100cqw/140),0.72rem)] lg:whitespace-nowrap lg:text-[clamp(0.68rem,0.78vw,0.84rem)] lg:leading-none">
             These numbers are live, real and updated every week. We&apos;re a new platform we&apos;d
             rather show you where we actually are than pretend to be somewhere we&apos;re not. Join us
             early and help us build something genuine.
