@@ -9,7 +9,7 @@ export const HeroSection = () => {
     <section id="hero" className="relative z-[1] bg-transparent">
       <div className={`${HOME_SHELL} relative z-[1] pb-3 pt-2.5 md:pb-4 md:pt-3`}>
         <div
-          className="relative overflow-visible rounded-[28px] px-3 pt-3.5 pb-1.5 sm:px-[clamp(1.15rem,3vw,3.75rem)] sm:py-2 md:rounded-[40px] md:py-2 lg:rounded-[48px] lg:py-2.5"
+          className="relative overflow-visible rounded-[28px] px-3 pt-3.5 pb-1.5 sm:px-[clamp(1.15rem,3vw,3.75rem)] sm:py-5 md:rounded-[40px] md:py-6 lg:rounded-[48px] lg:py-2.5"
           style={{
             background:
               "linear-gradient(115deg, #4F35F2 0%, #4F35F2 40%, #3B6BFF 100%)",
@@ -52,7 +52,7 @@ export const HeroSection = () => {
               </div>
             </div>
 
-            <div className="relative mx-auto w-full min-w-0 max-w-none translate-x-0 sm:max-w-[min(100%,clamp(320px,36vw,520px))] sm:translate-x-3 lg:max-w-[min(100%,clamp(280px,32vw,520px))] lg:translate-x-4 lg:justify-self-end">
+            <div className="relative mx-auto w-full min-w-0 max-w-none translate-x-0 sm:max-w-[min(100%,clamp(440px,62vw,680px))] sm:translate-x-0 lg:max-w-[min(100%,clamp(280px,32vw,520px))] lg:translate-x-4 lg:justify-self-end">
               <Image
                 src="/hero-img.png"
                 alt="Student studying with Studiely AI tools on a laptop"
@@ -60,8 +60,8 @@ export const HeroSection = () => {
                 height={1040}
                 priority
                 unoptimized
-                sizes="(max-width: 640px) 92vw, (max-width: 1024px) min(80vw, 420px), min(32vw, 520px)"
-                className="h-auto max-h-[clamp(260px,68vw,380px)] w-full select-none object-contain sm:max-h-[clamp(220px,28vw,320px)] lg:max-h-[clamp(200px,26vw,320px)]"
+                sizes="(max-width: 640px) 92vw, (max-width: 1024px) min(62vw, 680px), min(32vw, 520px)"
+                className="h-auto max-h-[clamp(260px,68vw,380px)] w-full select-none object-contain sm:max-h-[clamp(320px,44vw,480px)] lg:max-h-[clamp(200px,26vw,320px)]"
                 draggable={false}
               />
               <Image

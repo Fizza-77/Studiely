@@ -167,7 +167,7 @@ export const HomePricingSection = ({ sectionRef }: HomePricingSectionProps) => {
                     height={360}
                     unoptimized
                     aria-hidden
-                    className="pointer-events-none absolute -right-14 -top-16 z-[1] h-auto w-[16rem] select-none sm:-right-16 sm:-top-20 sm:w-[19rem]"
+                    className="pointer-events-none absolute -right-20 -top-24 z-[1] h-auto w-[16rem] select-none sm:-right-16 sm:-top-20 sm:w-[19rem]"
                     draggable={false}
                   />
                 )}

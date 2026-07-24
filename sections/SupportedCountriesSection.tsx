@@ -202,12 +202,12 @@ export const SupportedCountriesSection = ({
             </p>
             <h2
               id="curriculum-heading"
-              className="relative mx-auto mb-3 font-heading text-[clamp(1.6rem,3.2vw,2.5rem)] leading-[1.15] tracking-[-0.02em] text-[#1E1B4B] sm:mb-4"
+              className="relative mx-auto mb-3 max-w-full overflow-visible px-1 font-heading text-[clamp(1.15rem,calc(100vw/22),2.5rem)] leading-[1.15] tracking-[-0.02em] text-[#1E1B4B] sm:mb-4 sm:px-0 sm:text-[clamp(1.6rem,3.2vw,2.5rem)]"
             >
               <span className="block whitespace-nowrap font-semibold">
                 Built for Students Across the
               </span>
-              <span className="relative block font-extrabold" style={{ color: BLUE }}>
+              <span className="relative block whitespace-nowrap font-extrabold" style={{ color: BLUE }}>
                 UK, US, IB, Australia &amp; Canada
                 <Image
                   src="/finger.png"
@@ -216,7 +216,7 @@ export const SupportedCountriesSection = ({
                   height={800}
                   unoptimized
                   aria-hidden
-                  className="pointer-events-none absolute right-0 top-1/2 z-[2] h-auto w-[min(32vw,19rem)] max-w-none -translate-x-[22%] -translate-y-[52%] select-none mix-blend-screen sm:w-[min(28vw,21rem)] md:w-[min(25vw,24rem)] md:-translate-y-[62%] lg:-translate-y-[68%]"
+                  className="pointer-events-none absolute right-0 top-1/2 z-[2] h-auto w-[min(28vw,19rem)] max-w-none translate-x-[34%] -translate-y-[52%] select-none mix-blend-screen sm:w-[min(28vw,21rem)] sm:-translate-x-[22%] md:w-[min(25vw,24rem)] md:-translate-y-[62%] lg:-translate-y-[68%]"
                   draggable={false}
                 />
               </span>
