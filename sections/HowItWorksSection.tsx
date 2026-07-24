@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { AnimNum } from "@/components/AnimNum";
+import { HOME_SHELL, HOME_TOOLS_BAND_INSET } from "@/lib/homeShell";
 
 const LIME = "#E8FF2F";
 const PURPLE = "#4F35F2";
@@ -19,8 +20,8 @@ const STEPS = [
     n: "1",
     title: "Choose Your Curriculum",
     desc: "Select from GCSE, A-Level, IB, or University level content across dozens of subjects.",
-    src: "/Rectangle-yellow.png",
-    width: 362,
+    src: "/lemoncard.svg",
+    width: 363,
     height: 433,
     light: false,
   },
@@ -28,16 +29,16 @@ const STEPS = [
     n: "2",
     title: "Enter Your Topic",
     desc: "Paste your notes, upload a textbook PDF, or simply type the topic you need help with.",
-    src: "/Rectangle-pink.png",
+    src: "/pinkcard.svg",
     width: 363,
-    height: 448,
+    height: 433,
     light: false,
   },
   {
     n: "3",
     title: "Generate and Study",
     desc: "Get instant AI-powered flashcards, practice questions and structured summary notes.",
-    src: "/Rectangle-blue.png",
+    src: "/bluecard.svg",
     width: 363,
     height: 433,
     light: true,
@@ -54,26 +55,26 @@ export const HowItWorksSection = ({ sectionRef }: HowItWorksSectionProps) => (
     ref={sectionRef}
     className="bg-bg-base pb-[clamp(1.75rem,4vw,3rem)] pt-0"
   >
-    <div className="wrap">
+    <div className={HOME_SHELL}>
       <div
-        className="relative mb-[clamp(1rem,2vw,1.5rem)] overflow-hidden rounded-[24px] px-4 py-5 shadow-[0_10px_30px_rgba(79,53,242,0.12)] sm:rounded-[28px] sm:px-6 sm:py-6 md:rounded-[32px] md:px-10 md:py-7"
+        className={`@container relative mb-[clamp(1rem,2vw,1.5rem)] overflow-hidden rounded-[20px] px-4 py-3 shadow-[0_10px_30px_rgba(79,53,242,0.12)] sm:rounded-[24px] sm:px-6 sm:py-3.5 md:rounded-[28px] md:px-10 md:py-4 ${HOME_TOOLS_BAND_INSET}`}
         style={{ backgroundColor: LIME }}
       >
         <div
           aria-hidden
           className="pointer-events-none absolute -right-8 -top-10 h-36 w-36 rounded-full bg-black/5 sm:-right-10 sm:-top-12 sm:h-44 sm:w-44"
         />
-        <div className="relative grid grid-cols-2 gap-y-3 font-hanken md:grid-cols-4 md:gap-3">
+        <div className="relative grid grid-cols-2 gap-y-2 font-hanken md:grid-cols-4 md:gap-2">
           {STATS.map((stat) => (
             <div key={stat.label} className="text-center">
               <div
-                className="text-[clamp(1.35rem,3vw,2.1rem)] font-extrabold leading-none tracking-[-0.03em]"
+                className="text-[clamp(1.2rem,2.6vw,1.85rem)] font-extrabold leading-none tracking-[-0.03em]"
                 style={{ color: PURPLE }}
               >
                 <AnimNum target={stat.n} suf={stat.suf} />
               </div>
               <div
-                className="mt-1 text-[10px] font-bold uppercase tracking-[0.06em] sm:text-[11px] md:text-[12px]"
+                className="mt-0.5 text-[9px] font-bold uppercase tracking-[0.06em] sm:text-[10px] md:text-[11px]"
                 style={{ color: PINK }}
               >
                 {stat.label}
@@ -82,18 +83,23 @@ export const HowItWorksSection = ({ sectionRef }: HowItWorksSectionProps) => (
           ))}
         </div>
 
-        <div className="relative mt-4 w-full text-center sm:mt-5">
-          <p className="mb-1.5 font-sans text-[clamp(0.78rem,0.65rem+0.55vw,1.05rem)] font-bold leading-snug text-navy sm:mb-2">
+        <div className="relative mt-2.5 w-full text-center sm:mt-3">
+          <p className="mb-1 whitespace-nowrap font-sans text-[clamp(0.55rem,2.2cqi+0.35rem,0.95rem)] font-bold leading-none text-navy">
             Built to support major curricula and exam boards across the UK, US, Australia and Canada.
           </p>
-          <p className="mx-auto max-w-[34rem] font-sans text-[clamp(0.65rem,0.55rem+0.3vw,0.82rem)] font-light leading-snug text-navy/70 sm:max-w-none sm:leading-relaxed">
+          <p
+            className="mx-auto w-full whitespace-nowrap font-sans font-light leading-none text-navy/70"
+            style={{ fontSize: "clamp(0.32rem, calc(100cqw / 112), 0.78rem)" }}
+          >
             These numbers are live, real and updated every week. We&apos;re a new platform we&apos;d
             rather show you where we actually are than pretend to be somewhere we&apos;re not. Join us
             early and help us build something genuine.
           </p>
         </div>
       </div>
+    </div>
 
+    <div className="wrap">
       <div className="mb-[clamp(1rem,2vw,1.5rem)] text-center">
         <h2 className="mb-1.5 font-heading text-[clamp(1.75rem,3.5vw,2.75rem)] font-extrabold tracking-[-0.02em] text-navy sm:mb-2">
           How It Works

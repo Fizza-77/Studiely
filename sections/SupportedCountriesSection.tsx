@@ -6,7 +6,11 @@ import { AnimatePresence, motion } from "framer-motion";
 
 const BLUE = "#4F35F2";
 const LIME = "#E8FF2F";
-const PINK = "#FF79B0";
+
+/** Pink edge shows on hover for all curriculum country cards. */
+const CARD_HOVER_BORDER =
+  "border-b-[5px] border-r-[5px] border-transparent transition-[border-color] duration-200 ease-out hover:border-[#FF79B0]";
+
 
 interface SupportedCountriesSectionProps {
   sectionRef?: React.Ref<HTMLElement>;
@@ -228,7 +232,7 @@ export const SupportedCountriesSection = ({
           <div className="grid grid-cols-1 gap-4 md:gap-5 lg:grid-cols-[minmax(0,1.72fr)_minmax(0,1fr)] lg:gap-5">
             {/* United Kingdom */}
             <article
-              className="relative overflow-hidden rounded-[28px] p-6 sm:p-8"
+              className={`relative overflow-hidden rounded-[28px] p-6 sm:p-8 ${CARD_HOVER_BORDER}`}
               style={{ backgroundColor: BLUE }}
             >
               <div className="grid min-h-[300px] grid-cols-1 items-stretch gap-6 md:min-h-[340px] md:grid-cols-[minmax(0,42%)_minmax(0,58%)] md:gap-0">
@@ -286,8 +290,7 @@ export const SupportedCountriesSection = ({
 
             {/* United States */}
             <article
-              className="relative rounded-[28px] border-b-[5px] border-r-[5px] bg-white px-6 py-7 sm:px-7 sm:py-8"
-              style={{ borderColor: PINK }}
+              className={`relative rounded-[28px] bg-white px-6 py-7 sm:px-7 sm:py-8 ${CARD_HOVER_BORDER}`}
             >
               <CardTitle subtitle="Kindergarten to College Admissions">
                 <CardFlag src="/USA.png" />
@@ -332,7 +335,7 @@ export const SupportedCountriesSection = ({
 
           <div className="grid grid-cols-1 items-start gap-4 md:grid-cols-3 md:gap-5">
             {/* International Baccalaureate */}
-            <article className="rounded-[28px] bg-white px-6 py-7 sm:px-6 sm:py-7">
+            <article className={`rounded-[28px] bg-white px-6 py-7 sm:px-6 sm:py-7 ${CARD_HOVER_BORDER}`}>
               <CardTitle subtitle="Primary to Diploma Programme">
                 <CardFlag src="/USA.png" />
                 <CountryHeading>
@@ -352,7 +355,7 @@ export const SupportedCountriesSection = ({
             <motion.article
               layout
               transition={expandTransition}
-              className="rounded-[28px] px-6 py-7 sm:px-6 sm:py-7"
+              className={`rounded-[28px] px-6 py-7 sm:px-6 sm:py-7 ${CARD_HOVER_BORDER}`}
               style={{ backgroundColor: LIME }}
             >
               <CardTitle subtitle="Primary to Senior Secondary">
@@ -406,7 +409,7 @@ export const SupportedCountriesSection = ({
             <motion.article
               layout
               transition={expandTransition}
-              className="rounded-[28px] bg-white px-6 py-7 sm:px-6 sm:py-7"
+              className={`rounded-[28px] bg-white px-6 py-7 sm:px-6 sm:py-7 ${CARD_HOVER_BORDER}`}
             >
               <CardTitle subtitle="Primary to High School Graduation">
                 <CardFlag src="/Canada.png" />

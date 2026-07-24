@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { STUDIELY_APP } from "@/lib/appUrls";
-import { HOME_SHELL } from "@/lib/homeShell";
+import { HOME_SHELL, HOME_TOOLS_CARD, HOME_TOOLS_GRID } from "@/lib/homeShell";
 
 const PURPLE = "#4F35F2";
 const PINK = "#FF36C6";
@@ -57,14 +57,14 @@ export const StudySmarterSection = () => {
           Choose a tool to <span style={{ color: PINK }}>get started</span>
         </h2>
 
-        <div className="relative mx-auto grid w-full max-w-full grid-cols-2 gap-2 sm:gap-2.5 lg:grid-cols-4 lg:gap-2.5 xl:gap-3">
+        <div className={HOME_TOOLS_GRID}>
           {FEATURES.map(({ title, desc, href, icon, iconW, iconH }) => (
             <a
               key={title}
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative z-[1] mx-auto block w-[94%] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4F35F2] focus-visible:ring-offset-2 hover:z-10 sm:w-[92%] lg:w-[90%]"
+              className={`group relative z-[1] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4F35F2] focus-visible:ring-offset-2 hover:z-10 ${HOME_TOOLS_CARD}`}
             >
               <span
                 aria-hidden
