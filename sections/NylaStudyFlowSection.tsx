@@ -32,8 +32,8 @@ export const NylaStudyFlowSection = () => {
       className="bg-bg-base pb-[clamp(1.5rem,4vw,2.5rem)]"
     >
       <div className="wrap">
-        <Reveal className="relative mb-[clamp(1.25rem,2.5vw,1.75rem)]" y={28}>
-          <div className="grid items-center gap-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-10">
+        <Reveal className="relative mb-1 sm:mb-[clamp(1.25rem,2.5vw,1.75rem)]" y={28}>
+          <div className="grid items-center gap-0 sm:gap-4 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-10">
             <div className="max-w-[42rem]">
               <h2
                 id="nyla-study-flow-heading"
@@ -56,7 +56,7 @@ export const NylaStudyFlowSection = () => {
               height={360}
               unoptimized
               aria-hidden
-              className="pointer-events-none mx-auto h-auto w-[clamp(11rem,28vw,18rem)] max-w-none select-none justify-self-end drop-shadow-[0_8px_20px_rgba(255,54,198,0.28)] lg:mx-0"
+              className="pointer-events-none mx-auto -my-8 h-auto w-[clamp(11rem,28vw,18rem)] max-w-none select-none justify-self-end drop-shadow-[0_8px_20px_rgba(255,54,198,0.28)] sm:my-0 lg:mx-0"
               draggable={false}
             />
           </div>

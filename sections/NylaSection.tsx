@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { STUDIELY_APP } from "@/lib/appUrls";
@@ -10,6 +11,21 @@ const LIME = "#E8FF2F";
 interface NylaSectionProps {
   sectionRef?: React.Ref<HTMLElement>;
 }
+
+const TypingDots = () => (
+  <div
+    className="inline-flex max-w-[72px] items-center gap-1.5 rounded-[14px] rounded-tl-sm bg-[#ECEEF6] px-3.5 py-3"
+    aria-label="Nyla is typing"
+  >
+    {[0, 1, 2].map((i) => (
+      <span
+        key={i}
+        className="nyla-typing-dot h-1.5 w-1.5 rounded-full bg-[#4F35F2]/75"
+        style={{ animationDelay: `${i * 0.16}s` }}
+      />
+    ))}
+  </div>
+);
 
 const ClockIcon = () => (
   <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" aria-hidden>
@@ -50,6 +66,54 @@ const FEATURES: Feature[] = [
 ];
 
 export const NylaSection = ({ sectionRef }: NylaSectionProps) => {
+  const chatPreviewRef = useRef<HTMLDivElement>(null);
+  const messagesRef = useRef<HTMLDivElement>(null);
+  const [phase, setPhase] = useState<"idle" | "typing" | "replied">("idle");
+
+  useEffect(() => {
+    const el = chatPreviewRef.current;
+    if (!el) return;
+
+    let replyTimer: ReturnType<typeof setTimeout> | undefined;
+
+    const startSequence = () => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        setPhase("replied");
+        return;
+      }
+      setPhase("typing");
+      replyTimer = setTimeout(() => setPhase("replied"), 1000);
+    };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          startSequence();
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.35, rootMargin: "0px 0px -8% 0px" }
+    );
+
+    observer.observe(el);
+    return () => {
+      observer.disconnect();
+      if (replyTimer) clearTimeout(replyTimer);
+    };
+  }, []);
+
+  useEffect(() => {
+    const box = messagesRef.current;
+    if (!box) return;
+    box.scrollTop = box.scrollHeight;
+  }, []);
+
+  useEffect(() => {
+    const box = messagesRef.current;
+    if (!box || phase === "idle") return;
+    box.scrollTo({ top: box.scrollHeight, behavior: "smooth" });
+  }, [phase]);
+
   return (
     <section
       id="nyla"
@@ -153,7 +217,7 @@ export const NylaSection = ({ sectionRef }: NylaSectionProps) => {
                 />
 
                 {/* Chat preview — matches design */}
-                <div className="relative z-[1] w-full">
+                <div ref={chatPreviewRef} className="relative z-[1] w-full">
                   <div className="relative z-[1] w-full overflow-hidden rounded-[20px] bg-white shadow-[0_18px_48px_rgba(0,0,0,0.3)]">
                   <div
                     className="flex items-center gap-3 px-4 py-3.5"
@@ -184,7 +248,10 @@ export const NylaSection = ({ sectionRef }: NylaSectionProps) => {
                     </div>
                   </div>
 
-                  <div className="flex flex-col gap-3 bg-white px-3.5 py-4">
+                  <div
+                    ref={messagesRef}
+                    className="nyla-chat-scroll flex max-h-[210px] flex-col gap-3 overflow-y-auto overscroll-contain bg-white px-3.5 py-4 sm:max-h-[220px]"
+                  >
                     <div className="max-w-[88%] rounded-[14px] rounded-tl-sm bg-[#ECEEF6] px-3.5 py-2.5 font-sans text-[12.5px] leading-[1.55] text-[#2A2B36]">
                       Hi! I&apos;m Nyla. Need help understanding Mitosis?
                     </div>
@@ -197,6 +264,22 @@ export const NylaSection = ({ sectionRef }: NylaSectionProps) => {
                     <div className="max-w-[92%] rounded-[14px] rounded-tl-sm bg-[#ECEEF6] px-3.5 py-2.5 font-sans text-[12.5px] leading-[1.55] text-[#2A2B36]">
                       Absolutely. In Prophase, chromosomes condense and become visible…
                     </div>
+                    <div
+                      className="ml-auto max-w-[88%] rounded-[14px] rounded-tr-sm px-3.5 py-2.5 font-sans text-[12.5px] font-medium leading-[1.55]"
+                      style={{ backgroundColor: LIME, color: BLUE }}
+                    >
+                      Got it! What happens next in Metaphase?
+                    </div>
+                    {phase === "typing" ? <TypingDots /> : null}
+                    {phase === "replied" ? (
+                      <>
+                        <div className="max-w-[92%] rounded-[14px] rounded-tl-sm bg-[#ECEEF6] px-3.5 py-2.5 font-sans text-[12.5px] leading-[1.55] text-[#2A2B36]">
+                          In Metaphase, chromosomes line up at the cell&apos;s equator so they can
+                          separate evenly.
+                        </div>
+                        <TypingDots />
+                      </>
+                    ) : null}
                   </div>
 
                   <div className="bg-white px-3.5 pb-3.5 pt-0">

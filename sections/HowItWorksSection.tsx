@@ -56,7 +56,7 @@ export const HowItWorksSection = ({ sectionRef }: HowItWorksSectionProps) => (
   >
     <div className="wrap">
       <div
-        className="relative mb-[clamp(0.75rem,1.5vw,1.15rem)] overflow-hidden rounded-[24px] px-4 py-3 shadow-[0_10px_30px_rgba(79,53,242,0.12)] sm:rounded-[28px] sm:px-6 sm:py-3.5 md:rounded-[32px] md:px-10 md:py-4"
+        className="relative mb-[clamp(1rem,2vw,1.5rem)] overflow-hidden rounded-[24px] px-4 py-5 shadow-[0_10px_30px_rgba(79,53,242,0.12)] sm:rounded-[28px] sm:px-6 sm:py-6 md:rounded-[32px] md:px-10 md:py-7"
         style={{ backgroundColor: LIME }}
       >
         <div
@@ -81,17 +81,17 @@ export const HowItWorksSection = ({ sectionRef }: HowItWorksSectionProps) => (
             </div>
           ))}
         </div>
-      </div>
 
-      <div className="mb-[clamp(1.25rem,2.5vw,1.75rem)] w-full text-center">
-        <p className="mb-1.5 font-sans text-[clamp(0.78rem,0.65rem+0.55vw,1.125rem)] font-bold leading-snug text-navy sm:mb-3">
-          Built to support major curricula and exam boards across the UK, US, Australia and Canada.
-        </p>
-        <p className="mx-auto max-w-[34rem] font-sans text-[clamp(0.65rem,0.55rem+0.3vw,0.82rem)] font-light leading-snug text-muted sm:max-w-none sm:leading-relaxed">
-          These numbers are live, real and updated every week. We&apos;re a new platform we&apos;d
-          rather show you where we actually are than pretend to be somewhere we&apos;re not. Join us
-          early and help us build something genuine.
-        </p>
+        <div className="relative mt-4 w-full text-center sm:mt-5">
+          <p className="mb-1.5 font-sans text-[clamp(0.78rem,0.65rem+0.55vw,1.05rem)] font-bold leading-snug text-navy sm:mb-2">
+            Built to support major curricula and exam boards across the UK, US, Australia and Canada.
+          </p>
+          <p className="mx-auto max-w-[34rem] font-sans text-[clamp(0.65rem,0.55rem+0.3vw,0.82rem)] font-light leading-snug text-navy/70 sm:max-w-none sm:leading-relaxed">
+            These numbers are live, real and updated every week. We&apos;re a new platform we&apos;d
+            rather show you where we actually are than pretend to be somewhere we&apos;re not. Join us
+            early and help us build something genuine.
+          </p>
+        </div>
       </div>
 
       <div className="mb-[clamp(1rem,2vw,1.5rem)] text-center">

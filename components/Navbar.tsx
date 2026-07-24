@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
-import Image from "next/image";
 import { STUDIELY_APP } from "@/lib/appUrls";
 import { HOME_SHELL } from "@/lib/homeShell";
 
@@ -63,7 +62,7 @@ export const Navbar = ({ visibleSections: _visibleSections = [] }: NavbarProps) 
     ["Curriculum", "/curriculum"],
     ["Pricing", STUDIELY_APP.pricing],
     ["FAQs", "/faqs"],
-    ["Blogs", "/blog"],
+    ["Blogs", "/blogs"],
     ["Nyla AI", "/nyla"],
     ["Contact Us", "/contact"],
   ] as const;
@@ -81,16 +80,15 @@ export const Navbar = ({ visibleSections: _visibleSections = [] }: NavbarProps) 
           <div className="flex h-[46px] items-center justify-between gap-3 rounded-[24px] bg-[#E8FF2F] px-3 sm:h-[50px] sm:px-4 md:rounded-[32px] md:px-5 lg:px-6">
             <Link
               href="/"
-              className="flex shrink-0 items-center transition-opacity hover:opacity-80"
+              className="flex shrink-0 items-center text-[#4F35F2] transition-opacity hover:opacity-80"
               aria-label="Studiely home"
             >
-              <Image
-                src="/group-logo.png"
+              {/* eslint-disable-next-line @next/next/no-img-element -- SVG logo; avoid Next Image caching stale fill */}
+              <img
+                src="/logo-group.svg?v=blue"
                 alt="Studiely"
                 width={140}
                 height={40}
-                priority
-                unoptimized
                 className="h-7 w-auto shrink-0 object-contain sm:h-8"
               />
             </Link>
@@ -112,8 +110,10 @@ export const Navbar = ({ visibleSections: _visibleSections = [] }: NavbarProps) 
                     href={href}
                     aria-current={active ? "page" : undefined}
                     onClick={() => setActiveLink(href)}
-                    className={`funky-link whitespace-nowrap px-2 py-1 text-[12px] font-medium text-[#4F35F2] transition-opacity hover:opacity-80 xl:px-2.5 xl:text-[13px] ${
-                      active ? "funky-link-active font-semibold" : ""
+                    className={`funky-link whitespace-nowrap px-2 py-1 text-[12px] font-medium transition-colors xl:px-2.5 xl:text-[13px] ${
+                      active
+                        ? "funky-link-active font-semibold text-[#4F35F2]"
+                        : "text-[#1E1B4B] hover:text-[#4F35F2]"
                     }`}
                   >
                     {label}
@@ -128,7 +128,7 @@ export const Navbar = ({ visibleSections: _visibleSections = [] }: NavbarProps) 
                   href={STUDIELY_APP.login}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="funky-link text-[12px] font-semibold text-[#4F35F2] transition-opacity hover:opacity-80 xl:text-[13px]"
+                  className="funky-link text-[12px] font-semibold text-[#1E1B4B] transition-colors hover:text-[#4F35F2] xl:text-[13px]"
                 >
                   Login
                 </a>
@@ -151,7 +151,7 @@ export const Navbar = ({ visibleSections: _visibleSections = [] }: NavbarProps) 
                 {[0, 1, 2].map((i) => (
                   <span
                     key={i}
-                    className={`block h-[2px] w-5 bg-[#4F35F2] transition-transform duration-250 ${
+                    className={`block h-[2px] w-5 bg-[#1E1B4B] transition-transform duration-250 ${
                       open && i === 0 ? "translate-y-[7px] rotate-45" : ""
                     } ${open && i === 2 ? "-translate-y-[7px] -rotate-45" : ""} ${
                       open && i === 1 ? "opacity-0" : "opacity-100"
@@ -175,24 +175,28 @@ export const Navbar = ({ visibleSections: _visibleSections = [] }: NavbarProps) 
           role="dialog"
           aria-label="Mobile navigation"
         >
-          {links.map(([label, href]) => (
+          {links.map(([label, href]) => {
+            const active =
+              label === "Home"
+                ? pathname === "/"
+                : label === "Nyla AI"
+                  ? pathname === "/nyla"
+                  : isLinkActive(href);
+            return (
             <Link
               key={label}
               href={href}
               onClick={() => setOpen(false)}
-              className={`block border-b border-border-lt px-3 py-3 text-base text-[#4F35F2] transition-colors last:border-b-0 ${
-                (label === "Home"
-                  ? pathname === "/"
-                  : label === "Nyla AI"
-                    ? pathname === "/nyla"
-                    : isLinkActive(href))
-                  ? "bg-[#f4ffe6] font-semibold"
-                  : ""
+              className={`block border-b border-border-lt px-3 py-3 text-base transition-colors last:border-b-0 ${
+                active
+                  ? "bg-[#f4ffe6] font-semibold text-[#4F35F2]"
+                  : "text-[#1E1B4B] hover:text-[#4F35F2]"
               }`}
             >
               {label}
             </Link>
-          ))}
+            );
+          })}
           <div className="mt-4 flex flex-col gap-2 sm:flex-row">
             <a
               href={STUDIELY_APP.login}

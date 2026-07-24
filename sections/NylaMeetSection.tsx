@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
@@ -8,6 +9,21 @@ import { STUDIELY_APP } from "@/lib/appUrls";
 const BLUE = "#4F35F2";
 const LIME = "#E8FF2F";
 const PINK = "#FF36C6";
+
+const TypingDots = () => (
+  <div
+    className="inline-flex max-w-[72px] items-center gap-1.5 rounded-[16px] rounded-tl-sm bg-[#ECEAFF] px-4 py-3"
+    aria-label="Nyla is typing"
+  >
+    {[0, 1, 2].map((i) => (
+      <span
+        key={i}
+        className="nyla-typing-dot h-1.5 w-1.5 rounded-full bg-[#4F35F2]/75"
+        style={{ animationDelay: `${i * 0.16}s` }}
+      />
+    ))}
+  </div>
+);
 
 const AskIcon = () => (
   <svg viewBox="0 0 64 64" className="h-10 w-10 sm:h-11 sm:w-11" fill="none" aria-hidden>
@@ -51,12 +67,12 @@ const BookIcon = () => (
 
 const AvailableEverywhereIcon = () => (
   <Image
-    src="/available-everywhere.png"
+    src="/available-everywhere.svg"
     alt=""
     width={44}
     height={44}
     unoptimized
-    className="h-10 w-10 object-contain sm:h-11 sm:w-11"
+    className="h-7 w-7 object-contain sm:h-8 sm:w-8"
     aria-hidden
   />
 );
@@ -86,6 +102,54 @@ const FEATURES = [
 ] as const;
 
 export const NylaMeetSection = () => {
+  const chatPreviewRef = useRef<HTMLDivElement>(null);
+  const messagesRef = useRef<HTMLDivElement>(null);
+  const [phase, setPhase] = useState<"idle" | "typing" | "replied">("idle");
+
+  useEffect(() => {
+    const el = chatPreviewRef.current;
+    if (!el) return;
+
+    let replyTimer: ReturnType<typeof setTimeout> | undefined;
+
+    const startSequence = () => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        setPhase("replied");
+        return;
+      }
+      setPhase("typing");
+      replyTimer = setTimeout(() => setPhase("replied"), 1000);
+    };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          startSequence();
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.35, rootMargin: "0px 0px -8% 0px" }
+    );
+
+    observer.observe(el);
+    return () => {
+      observer.disconnect();
+      if (replyTimer) clearTimeout(replyTimer);
+    };
+  }, []);
+
+  useEffect(() => {
+    const box = messagesRef.current;
+    if (!box) return;
+    box.scrollTop = box.scrollHeight;
+  }, []);
+
+  useEffect(() => {
+    const box = messagesRef.current;
+    if (!box || phase === "idle") return;
+    box.scrollTo({ top: box.scrollHeight, behavior: "smooth" });
+  }, [phase]);
+
   return (
     <section
       aria-labelledby="nyla-meet-heading"
@@ -135,27 +199,58 @@ export const NylaMeetSection = () => {
                 </span>
               </div>
 
-              <div className="space-y-3 bg-white px-3 py-4 sm:px-5">
+              <div
+                ref={chatPreviewRef}
+                className="bg-white"
+              >
                 <div
-                  className="ml-auto max-w-[88%] rounded-[16px] rounded-tr-sm px-4 py-3 font-sans text-[12.5px] leading-[1.55] text-white sm:text-[13px]"
-                  style={{ backgroundColor: BLUE }}
+                  ref={messagesRef}
+                  className="nyla-chat-scroll flex max-h-[240px] flex-col gap-3 overflow-y-auto overscroll-contain px-3 py-4 sm:max-h-[260px] sm:px-5"
                 >
-                  Can you explain photosynthesis for IGCSE?
-                </div>
-
-                <div className="max-w-[92%] rounded-[16px] rounded-tl-sm bg-[#ECEAFF] px-4 py-3 font-sans text-[12.5px] leading-[1.55] text-[#2A2B36] sm:text-[13px]">
-                  <p className="m-0 mb-2">
-                    <strong>Of course! 🌿 For IGCSE Biology</strong>: Photosynthesis
-                    is the process by which plants manufacture carbohydrates from
-                    raw materials using energy from light.
-                  </p>
-                  <div className="mb-2 rounded-xl bg-white px-3 py-2 text-center text-[11px] font-medium text-[#1E1B4B]">
-                    6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂
+                  <div className="max-w-[92%] rounded-[16px] rounded-tl-sm bg-[#ECEAFF] px-4 py-3 font-sans text-[12.5px] leading-[1.55] text-[#2A2B36] sm:text-[13px]">
+                    Hi! Ready to revise IGCSE Biology? Ask me anything.
                   </div>
-                  <p className="m-0">
-                    Plants convert light energy into glucose stored in chemical
-                    bonds. Want me to generate a flashcard deck on this?
-                  </p>
+
+                  <div
+                    className="ml-auto max-w-[88%] rounded-[16px] rounded-tr-sm px-4 py-3 font-sans text-[12.5px] leading-[1.55] text-white sm:text-[13px]"
+                    style={{ backgroundColor: BLUE }}
+                  >
+                    Can you explain photosynthesis for IGCSE?
+                  </div>
+
+                  <div className="max-w-[92%] rounded-[16px] rounded-tl-sm bg-[#ECEAFF] px-4 py-3 font-sans text-[12.5px] leading-[1.55] text-[#2A2B36] sm:text-[13px]">
+                    <p className="m-0 mb-2">
+                      <strong>Of course! 🌿 For IGCSE Biology</strong>: Photosynthesis
+                      is the process by which plants manufacture carbohydrates from
+                      raw materials using energy from light.
+                    </p>
+                    <div className="mb-2 rounded-xl bg-white px-3 py-2 text-center text-[11px] font-medium text-[#1E1B4B]">
+                      6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂
+                    </div>
+                    <p className="m-0">
+                      Plants convert light energy into glucose stored in chemical
+                      bonds. Want me to generate a flashcard deck on this?
+                    </p>
+                  </div>
+
+                  <div
+                    className="ml-auto max-w-[88%] rounded-[16px] rounded-tr-sm px-4 py-3 font-sans text-[12.5px] leading-[1.55] text-white sm:text-[13px]"
+                    style={{ backgroundColor: BLUE }}
+                  >
+                    Yes — and what are the light-dependent reactions?
+                  </div>
+
+                  {phase === "typing" ? <TypingDots /> : null}
+                  {phase === "replied" ? (
+                    <>
+                      <div className="max-w-[92%] rounded-[16px] rounded-tl-sm bg-[#ECEAFF] px-4 py-3 font-sans text-[12.5px] leading-[1.55] text-[#2A2B36] sm:text-[13px]">
+                        Light-dependent reactions happen in the thylakoid membranes.
+                        Chlorophyll absorbs light, water splits, and ATP + NADPH are made
+                        for the Calvin cycle.
+                      </div>
+                      <TypingDots />
+                    </>
+                  ) : null}
                 </div>
               </div>
 

@@ -68,8 +68,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
           <BlogPageContent
             posts={visiblePosts}
             categories={categories}
-            activeCategory={activeCategory}
-            hasActiveCategory={hasActiveCategory}
+            activeCategory={hasActiveCategory ? activeCategory : ""}
             emptyMessage={seo.empty_state_message}
           />
         </main>

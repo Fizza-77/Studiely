@@ -7,7 +7,7 @@ import { HOME_SHELL } from "@/lib/homeShell";
 export const HeroSection = () => {
   return (
     <section id="hero" className="relative z-[1] bg-transparent">
-      <div className={`${HOME_SHELL} relative z-[1] pb-3 pt-[5px] md:pb-4`}>
+      <div className={`${HOME_SHELL} relative z-[1] pb-3 pt-2.5 md:pb-4 md:pt-3`}>
         <div
           className="relative overflow-visible rounded-[28px] px-3 pt-3.5 pb-1.5 sm:px-[clamp(1.15rem,3vw,3.75rem)] sm:py-2 md:rounded-[40px] md:py-2 lg:rounded-[48px] lg:py-2.5"
           style={{

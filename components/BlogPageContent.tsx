@@ -21,7 +21,6 @@ type BlogPageContentProps = {
   posts: BlogListRow[];
   categories: BlogCategoryRow[];
   activeCategory: string;
-  hasActiveCategory: boolean;
   emptyMessage: string;
 };
 
@@ -47,7 +46,6 @@ export const BlogPageContent = ({
   posts,
   categories,
   activeCategory,
-  hasActiveCategory,
   emptyMessage,
 }: BlogPageContentProps) => {
   const categoryThemes = new Map(
@@ -62,31 +60,29 @@ export const BlogPageContent = ({
       {categories.length > 0 && (
         <nav
           aria-label="Filter posts by category"
-          className="mb-5 flex flex-wrap items-center gap-2.5 sm:mb-6 sm:gap-3"
+          className="mb-5 grid grid-cols-2 gap-2 sm:mb-6 sm:flex sm:flex-wrap sm:items-center sm:gap-3"
         >
-          <Link
-            href="/blog"
-            className={categoryPillClass(!hasActiveCategory)}
-            style={!hasActiveCategory ? { backgroundColor: LIME } : undefined}
-            aria-current={!hasActiveCategory ? "page" : undefined}
-          >
-            All
-          </Link>
           {categories.map((category) => {
             const active = activeCategory === category.slug;
             const theme = categoryThemes.get(category.slug)!;
             return (
               <Link
                 key={category.id}
-                href={`/blog?category=${encodeURIComponent(category.slug)}`}
-                className={categoryPillClass(active)}
+                href={
+                  active
+                    ? "/blogs"
+                    : `/blogs?category=${encodeURIComponent(category.slug)}`
+                }
+                className={`${categoryPillClass(active)} w-full justify-center sm:w-auto`}
                 style={{
                   backgroundColor: active ? theme.background : theme.soft,
-                  color: theme.foreground === "#FFFFFF" && !active
-                    ? theme.background
-                    : theme.foreground,
+                  color:
+                    theme.foreground === "#FFFFFF" && !active
+                      ? theme.background
+                      : theme.foreground,
                 }}
-                aria-current={active ? "page" : undefined}
+                aria-pressed={active}
+                aria-current={active ? "true" : undefined}
               >
                 {category.name}
               </Link>

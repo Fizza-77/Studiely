@@ -357,10 +357,6 @@ export const FaqPageContent = ({ sections }: FaqPageContentProps) => {
             </div>
 
             <div className="rounded-[20px] border border-[#ECEEF6] bg-[#FAFAFC] px-3 py-4 sm:px-4 sm:py-5">
-              <p className="mb-3 px-1 font-jakarta text-[12px] font-medium text-[#8B8D9A] sm:mb-4">
-                Categories
-              </p>
-
               <nav aria-label="FAQ categories" className="flex flex-col gap-1">
                 {sections.map((section, index) => {
                   const isActive = index === activeIndex;

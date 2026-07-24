@@ -67,13 +67,13 @@ export const Footer = (_props: FooterProps = {}) => {
           {/* Left — brand + social */}
           <div className="max-w-[420px]">
             <Link href="/" className="inline-flex" aria-label="Studiely home">
-              <Image
-                src="/white-logo.png"
+              {/* eslint-disable-next-line @next/next/no-img-element -- same SVG as navbar, forced white */}
+              <img
+                src="/logo-group.svg?v=blue"
                 alt="Studiely"
                 width={160}
                 height={48}
-                unoptimized
-                className="h-[40px] w-auto object-contain sm:h-[46px]"
+                className="h-[40px] w-auto object-contain brightness-0 invert sm:h-[46px]"
               />
             </Link>
             <p className="mb-0 mt-4 font-sans text-[14px] leading-relaxed text-white/75 sm:mt-5 sm:text-[15px]">
@@ -171,19 +171,24 @@ export const Footer = (_props: FooterProps = {}) => {
         </div>
 
         {/* Bottom legal */}
-        <div className="mt-12 grid grid-cols-1 gap-6 border-t border-white/10 pt-8 sm:mt-14 sm:gap-8 lg:grid-cols-2 lg:gap-12">
-          <p className="m-0 font-sans text-[11px] leading-[1.7] text-white/40 sm:text-[12px]">
-            <span className="block">© 2024 Studiely. All rights reserved.</span>
-            <span className="mt-1.5 block">
+        <div className="mt-12 border-t border-white/10 pt-8 text-center sm:mt-14">
+          <p className="m-0 mx-auto max-w-[920px] font-sans text-[11px] leading-[1.7] text-white/40 sm:text-[12px]">
+            <span className="block">
               Built for major curricula across the UK, US, IB, Australia, and
               Canada.
             </span>
-          </p>
-          <p className="m-0 font-sans text-[11px] leading-[1.7] text-white/40 sm:text-[12px] lg:text-right">
-            <span className="block">
-              Studiely is a product of Skyen Solutions, a trade name of Gismat
-              Ventures W.L.L. (CR 160618-1) - Office 501, Building 1025, Road
-              3621, Block 436, Al Seef, Bahrain.
+            <span className="mt-3 block">
+              Studiely is a product of{" "}
+              <a
+                href="https://skyensolutions.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/55 underline decoration-white/25 underline-offset-2 transition-colors hover:text-white/80 hover:decoration-white/45"
+              >
+                Skyen Solutions
+              </a>
+              , a trade name of Gismat Ventures W.L.L. (CR 160618-1) - Office
+              501, Building 1025, Road 3621, Block 436, Al Seef, Bahrain.
             </span>
             <span className="mt-1.5 block">
               Studiely is not affiliated with, endorsed by, or an official
@@ -193,6 +198,9 @@ export const Footer = (_props: FooterProps = {}) => {
             </span>
             <span className="mt-1.5 block">
               Content does not replace official syllabus materials.
+            </span>
+            <span className="mt-3 block">
+              © 2024 Studiely. All rights reserved.
             </span>
           </p>
         </div>

@@ -15,8 +15,8 @@ export const CurriculumHeroSection = () => {
           className="relative overflow-hidden rounded-[28px] sm:rounded-[32px]"
           style={{ backgroundColor: BLUE }}
         >
-          <div className="grid items-stretch gap-3 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] lg:gap-4">
-            <div className="relative z-[1] flex max-w-[700px] flex-col justify-center px-5 py-4 sm:px-8 sm:py-5 md:px-10 md:py-5 lg:px-12 lg:py-5">
+          <div className="grid items-stretch gap-1 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] lg:gap-4">
+            <div className="relative z-[1] flex max-w-[700px] flex-col justify-center px-5 pb-2 pt-4 sm:px-8 sm:py-5 md:px-10 md:py-5 lg:px-12 lg:py-5">
               <span
                 className="mb-2.5 inline-flex w-fit rounded-full px-3.5 py-1 font-jakarta text-[10px] font-extrabold uppercase tracking-[0.12em] text-white sm:mb-3 sm:text-[11px]"
                 style={{ backgroundColor: PINK }}
@@ -41,7 +41,7 @@ export const CurriculumHeroSection = () => {
               </p>
             </div>
 
-            <div className="relative flex h-full items-center justify-center self-stretch px-4 py-3 sm:px-6 sm:py-4 lg:justify-end lg:px-8 lg:py-4">
+            <div className="relative flex h-full items-start justify-center self-stretch px-4 pb-3 pt-0 sm:items-center sm:px-6 sm:py-4 lg:justify-end lg:px-8 lg:py-4">
               <Image
                 src="/curricula-hero.png"
                 alt=""
@@ -50,7 +50,7 @@ export const CurriculumHeroSection = () => {
                 unoptimized
                 priority
                 aria-hidden
-                className="h-auto w-full max-w-[min(100%,170px)] select-none object-contain lg:max-w-[min(100%,210px)]"
+                className="-mt-1 h-auto w-full max-w-[min(100%,170px)] select-none object-contain sm:mt-0 lg:max-w-[min(100%,210px)]"
                 draggable={false}
               />
             </div>

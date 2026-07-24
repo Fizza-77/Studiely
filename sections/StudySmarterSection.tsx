@@ -57,14 +57,14 @@ export const StudySmarterSection = () => {
           Choose a tool to <span style={{ color: PINK }}>get started</span>
         </h2>
 
-        <div className="relative mx-auto grid w-full max-w-full grid-cols-2 gap-2.5 sm:gap-3 lg:grid-cols-4 lg:gap-3 xl:gap-3.5">
+        <div className="relative mx-auto grid w-full max-w-full grid-cols-2 gap-2 sm:gap-2.5 lg:grid-cols-4 lg:gap-2.5 xl:gap-3">
           {FEATURES.map(({ title, desc, href, icon, iconW, iconH }) => (
             <a
               key={title}
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative z-[1] block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4F35F2] focus-visible:ring-offset-2 hover:z-10"
+              className="group relative z-[1] mx-auto block w-[94%] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4F35F2] focus-visible:ring-offset-2 hover:z-10 sm:w-[92%] lg:w-[90%]"
             >
               <span
                 aria-hidden

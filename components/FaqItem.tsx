@@ -15,9 +15,9 @@ export const FaqItem = ({ question, children, variant = "default" }: FaqItemProp
             </span>
             <span
               aria-hidden="true"
-              className="funky-icon inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#1E1B4B] text-white transition-transform duration-200 group-open:rotate-180"
+              className="funky-icon inline-flex h-6 w-8 shrink-0 items-center justify-center rounded-full bg-[#1E1B4B] text-[#E8FF2F] transition-transform duration-200 group-open:rotate-180"
             >
-              <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none">
+              <svg viewBox="0 0 16 16" className="h-3 w-3" fill="none">
                 <path
                   d="M4 6l4 4 4-4"
                   stroke="currentColor"

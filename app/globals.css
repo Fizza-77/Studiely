@@ -291,6 +291,53 @@
   }
 }
 
+@keyframes nylaTypingDot {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.45;
+  }
+  30% {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
+}
+
+.nyla-typing-dot {
+  animation: nylaTypingDot 1.05s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nyla-typing-dot {
+    animation: none;
+    opacity: 0.7;
+  }
+}
+
+.nyla-chat-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #4f35f2 #eceaff;
+}
+
+.nyla-chat-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.nyla-chat-scroll::-webkit-scrollbar-track {
+  background: #eceaff;
+  border-radius: 999px;
+}
+
+.nyla-chat-scroll::-webkit-scrollbar-thumb {
+  background: #4f35f2;
+  border-radius: 999px;
+}
+
+.nyla-chat-scroll::-webkit-scrollbar-thumb:hover {
+  background: #3a24c4;
+}
+
 .site-funky {
   --funky-purple: #4f35f2;
   --funky-pink: #ff36c6;
